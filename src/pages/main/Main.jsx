@@ -39,11 +39,13 @@ function Main() {
   };
 
   return (
+    <div className={styles.kek}>
     <Slider {...topSliderSettings}>
     {
       topSliderItemsData.map((item) => <TopSliderItem id={item.id} title={item.title} text={item.text} bgImage={item.bgImage}/>)
     }
     </Slider>
+    </div>
   )
 }
 
