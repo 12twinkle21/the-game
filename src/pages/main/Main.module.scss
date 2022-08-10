@@ -1,4 +1,171 @@
-:global(.slick-arrow){
+.sliderWrapper{
+   max-width: 1440px;
+   margin: 0 auto;
+   position: relative;
+
+   .mainHeader{
+      position: absolute;
+      top:0;
+      left: 0;
+      right: 0;
+      z-index: 1;
+      padding: 0 83px;
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &__left{
+         display: flex;
+         align-items: center;
+
+         img{
+            margin-left: 25px;
+            user-select: none;
+         }
+         
+         svg{
+            cursor: pointer;
+         }
+      }
+
+      &__right{
+         display: flex;
+         align-items: center;
+         gap: 40px;
+
+         svg{
+            cursor: pointer;
+         }
+
+         .headerAccAvatar{
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-image: url(../../../public/img/headerAccAvatar.png);
+            background-size: 48px 48px;
+            background-position: center;
+            cursor: pointer;
+         }
+      }
+      
+   }
+}
+
+.continueBlock{
+   max-width: 1440px;
+   margin: 0 auto;
+
+   &__items{
+      display: flex;
+      gap: 25px;
+      overflow: hidden;
+      padding: 0 83px;
+   }
+}
+
+.achievementBlock{
+   max-width: 1440px;
+   margin: 0 auto;
+   overflow: hidden;
+
+   &__items{
+      display: flex;
+      gap: 50px;
+      padding: 0 83px;
+   }
+}
+
+.activeFriendsBlock{
+   max-width: 1440px;
+   margin: 0 auto;
+   overflow: hidden;
+   
+   &__items{
+      display: flex;
+      gap: 15px;
+      padding: 0 83px;
+   }
+}
+
+.popularAmongFriendsBlock{
+   max-width: 1440px;
+   margin: 0 auto;
+   overflow: hidden;
+
+   &__items{
+      display: flex;
+      gap: 20px;
+      padding: 0 83px;
+   }
+
+   .gameCard{
+      width: 100%;
+   }
+}
+
+.usefulArticlesBlock{
+   max-width: 1440px;
+   margin: 0 auto;
+
+   &__items{
+      padding-left: 83px;
+   } 
+}
+
+.footer{
+   max-width: 1440px;
+   margin: 0 auto;
+   margin-top: 80px;
+   padding: 35px 83px;
+   background-color: #fff;
+   box-shadow: 0px 9px 28px 8px rgba(0, 0, 0, 0.05), 0px 3px 6px -4px rgba(0, 0, 0, 0.12);
+   filter: drop-shadow(0px 6px 16px rgba(0, 0, 0, 0.08));
+
+   .footerTop{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &__left{
+         display: flex;
+         align-items: center;
+
+         p{
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 22px;
+            margin-left: 8px;
+         }
+      }
+      span{
+         margin: 0 27px;
+      }
+   }
+
+   a{
+      text-decoration: none;
+      color: #595959;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+   }
+
+   span{
+      color:#C4C4C4;
+      font-weight: 400;
+      cursor: default;
+      
+   }
+   .footerBottom{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 40px;
+   }
+   }
+
+   :global(.slick-arrow){
    display: none !important;
 }
 
@@ -15,7 +182,7 @@
 
  :global(.slick-dots li button) {
    content: '' !important;
-   background-color: #000 !important;
+   background-color: #fff !important;
    opacity: 0.3 !important;
    width: 16px !important;
    height: 3px !important;
@@ -29,8 +196,53 @@
  :global(.slick-dots li button:last-child) {
    margin: 0 !important;
  }
+ :global(.slick-dots .slick-active) {
+   width: 24px !important;
+ }
 
  :global(.slick-dots .slick-active button) {
    opacity: 1 !important;
    background-color: #fff !important;
+   width: 24px !important;
+ }
+
+
+
+ @media(hover: hover) and (pointer: fine){
+   .mainHeader__left svg:hover rect{
+      fill: #00BFFF;
+   }
+
+   .mainHeader__right svg:hover path{
+      fill: #00BFFF;
+   }
+ }
+
+
+ @media(max-width: 1350px){
+   .mainHeader, .continueBlock__items, .achievementBlock__items, .activeFriendsBlock__items, .popularAmongFriendsBlock__items{
+      padding: 0 50px;
+   }
+
+   .usefulArticlesBlock__items{
+      padding-left: 50px;
+   }
+
+   .footer{
+      padding: 35px 50px;
+   }
+ }
+
+ @media(max-width: 1023px){
+   .mainHeader, .continueBlock__items, .achievementBlock__items, .activeFriendsBlock__items, .popularAmongFriendsBlock__items{
+      padding: 0 25px;
+   }
+
+   .usefulArticlesBlock__items{
+      padding-left: 25px;
+   }
+
+   .footer{
+      padding: 35px 25px;
+   }
  }

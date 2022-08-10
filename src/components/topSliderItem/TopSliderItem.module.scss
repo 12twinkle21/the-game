@@ -3,4 +3,46 @@
    background-size: cover;
    background-position: center;
    background-repeat: no-repeat;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   padding: 0 120px;
+
+   .topSliderItem__content{
+      max-width: 635px;
+
+      h2{
+         font-size: 48px;
+         font-weight: 600;
+         line-height: 56px;
+      }
+
+      p{
+         margin-top: 24px;
+         font-size: 20px;
+         font-weight: 400;
+         line-height: 24px;
+      }
+
+      button{
+         margin-top: 55px;
+         background-color: #1890FF;
+         border: none;
+         border-radius: 8px;
+         width: 160px;
+         height: 55px;
+         font-size: 16px;
+         font-weight: 400;
+         line-height: 24px;
+         color: #fff;
+         cursor: pointer;
+      }
+   }
+}
+
+
+@media(hover: hover) and (pointer: fine){
+   .topSliderItem__content button:hover{
+      background-color: #00BFFF;
+   }
 }
