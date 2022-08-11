@@ -365,21 +365,21 @@ function Main() {
           <p>The GAME, Co. Ltd. 2017-2021 г. Все права защищены</p>
           </div>
           <div className={styles.footerTop__right}>
-            <a href='#'>Карта сайта</a>
+            <p>Карта сайта</p>
             <span>|</span>
-            <a href='#'>Связаться с нами</a>
+            <p>Связаться с нами</p>
           </div>
         </div>
         <div className={styles.footerBottom}>
-          <a href='#'>Политика конфиденциальности</a>
+          <p>Политика конфиденциальности</p>
           <span>|</span>
-          <a href='#'>Использование cookies</a>
+          <p>Использование cookies</p>
           <span>|</span>
-          <a href='#'>Условия использования</a>
+          <p>Условия использования</p>
           <span>|</span>
-          <a href='#'>Продажа и возврат</a>
+          <p>Продажа и возврат</p>
           <span>|</span>
-          <a href='#'>Юридическая информация</a>
+          <p>Юридическая информация</p>
         </div>
       </div>
     </>
