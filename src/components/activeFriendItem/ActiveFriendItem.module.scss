@@ -62,3 +62,34 @@
       display: none;
    }
 }
+
+@media(max-width: 1023px){
+   .activeFriendItem{
+      width: 33.3%;
+   }
+   
+   .activeFriendItem:nth-child(n+4){
+      display: none;
+   }
+}
+
+@media(max-width: 700px){
+   .activeFriendItem{
+      width: 50%;
+   }
+   
+   .activeFriendItem:nth-child(n+3){
+      display: none;
+   }
+}
+
+@media(max-width: 500px){
+   .activeFriendItem{
+      width: 100%;
+      margin-top: 10px;
+
+      &:first-child{
+         margin-top: 0;
+      }
+   }
+}

@@ -29,13 +29,29 @@ function Main() {
     speed: 500,
     slidesToShow: 3.1,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4500,
+    responsive: [
+      {
+        breakpoint: 1023,
+        settings:{
+          slidesToShow: 2.1
+        }
+      },
+      {
+        breakpoint: 700,
+        settings:{
+          slidesToShow: 1.1
+        }
+      }
+    ]
   };
 
   let topSliderItemsData = [
     {
       id: 1,
-      title: "Заголовок слайдера 1",
-      text: "Текст слайдера 1",
+      title: "Планируй. Обновляйся. Разблокируй достижения.",
+      text: "Совершай достижения, чтобы улучшить свои навыки и добиться успеха в любимом деле.",
       bgImage: "http://dummyimage.com/1440x768&text=+"
     },
     {

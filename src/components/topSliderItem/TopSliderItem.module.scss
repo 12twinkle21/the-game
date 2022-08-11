@@ -8,7 +8,7 @@
    justify-content: center;
    padding: 0 120px;
 
-   .topSliderItem__content{
+   &__content{
       max-width: 635px;
 
       h2{
@@ -44,5 +44,30 @@
 @media(hover: hover) and (pointer: fine){
    .topSliderItem__content button:hover{
       background-color: #00BFFF;
+   }
+}
+
+@media(max-width: 1150px){
+   .topSliderItem{
+      padding: 0 80px;
+   }
+}
+
+@media(max-width: 900px){
+   .topSliderItem{
+      padding: 0 50px;
+   }
+}
+
+@media(max-width: 750px){
+   .topSliderItem{
+      padding: 0 25px;
+
+      &__content{
+         h2{
+            font-size: 30px;
+            line-height: 40px;
+         }
+      }
    }
 }

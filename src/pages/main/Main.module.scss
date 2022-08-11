@@ -111,6 +111,10 @@
    &__items{
       padding-left: 83px;
    } 
+
+   :global(.slick-track){
+      margin-left: 5% !important;
+   }
 }
 
 .footer{
@@ -138,8 +142,14 @@
             margin-left: 8px;
          }
       }
-      span{
-         margin: 0 27px;
+      
+      &__right{
+         display: flex;
+         align-items: center;
+
+         span{
+            margin: 0 27px;
+         }
       }
    }
 
@@ -165,7 +175,7 @@
    }
    }
 
-   :global(.slick-arrow){
+:global(.slick-arrow){
    display: none !important;
 }
 
@@ -220,7 +230,7 @@
 
 
  @media(max-width: 1350px){
-   .mainHeader, .continueBlock__items, .achievementBlock__items, .activeFriendsBlock__items, .popularAmongFriendsBlock__items{
+   .sliderWrapper .mainHeader, .continueBlock__items, .achievementBlock__items, .activeFriendsBlock__items, .popularAmongFriendsBlock__items{
       padding: 0 50px;
    }
 
@@ -233,8 +243,18 @@
    }
  }
 
+ @media(max-width: 1200px){
+   .footerBottom{
+      text-align: center;
+   }
+
+   .footerBottom span{
+      margin: 0 27px;
+   }
+ }
+
  @media(max-width: 1023px){
-   .mainHeader, .continueBlock__items, .achievementBlock__items, .activeFriendsBlock__items, .popularAmongFriendsBlock__items{
+   .sliderWrapper .mainHeader, .continueBlock__items, .achievementBlock__items, .activeFriendsBlock__items, .popularAmongFriendsBlock__items{
       padding: 0 25px;
    }
 
@@ -244,5 +264,85 @@
 
    .footer{
       padding: 35px 25px;
+
+      a{
+         margin-bottom: 10px;
+      }
+
+      .footerTop{
+         display: block;
+
+         &__right{
+            display: block;
+            margin-top: 20px;
+
+            a{
+               display: block;
+            }
+
+            span{
+               display: none;
+            }
+         }
+         }
+
+         .footerBottom{
+            display: block;
+            text-align: start;
+            margin: 0;
+
+            a{
+               display: block;
+            }
+
+            span{
+               display: none;
+            }
+         }
+      }
    }
- }
+
+   @media(max-width: 750px){
+      .sliderWrapper .mainHeader, .continueBlock__items, .achievementBlock__items, .activeFriendsBlock__items, .popularAmongFriendsBlock__items{
+         padding: 0 15px;
+      }
+
+      .usefulArticlesBlock__items{
+         padding-left: 15px;
+      }
+   
+      .footer{
+         padding: 25px 15px;
+   }
+
+      .sliderWrapper .mainHeader__right{
+         display: none;
+   }
+}
+
+@media(max-width: 700px){
+   .usefulArticlesBlock{
+      :global(.slick-track){
+         margin-left: 10% !important;
+      }
+   }
+   
+}
+
+@media(max-width: 500px){
+   .activeFriendsBlock__items{
+      display: block;
+   }
+}
+
+@media(max-width: 400px){
+   .sliderWrapper .mainHeader__left{
+      justify-content: space-between;
+      width: 100%;
+
+      img{
+         margin-left: 0;
+      }
+   }
+}
+ 

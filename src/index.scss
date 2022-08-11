@@ -94,3 +94,42 @@ body{
       display: none;
    }
 }
+
+@media(max-width: 800px){
+   .gameCard, .popularGameCard{
+      height: 230px;
+   }
+}
+
+@media(max-width: 700px){
+   .gameCard{
+      width: 50%;
+      height: 282px;
+   }
+
+   .popularGameCard{
+      height: 282px;
+   }
+
+   .gameCard:nth-child(n+3){
+      display: none;
+   }
+}
+
+@media(max-width: 500px){
+   .gameCard, .popularGameCard{
+      height: 250px;
+   }
+}
+
+@media(max-width: 450px){
+   .gameCard, .popularGameCard{
+      height: 230px;
+   }
+}
+
+@media(max-width: 400px){
+   .gameCard, .popularGameCard{
+      height: 150px;
+   }
+}
