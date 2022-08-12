@@ -11,6 +11,7 @@
       font-size: 40px;
       font-weight: 500;
       line-height: 46px;
+      margin-right: 10px;
    }
 
    p{
@@ -20,6 +21,7 @@
       color: #1890FF;
       cursor: pointer;
       transition: transform 0.1s ease-in-out;
+      white-space: nowrap;
    }
 }
 
@@ -56,6 +58,15 @@
 
       p{
          text-align: center;
+      }
+   }
+}
+
+@media(max-width: 500px){
+   .mainBlockTitle{
+      h3{
+         font-size: 20px;
+         line-height: 25px;
       }
    }
 }

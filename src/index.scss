@@ -46,8 +46,9 @@ body{
       background-color: #fff;
       border-top-left-radius: 16px;
       border-bottom-right-radius: 16px;
-      width: 200px;
-      height: 190px;
+      width: 80%;
+      max-width: 180px;
+      height: 70%;
       padding: 13px 15px;
       display: flex;
       flex-direction: column;
@@ -95,8 +96,9 @@ body{
       background-color: #fff;
       border-top-left-radius: 16px;
       border-bottom-right-radius: 16px;
-      width: 200px;
-      height: 190px;
+      width: 80%;
+      max-width: 180px;
+      height: 70%;
       padding: 13px 15px;
       display: flex;
       flex-direction: column;
@@ -193,19 +195,11 @@ body{
 }
 
 @media(max-width: 500px){
-   .gameCard, .popularGameCard{
-      height: 250px;
+   .gameCard{
+      width: 100%;
    }
-}
 
-@media(max-width: 450px){
-   .gameCard, .popularGameCard{
-      height: 230px;
-   }
-}
-
-@media(max-width: 400px){
-   .gameCard, .popularGameCard{
-      height: 150px;
+   .gameCard:nth-child(n+2){
+      display: none;
    }
 }
