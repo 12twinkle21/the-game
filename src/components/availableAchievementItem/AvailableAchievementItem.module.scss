@@ -1,6 +1,9 @@
 .achievementItem{
    width: 16.6%;
    text-align: center;
+   transition: transform 0.1s ease-in-out;
+   cursor: pointer;
+   user-select: none;
 
    &:nth-child(n+7){
       display: none;
@@ -8,8 +11,6 @@
 
    &__img {
       margin: 0 auto;
-      // width: 132px;
-      // height: 132px;
       position: relative;
 
       &::after{
@@ -58,6 +59,12 @@
          line-height: 24px;
          margin-left: 5px;
       }
+   }
+}
+
+@media(hover: hover) and (pointer: fine){
+   .achievementItem:hover{
+      transform: scale(1.1);
    }
 }
 

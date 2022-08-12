@@ -36,10 +36,14 @@
          line-height: 24px;
          color: #fff;
          cursor: pointer;
+         transition: transform 0.1s ease-in-out;
       }
    }
 }
 
+.topSliderItem__content button:active{
+   transform: scale(0.9);
+}
 
 @media(hover: hover) and (pointer: fine){
    .topSliderItem__content button:hover{

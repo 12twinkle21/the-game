@@ -5,6 +5,9 @@
    align-items: center;
    padding: 12px 15px;
    border-radius: 8px;
+   transition: transform 0.1s ease-in-out;
+   cursor: pointer;
+   user-select: none;
 
    &:nth-child(n+6){
       display: none;
@@ -50,6 +53,12 @@
          font-weight: 500;
          line-height: 24px;
       }
+   }
+}
+
+@media(hover: hover) and (pointer: fine){
+   .activeFriendItem:hover{
+      transform: scale(1.1);
    }
 }
 

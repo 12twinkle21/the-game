@@ -5,6 +5,7 @@
    align-items: center;
    justify-content: space-between;
    padding: 0 83px;
+   user-select: none;
 
    h3{
       font-size: 40px;
@@ -18,6 +19,17 @@
       line-height: 24px;
       color: #1890FF;
       cursor: pointer;
+      transition: transform 0.1s ease-in-out;
+   }
+}
+
+.mainBlockTitle p:active{
+   transform: scale(0.9);
+}
+
+@media(hover: hover) and (pointer: fine){
+   .mainBlockTitle p:hover{
+      color: #00BFFF;
    }
 }
 

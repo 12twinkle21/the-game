@@ -18,6 +18,9 @@ body{
    justify-content: flex-end;
    box-shadow: 0px 9px 28px 8px rgba(0, 0, 0, 0.05), 0px 3px 6px -4px rgba(0, 0, 0, 0.12);
    filter: drop-shadow(0px 6px 16px rgba(0, 0, 0, 0.08));
+   transition: transform 0.1s ease-in-out;
+   cursor: pointer;
+   position: relative;
 
    &:nth-child(n+5){
       display: none;
@@ -35,6 +38,31 @@ body{
       border-top-right-radius: 16px;
       cursor: pointer;
    }
+
+   .gameCard__popup{
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background-color: #fff;
+      border-top-left-radius: 16px;
+      border-bottom-right-radius: 16px;
+      width: 200px;
+      height: 190px;
+      padding: 13px 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      user-select: none;
+      transition: max-height 0.5s ease-in-out;
+      animation-duration: 0.5s;
+      animation-name: card-popup;
+   
+      p{
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 22px;
+      }
+   }
 }
 
 .popularGameCard{
@@ -45,6 +73,7 @@ body{
    justify-content: flex-end;
    box-shadow: 0px 9px 28px 8px rgba(0, 0, 0, 0.05), 0px 3px 6px -4px rgba(0, 0, 0, 0.12);
    filter: drop-shadow(0px 6px 16px rgba(0, 0, 0, 0.08));
+   position: relative;
 
    &__btn{
       background-color: #fff;
@@ -57,6 +86,31 @@ body{
       border-bottom-left-radius: 16px;
       border-top-right-radius: 16px;
       cursor: pointer;
+   }
+
+   .gameCard__popup{
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background-color: #fff;
+      border-top-left-radius: 16px;
+      border-bottom-right-radius: 16px;
+      width: 200px;
+      height: 190px;
+      padding: 13px 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      user-select: none;
+      transition: max-height 0.5s ease-in-out;
+      animation-duration: 0.5s;
+      animation-name: card-popup;
+   
+      p{
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 22px;
+      }
    }
 }
 
@@ -73,6 +127,28 @@ body{
 //       border-radius: 50%;
 //    }
 // }
+
+
+@keyframes card-popup {
+   from {
+    max-height: 0;
+   }
+   to {
+    max-height: 1000px;
+   }
+ }
+
+@media(hover: hover) and (pointer: fine){
+   .gameCard:hover{
+      transform: scale(1.1);
+   }
+   .gameCard__btn:hover svg path, .popularGameCard__btn:hover svg path{
+      fill: #1890FF;
+   }
+   .gameCard__popup p:hover{
+      color: #00BFFF;
+   }
+}
 
 @media(max-width: 1250px){
    .gameCard, .popularGameCard{

@@ -26,6 +26,7 @@
          
          svg{
             cursor: pointer;
+            transition: transform 0.2s ease-in-out;
          }
       }
 
@@ -36,6 +37,7 @@
 
          svg{
             cursor: pointer;
+            transition: transform 0.1s ease-in-out;
          }
 
          .headerAccAvatar{
@@ -46,6 +48,42 @@
             background-size: 48px 48px;
             background-position: center;
             cursor: pointer;
+            position: relative;
+
+            &__popup{
+               position: absolute;
+               right: 0;
+               top: 55px;
+               background-color: #fff;
+               padding: 10px 0;
+               border-radius: 16px;
+               user-select: none;
+               transition: max-height 0.5s ease-in-out;
+               animation-duration: 0.5s;
+               animation-name: header-acc-popup;
+               text-align: end;
+
+               p{
+                  white-space: nowrap;
+                  color: #262626;
+                  font-size: 14px;
+                  font-weight: 400;
+                  line-height: 22px;
+                  margin-bottom: 5px;
+                  cursor: pointer;
+                  padding: 0 20px;
+                  transition: transform 0.1s ease-in-out;
+
+                  &:last-child{
+                     margin-bottom: 0;
+                  }
+               }
+
+               .popupExit{
+                  padding-top: 5px;
+                  border-top: 1px solid #C4C4C4;
+               }
+            }
          }
       }
       
@@ -59,7 +97,6 @@
    &__items{
       display: flex;
       gap: 25px;
-      overflow: hidden;
       padding: 0 83px;
    }
 }
@@ -67,7 +104,6 @@
 .achievementBlock{
    max-width: 1440px;
    margin: 0 auto;
-   overflow: hidden;
 
    &__items{
       display: flex;
@@ -79,7 +115,6 @@
 .activeFriendsBlock{
    max-width: 1440px;
    margin: 0 auto;
-   overflow: hidden;
    
    &__items{
       display: flex;
@@ -91,7 +126,6 @@
 .popularAmongFriendsBlock{
    max-width: 1440px;
    margin: 0 auto;
-   overflow: hidden;
 
    &__items{
       display: flex;
@@ -150,21 +184,24 @@
          span{
             margin: 0 27px;
          }
-      }
-   }
 
-   p{
-      text-decoration: none;
-      color: #595959;
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 24px;
+         p{
+            text-decoration: none;
+            color: #595959;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+            transition: transform 0.1s ease-in-out;
+            cursor: pointer;
+         }
+      }
    }
 
    span{
       color:#C4C4C4;
       font-weight: 400;
       cursor: default;
+      user-select: none;
       
    }
    .footerBottom{
@@ -172,6 +209,16 @@
       justify-content: space-between;
       align-items: center;
       margin-top: 40px;
+
+      p{
+         text-decoration: none;
+         color: #595959;
+         font-size: 16px;
+         font-weight: 400;
+         line-height: 24px;
+         transition: transform 0.1s ease-in-out;
+         cursor: pointer;
+      }
    }
    }
 
@@ -217,6 +264,18 @@
  }
 
 
+ @keyframes header-acc-popup {
+   from {
+    max-height: 0;
+   }
+   to {
+    max-height: 1000px;
+   }
+ }
+
+.footerTop__right p:active, .footerBottom p:active, .mainHeader svg:active, .headerAccAvatar__popup p:active{
+   transform: scale(0.9);
+}
 
  @media(hover: hover) and (pointer: fine){
    .mainHeader__left svg:hover rect{
@@ -225,6 +284,13 @@
 
    .mainHeader__right svg:hover path{
       fill: #00BFFF;
+   }
+   
+   .footerTop__right p:hover, .footerBottom p:hover{
+      color: #000;
+   }
+   .mainHeader__right .headerAccAvatar__popup p:hover{
+      color: #00BFFF;
    }
  }
 

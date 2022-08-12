@@ -2,6 +2,9 @@
    width: 25%;
    background-color: #fff;
    border-radius: 16px;
+   transition: transform 0.1s ease-in-out;
+   cursor: pointer;
+   user-select: none;
    
    &:nth-child(n+5){
       display: none;
@@ -27,6 +30,11 @@
    }
 }
 
+@media(hover: hover) and (pointer: fine){
+   .popularAmongFriendsItem:hover{
+      transform: scale(1.1);
+   }
+}
 
 @media(max-width: 1150px){
    .popularAmongFriendsItem{

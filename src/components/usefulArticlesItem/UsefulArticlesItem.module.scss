@@ -3,6 +3,9 @@
    border-radius: 16px;
    background-color: #fff;
    margin-right: 25px;
+   transition: transform 0.1s ease-in-out;
+   cursor: pointer;
+   margin-bottom: 10px;
 
    img{
       width: 100%;
@@ -33,6 +36,12 @@
          line-height: 24px;
          color:#8C8C8C;
       }
+   }
+}
+
+@media(hover: hover) and (pointer: fine){
+   .usefulArticlesItem:hover{
+      transform: translateY(9px);
    }
 }
 
