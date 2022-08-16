@@ -474,6 +474,14 @@
    }
 }
 
+@media(max-width: 450px){
+   .achievementBlock{
+      :global(.slick-track){
+         margin-left: 30% !important;
+      }
+   }
+}
+
 @media(max-width: 400px){
    .sliderWrapper .mainHeader__left{
       justify-content: space-between;

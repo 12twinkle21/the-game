@@ -101,7 +101,7 @@ function Main() {
       {
         breakpoint: 450,
         settings:{
-          slidesToShow: 1.2
+          slidesToShow: 1.6
         }
       }
     ]
