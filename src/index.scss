@@ -135,7 +135,7 @@ body{
 
 @media(hover: hover) and (pointer: fine){
    .gameCard:hover{
-      transform: translateY(9px);
+      transform: translateY(5px);
    }
    .gameCard__btn:hover svg path, .popularGameCard__btn:hover svg path{
       fill: #1890FF;
