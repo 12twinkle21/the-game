@@ -29,8 +29,6 @@ function Main() {
     speed: 500,
     slidesToShow: 3.1,
     slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 4500,
     responsive: [
       {
         breakpoint: 1023,
@@ -40,6 +38,130 @@ function Main() {
       },
       {
         breakpoint: 700,
+        settings:{
+          slidesToShow: 1.1
+        }
+      }
+    ]
+  };
+
+  const gameCardsSliderSettings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4.1,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1023,
+        settings:{
+          slidesToShow: 3.1
+        }
+      },
+      {
+        breakpoint: 700,
+        settings:{
+          slidesToShow: 2.1
+        }
+      },
+      {
+        breakpoint: 550,
+        settings:{
+          slidesToShow: 1.1
+        }
+      }
+    ]
+  };
+
+  const availableAchievementSliderSettings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5.2,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1023,
+        settings:{
+          slidesToShow: 4.2
+        }
+      },
+      {
+        breakpoint: 800,
+        settings:{
+          slidesToShow: 3.2
+        }
+      },
+      {
+        breakpoint: 600,
+        settings:{
+          slidesToShow: 2.2
+        }
+      },
+      {
+        breakpoint: 450,
+        settings:{
+          slidesToShow: 1.2
+        }
+      }
+    ]
+  };
+
+  const activeFriendsSliderSettings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5.1,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1300,
+        settings:{
+          slidesToShow: 4.1
+        }
+      },
+      {
+        breakpoint: 1050,
+        settings:{
+          slidesToShow: 3.1
+        }
+      },
+      {
+        breakpoint: 850,
+        settings:{
+          slidesToShow: 2.1
+        }
+      },
+      {
+        breakpoint: 600,
+        settings:{
+          slidesToShow: 1.1
+        }
+      }
+    ]
+  };
+
+  const popularAmongFriendsSliderSettings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4.1,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1100,
+        settings:{
+          slidesToShow: 3.1
+        }
+      },
+      {
+        breakpoint: 850,
+        settings:{
+          slidesToShow: 2.1
+        }
+      },
+      {
+        breakpoint: 600,
         settings:{
           slidesToShow: 1.1
         }
@@ -275,7 +397,7 @@ function Main() {
       text: "Описание статьи"
     }
   ];
-
+ 
   const [visibleAccountPopup, setVisibleAccountPopup] = React.useState(false);
 
   const onVisibleAccountPopop = () =>{
@@ -337,33 +459,41 @@ function Main() {
     <div className={styles.continueBlock}>
       <MainBlockTitle title={'Продолжить'}/>
       <div className={styles.continueBlock__items}>
+        <Slider {...gameCardsSliderSettings}>
         {
           gameCardsData.map((item) => <GameCard bgImage={item.bgImage} className={'gameCard'}/>)
         }
+        </Slider>
       </div>
     </div>
     <div className={styles.achievementBlock}>
         <MainBlockTitle title={'Доступные достижения'}/>
         <div className={styles.achievementBlock__items}>
+          <Slider {...availableAchievementSliderSettings}>
           {
             achievementItemsData.map((item) => <AvailableAchievementItem title={item.title} gold={item.gold} bgImage={item.bgImage}/>)
           }
+          </Slider>
         </div>
       </div>
       <div className={styles.activeFriendsBlock}>
         <MainBlockTitle title={'Активные друзья'}/>
         <div className={styles.activeFriendsBlock__items}>
+          <Slider {...activeFriendsSliderSettings}>
           {
             activeFriendsData.map((item) => <ActiveFriendItem avatar={item.avatar} isOnline={item.isOnline} name={item.name} gold={item.gold}/>)
           }
+          </Slider>
         </div>
       </div>
       <div className={styles.popularAmongFriendsBlock}>
         <MainBlockTitle title={'Популярное среди друзей'}/>
         <div className={styles.popularAmongFriendsBlock__items}>
+          <Slider {...popularAmongFriendsSliderSettings}>
           {
             popularAmongFriendsData.map((item) => <PopularAmongFriendsItem bgImage={item.bgImage} title={item.title} countOfPlayers={item.countOfPlayers}/>)
           }
+          </Slider>
         </div>
       </div>
       <div className={styles.usefulArticlesBlock}>

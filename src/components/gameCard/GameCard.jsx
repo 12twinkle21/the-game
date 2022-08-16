@@ -9,7 +9,7 @@ function GameCard(props) {
   const onVisibleCardPopup = () => {
     setVisibleCardPopup(!visibleCardPopup);
   }
-
+  
   return (
     
    <div className={className} style={{backgroundImage: `url(${bgImage})`}}>
@@ -20,7 +20,7 @@ function GameCard(props) {
     </div>
     {
       visibleCardPopup?
-      <div className='gameCard__popup' onClick={onVisibleCardPopup}>
+      <div className='gameCard__popup'>
         <p>Подробнее об игре</p>
         <p>Поделиться игрой</p>
         <p>Связаться с правообладателем</p>

@@ -1,5 +1,4 @@
 .activeFriendItem{
-   width: 20%;
    background-color: #fff;
    display: flex;
    align-items: center;
@@ -8,10 +7,8 @@
    transition: transform 0.1s ease-in-out;
    cursor: pointer;
    user-select: none;
-
-   &:nth-child(n+6){
-      display: none;
-   }
+   margin-bottom: 10px;
+   margin-right: 18px;
    
    &__avatar{
       width: 48px;
@@ -58,47 +55,6 @@
 
 @media(hover: hover) and (pointer: fine){
    .activeFriendItem:hover{
-      transform: scale(1.1);
-   }
-}
-
-@media(max-width: 1250px){
-   .activeFriendItem{
-      width: 25%;
-   }
-   
-   .activeFriendItem:nth-child(n+5){
-      display: none;
-   }
-}
-
-@media(max-width: 1023px){
-   .activeFriendItem{
-      width: 33.3%;
-   }
-   
-   .activeFriendItem:nth-child(n+4){
-      display: none;
-   }
-}
-
-@media(max-width: 700px){
-   .activeFriendItem{
-      width: 50%;
-   }
-   
-   .activeFriendItem:nth-child(n+3){
-      display: none;
-   }
-}
-
-@media(max-width: 500px){
-   .activeFriendItem{
-      width: 100%;
-      margin-top: 10px;
-
-      &:first-child{
-         margin-top: 0;
-      }
+      transform: translateY(9px);
    }
 }
