@@ -1,5 +1,6 @@
 import React from 'react';
 import Slider from "react-slick";
+import { Link } from 'react-router-dom';
 
 import styles from './Main.module.scss';
 
@@ -416,7 +417,9 @@ function Main() {
             <path d="M22.666 15.083C22.666 15.5471 22.8504 15.9923 23.1786 16.3204C23.5068 16.6486 23.9519 16.833 24.416 16.833C24.8801 16.833 25.3253 16.6486 25.6535 16.3204C25.9816 15.9923 26.166 15.5471 26.166 15.083C26.166 14.6189 25.9816 14.1738 25.6535 13.8456C25.3253 13.5174 24.8801 13.333 24.416 13.333C23.9519 13.333 23.5068 13.5174 23.1786 13.8456C22.8504 14.1738 22.666 14.6189 22.666 15.083ZM22.666 23.833C22.666 24.2971 22.8504 24.7423 23.1786 25.0704C23.5068 25.3986 23.9519 25.583 24.416 25.583C24.8801 25.583 25.3253 25.3986 25.6535 25.0704C25.9816 24.7423 26.166 24.2971 26.166 23.833C26.166 23.3689 25.9816 22.9238 25.6535 22.5956C25.3253 22.2674 24.8801 22.083 24.416 22.083C23.9519 22.083 23.5068 22.2674 23.1786 22.5956C22.8504 22.9238 22.666 23.3689 22.666 23.833ZM22.666 32.583C22.666 33.0471 22.8504 33.4923 23.1786 33.8204C23.5068 34.1486 23.9519 34.333 24.416 34.333C24.8801 34.333 25.3253 34.1486 25.6535 33.8204C25.9816 33.4923 26.166 33.0471 26.166 32.583C26.166 32.1189 25.9816 31.6738 25.6535 31.3456C25.3253 31.0174 24.8801 30.833 24.416 30.833C23.9519 30.833 23.5068 31.0174 23.1786 31.3456C22.8504 31.6738 22.666 32.1189 22.666 32.583Z" fill="white"/>
             <path d="M32 15.083C32 15.5471 32.1844 15.9923 32.5126 16.3204C32.8408 16.6486 33.2859 16.833 33.75 16.833C34.2141 16.833 34.6592 16.6486 34.9874 16.3204C35.3156 15.9923 35.5 15.5471 35.5 15.083C35.5 14.6189 35.3156 14.1738 34.9874 13.8456C34.6592 13.5174 34.2141 13.333 33.75 13.333C33.2859 13.333 32.8408 13.5174 32.5126 13.8456C32.1844 14.1738 32 14.6189 32 15.083ZM32 23.833C32 24.2971 32.1844 24.7423 32.5126 25.0704C32.8408 25.3986 33.2859 25.583 33.75 25.583C34.2141 25.583 34.6592 25.3986 34.9874 25.0704C35.3156 24.7423 35.5 24.2971 35.5 23.833C35.5 23.3689 35.3156 22.9238 34.9874 22.5956C34.6592 22.2674 34.2141 22.083 33.75 22.083C33.2859 22.083 32.8408 22.2674 32.5126 22.5956C32.1844 22.9238 32 23.3689 32 23.833ZM32 32.583C32 33.0471 32.1844 33.4923 32.5126 33.8204C32.8408 34.1486 33.2859 34.333 33.75 34.333C34.2141 34.333 34.6592 34.1486 34.9874 33.8204C35.3156 33.4923 35.5 33.0471 35.5 32.583C35.5 32.1189 35.3156 31.6738 34.9874 31.3456C34.6592 31.0174 34.2141 30.833 33.75 30.833C33.2859 30.833 32.8408 31.0174 32.5126 31.3456C32.1844 31.6738 32 32.1189 32 32.583Z" fill="white"/>
           </svg>
-          <img src='./img/headerLogo.png' width={256} height={30} alt='Logo'/>
+          <Link to='/' className='clearLink'>
+            <img src='./img/MainHeaderLogo.png' width={256} height={30} alt='Logo'/>
+          </Link>
         </div>
         <div className={styles.mainHeader__right}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -457,7 +460,7 @@ function Main() {
     </Slider>
     </div>
     <div className={styles.continueBlock}>
-      <MainBlockTitle title={'Продолжить'}/>
+      <MainBlockTitle title={'Продолжить'} link={'/allGames'}/>
       <div className={styles.continueBlock__items}>
         <Slider {...gameCardsSliderSettings}>
         {
@@ -467,7 +470,7 @@ function Main() {
       </div>
     </div>
     <div className={styles.achievementBlock}>
-        <MainBlockTitle title={'Доступные достижения'}/>
+        <MainBlockTitle title={'Доступные достижения'} link={''}/>
         <div className={styles.achievementBlock__items}>
           <Slider {...availableAchievementSliderSettings}>
           {
@@ -477,7 +480,7 @@ function Main() {
         </div>
       </div>
       <div className={styles.activeFriendsBlock}>
-        <MainBlockTitle title={'Активные друзья'}/>
+        <MainBlockTitle title={'Активные друзья'} link={''}/>
         <div className={styles.activeFriendsBlock__items}>
           <Slider {...activeFriendsSliderSettings}>
           {
@@ -487,7 +490,7 @@ function Main() {
         </div>
       </div>
       <div className={styles.popularAmongFriendsBlock}>
-        <MainBlockTitle title={'Популярное среди друзей'}/>
+        <MainBlockTitle title={'Популярное среди друзей'} link={''}/>
         <div className={styles.popularAmongFriendsBlock__items}>
           <Slider {...popularAmongFriendsSliderSettings}>
           {
@@ -497,7 +500,7 @@ function Main() {
         </div>
       </div>
       <div className={styles.usefulArticlesBlock}>
-        <MainBlockTitle title={'Полезные статьи'}/>
+        <MainBlockTitle title={'Полезные статьи'} link={''}/>
         <div className={styles.usefulArticlesBlock__items}>
         <Slider {...bottomSliderSettings}>
           {

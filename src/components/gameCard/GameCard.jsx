@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
+
 function GameCard(props) {
 
   const {bgImage, className} = props;
@@ -11,7 +13,8 @@ function GameCard(props) {
   }
   
   return (
-    
+    <>
+   <Link to='/detail' className='clearLink'>
    <div className={className} style={{backgroundImage: `url(${bgImage})`}}>
     <div className={`${className}__btn`} onClick={onVisibleCardPopup}>
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -30,7 +33,8 @@ function GameCard(props) {
       ''
     }
    </div>
-
+   </Link>
+   </>
   )
 }
 

@@ -10,7 +10,17 @@ body{
    background-color: #F0F2F5;
 }
 
-.gameCard{
+.clearLink{
+   text-decoration: none;
+}
+
+.maxContainer{
+   padding: 0 83px;
+   max-width: 1440px;
+   margin: 0 auto;
+}
+
+.gameCard, .allGamesCard{
    height: 282px;
    border-radius: 16px;
    margin-right: 25px;
@@ -59,6 +69,12 @@ body{
       line-height: 22px;
       }
    }
+}
+
+.allGamesCard{
+   width: calc(25% - 25px* 3/4);
+   margin-right: 0;
+   margin-bottom: 0;
 }
 
 .popularGameCard{
@@ -134,14 +150,20 @@ body{
  }
 
 @media(hover: hover) and (pointer: fine){
-   .gameCard:hover{
+   .gameCard:hover, .allGamesCard:hover{
       transform: translateY(5px);
    }
-   .gameCard__btn:hover svg path, .popularGameCard__btn:hover svg path{
+   .gameCard__btn:hover svg path, .popularGameCard__btn:hover svg path, .allGamesCard__btn:hover svg path{
       fill: #1890FF;
    }
    .gameCard__popup p:hover{
       color: #00BFFF;
+   }
+}
+
+@media(max-width: 1350px){
+   .maxContainer{
+      padding: 0 50px;
    }
 }
 
@@ -151,15 +173,39 @@ body{
    }
 }
 
+@media(max-width: 1200px){
+   .allGamesCard{
+      width: calc(33% - 25px* 2/3);
+   }
+}
+
+@media(max-width: 1023px){
+   .maxContainer{
+      padding: 0 25px;
+   }
+}
+
 @media(max-width: 1100px){
    .popularGameCard{
       height: 280px;
    }
 }
 
+@media(max-width: 850px){
+   .allGamesCard{
+      width: calc(50% - 25px* 1/2);
+   }
+}
+
 @media(max-width: 800px){
    .gameCard{
       height: 230px;
+   }
+}
+
+@media(max-width: 750px){
+   .maxContainer{
+      padding: 0 15px;
    }
 }
 
@@ -173,3 +219,8 @@ body{
    }
 }
 
+@media(max-width: 500px){
+   .allGamesCard{
+      width: 100%;
+   }
+}

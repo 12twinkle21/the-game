@@ -1,0 +1,44 @@
+.backBtn{
+   display: flex;
+   align-items: center;
+   margin-top: 40px;
+   cursor: pointer;
+
+   &__btn{
+      background-color:#F0F2F5;
+      width: 48px;
+      height: 48px;
+      border-radius: 4px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.1s ease-in-out;
+
+      svg{
+         transition: transform 0.1s ease-in-out;
+      }
+   }
+
+   p{
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 24px;
+      color: #8C8C8C;
+      margin-left: 25px;
+      transition: transform 0.1s ease-in-out;
+   }
+}
+
+.backBtn:active .backBtn__btn, .backBtn:active p{
+   transform: scale(0.9);
+}
+
+ @media(hover: hover) and (pointer: fine){
+   .backBtn:hover svg{
+      transform: translateX(-3px);
+   }
+
+   .backBtn:hover p{
+      color: #000;
+   }
+}

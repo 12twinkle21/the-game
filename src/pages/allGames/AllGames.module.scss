@@ -1,0 +1,88 @@
+.allGames{
+   user-select: none;
+
+   &__title{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 25px;
+
+      h2{
+         font-size: 40px;
+         font-weight: 400;
+         line-height: 46px;
+      }
+
+      .allGames__titleRight{
+         display: flex;
+         align-items: center;
+
+         p{
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+            color: #1890FF;
+            margin-right: 30px;
+            cursor: pointer;
+            transition: transform 0.1s ease-in-out;
+
+            &:last-child{
+               margin-right: 0;
+            }
+         }
+      }
+   }
+
+   &__items{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      margin-top: 30px;
+      margin-bottom: 50px;
+   }
+}
+
+
+.allGames__titleRight p:active{
+   transform: scale(0.9);
+}
+
+@media(hover: hover) and (pointer: fine){
+   .allGames__titleRight p:hover{
+      color: #00BFFF;
+   }
+}
+
+@media(max-width: 750px){
+   .allGames{
+      &__title{
+
+         h2{
+            font-size: 25px;
+            line-height: 30px;
+         }
+      }
+   }
+}
+
+@media(max-width: 500px){
+   .allGames{
+      &__title{
+
+         h2{
+            font-size: 20px;
+            line-height: 25px;
+         }
+
+         .allGames__titleRight{
+            p{
+               margin-right: 10px;
+
+               &:last-child{
+                  margin-right: 0;
+               }
+            }
+         }
+      }
+   }
+}
