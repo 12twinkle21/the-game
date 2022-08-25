@@ -39,6 +39,7 @@
       .moreBtn{
          cursor: pointer;
          position: relative;
+         transition: transform 0.2s ease-in-out;
 
          &__popup{
             position: absolute;
@@ -96,6 +97,7 @@
             display: flex;
             align-items: center;
             cursor: pointer;
+            transition: transform 0.2s ease-in-out;
 
             span{
                margin-left: 5px;
@@ -113,6 +115,7 @@
 
       .share{
          cursor: pointer;
+         transition: transform 0.2s ease-in-out;
       }
    }
 
@@ -169,12 +172,15 @@
                      border: none;
                      background: none;
                      cursor: pointer;
+                     transition: transform 0.2s ease-in-out;
                   }
                }
 
                .commentBottomLikes{
                   display: flex;
                   align-items: center;
+                  cursor: pointer;
+                  transition: transform 0.2s ease-in-out;
 
                   span{
                      margin-left: 5px;
@@ -226,6 +232,7 @@
             font-weight: 400;
             line-height: 24px;
             color: #fff;
+            transition: transform 0.2s ease-in-out;
 
             &:last-child{
                margin-right: 0;
@@ -271,6 +278,111 @@
       }
    }
 }
+
+.commentInputBlock button:active, .moreBtn:active, .likes:active, .comments:active, .share:active, .commentBottomLeft button:active, .commentBottomLikes:active{
+   transform: scale(0.9);
+}
+
+@media(hover: hover) and (pointer: fine){
+   .detailPublication{
+      .commentInputBlock{
+         .attachments:hover{
+            background-color: #8C8C8C;
+         }
+      }
+   }
+
+   .detailPublication{
+      .commentInputBlock{
+         .publication:hover{
+            background-color: #00BFFF;
+         }
+      }
+   }
+
+   .detailPublication{
+      .commentInputBlock{
+         .attachments{
+            &__popup ul li:hover{
+               color: #8C8C8C;
+            }
+         }
+      }
+   }
+
+   .detailPublication{
+      &__top{
+         .moreBtn{
+            &__popup ul li:hover{
+               color: #00BFFF;
+            }
+         }
+      }
+   }
+
+   .detailPublication{
+      &__top{
+         .moreBtn:hover svg path{
+           fill: #00BFFF;
+         }
+      }
+   }
+
+   .detailPublication{
+      &__bottom{
+         .likesAndCommentsBlock{
+            .likes:hover, .comments:hover{
+               span{
+                  color: #000;
+               }
+
+               svg path{
+                  fill: #000;
+               }
+            }
+         }
+
+         .share:hover svg path{
+            fill: #000;
+         }
+      }
+   }
+
+   .detailPublication{
+      &__commentsBlock{
+         .comment{
+            .commentBlock{
+               &__bottom{
+                  .commentBottomLeft button:hover{
+                     color: #00BFFF;
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   .detailPublication{
+      &__commentsBlock{
+         .comment{
+            .commentBlock{
+               &__bottom{
+                  .commentBottomLikes:hover{
+                     span{
+                        color: #000;
+                     }
+
+                     svg path{
+                        fill: #000;
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+
 
 @media(max-width: 700px){
    .detailPublication{
