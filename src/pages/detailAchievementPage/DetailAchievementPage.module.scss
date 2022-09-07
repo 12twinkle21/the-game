@@ -1,0 +1,397 @@
+.detailAchievementPage{
+   user-select: none;
+   max-width: 1440px;
+   margin: 0 auto;
+
+&__top{
+   background-color: #FAFAFA;
+   padding: 0 83px;
+   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+   padding-bottom: 35px;
+
+   .titleBlock{
+      margin-top: 25px;
+      display: flex;
+      align-items: center;
+
+      &__img{
+         border-radius: 50%;
+         width: 25%;
+
+         img{
+            border-radius: 50%;
+         }
+      }
+
+      &__info{
+         width: 75%;
+         max-width: 770px;
+
+         .infoTop{
+            display: flex;
+            align-items: center;
+
+            p{
+               font-size: 16px;
+               font-weight: 500;
+               line-height: 24px;
+               color: #262626;
+            }
+
+            .infoGold{
+               display: flex;
+               align-items: center;
+               margin-left: 5px;
+
+               span{
+                  font-size: 16px;
+                  font-weight: 500;
+                  line-height: 24px;
+                  color: #262626;
+                  margin-left: 5px;
+               }
+
+               svg{
+                  min-width: 24px;
+               }
+            }
+         }
+
+         .infoTitle{
+            h3{
+               font-size: 40px;
+               font-weight: 500;
+               line-height: 46px;
+               color: #262626;
+            }
+         }
+
+         .infoText, .infoDate{
+            margin-top: 15px;
+         }
+
+         .infoText, .infoGlobalProgress, .infoDate{
+            p{
+               font-size: 16px;
+               font-weight: 400;
+               line-height: 24px;
+               color: #8C8C8C;
+            }
+         }
+      }
+   }
+}
+
+.navMenuAndContent{
+   margin-top: 30px;
+   padding: 0 83px;
+   display: flex;
+
+   .navMenu{
+      width: 25%;
+
+      ul{
+         list-style: none;
+         
+         li{
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 24px;
+            color: #262626;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            width: fit-content;
+            padding-left: 25px;
+            height: 60px;
+            transition: transform 0.2s ease-in-out;
+
+            &:last-child{
+               padding-right: 70px;
+            }
+
+            svg{
+               margin-right: 10px;
+               min-width: 24px;
+            }
+         }
+
+         .activeNavMenuItem{
+            border-left: 2px solid #1890FF;
+            color: #1890FF;
+
+            svg path{
+               fill: #1890FF;
+            }
+         }
+      }
+   }
+
+   .content{
+      width: 75%;
+
+      h3{
+         font-size: 40px;
+         font-weight: 500;
+         line-height: 46px;
+         color: #262626;
+      }
+
+      .instructionText{
+         margin: 40px 0;
+
+         p, li{
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+            color: #262626;
+         }
+
+         ul{
+            list-style: none;
+            margin-bottom: 25px;
+
+            li{
+               display: flex;
+               align-items: center;
+
+               svg{
+                  margin-right: 15px;
+                  min-width: 6px;
+               }
+            }
+         }
+
+         .textWithTitleBlock{
+            margin-bottom: 25px;
+
+            h3{
+               font-size: 16px;
+               font-weight: 600;
+               line-height: 24px;
+               color: #262626;
+               margin-bottom: 10px;
+            }
+         }
+      }
+
+      .artifactBlock{
+         margin: 40px 0;
+
+         p, li{
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+            color: #262626;
+         }
+
+         ul{
+            list-style: none;
+            margin-top: 5px;
+            
+            li{
+               display: flex;
+               align-items: center;
+
+               svg{
+                  margin-right: 15px;
+                  min-width: 6px;
+               }
+            }
+         }
+      }
+      
+      .emptyHistory{
+         margin-top: 15px;
+         margin-bottom: 40px;
+
+         p{
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+            color: #8C8C8C;
+         }
+      }
+   }
+}
+}
+
+@media(max-width: 1350px){
+   .detailAchievementPage{
+      &__top{
+         padding: 0 50px;
+         padding-bottom: 35px;
+      }
+
+      .navMenuAndContent{
+         padding: 0 50px;
+      }
+   }
+}
+
+@media(max-width: 1250px){
+   .detailAchievementPage{
+      &__top{
+         .titleBlock{
+
+            &__img{
+               width: 30%;
+            }
+
+            &__info{
+               width: 70%;
+            }
+         }
+      }
+   }
+   
+   .detailAchievementPage{
+      .navMenuAndContent{
+         .navMenu{
+            width: 30%;
+         }
+   
+         .content{
+            width: 70%;
+         }
+      }
+   }
+}
+
+@media(max-width: 1023px){
+   .detailAchievementPage{
+      &__top{
+         padding: 0 25px;
+         padding-bottom: 35px;
+      }
+
+      .navMenuAndContent{
+         padding: 0 25px;
+
+         .navMenu{
+            display: none;
+         }
+
+         .content{
+            width: 100%;
+         }
+      }
+   }
+}
+
+@media(max-width: 900px){
+   .detailAchievementPage{
+      &__top{
+         .titleBlock{
+            &__img{
+               width: 40%;
+            }
+
+            &__info{
+               width: 60%;
+            }
+         }
+      }
+   }
+}
+
+@media(max-width: 750px){
+   .detailAchievementPage{
+      &__top{
+         padding: 0 15px;
+         padding-bottom: 35px;
+
+         .infoTitle{
+            h2{
+               font-size: 25px;
+               line-height: 30px;
+            }
+         }
+      }
+
+      .navMenuAndContent{
+         padding: 0 15px;
+
+         .content{
+            h3{
+               font-size: 25px;
+               line-height: 30px;
+            }
+         }
+      }
+   }
+}
+
+@media(max-width: 700px){
+   .detailAchievementPage{
+      &__top{
+         .titleBlock{
+            display: block;
+            text-align: center;
+
+            &__img, &__info{
+               width: 100%;
+            }
+
+            .infoTop{
+               justify-content: center;
+               margin: 10px 0;
+            }
+         }
+      }
+   }
+}
+
+@media(max-width: 450px){
+   .detailCard{
+      &__top{
+         .titleBlock{
+            &__info{
+               .infoBottom{
+
+                  display: block;
+                 
+                  &__goldAndRating{
+                     justify-content: center;
+                     margin-bottom: 15px;
+                  }
+
+                  &__rating{
+                     margin: 0;
+                     margin-left: 15px;
+                  }
+               }
+            }
+         }
+      }
+
+      .navMenuAndContent{
+         .content{
+            .achievementsTop{
+               display: block;
+
+               &__right{
+                  justify-content: flex-end;
+                  margin-top: 15px;
+               }
+            }
+         }
+      }
+   }
+}
+
+@media(max-width: 370px){
+.detailCard{
+   .navMenuAndContent{
+      .content{
+         .projectsTop{
+            display: block;
+
+            button{
+               margin-top: 10px;
+            }
+         }
+      }
+   }
+}
+}

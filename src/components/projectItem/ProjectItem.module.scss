@@ -1,0 +1,121 @@
+.projectItem{
+   background-color: #FAFAFA;
+   padding: 30px;
+   margin-bottom: 25px;
+   border-radius: 12px;
+   display: flex;
+
+   &:last-child{
+      margin-bottom: 0;
+   }
+
+   &__img{
+      margin-right: 30px;
+      
+      img{
+         border-radius: 12px;
+      }
+   }
+
+   .projectInfo{
+      &__top{
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+
+         span{
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 24px;
+            color: #8C8C8C;
+         }
+      }
+
+      &__title{
+         #title{
+            font-size: 28px;
+            font-weight: 600;
+            line-height: 33px;
+            color: #262626;
+         }
+      }
+
+      &__text{
+         margin-top: 5px;
+
+         p{
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+            color: #8C8C8C;
+         }
+      }
+
+      &__organizers{
+         margin-top: 35px;
+
+         p{
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 24px;
+            color: #262626;
+         }
+
+         .organizersItems{
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 25px;
+
+            .organizersItem{
+               display: flex;
+               align-items: center;
+
+               .organizersAvatar{
+                  img{
+                     border-radius: 50%;
+                  }
+               }
+
+               .organizersInfo{
+                  margin-left: 15px;
+
+                  &__gold{
+                     display: flex;
+                     align-items: center;
+
+                     span{
+                        margin-left: 5px;
+                        font-size: 16px;
+                        font-weight: 500;
+                        line-height: 24px;
+                        color: #096DD9;
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+
+
+@media(max-width: 750px){
+   .projectItem{
+      display: block;
+      text-align: center;
+
+      &__img{
+         margin-right: 0;
+      }
+
+      .projectInfo{
+         &__top{
+            justify-content: center;
+            gap: 30px;
+            margin: 10px 0;
+         }
+      }
+   }
+}

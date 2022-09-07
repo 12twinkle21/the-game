@@ -7,7 +7,7 @@ import styles from './Main.module.scss';
 import TopSliderItem from '../../components/topSliderItem/TopSliderItem';
 import MainBlockTitle from '../../components/mainBlockTitle/MainBlockTitle';
 import GameCard from '../../components/gameCard/GameCard';
-import AvailableAchievementItem from '../../components/availableAchievementItem/AvailableAchievementItem';
+import AchievementItem from '../../components/achievementItem/AchievementItem';
 import ActiveFriendItem from '../../components/activeFriendItem/ActiveFriendItem';
 import PopularAmongFriendsItem from '../../components/popularAmongFriendsItem/PopularAmongFriendsItem';
 import UsefulArticlesItem from '../../components/usefulArticlesItem/UsefulArticlesItem';
@@ -474,7 +474,7 @@ function Main() {
         <div className={styles.achievementBlock__items}>
           <Slider {...availableAchievementSliderSettings}>
           {
-            achievementItemsData.map((item) => <AvailableAchievementItem title={item.title} gold={item.gold} bgImage={item.bgImage}/>)
+            achievementItemsData.map((item) => <AchievementItem title={item.title} gold={item.gold} bgImage={item.bgImage} blocked/>)
           }
           </Slider>
         </div>
@@ -484,7 +484,7 @@ function Main() {
         <div className={styles.activeFriendsBlock__items}>
           <Slider {...activeFriendsSliderSettings}>
           {
-            activeFriendsData.map((item) => <ActiveFriendItem avatar={item.avatar} isOnline={item.isOnline} name={item.name} gold={item.gold}/>)
+            activeFriendsData.map((item) => <ActiveFriendItem avatar={item.avatar} isOnline={item.isOnline} name={item.name} gold={item.gold} forSlider/>)
           }
           </Slider>
         </div>

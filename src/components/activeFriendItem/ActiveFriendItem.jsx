@@ -1,13 +1,15 @@
 import React from 'react';
 import styles from './ActiveFriendItem.module.scss';
 
+import { Link } from 'react-router-dom';
+
 function ActiveFriendItem(props) {
 
-   const {avatar, isOnline, name, gold} = props;
+   const {avatar, isOnline, name, gold, forSlider} = props;
 
   return (
-
-   <div className={styles.activeFriendItem}>
+   <Link to='/detailAchievementPage' className='clearLink'>
+   <div className={styles.activeFriendItem} style={forSlider?{marginRight: '18px', marginBottom: '10px'} : null}>
       <div className={styles.activeFriendItem__avatar}>
          <img src={avatar} width={48} height={48} alt='Avatar'/>
          {
@@ -33,7 +35,7 @@ function ActiveFriendItem(props) {
          </div>
       </div>
    </div>
-
+   </Link>
   )
 }
 

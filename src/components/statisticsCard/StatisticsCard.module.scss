@@ -1,0 +1,67 @@
+.statisticsCard{
+   width: calc(33.3% - 25px* 2/3);
+}
+
+.bigStatisticsCard{
+   width: calc(66.6% - 25px* 1/3);
+}
+
+.statisticsCard, .bigStatisticsCard{
+   background-color: #FAFAFA;
+   border-radius: 12px;
+   padding: 30px;
+   height: 275px;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+
+   .statisticsCardTitle{
+      text-align: start;
+
+      p{
+         color: #262626;
+         font-size: 20px;
+         font-weight: 600;
+         line-height: 28px;
+      }
+   }
+
+   .statisticsCardProgress{
+      text-align: end;
+
+      span{
+         color: #096DD9;
+         font-size: 40px;
+         font-weight: 500;
+         line-height: 46px;
+      }
+   }
+}
+
+@media(max-width: 1250px){
+   .statisticsCard{
+      width: calc(50% - 25px* 1/2);
+   }
+
+   .bigStatisticsCard{
+      width: 100%;
+   }
+}
+
+@media(max-width: 550px){
+   .statisticsCard{
+      width: 100%;
+   }
+
+   .bigStatisticsCard{
+      width: 100%;
+   }
+
+   .bigStatisticsCard, .statisticsCard{
+      .statisticsCardProgress{
+         span{
+            font-size: 25px;
+         }
+      }
+   }
+}

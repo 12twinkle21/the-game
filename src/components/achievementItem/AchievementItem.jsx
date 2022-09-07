@@ -1,16 +1,23 @@
 import React from 'react';
-import styles from './AvailableAchievementItem.module.scss';
+import styles from './AchievementItem.module.scss';
 
 function AvailableAchievementItem(props) {
 
-   const {title, gold, bgImage} = props;
+   const {title, gold, bgImage, blocked} = props;
 
   return (
 
     <div className={styles.achievementItem}>
-      <div className={styles.achievementItem__img}>
-         <img src={bgImage} width={132} height={132} alt='Achievement'/>
-      </div>
+      {
+         blocked?
+         <div className={styles.availableAchievementItem__img}>
+            <img src={bgImage} width={132} height={132} alt='Achievement'/>
+         </div>
+         :
+         <div className={styles.unlockedAchievementItem__img}>
+            <img src={bgImage} width={132} height={132} alt='Achievement'/>
+         </div>
+      }
       <div className={styles.achievementItem__title}>
          <p>{title}</p>
       </div>      
