@@ -4,7 +4,7 @@ import styles from './StatisticsCard.module.scss';
 
 function StatisticsCard(props) {
 
-   const {title, progress, big, activeProgress} = props;
+   const {title, progress, big} = props;
 
   return (
 
