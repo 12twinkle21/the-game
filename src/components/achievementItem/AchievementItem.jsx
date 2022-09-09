@@ -1,12 +1,15 @@
 import React from 'react';
 import styles from './AchievementItem.module.scss';
 
+import { Link } from 'react-router-dom';
+
 function AvailableAchievementItem(props) {
 
    const {title, gold, bgImage, blocked} = props;
 
   return (
-
+   
+   <Link to='/detailAchievementPage' className='clearLink'>
     <div className={styles.achievementItem}>
       {
          blocked?
@@ -28,6 +31,7 @@ function AvailableAchievementItem(props) {
          <span>{gold}</span>
       </div>
     </div>
+    </Link>
 
   )
 }
