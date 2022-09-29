@@ -1,5 +1,40 @@
 .projectItem{
    background-color: #FAFAFA;
+
+   .projectInfo{
+      &__title{
+         #title{
+            color: #262626;
+         }
+      }
+
+      &__organizers{
+         p{
+            color: #262626;
+         }
+      }
+   }
+}
+
+.darkProjectItem{
+   background-color: #191919;
+
+   .projectInfo{
+      &__title{
+         #title{
+            color: #fff;
+         }
+      }
+
+      &__organizers{
+         p{
+            color: #fff;
+         }
+      }
+   }
+}
+
+.projectItem, .darkProjectItem{
    padding: 30px;
    margin-bottom: 25px;
    border-radius: 12px;
@@ -36,7 +71,6 @@
             font-size: 28px;
             font-weight: 600;
             line-height: 33px;
-            color: #262626;
          }
       }
 
@@ -58,7 +92,6 @@
             font-size: 16px;
             font-weight: 500;
             line-height: 24px;
-            color: #262626;
          }
 
          .organizersItems{
@@ -102,7 +135,7 @@
 
 
 @media(max-width: 750px){
-   .projectItem{
+   .projectItem, .darkProjectItem{
       display: block;
       text-align: center;
 

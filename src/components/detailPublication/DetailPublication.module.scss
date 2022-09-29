@@ -1,6 +1,64 @@
 .detailPublication{
+   background-color: #FAFAFA;
+
+   &__commentsBlock{
+      border-top: 1px solid #D9D9D9;
+
+      .commentInputBlock{
+         input{
+            color: #262626;
+         }
+
+         .attachments{
+            background-color: #262626;
+            color: #fff;
+
+            &__popup{
+               background-color: #262626;
+
+               ul{
+                  li{
+                     color: #fff;
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+
+.darkDetailPublication{
+   background-color: #191919;
+
+   &__commentsBlock{
+      border-top: 1px solid #333333;
+
+      .commentInputBlock{
+         input{
+            background-color: #333333;
+            color: #fff;
+         }
+
+         .attachments{
+            background-color: #D9D9D9;
+            color: #191919;
+
+            &__popup{
+               background-color: #D9D9D9;
+
+               ul{
+                  li{
+                     color: #191919;
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+
+.detailPublication, .darkDetailPublication{
    width: 100%;
-   background-color: #FAFAFA;;
    padding: 17px 24px;
    border-radius: 12px;
    margin-bottom: 20px;
@@ -121,7 +179,6 @@
 
    &__commentsBlock{
       margin-top: 25px;
-      border-top: 1px solid #D9D9D9;
       padding-top: 25px;
 
       .comment{
@@ -211,7 +268,6 @@
             font-size: 16px;
             font-weight: 400;
             line-height: 24px;
-            color: #262626;
 
             &::placeholder{
                font-size: 16px;
@@ -231,7 +287,6 @@
             font-size: 16px;
             font-weight: 400;
             line-height: 24px;
-            color: #fff;
             transition: transform 0.2s ease-in-out;
 
             &:last-child{
@@ -240,14 +295,12 @@
          }
 
          .attachments{
-            background-color: #262626;
             position: relative;
 
             &__popup{
                position: absolute;
                top: -200px;
                left: 0;
-               background-color: #262626;
                width: 120px;
                border-radius: 8px;
                padding: 16px;
@@ -259,7 +312,6 @@
                      font-size: 16px;
                      font-weight: 400;
                      line-height: 24px;
-                     color: #fff;
                      margin-bottom: 20px;
                      text-align: start;
                      cursor: pointer;
@@ -274,6 +326,7 @@
 
          .publication{
             background-color: #1890FF;
+            color: #fff;
          }
       }
    }
@@ -385,7 +438,7 @@
 
 
 @media(max-width: 700px){
-   .detailPublication{
+   .detailPublication, .darkDetailPublication{
       .commentInputBlock{
 
          display: block;
@@ -410,7 +463,7 @@
 }
 
 @media(max-width: 550px){
-   .detailPublication{
+   .detailPublication, .darkDetailPublication{
       .comment{
          .commentBlock{
             &__bottom{
@@ -432,13 +485,13 @@
 }
 
 @media(max-width: 450px){
-   .detailPublication{
+   .detailPublication, .darkDetailPublication{
       padding: 15px 15px;
    }
 }
 
 @media(max-width: 400px){
-   .detailPublication{
+   .detailPublication, .darkDetailPublication{
       &__commentsBlock{
          .comment{
             &__userAvatar{

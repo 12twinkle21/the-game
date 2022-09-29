@@ -1,15 +1,266 @@
 .detailCard{
-   user-select: none;
-   max-width: 1440px;
-   margin: 0 auto;
-
    &__top{
       background-color: #FAFAFA;
+
+      .titleBlock{
+         &__info{
+            h2{
+               color: #262626;
+            }
+
+            .infoBottom{
+               &__gold, &__rating{
+                  span{
+                     color: #262626;
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   .navMenuAndContentWrapper{
+   .navMenuAndContent{
+      .navMenu{
+         ul{
+            li{
+               color: #262626;
+            }
+         }
+      }
+
+      .content{
+         h3{
+            color: #262626;
+         }
+
+         &__inputAndBtns{
+
+            input{
+               color: #262626;
+            }
+
+            .attachments{
+               background-color: #262626;
+               color: #fff;
+
+               &__popup{
+                  background-color: #262626;
+
+                  ul{
+                     li{
+                        color: #fff;
+                     }
+                  }
+               }
+            }
+         }
+
+         .achievementsTop{
+            &__right{
+               .achievementsTop__rightFilters{
+                  button{
+                     background-color: #fff;
+                  }
+               }
+            }
+         }
+
+         .projectsTop{
+            button{
+               border: 1px solid #1890FF;
+               color: #1890FF;
+            }
+         }
+
+         .projectsFilters{
+            &__left{
+               button{
+                  background-color: #fff;
+                  color: #262626;
+               }
+            }
+
+            &__right{
+               button{
+                  color: #262626;
+                  background-color: none;
+               }
+            }
+         }
+
+         .statisticsFilters{
+            button{
+               background-color: #fff;
+               color: #262626;
+            }
+         }
+      }
+   }
+}
+}
+
+.darkDetailCard{
+   &__top{
+      background-color: #191919;
+
+      .titleBlock{
+         &__info{
+            h2{
+               color: #fff;
+            }
+
+            .infoBottom{
+               &__gold, &__rating{
+                  span{
+                     color: #fff;
+                  }
+
+                  svg path{
+                     fill : #fff;
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   .navMenuAndContentWrapper{
+   .navMenuAndContent{
+      .navMenu{
+         ul{
+            li{
+               color: #fff;
+
+               svg path{
+                  fill: #fff;
+               }
+            }
+         }
+      }
+
+      .content{
+         h3{
+            color: #fff;
+         }
+
+         &__inputAndBtns{
+            input{
+               background-color: #191919;
+               color: #fff;
+            }
+
+            .attachments{
+               background-color: #D9D9D9;
+               color: #191919;
+
+               &__popup{
+                  background-color: #D9D9D9;
+
+                  ul{
+                     li{
+                        color: #191919;
+                     }
+                  }
+               }
+            }
+         }
+
+         .achievementsTop{
+            &__right{
+               .achievementsTop__rightFilters{
+                  button{
+                     background-color: #191919;
+
+                     svg path{
+                        fill: #fff;
+                     }
+                  }
+               }
+            }
+         }
+
+         .projectsTop{
+            button{
+               border: none;
+               color: #fff;
+               background-color: #191919;
+
+               svg path{
+                  fill: #fff;
+               }
+            }
+         }
+
+         .projectsFilters{
+            &__left{
+               button{
+                  background-color: #191919;
+                  color: #fff;
+                  
+                  svg path{
+                     fill: #fff;
+                  }
+               }
+            }
+
+            &__right{
+               button{
+                  color: #fff;
+                  background-color: #0D0D0D;
+
+                  svg path{
+                     fill: #fff;
+                  }
+               }
+            }
+         }
+
+         .statisticsFilters{
+            button{
+               color: #fff;
+               background-color: #191919;
+
+               svg path{
+                  fill: #fff;
+               }
+            }
+         }
+
+         .statisticsTitle{
+            .statisticsSelectedItem{
+               svg path{
+                  fill: #fff;
+               }
+            }
+         }
+
+         .membersTop{
+            svg path{
+              fill: #fff; 
+            }
+         }
+      }
+   }
+}
+}
+
+.detailCard, .darkDetailCard{
+   user-select: none;
+
+   &__top{
       padding: 0 83px;
       box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
       padding-bottom: 35px;
 
+      .backBtn{
+         max-width: 1440px;
+         margin: 0 auto;
+      }
+
       .titleBlock{
+         max-width: 1440px;
+         margin: 0 auto;
          margin-top: 25px;
          display: flex;
          align-items: center;
@@ -38,7 +289,6 @@
                font-size: 40px;
                font-weight: 500;
                line-height: 46px;
-               color: #262626;
             }
 
             p{
@@ -68,7 +318,6 @@
                      font-size: 16px;
                      font-weight: 500;
                      line-height: 24px;
-                     color: #262626;
                   }
                }
 
@@ -95,9 +344,13 @@
       }
    }
 
-   .navMenuAndContent{
-      margin-top: 30px;
+   .navMenuAndContentWrapper{
       padding: 0 83px;
+
+   .navMenuAndContent{
+      max-width: 1440px;
+      margin: 0 auto;
+      margin-top: 30px;
       display: flex;
 
       .navMenu{
@@ -110,7 +363,6 @@
                font-size: 20px;
                font-weight: 500;
                line-height: 24px;
-               color: #262626;
                display: flex;
                align-items: center;
                cursor: pointer;
@@ -142,7 +394,6 @@
             font-size: 40px;
             font-weight: 500;
             line-height: 46px;
-            color: #262626;
          }
 
          &__inputAndBtns{
@@ -161,7 +412,6 @@
                font-size: 16px;
                font-weight: 400;
                line-height: 24px;
-               color: #262626;
 
                &::placeholder{
                   font-size: 16px;
@@ -181,7 +431,6 @@
                font-size: 16px;
                font-weight: 400;
                line-height: 24px;
-               color: #fff;
                transition: transform 0.2s ease-in-out;
 
                &:last-child{
@@ -190,14 +439,12 @@
             }
 
             .attachments{
-               background-color: #262626;
                position: relative;
 
                &__popup{
                   position: absolute;
                   top: -200px;
                   left: 0;
-                  background-color: #262626;
                   width: 120px;
                   border-radius: 8px;
                   padding: 16px;
@@ -209,7 +456,6 @@
                         font-size: 16px;
                         font-weight: 400;
                         line-height: 24px;
-                        color: #fff;
                         margin-bottom: 20px;
                         text-align: start;
                         cursor: pointer;
@@ -224,6 +470,7 @@
 
             .publication{
                background-color: #1890FF;
+               color: #fff;
             }
          }
          
@@ -250,7 +497,6 @@
                      height: 40px;
                      width: 40px;
                      border: none;
-                     background-color: #fff;
                      border-radius: 6px;
                      cursor: pointer;
                      display: flex;
@@ -319,9 +565,7 @@
             button{
                display: flex;
                align-items: center;
-               border: 1px solid #1890FF;
                border-radius: 6px;
-               color: #1890FF;
                font-size: 16px;
                font-weight: 400;
                line-height: 24px;
@@ -351,7 +595,6 @@
 
                button{
                   border: none;
-                  background-color: #fff;
                   border-radius: 6px;
                   height: 32px;
                   padding: 0 15px;
@@ -360,7 +603,6 @@
                   font-size: 14px;
                   font-weight: 400;
                   line-height: 22px;
-                  color: #262626;
                   cursor: pointer;
                   transition: transform 0.1s ease-in-out;
 
@@ -373,13 +615,11 @@
             &__right{
                button{
                   border: none;
-                  background-color: none;
                   display: flex;
                   align-items: center;
                   font-size: 14px;
                   font-weight: 400;
                   line-height: 22px;
-                  color: #262626;
                   cursor: pointer;
                   white-space: nowrap;
                   margin-left: 10px;
@@ -422,7 +662,6 @@
 
             button{
                border: none;
-               background-color: #fff;
                border-radius: 6px;
                height: 32px;
                padding: 0 15px;
@@ -431,7 +670,6 @@
                font-size: 14px;
                font-weight: 400;
                line-height: 22px;
-               color: #262626;
                cursor: pointer;
                transition: transform 0.1s ease-in-out;
 
@@ -448,9 +686,18 @@
             gap: 25px;
             margin-top: 25px;
             margin-bottom: 40px;
+
+            .statisticsItem{
+               width: calc(33.3% - 25px* 2/3);
+            }
+
+            .statisticsItemBig{
+               width: calc(66.6% - 25px* 1/3);
+            }
          }
       }
    }
+}
 }
 
 .infoBottom button:active, .content__inputAndBtns button:active, .navMenu ul li:active, .achievementsTop button:active, .projectsFilters button:active, .projectsTop button:active, .statisticsFilters button:active{
@@ -467,7 +714,7 @@
          }
       }
    }
-
+   .navMenuAndContentWrapper{
    .navMenuAndContent{
       .content{
          &__inputAndBtns{
@@ -536,22 +783,22 @@
       }
    }
 }
+}
 
  @media(max-width: 1350px){
-   .detailCard{
+   .detailCard, .darkDetailCard{
       &__top{
          padding: 0 50px;
          padding-bottom: 35px;
       }
-
-      .navMenuAndContent{
+      .navMenuAndContentWrapper{
          padding: 0 50px;
-      }
+   }
    }
 }
 
 @media(max-width: 1250px){
-   .detailCard{
+   .detailCard, .darkDetailCard{
       &__top{
          .titleBlock{
 
@@ -566,7 +813,8 @@
       }
    }
    
-   .detailCard{
+   .detailCard, .darkDetailCard{
+      .navMenuAndContentWrapper{
       .navMenuAndContent{
          .navMenu{
             width: 30%;
@@ -574,13 +822,25 @@
    
          .content{
             width: 70%;
+
+            .statisticsItems{
+                  .statisticsItem{
+                     width: calc(50% - 25px* 1/2);
+                  }
+               
+                  .statisticsItemBig{
+                     width: 100%;
+                  }
+            }
          }
       }
+   }
    }
 }
 
 @media(max-width: 1200px){
-   .detailCard{
+   .detailCard, .darkDetailCard{
+      .navMenuAndContentWrapper{
       .navMenuAndContent{
             .content{
                .achievementsItems{
@@ -591,10 +851,12 @@
             }
       }
    }
+   }
 }
 
 @media(max-width: 1150px){
-   .detailCard{
+   .detailCard, .darkDetailCard{
+      .navMenuAndContentWrapper{
       .navMenuAndContent{
             .content{
                .membersItems{
@@ -605,18 +867,19 @@
             }
       }
    }
+   }
 }
 
 @media(max-width: 1023px){
-   .detailCard{
+   .detailCard, .darkDetailCard{
       &__top{
          padding: 0 25px;
          padding-bottom: 35px;
       }
 
-      .navMenuAndContent{
+      .navMenuAndContentWrapper{
          padding: 0 25px;
-
+      .navMenuAndContent{
          .navMenu{
             display: none;
          }
@@ -642,10 +905,11 @@
          }
       }
    }
+   }
 }
 
 @media(max-width: 900px){
-   .detailCard{
+   .detailCard, .darkDetailCard{
       &__top{
          .titleBlock{
 
@@ -662,7 +926,8 @@
 }
 
 @media(max-width: 800px){
-   .detailCard{
+   .detailCard, .darkDetailCard{
+      .navMenuAndContentWrapper{
       .navMenuAndContent{
             .content{
                .achievementsItems{
@@ -679,10 +944,11 @@
             }
       }
    }
+   }
 }
 
 @media(max-width: 750px){
-   .detailCard{
+   .detailCard, .darkDetailCard{
       &__top{
          padding: 0 15px;
          padding-bottom: 35px;
@@ -697,10 +963,9 @@
             }
          }
       }
-
-      .navMenuAndContent{
+      .navMenuAndContentWrapper{
          padding: 0 15px;
-
+      .navMenuAndContent{
          .content{
             h3{
                font-size: 25px;
@@ -725,10 +990,11 @@
          }
       }
    }
+   }
 }
 
 @media(max-width: 700px){
-   .detailCard{
+   .detailCard, .darkDetailCard{
       &__top{
          .titleBlock{
             display: block;
@@ -743,8 +1009,8 @@
             }
          }
       }
+      .navMenuAndContentWrapper{
       .navMenuAndContent{
-
          .content{
             &__inputAndBtns{
                display: block;
@@ -763,10 +1029,12 @@
          }   
       }  
    }
+   }
 }
 
 @media(max-width: 650px){
-   .detailCard{
+   .detailCard, .darkDetailCard{
+      .navMenuAndContentWrapper{
       .navMenuAndContent{
             .content{
                .achievementsItems{
@@ -777,10 +1045,12 @@
             }
       }
    }
+   }
 }
 
 @media(max-width: 550px){
-   .detailCard{
+   .detailCard, .darkDetailCard{
+      .navMenuAndContentWrapper{
       .navMenuAndContent{
             .content{
                .membersItems{
@@ -788,13 +1058,21 @@
                      width: 100%;
                   }
                }
+
+               .statisticsItems{
+                  .statisticsItem{
+                     width: 100%;
+                  }
+            }
             }
       }
+   }
    }
 }
 
 @media(max-width: 500px){
-   .detailCard{
+   .detailCard, .darkDetailCard{
+      .navMenuAndContentWrapper{
       .navMenuAndContent{
             .content{
                .achievementsItems{
@@ -805,10 +1083,11 @@
             }
       }
    }
+   }
 }
 
 @media(max-width: 450px){
-   .detailCard{
+   .detailCard, .darkDetailCard{
       &__top{
          .titleBlock{
             &__info{
@@ -830,6 +1109,7 @@
          }
       }
 
+      .navMenuAndContentWrapper{
       .navMenuAndContent{
          .content{
             .achievementsTop{
@@ -843,10 +1123,12 @@
          }
       }
    }
+   }
 }
 
 @media(max-width: 370px){
-.detailCard{
+.detailCard, .darkDetailCard{
+   .navMenuAndContentWrapper{
    .navMenuAndContent{
       .content{
          .projectsTop{
@@ -858,5 +1140,6 @@
          }
       }
    }
+}
 }
 }

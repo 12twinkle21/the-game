@@ -1,10 +1,37 @@
 .usefulArticlesItem{
-   border-radius: 16px;
    background-color: #fff;
+
+   &__info{
+      border: 1px solid #D9D9D9;
+      flex: 1;
+
+      h3{
+         color: #262626;
+      }
+   }
+}
+
+.darkUsefulArticlesItem{
+   background-color: #191919;
+
+   &__info{
+      border: none;
+      
+      h3{
+         color: #fff;
+      }
+   }
+}
+
+.usefulArticlesItem, .darkUsefulArticlesItem{
+   border-radius: 16px;
    margin-right: 25px;
    transition: transform 0.1s ease-in-out;
    cursor: pointer;
    margin-bottom: 10px;
+   height: 550px;
+   display: flex;
+   flex-direction: column;
 
    img{
       width: 100%;
@@ -13,7 +40,6 @@
 
    &__info{
       padding: 25px;
-      border: 1px solid #D9D9D9;
       border-bottom-left-radius: 16px;
       border-bottom-right-radius: 16px;
       border-top: 0;
@@ -38,12 +64,16 @@
          font-weight: 400;
          line-height: 24px;
          color:#8C8C8C;
+         -webkit-line-clamp: 5;
+         display: -webkit-box; 
+         -webkit-box-orient: vertical; 
+         overflow: hidden; 
       }
    }
 }
 
 @media(hover: hover) and (pointer: fine){
-   .usefulArticlesItem:hover{
+   .usefulArticlesItem:hover, .darkUsefulArticlesItem:hover{
       transform: translateY(5px);
    }
 }

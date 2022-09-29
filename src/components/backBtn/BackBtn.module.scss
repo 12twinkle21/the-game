@@ -1,11 +1,26 @@
 .backBtn{
+   &__btn{
+      background-color:#F0F2F5;
+   }
+}
+
+.darkBackBtn{
+   &__btn{
+      background-color: #333333;
+   }
+}
+
+.backBtn, .darkBackBtn{
    display: flex;
    align-items: center;
    margin-top: 40px;
-   cursor: pointer;
 
+   a{
+      display: flex;
+      align-items: center;
+   }
+   
    &__btn{
-      background-color:#F0F2F5;
       width: 48px;
       height: 48px;
       border-radius: 4px;

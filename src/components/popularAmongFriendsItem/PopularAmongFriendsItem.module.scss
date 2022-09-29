@@ -1,5 +1,20 @@
 .popularAmongFriendsItem{
    background-color: #fff;
+
+   p{
+      color: #262626;
+   }
+}
+
+.darkPopularAmongFriendsItem{
+   background-color: #191919;
+
+   p{
+      color: #fff;
+   }
+}
+
+.popularAmongFriendsItem, .darkPopularAmongFriendsItem{
    border-radius: 16px;
    transition: transform 0.1s ease-in-out;
    cursor: pointer;
@@ -28,7 +43,7 @@
 }
 
 @media(hover: hover) and (pointer: fine){
-   .popularAmongFriendsItem:hover{
+   .popularAmongFriendsItem:hover, .darkPopularAmongFriendsItem:hover{
       transform: translateY(5px);
    }
 }

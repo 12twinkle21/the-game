@@ -9,8 +9,14 @@ import AchievementItem from '../../components/achievementItem/AchievementItem';
 import ActiveFriendItem from '../../components/activeFriendItem/ActiveFriendItem';
 import ProjectItem from '../../components/projectItem/ProjectItem';
 import StatisticsCard from '../../components/statisticsCard/StatisticsCard';
+import OverlayMenu from '../../components/overlayMenu/OverlayMenu';
+import MainMenu from '../../components/mainMenu/MainMenu';
+
+import { AppContext } from '../../App';
 
 function DetailGamePage() {
+
+   const { darkTheme, visibleMainMenu } = React.useContext(AppContext);
 
    let publicationsData = 
    [
@@ -329,13 +335,60 @@ function DetailGamePage() {
       setVisibleAttachmentsPopup(!visibleAttachmentsPopup);
    }
 
+   let [activeOverlay, setActiveOverlay] = React.useState(false);
+
+   let onActiveOverlay = (bool) =>{
+      setActiveOverlay(bool);
+
+      if(bool){
+         document.body.style.overflow = 'hidden';
+      } else{
+         document.body.style.overflow = 'auto';
+      }
+   }
+
+   let [inputText, setInputText] = React.useState('');
+
+   let [publications, setPublications] = React.useState([]);
+
+   const handleInputChange = (event) => {
+      const value = event.currentTarget.value;
+      setInputText(value);
+    };
+  
+    const onAddPublication = () => {
+      if (inputText) {
+         setPublications((prevPublications) => [
+            {
+              inputText,
+            },
+            ...prevPublications,
+          ]);
+         publications.reverse()
+         setInputText('');
+      }
+    };
+  
+    const handleKeyUp = (event) => {
+      if (event.keyCode === 13) {
+        onAddPublication();
+      }
+    };
+
 
   return (
 
-    <div className={styles.detailCard}>
-      <div className={styles.detailCard__top}>
+   <>
+   {
+      visibleMainMenu?
+      <MainMenu/>
+      :
+    <div className={darkTheme? styles.darkDetailCard : styles.detailCard}>
+      <div className={darkTheme? styles.darkDetailCard__top : styles.detailCard__top}>
          <Header/>
-         <BackBtn text={'Илья Абрамов'} link={'/'}/>
+         <div className={styles.backBtn}>
+            <BackBtn text={'Илья Абрамов'} link={'/'}/>
+         </div>
          <div className={styles.titleBlock}>
             <div className={styles.titleBlock__img}>
                <img src='http://dummyimage.com/230x230&text=+' width={230} height={230} alt='Title logo'/>
@@ -364,7 +417,8 @@ function DetailGamePage() {
             </div>
          </div>
       </div>
-      <div className={styles.navMenuAndContent}>
+      <div className={styles.navMenuAndContentWrapper}>
+         <div className={styles.navMenuAndContent}>
          <div className={styles.navMenu}>
             <ul>
                <li onClick={()=> onSelectContentBlock('actionFeed')} className={activeBlock=== 'actionFeed'? styles.activeNavMenuItem : ''}>
@@ -406,7 +460,7 @@ function DetailGamePage() {
          <div className={styles.content}>
             <h3>Лента действий</h3>
             <div className={styles.content__inputAndBtns}>
-               <input type='text' placeholder='Хотите поделиться мыслями?'/>
+               <input type='text' value={inputText} onChange={handleInputChange} onKeyUp={handleKeyUp} placeholder='Хотите поделиться мыслями?'/>
                <div className={styles.content__btns}>
                   <button className={styles.attachments} onClick={onVisibleAttachmentsPopup}>
                      Вложение
@@ -424,12 +478,15 @@ function DetailGamePage() {
                         ''
                      }
                      </button>
-                  <button className={styles.publication}>Публикация</button>
+                  <button className={styles.publication} onClick={onAddPublication}>Публикация</button>
                </div>
             </div>
             <div className={styles.publicationsBlock}>
                {
-                  publicationsData.map((item) => <DetailPublication userAvatar={item.userAvatar} userName={item.userName} dateAndTime={item.dateAndTime} publicationText={item.publicationText} likesCount={item.likesCount} commentsCount={item.commentsCount} comments={item.comments}/>)
+                  publications.map((item) => <DetailPublication userAvatar={"./img/headerAccAvatar.png"} userName={"Илья Абрамов"} dateAndTime={"29 ноя в 16:48"} publicationText={item.inputText} likesCount={0} commentsCount={0} key={item.inputText}/>)
+               }
+               {
+                  publicationsData.map((item) => <DetailPublication userAvatar={item.userAvatar} userName={item.userName} dateAndTime={item.dateAndTime} publicationText={item.publicationText} likesCount={item.likesCount} commentsCount={item.commentsCount} comments={item.comments} key={item.inputText}/>)
                }
             </div>
          </div>
@@ -438,6 +495,14 @@ function DetailGamePage() {
          {
           activeBlock === 'achievements'?
           <div className={styles.content}>
+            {
+            activeOverlay? 
+            <div className='overlay'>
+               <OverlayMenu onActiveOverlay={onActiveOverlay}/>
+            </div>
+            :
+            ''
+            }
             <div className={styles.achievementsTop}>
                <div className={styles.achievementsTop__left}>
                   <h3>Достижения</h3>
@@ -456,13 +521,13 @@ function DetailGamePage() {
                      </button>
                   </div>
                   <div className={styles.achievementsTop__rightCompare}>
-                     <button>Сравнить</button>
+                     <button onClick={() => onActiveOverlay(true)}>Сравнить</button>
                   </div>
                </div>
             </div>
             <div className={styles.achievementsItems}>
                {
-                  allAchievementItemsData.map((item) => <div className={styles.achievementsItem}><AchievementItem title={item.title} bgImage={item.bgImage} gold={item.gold} blocked={item.blocked}/></div>)
+                  allAchievementItemsData.map((item) => <div className={styles.achievementsItem} key={item.title}><AchievementItem title={item.title} bgImage={item.bgImage} gold={item.gold} blocked={item.blocked}/></div>)
                }
             </div>
           </div>
@@ -518,7 +583,7 @@ function DetailGamePage() {
             </div>
             <div className={styles.projectsItems}>
                {
-                  projectsData.map((item) => <ProjectItem projectImg={item.projectImg} projectTeam={item.projectTeam} projectCity={item.projectCity} projectTitle={item.projectTitle} projectText={item.projectText} projectOrganizers={item.projectOrganizers}/>)
+                  projectsData.map((item) => <ProjectItem projectImg={item.projectImg} projectTeam={item.projectTeam} projectCity={item.projectCity} projectTitle={item.projectTitle} projectText={item.projectText} projectOrganizers={item.projectOrganizers} key={item.projectTitle}/>)
                }
             </div>
          </div>
@@ -571,7 +636,7 @@ function DetailGamePage() {
             </div>
             <div className={styles.statisticsItems}>
                {
-                  statisticsCardsData.map((item) => <StatisticsCard title={item.title} progress={item.progress} big={item.big} activeProgress={item.activeProgress}/>)
+                  statisticsCardsData.map((item) => <div className={item.big? styles.statisticsItemBig : styles.statisticsItem} key={item.title}><StatisticsCard title={item.title} progress={item.progress} big={item.big} activeProgress={item.activeProgress}/></div>)
                }
             </div>
          </div>
@@ -589,16 +654,18 @@ function DetailGamePage() {
             </div>
             <div className={styles.membersItems}>
                {
-                  membersData.map((item) => <div className={styles.membersItem}><ActiveFriendItem avatar={item.avatar} isOnline={item.isOnline} name={item.name} gold={item.gold}/></div>)
+                  membersData.map((item, index) => <div className={styles.membersItem} key={`${item.name}_${index}`}><ActiveFriendItem avatar={item.avatar} isOnline={item.isOnline} name={item.name} gold={item.gold}/></div>)
                }
             </div>
          </div>
          :
          ''
          }
+         </div>
       </div>
     </div>
-
+   }
+   </>
   )
 }
 

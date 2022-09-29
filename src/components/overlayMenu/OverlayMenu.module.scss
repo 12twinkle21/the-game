@@ -1,0 +1,125 @@
+.overlayMenu{
+   background-color: #fff;
+
+   &__selectedBtns{
+      button{
+         background-color: #F5F5F5;
+         color: #262626;
+      }
+   }
+}
+
+.darkOverlayMenu{
+   background-color: #0D0D0D;
+
+   &__selectedBtns{
+      button{
+         background-color: #171717;;
+         color: #D9D9D9;
+
+         svg path{
+            fill: #D9D9D9;
+         }
+      }
+   }
+}
+
+.overlayMenu, .darkOverlayMenu{
+   width: 45%;
+   height: 100%;
+   position: relative;
+   display: flex;
+   flex-direction: column;
+
+   &__closeBtn{
+      position: absolute;
+      top: 10px;
+      left: -70px;
+      cursor: pointer;
+   }
+
+   &__title{
+      flex: 1;
+      margin-top: 30px;
+      padding: 0 23px;
+   }
+
+   &__selectedBtns{
+      margin-bottom: 40px;
+      padding: 0 23px;
+
+      button{
+         margin-bottom: 25px;
+         display: block;
+         height: 40px;
+         width: 100%;
+         max-width: 485px;
+         display: flex;
+         justify-content: space-between;
+         border: none;
+         align-items: center;
+         padding: 0 12px;
+         border-radius: 2px;
+         font-size: 16px;
+         font-weight: 400;
+         line-height: 24px;
+         cursor: pointer;
+
+         &:last-child{
+            margin-bottom: 0;
+         }
+      }
+   }
+
+   &__btns{
+      display: flex;
+      align-items: center;
+
+      button{
+         height: 60px;
+         width: 50%;
+         border: none;
+         cursor: pointer;
+         font-size: 16px;
+         font-weight: 400;
+         line-height: 24px;
+         color: #fff;
+
+         &:first-child{
+            background-color: #FF4D4F;;
+         }
+
+         &:last-child{
+            background-color: #1890FF;;
+         }
+
+         a{
+            color: #fff;
+         }
+      }
+   }
+}
+
+@media(max-width: 1200px){
+   .overlayMenu, .darkOverlayMenu{
+      width: 60%;
+   }
+}
+
+@media(max-width: 900px){
+   .overlayMenu, .darkOverlayMenu{
+      width: 80%;
+   }
+}
+
+@media(max-width: 650px){
+   .overlayMenu, .darkOverlayMenu{
+      width: 100%;
+
+      &__closeBtn{
+         left: unset;
+         right: 10px;
+         top: 20px;
+      }
+   }
+}

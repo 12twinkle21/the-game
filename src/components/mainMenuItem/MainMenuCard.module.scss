@@ -1,0 +1,67 @@
+.mainMenuCardBlocked, .darkMainMenuCardBlocked{
+   cursor: default;
+}
+
+.mainMenuCard, .darkMainMenuCard{
+   cursor: pointer;
+}
+
+.mainMenuCard, .mainMenuCardBlocked{
+   background-color: #FAFAFA;
+
+   &__info, &__infoBlocked{
+      .title{
+         p{
+            color: #262626;
+         }
+      }
+   }
+}
+
+.darkMainMenuCard, .darkMainMenuCardBlocked{
+   background-color: #191919;
+
+   &__info, &__infoBlocked{
+      .title{
+         p{
+            color: #fff;
+         }
+      }
+   }
+}
+
+.mainMenuCard, .mainMenuCardBlocked, .darkMainMenuCard, .darkMainMenuCardBlocked{
+   border-radius: 16px;
+   width: 100%;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+   &__info, &__infoBlocked{
+      text-align: center;
+
+      .icon{
+         svg{
+            min-width: 48px;
+         }
+      }
+
+      .title{
+         margin-top: 15px;
+
+         p{
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 24px;
+         }
+      }
+   }
+
+   &__infoBlocked{
+      -webkit-filter: grayscale(1); 
+      filter: gray; 
+      filter: grayscale(1);
+      opacity: 0.5;
+   }
+}

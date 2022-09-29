@@ -1,4 +1,16 @@
 .mainBlockTitle{
+   h3{
+      color: #262626;
+   }
+}
+
+.darkMainBlockTitle{
+   h3{
+      color: #fff;
+   }
+}
+
+.mainBlockTitle, .darkMainBlockTitle{
    margin-top: 65px;
    margin-bottom: 30px;
    display: flex;
@@ -25,7 +37,7 @@
    }
 }
 
-.mainBlockTitle p:active{
+.mainBlockTitle p:active, .darkMainBlockTitle p:active{
    transform: scale(0.9);
 }
 
@@ -36,19 +48,19 @@
 }
 
 @media(max-width: 1350px){
-   .mainBlockTitle{
+   .mainBlockTitle, .darkMainBlockTitle{
       padding: 0 50px;
    }
 }
 
 @media(max-width: 1023px){
-   .mainBlockTitle{
+   .mainBlockTitle, .darkMainBlockTitle{
       padding: 0 25px;
    }
 }
 
 @media(max-width: 750px){
-   .mainBlockTitle{
+   .mainBlockTitle, .darkMainBlockTitle{
       padding: 0 15px;
 
       h3{
@@ -63,7 +75,7 @@
 }
 
 @media(max-width: 500px){
-   .mainBlockTitle{
+   .mainBlockTitle, .darkMainBlockTitle{
       h3{
          font-size: 20px;
          line-height: 25px;

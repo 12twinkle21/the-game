@@ -1,4 +1,36 @@
+.darkAchievementItem{
+   &__title{
+      p{
+         color: #fff;
+      }
+   }
+
+   &__gold{
+      span{
+         color: #fff;
+      }
+
+      svg path{
+         fill: #fff;
+      }
+   }
+}
+
 .achievementItem{
+   &__title{
+      p{
+         color: #262626;
+      }
+   }
+
+   &__gold{
+      span{
+         color: #262626;
+      }
+   }
+}
+
+.achievementItem, .darkAchievementItem{
    text-align: center;
    transition: transform 0.1s ease-in-out;
    cursor: pointer;
@@ -51,8 +83,7 @@
          margin-top: 7px;
          max-width: 130px;
       }
-   }
-   
+   }  
 
    &__gold{
       margin-top: 5px;
@@ -70,7 +101,7 @@
 }
 
 @media(hover: hover) and (pointer: fine){
-   .achievementItem:hover{
+   .achievementItem:hover, .darkAchievementItem:hover{
       transform: translateY(5px);
    }
 }

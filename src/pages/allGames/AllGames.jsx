@@ -5,6 +5,9 @@ import styles from './AllGames.module.scss';
 import Header from '../../components/header/Header';
 import BackBtn from '../../components/backBtn/BackBtn';
 import GameCard from '../../components/gameCard/GameCard';
+import MainMenu from '../../components/mainMenu/MainMenu';
+
+import { AppContext } from '../../App';
 
 function AllGames() {
 
@@ -29,26 +32,35 @@ function AllGames() {
     }
   ];
 
+  const { visibleMainMenu, darkTheme } = React.useContext(AppContext);
+
   return (
 
-    <div className='maxContainer'>
-      <div className={styles.allGames}>
+    <>
+    {
+      visibleMainMenu?
+      <MainMenu/>
+      :
+      <div className='maxContainer'>
+      <div className={darkTheme? styles.darkAllGames : styles.allGames}>
         <Header/>
-        <BackBtn text={'Илья Абрамов'} link={'/'} white/>
-        <div className={styles.allGames__title}>
+        <BackBtn text={'Илья Абрамов'} link={'/'} allGames/>
+        <div className={darkTheme? styles.darkAllGames__title : styles.allGames__title}>
           <h2>Все игры</h2>
-          <div className={styles.allGames__titleRight}>
+          <div className={darkTheme? styles.darkAllGames__titleRight : styles.allGames__titleRight}>
             <p>Фильтр</p>
             <p>Сортировка</p>
           </div>
         </div>
-        <div className={styles.allGames__items}>
+        <div className={darkTheme? styles.darkAllGames__items : styles.allGames__items}>
           {
-            AllGamesData.map((item) => <GameCard bgImage={item.bgImage} className={'allGamesCard'}/>)
+            AllGamesData.map((item, index) => <GameCard bgImage={item.bgImage} className={'allGamesCard'} key={index}/>)
           }
         </div>
       </div>
     </div>
+    }
+    </>
 
   )
 }

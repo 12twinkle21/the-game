@@ -1,20 +1,24 @@
 .topSliderItem{
-   height: 80vh;
+   height: 770px;
    background-size: cover;
    background-position: center;
    background-repeat: no-repeat;
    display: flex;
    flex-direction: column;
    justify-content: center;
-   padding: 0 120px;
-
+   
    &__content{
-      max-width: 635px;
+      max-width: 1440px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 120px;
 
       h2{
          font-size: 48px;
          font-weight: 600;
          line-height: 56px;
+         color: #fff;
+         max-width: 635px;
       }
 
       p{
@@ -22,6 +26,8 @@
          font-size: 20px;
          font-weight: 400;
          line-height: 24px;
+         color: #fff;
+         max-width: 635px;
       }
 
       button{
@@ -52,22 +58,22 @@
 }
 
 @media(max-width: 1150px){
-   .topSliderItem{
+   .topSliderItem__content{
       padding: 0 80px;
    }
 }
 
 @media(max-width: 900px){
-   .topSliderItem{
+   .topSliderItem__content{
       padding: 0 50px;
    }
 }
 
 @media(max-width: 750px){
    .topSliderItem{
-      padding: 0 25px;
-
       &__content{
+         padding: 0 25px;
+         
          h2{
             font-size: 30px;
             line-height: 40px;

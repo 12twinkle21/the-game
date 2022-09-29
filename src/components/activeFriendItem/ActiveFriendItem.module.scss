@@ -1,5 +1,24 @@
+.darkActiveFriendItem{
+   background-color: #191919;
+
+   &__name{
+      p{
+         color: #fff;
+      }
+   }
+}
+
 .activeFriendItem{
    background-color: #fff;
+
+   &__name{
+      p{
+         color: #262626;
+      }
+   }
+}
+
+.activeFriendItem, .darkActiveFriendItem{
    display: flex;
    align-items: center;
    padding: 12px 15px;
@@ -52,7 +71,7 @@
 }
 
 @media(hover: hover) and (pointer: fine){
-   .activeFriendItem:hover{
+   .activeFriendItem:hover, .darkActiveFriendItem:hover{
       transform: translateY(5px);
    }
 }

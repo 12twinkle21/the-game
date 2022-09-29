@@ -1,0 +1,211 @@
+.comparison{
+   .comparisonTop{
+      background-color: #FAFAFA;
+
+      &__title{
+         h2{
+            color: #262626;
+         }
+      }
+   }
+}
+
+.darkComparison{
+   .comparisonTop{
+      background-color: #191919;
+
+      &__title{
+         h2{
+            color: #fff;
+         }
+      }
+   }
+}
+
+.comparison, .darkComparison{
+   .comparisonTop{
+      box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+      padding: 0 83px;
+      padding-bottom: 25px;
+
+      &__btns{
+         max-width: 1440px;
+         margin: 0 auto;
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+
+         button{
+            background-color: #FF4D4F;
+            border: none;
+            height: 40px;
+            padding: 0 16px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+            color: #fff;
+            cursor: pointer;
+            margin-top: 40px;
+         }
+      }
+
+      &__title{
+         max-width: 1440px;
+         margin: 0 auto;
+         margin-top: 20px;
+
+         h2{
+            font-size: 40px;
+            font-weight: 500;
+            line-height: 46px;
+         }
+      }
+
+      &__teams{
+         max-width: 1440px;
+         margin: 0 auto;
+         margin-top: 40px;
+         display: flex;
+         align-items: center;
+         gap: 25px;
+
+         .comparisonTop__team{
+            width: 50%;
+
+            .comparisonTop__teamsItem{
+               width: 282px;
+               height: 282px;
+               border-radius: 12px;
+               padding: 32px;
+               display: flex;
+               flex-direction: column;
+               justify-content: space-between;
+               position: relative;
+
+               p{
+                  font-size: 20px;
+                  font-weight: 600;
+                  line-height: 28px;
+                  color: #FAFAFA;
+               }
+
+               h3{
+                  text-align: end;
+                  font-size: 28px;
+                  font-weight: 500;
+                  line-height: 32px;
+                  color: #FAFAFA;
+               }
+
+               .cancelBtn{
+                  position: absolute;
+                  top: 0;
+                  right: -50px;
+                  cursor: pointer;
+
+                  svg{
+                     min-width: 40px;
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   .comparisonContentWrapper{
+      padding: 0 83px;
+      
+   .comparisonContent{
+      display: flex;
+      max-width: 1440px;
+      margin: 0 auto;
+      margin-top: 30px;
+      margin-bottom: 40px;
+      gap: 25px;
+
+      &__list{
+         width: 50%;
+
+         .comparisonStatistics{
+            &__item{
+               margin-top: 25px;
+            }
+         }
+      }
+   }
+}
+}
+
+@media(max-width: 1350px){
+   .comparison, .darkComparison{
+      .comparisonTop{
+         padding: 0 50px;
+         padding-bottom: 25px;
+
+         &__teams{
+            .comparisonTop__team{
+               display: flex;
+               justify-content: center;
+            }
+         }
+      }
+
+      .comparisonContentWrapper{
+         padding: 0 50px;
+      }
+   }
+}
+
+@media(max-width: 1023px){
+   .comparison, .darkComparison{
+      .comparisonTop{
+         padding: 0 25px;
+         padding-bottom: 25px;
+      }
+
+      .comparisonContentWrapper{
+         padding: 0 25px;
+      }
+   }
+}
+
+@media(max-width: 750px){
+   .comparison, .darkComparison{
+      .comparisonTop{
+         padding: 0 15px;
+         padding-bottom: 25px;
+
+         &__teams{
+            .comparisonTop__team{
+               .comparisonTop__teamsItem{
+                  .cancelBtn{
+                     right: 5px;
+                     top: 5px;
+                  }
+               }
+            }
+         }
+      }
+
+      .comparisonContentWrapper{
+         padding: 0 15px;
+      }
+   }
+}
+
+@media(max-width: 750px){
+   .comparison, .darkComparison{
+      .comparisonTop{
+         &__teams{
+            .comparisonTop__team{
+               .comparisonTop__teamsItem{
+                  width: 100%;
+                  height: auto;
+                  min-height: 282px;
+               }
+            }
+         }
+      }
+   }
+}

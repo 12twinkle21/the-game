@@ -3,6 +3,8 @@ import styles from './PopularAmongFriendsItem.module.scss';
 
 import GameCard from '../gameCard/GameCard';
 
+import { AppContext } from '../../App';
+
 // import {Avatar} from 'antd';
 // import 'antd/dist/antd.min.css';
 
@@ -10,12 +12,14 @@ import GameCard from '../gameCard/GameCard';
 function PopularAmongFriendsItem(props) {
 
   const {bgImage, title, countOfPlayers} = props;
+
+  const { darkTheme } = React.useContext(AppContext);
    
   return (
 
-    <div className={styles.popularAmongFriendsItem}>
+    <div className={darkTheme? styles.darkPopularAmongFriendsItem : styles.popularAmongFriendsItem}>
       <GameCard bgImage={bgImage} className={'popularGameCard'}/>
-      <div className={styles.popularAmongFriendsItem__info}>
+      <div className={darkTheme? styles.darkPopularAmongFriendsItem__info : styles.popularAmongFriendsItem__info}>
          <p>{title}</p>
          <span>Играет {countOfPlayers} друзей</span>
          {/* <Avatar.Group

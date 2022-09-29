@@ -1,4 +1,19 @@
 .allGames{
+   &__title{
+      h2{
+         color: #262626;
+      }
+   }
+}
+
+.darkAllGames{
+   &__title{
+      h2{
+         color: #fff;
+      }
+   }
+}
+.allGames, .darkAllGames{
    user-select: none;
 
    &__title{
@@ -54,7 +69,7 @@
 }
 
 @media(max-width: 750px){
-   .allGames{
+   .allGames, .darkAllGames{
       &__title{
 
          h2{
@@ -66,7 +81,7 @@
 }
 
 @media(max-width: 500px){
-   .allGames{
+   .allGames, .darkAllGames{
       &__title{
 
          h2{

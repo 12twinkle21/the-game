@@ -2,9 +2,13 @@ import React from 'react';
 
 import styles from './DetailPublication.module.scss';
 
+import { AppContext } from '../../App';
+
 function DetailPublication(props) {
 
 const {userAvatar, userName, dateAndTime, publicationText, likesCount, commentsCount, comments} = props;
+
+const { darkTheme } = React.useContext(AppContext);
 
 let [visibleComments, setVisibleComments] = React.useState(false);
 
@@ -26,8 +30,8 @@ let onVisibleMoreBtnPopup = () =>{
 
   return (
 
-    <div className={styles.detailPublication}>
-      <div className={styles.detailPublication__top}>
+    <div className={darkTheme? styles.darkDetailPublication : styles.detailPublication}>
+      <div className={darkTheme? styles.darkDetailPublication__top : styles.detailPublication__top}>
          <div className={styles.userInfo}>
             <img src={userAvatar} width={48} height={48} alt='Avatar'/>
             <div className={styles.userNameAndDateBlock}>
@@ -53,10 +57,10 @@ let onVisibleMoreBtnPopup = () =>{
             }
          </div>
       </div>
-      <div className={styles.detailPublication__text}>
+      <div className={darkTheme? styles.darkDetailPublication__text : styles.detailPublication__text}>
          <p>{publicationText}</p>
       </div>
-      <div className={styles.detailPublication__bottom}>
+      <div className={darkTheme? styles.darkDetailPublication__bottom : styles.detailPublication__bottom}>
          <div className={styles.likesAndCommentsBlock}>
             <div className={styles.likes}>
                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -79,10 +83,10 @@ let onVisibleMoreBtnPopup = () =>{
       </div>
       {
       visibleComments?
-      <div className={styles.detailPublication__commentsBlock}>
+      <div className={darkTheme? styles.darkDetailPublication__commentsBlock : styles.detailPublication__commentsBlock}>
          {
             comments?.length &&
-            comments.map((item) => <div className={styles.comment}>
+            comments.map((item, index) => <div className={styles.comment} key={index}>
                <div className={styles.comment__userAvatar}>
                   <img src={item.commentUserAvatar} width={48} height={48} alt='Avatar'/>
                </div>

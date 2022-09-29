@@ -1,5 +1,4 @@
 .sliderWrapper{
-   max-width: 1440px;
    margin: 0 auto;
    position: relative;
 
@@ -9,6 +8,8 @@
       left: 0;
       right: 0;
       z-index: 1;
+      max-width: 1440px;
+      margin: 0 auto;
       padding: 0 83px;
       margin-top: 15px;
       display: flex;
@@ -22,6 +23,7 @@
          img{
             margin-left: 25px;
             user-select: none;
+            margin-top: 5px;
          }
          
          svg{
@@ -62,7 +64,6 @@
                transition: max-height 0.5s ease-in-out;
                animation-duration: 0.5s;
                animation-name: header-acc-popup;
-               text-align: end;
                box-shadow: 0px 9px 28px 8px rgba(0, 0, 0, 0.05), 0px 6px 16px rgba(0, 0, 0, 0.08), 0px 3px 6px -4px rgba(0, 0, 0, 0.12);
 
                p{
@@ -71,7 +72,7 @@
                   font-size: 14px;
                   font-weight: 400;
                   line-height: 22px;
-                  margin-bottom: 5px;
+                  margin-bottom: 10px;
                   cursor: pointer;
                   padding: 0 20px;
                   transition: transform 0.1s ease-in-out;
@@ -82,7 +83,7 @@
                }
 
                .popupExit{
-                  padding-top: 5px;
+                  padding-top: 10px;
                   border-top: 1px solid #C4C4C4;
                }
             }
@@ -96,12 +97,12 @@
    margin: 0 auto;
 
    &__items{
-      padding-left: 83px;
+      padding: 0 83px;
    }
 
-   :global(.slick-track){
-      margin-left: 4% !important;
-   }
+   // :global(.slick-track){
+   //    margin-left: 4% !important;
+   // }
 }
 
 .achievementBlock{
@@ -109,12 +110,12 @@
    margin: 0 auto;
 
    &__items{
-      padding-left: 83px;
+      padding: 0 83px;
    }
 
-   :global(.slick-track){
-      margin-left: 2% !important;
-   }
+   // :global(.slick-track){
+   //    margin-left: 2% !important;
+   // }
 }
 
 .activeFriendsBlock{
@@ -122,16 +123,11 @@
    margin: 0 auto;
    
    &__items{
-      padding-left: 83px;
+      padding: 0 83px;
    }
 
-   :global(.slick-track){
-      margin-left: 3% !important;
-   }
-
-   // :global(.slick-slide){
-   //    margin-right: 18px !important;
-   //    margin-bottom: -30px !important;
+   // :global(.slick-track){
+   //    margin-left: 3% !important;
    // }
 }
 
@@ -140,12 +136,12 @@
    margin: 0 auto;
 
    &__items{
-      padding-left: 83px;
+      padding: 0 83px;
    }
 
-   :global(.slick-track){
-      margin-left: 3.5% !important;
-   }
+   // :global(.slick-track){
+   //    margin-left: 3.5% !important;
+   // }
 }
 
 .usefulArticlesBlock{
@@ -153,20 +149,45 @@
    margin: 0 auto;
 
    &__items{
-      padding-left: 83px;
+      padding: 0 83px;
    } 
 
-   :global(.slick-track){
-      margin-left: 4% !important;
+   // :global(.slick-track){
+   //    margin-left: 4% !important;
+   // }
+}
+
+.darkFooter{
+   background-color: #000;
+
+   .footerTop{
+      &__left{
+         p{
+            color: #fff;
+         }
+
+         svg path{
+            fill: #fff;
+         }
+      }
    }
 }
 
 .footer{
-   max-width: 1440px;
-   margin: 0 auto;
-   margin-top: 80px;
-   padding: 35px 83px;
    background-color: #fff;
+
+   .footerTop{
+      &__left{
+         p{
+            color: #262626;
+         }
+      }
+   }
+}
+
+.footer, .darkFooter{
+   margin-top: 80px;
+   padding: 35px 0;
    box-shadow: 0px 9px 28px 8px rgba(0, 0, 0, 0.05), 0px 3px 6px -4px rgba(0, 0, 0, 0.12);
    filter: drop-shadow(0px 6px 16px rgba(0, 0, 0, 0.08));
 
@@ -174,6 +195,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 83px;
 
       &__left{
          display: flex;
@@ -214,11 +238,15 @@
       user-select: none;
       
    }
+
    .footerBottom{
+      max-width: 1440px;
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-top: 40px;
+      padding: 0 83px;
 
       p{
          text-decoration: none;
@@ -232,8 +260,14 @@
    }
    }
 
+.sliderWrapper{
+   :global(.slick-arrow){
+      display: none !important;
+   }
+}
+
 :global(.slick-arrow){
-   display: none !important;
+   z-index: 10;
 }
 
 :global(.slick-dots){
@@ -306,16 +340,16 @@
 
 
  @media(max-width: 1350px){
-   .sliderWrapper .mainHeader{
+   .sliderWrapper .mainHeader, .usefulArticlesBlock__items, .continueBlock__items, .achievementBlock__items, .activeFriendsBlock__items, .popularAmongFriendsBlock__items{
       padding: 0 50px;
    }
 
-   .usefulArticlesBlock__items, .continueBlock__items, .achievementBlock__items, .activeFriendsBlock__items, .popularAmongFriendsBlock__items{
-      padding-left: 50px;
-   }
+   .footer, .darkFooter{
+      padding: 35px 0;
 
-   .footer{
-      padding: 35px 50px;
+   .footerTop, .footerBottom{
+      padding: 0 50px;
+   }
    }
  }
 
@@ -328,38 +362,33 @@
       margin: 0 27px;
    }
 
-   .achievementBlock{
-      :global(.slick-track){
-         margin-left: 3% !important;
-      }
-   }
+   // .achievementBlock{
+   //    :global(.slick-track){
+   //       margin-left: 3% !important;
+   //    }
+   // }
  }
 
- @media(max-width: 1050px){
-   .activeFriendsBlock__items{
-      :global(.slick-track){
-         margin-left: 5% !important;
-      }
-   }
+//  @media(max-width: 1050px){
+//    .activeFriendsBlock__items{
+//       :global(.slick-track){
+//          margin-left: 5% !important;
+//       }
+//    }
 
-   .usefulArticlesBlock{
-      :global(.slick-track){
-         margin-left: 5% !important;
-      }
-   }
-}
+//    .usefulArticlesBlock{
+//       :global(.slick-track){
+//          margin-left: 5% !important;
+//       }
+//    }
+// }
 
  @media(max-width: 1023px){
-   .sliderWrapper .mainHeader{
+   .sliderWrapper .mainHeader, .usefulArticlesBlock__items, .continueBlock__items, .achievementBlock__items, .activeFriendsBlock__items, .popularAmongFriendsBlock__items{
       padding: 0 25px;
    }
 
-   .usefulArticlesBlock__items, .continueBlock__items, .achievementBlock__items, .activeFriendsBlock__items, .popularAmongFriendsBlock__items{
-      padding-left: 25px;
-   }
-
-   .footer{
-      padding: 35px 25px;
+   .footer, .darkFooter{
 
       p{
          margin-bottom: 10px;
@@ -367,6 +396,7 @@
 
       .footerTop{
          display: block;
+         padding: 0 25px;
 
          &__right{
             display: block;
@@ -386,6 +416,7 @@
             display: block;
             text-align: start;
             margin: 0;
+            padding: 0 25px;
 
             p{
                display: block;
@@ -396,41 +427,45 @@
             }
          }
       }
-   }
 
-   @media(max-width: 900px){
-      .achievementBlock{
-         :global(.slick-track){
-            margin-left: 5% !important;
-         }
+      :global(.slick-arrow){
+         display: none !important;
       }
    }
 
-   @media(max-width: 850px){
-      .activeFriendsBlock__items{
-         :global(.slick-track){
-            margin-left: 7% !important;
-         }
-      }
+   // @media(max-width: 900px){
+   //    .achievementBlock{
+   //       :global(.slick-track){
+   //          margin-left: 5% !important;
+   //       }
+   //    }
+   // }
 
-      .popularAmongFriendsBlock{
-         :global(.slick-track){
-            margin-left: 6% !important;
-         }
-      }
-   }
+   // @media(max-width: 850px){
+   //    .activeFriendsBlock__items{
+   //       :global(.slick-track){
+   //          margin-left: 7% !important;
+   //       }
+   //    }
+
+   //    .popularAmongFriendsBlock{
+   //       :global(.slick-track){
+   //          margin-left: 6% !important;
+   //       }
+   //    }
+   // }
    
    @media(max-width: 750px){
-      .sliderWrapper .mainHeader{
+      .sliderWrapper .mainHeader, .usefulArticlesBlock__items, .continueBlock__items, .achievementBlock__items, .activeFriendsBlock__items, .popularAmongFriendsBlock__items{
          padding: 0 15px;
       }
-
-      .usefulArticlesBlock__items, .continueBlock__items, .achievementBlock__items, .activeFriendsBlock__items, .popularAmongFriendsBlock__items{
-         padding-left: 15px;
-      }
    
-      .footer{
-         padding: 25px 15px;
+      .footer, .darkFooter{
+         padding: 25px 0;
+
+         .footerTop, .footerBottom{
+            padding: 0 15px;
+         }
    }
 
       .sliderWrapper .mainHeader__right{
@@ -438,55 +473,55 @@
    }
 }
 
-@media(max-width: 700px){
-   .usefulArticlesBlock{
-      :global(.slick-track){
-         margin-left: 10% !important;
-      }
-   }
+// @media(max-width: 700px){
+//    .usefulArticlesBlock{
+//       :global(.slick-track){
+//          margin-left: 10% !important;
+//       }
+//    }
    
-   .continueBlock{
-      :global(.slick-track){
-         margin-left: 7% !important;
-      }
-   }
-}
+//    .continueBlock{
+//       :global(.slick-track){
+//          margin-left: 7% !important;
+//       }
+//    }
+// }
 
-@media(max-width: 600px){
-   .activeFriendsBlock__items{
-      :global(.slick-track){
-         margin-left: 12% !important;
-      }
-   }
+// @media(max-width: 600px){
+//    .activeFriendsBlock__items{
+//       :global(.slick-track){
+//          margin-left: 12% !important;
+//       }
+//    }
 
-   .popularAmongFriendsBlock{
-      :global(.slick-track){
-         margin-left: 12% !important;
-      }
-   }
+//    .popularAmongFriendsBlock{
+//       :global(.slick-track){
+//          margin-left: 12% !important;
+//       }
+//    }
 
-   .usefulArticlesBlock{
-      :global(.slick-track){
-         margin-left: 12% !important;
-      }
-   }
-}
+//    .usefulArticlesBlock{
+//       :global(.slick-track){
+//          margin-left: 12% !important;
+//       }
+//    }
+// }
 
-@media(max-width: 550px){
-   .continueBlock{
-      :global(.slick-track){
-         margin-left: 10% !important;
-      }
-   }
-}
+// @media(max-width: 550px){
+//    .continueBlock{
+//       :global(.slick-track){
+//          margin-left: 10% !important;
+//       }
+//    }
+// }
 
-@media(max-width: 450px){
-   .achievementBlock{
-      :global(.slick-track){
-         margin-left: 30% !important;
-      }
-   }
-}
+// @media(max-width: 450px){
+//    .achievementBlock{
+//       :global(.slick-track){
+//          margin-left: 30% !important;
+//       }
+//    }
+// }
 
 @media(max-width: 400px){
    .sliderWrapper .mainHeader__left{

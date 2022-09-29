@@ -4,8 +4,14 @@ import styles from './DetailAchievementPage.module.scss';
 
 import Header from '../../components/header/Header';
 import BackBtn from '../../components/backBtn/BackBtn';
+import AchievementPublication from '../../components/achievementPublication/AchievementPublication';
+import MainMenu from '../../components/mainMenu/MainMenu';
+
+import { AppContext } from '../../App';
 
 function DetailAchievementPage() {
+
+   const { darkTheme, visibleMainMenu } = React.useContext(AppContext);
 
    let [activeBlock, setActiveBlock] = React.useState('instruction')
 
@@ -13,13 +19,84 @@ function DetailAchievementPage() {
       setActiveBlock(block);
    }
 
+   let [unblockAchievement, setUnblockAchievement] = React.useState(false)
+
+   let onUnblockAchievement = () =>{
+      setUnblockAchievement(!unblockAchievement);
+   }
+
+   let [unblockPublicationsBlock, setUnblockPublicationsBlock] = React.useState(false)
+
+   let onUnblockPublicationsBlock = () =>{
+      setUnblockPublicationsBlock(true);
+      handleStepProgress(setStepProgress, styles.activeStep)
+   }
+
+   let [sendArtifact, setSendArtifact] = React.useState(false)
+
+   let onSendArtifact = () =>{
+      setSendArtifact(true);
+      handleStepProgress(setStepProgress, styles.completedStep)
+      handleStepProgress(setStepProgress2, styles.activeStep)
+   }
+
+   let [visibleAttachmentsPopup, setVisibleAttachmentsPopup] = React.useState(false);
+
+   let onVisibleAttachmentsPopup = () =>{
+      setVisibleAttachmentsPopup(!visibleAttachmentsPopup);
+   }
+
+   let [inputText, setInputText] = React.useState('');
+
+   let [publications, setPublications] = React.useState([]);
+
+   const handleInputChange = (event) => {
+      const value = event.currentTarget.value;
+      setInputText(value);
+    };
+  
+    const onAddPublication = () => {
+      if (inputText) {
+         setPublications((prevPublications) => [
+            {
+              inputText,
+            },
+            ...prevPublications,
+          ]);
+         publications.reverse()
+         setInputText('');
+      }
+    };
+  
+    const handleKeyUp = (event) => {
+      if (event.keyCode === 13) {
+        onAddPublication();
+      }
+    };
+
+   //  Добавить setStepProgress3 и setStepProgress4
+    let [stepProgress, setStepProgress] = React.useState(styles.blockedStep);
+    let [stepProgress2, setStepProgress2] = React.useState(styles.blockedStep);
+    let [stepProgress3] = React.useState(styles.blockedStep); 
+    let [stepProgress4] = React.useState(styles.blockedStep);
+
+    const handleStepProgress = (onStepProgress, stepClass) => {
+      onStepProgress(stepClass)
+    }
 
   return (
-
-    <div className={styles.detailAchievementPage}>
-      <div className={styles.detailAchievementPage__top}>
+   
+   <>
+    {
+      visibleMainMenu?
+      <MainMenu/>
+      :
+      <div className={darkTheme? styles.darkDetailAchievementPage : styles.detailAchievementPage}>
+      <div className={darkTheme? styles.darkDetailAchievementPage__top : styles.detailAchievementPage__top}>
          <Header/>
-         <BackBtn text={'Илья Абрамов'} link={'/'}/>
+         <div className={styles.backBtn}>
+            <BackBtn text={'Илья Абрамов'} link={'/'}/>
+         </div>
          <div className={styles.titleBlock}>
             <div className={styles.titleBlock__img}>
                <img src='http://dummyimage.com/230x230&text=+' width={230} height={230} alt='Title logo'/>
@@ -43,15 +120,32 @@ function DetailAchievementPage() {
                <div className={styles.infoGlobalProgress}>
                   <p>10,43% игроков разблокировали это достижение.</p>
                </div>
-               <div className={styles.infoDate}>
-                  <p>Разблокировано 22.03.2021</p>
-               </div>
+               {unblockAchievement?
+                  <div className={styles.infoDate}>
+                     <div className={styles.unblockedBtns}>
+                           <button>Прикрепить артефакт</button>
+                           <button>Написать наставнику</button>
+                        </div>
+                     <p>Разблокировано 22.03.2021</p>
+                  </div>
+                  :
+                  <div className={styles.unblockBlock}>
+                     <button className={styles.unblockBtn} onClick={onUnblockAchievement}>Разблокировать</button>
+                     <p>Заблокировано</p>
+                  </div>
+            }
                <div className={styles.infoProgressBlock}>
                   
                </div>
             </div>
          </div>
       </div>
+      <div className={styles.kekBtns}>
+         <button>Пользователь</button>
+         <button>Наставник</button>
+         <button>Мастер</button>
+      </div>
+      <div className={styles.navMenuAndContentWrapper}>
       <div className={styles.navMenuAndContent}>
          <div className={styles.navMenu}>
             <ul>
@@ -73,7 +167,7 @@ function DetailAchievementPage() {
                   <path d="M7.3157 13.8624C7.38836 13.9351 7.50789 13.9351 7.58054 13.8624L9.96648 11.4765L11.9845 13.4968C12.0571 13.5695 12.1766 13.5695 12.2493 13.4968L17.5532 8.1882C17.6259 8.11554 17.6259 7.99601 17.5532 7.92335L16.6907 7.06085C16.6181 6.9882 16.4985 6.9882 16.4259 7.06085L12.118 11.3734L10.1001 9.35304C10.0274 9.28039 9.90789 9.28039 9.83523 9.35304L6.4532 12.7351C6.38054 12.8077 6.38054 12.9273 6.4532 12.9999L7.3157 13.8624Z" fill="#262626"/>
                   <path d="M21.1875 3.75H12.8438V2.25C12.8438 2.14687 12.7594 2.0625 12.6562 2.0625H11.3438C11.2406 2.0625 11.1562 2.14687 11.1562 2.25V3.75H2.8125C2.39766 3.75 2.0625 4.08516 2.0625 4.5V16.6875C2.0625 17.1023 2.39766 17.4375 2.8125 17.4375H11.1656V18.1875L7.30313 20.7211C7.21641 20.7773 7.19297 20.8922 7.24922 20.9789L7.95938 22.0852V22.0875C8.01562 22.1742 8.13281 22.1977 8.21953 22.1414L12 19.6617L15.7805 22.1414C15.8672 22.1977 15.9844 22.1742 16.0406 22.0875V22.0852L16.7508 20.9789C16.807 20.8922 16.7813 20.7773 16.6969 20.7211L12.8438 18.1945V17.4375H21.1875C21.6023 17.4375 21.9375 17.1023 21.9375 16.6875V4.5C21.9375 4.08516 21.6023 3.75 21.1875 3.75ZM20.25 15.75H3.75V5.4375H20.25V15.75Z" fill="#262626"/>
                </svg>
-                  История достижения
+                  История
                </li>
             </ul>
          </div>
@@ -145,15 +239,109 @@ function DetailAchievementPage() {
          activeBlock === 'historyOfAchievements'?
          <div className={styles.content}>
             <h3>История достижений</h3>
-            <div className={styles.emptyHistory}>
-               <p>Здесь будет отображаться ваша история.</p>
-            </div>
+            {
+               unblockAchievement?
+               <div className={styles.unblockedHistory}>
+                  <div className={styles.steps}>
+                     <div className={styles.steps__step}>
+                        <span className={stepProgress}>1</span>
+                        <div className={styles.stepInfo}>
+                           <h3>
+                              Шаг 1
+                              <div className={stepProgress === styles.completedStep? styles.activeStepSeparator : styles.stepSeparator}></div>
+                           </h3>
+                           <p>Добавление<br/>артефакта</p>
+                        </div>
+                     </div>
+                     <div className={styles.steps__step}>
+                        <span  className={stepProgress2}>2</span>
+                        <div className={styles.stepInfo}>
+                           <h3>
+                              Шаг 2
+                              <div className={styles.stepSeparator}></div>
+                           </h3>
+                           <p>Оценка<br/>наствника</p>
+                        </div>
+                     </div>
+                     <div className={styles.steps__step}>
+                        <span className={stepProgress3}>3</span>
+                        <div className={styles.stepInfo}>
+                           <h3>
+                              Шаг 3
+                              <div className={styles.stepSeparator}></div>
+                           </h3>
+                           <p>Оценка<br/>мастера</p>
+                        </div>
+                     </div>
+                     <div className={styles.steps__step}>
+                        <span className={stepProgress4}>4</span>
+                        <div className={styles.stepInfo}>
+                           <p className={styles.lastStep}>Достижение<br/>получено</p>
+                        </div>
+                     </div>
+                  </div>
+                  <div className={styles.unblockedHistory__btn}>
+                     {
+                        unblockPublicationsBlock?
+                        !sendArtifact?
+                        <button onClick={onSendArtifact}>Прикрепить артефакт</button>
+                        :
+                        <button className={styles.sendedBtn}>Артефакт отправлен</button>
+                        :
+                        <button onClick={onUnblockPublicationsBlock}>Разблокировать</button>
+                     }
+                  </div>
+                  {
+                     !unblockPublicationsBlock?
+                     ''
+                     :
+                     <div className={styles.unblockedPublicationsBlock}>
+                        <div className={styles.unblockedPublicationsBlock__inputAndBtns}>
+                           <input type='text' value={inputText} onChange={handleInputChange} onKeyUp={handleKeyUp} placeholder='Хотите поделиться мыслями?'/>
+                           <div className={styles.btns}>
+                              <button className={styles.attachments} onClick={onVisibleAttachmentsPopup}>
+                                 Вложение
+                                 {
+                                 visibleAttachmentsPopup?
+                                 <div className={styles.attachments__popup}>
+                                    <ul>
+                                       <li>Фото</li>
+                                       <li>Видео</li>
+                                       <li>Опрос</li>
+                                       <li>Статья</li>
+                                    </ul>
+                                 </div>
+                                 :
+                                 ''
+                                 }
+                              </button>
+                              <button className={styles.publication} onClick={onAddPublication}>Публикация</button>
+                           </div>
+                      </div>
+                        <div className={styles.unblockedPublicationsBlock__publications}>
+                           {
+                           publications?.map((item, index) => <AchievementPublication userAvatar={'./img/headerAccAvatar.png'} userName={'Евгений Говорун'} dateAndTime={'29 ноя в 16:48'} publicationText={item.inputText} key={item.index}/>)
+                           }
+                           <AchievementPublication userAvatar={'./img/headerAccAvatar.png'} userName={'Евгений Говорун'} dateAndTime={'29 ноя в 16:48'} publicationText={'Этот алгоритм поможет тебе разблокировать достижение.1) Изучи полезную информацию во вкладке «Инструкция» и узнай больше о том, какое задание предстоит выполнить, чтобы создать артефакт, необходимый для достижения. 2) Загляни во вкладку «Артефакт» и уточни то, в каком формате тебе потребуется сохранить артефакт, чтобы он подошел к этому достижению.3) Отправься в реальный мир, чтобы выполнить задание и создать нужный артефакт.4) Когда все будет готово, возвращайся сюда, чтобы загрузить артефакт к достижению. Для этого нажми на кнопку «Прикрепить» во вкладке «История достижения».5) Дождись, пока наставник и мастер оценят результаты твоей работы. Если артефакт подойдет, то достижение разблокируется. Если нет, то наставник и мастер скажут, чего в нем не хватает и как его улучшить.Если что-то окажется не понятным, то обратись к наставнику прямо в этом чате. Для этого нажми кнопку «Спросить».'}/>
+                           <AchievementPublication userAvatar={'./img/headerAccAvatar.png'} userName={'Евгений Говорун'} dateAndTime={'29 ноя в 16:48'} publicationText={'Привет! Меня зовут Евгений. В этот чат я буду присылать сообщения об изменении текущего статуса конкретно этого достижения.Обрати внимание, что такой чат есть у каждого достижения, чтобы тебе, наставнику и мастеру было удобно и никто не запутался в информации.Ты всегда можешь попасть в такой чат через вкладку «История достижения» на странице нужного достижения.Здесь ты можешь пообщаться с наставником или мастером, например, попросить совет о том, как лучше выполнять достижение, или задать уточняющий вопрос. Если у тебя появятся вопросы, на которые наставник или мастер не смогли ответить, то обратись в наш «Центр поддержки».Удачных достижений!'}/>
+                        </div>
+                     </div>
+                  }
+               </div>
+               :
+               <div className={styles.emptyHistory}>
+                  <p>Здесь будет отображаться ваша история.</p>
+               </div>
+            }
          </div>
          :
          ''
          }
       </div>
+      </div>
     </div>
+    }
+   </>
 
   )
 }

@@ -2,13 +2,17 @@ import React from 'react';
 
 import styles from './ProjectItem.module.scss';
 
+import { AppContext } from '../../App';
+
 function ProjectItem(props) {
 
    const {projectImg, projectTeam, projectCity, projectTitle, projectText, projectOrganizers} = props;
 
+   const { darkTheme } = React.useContext(AppContext);
+
   return (
-    <div className={styles.projectItem}>
-      <div className={styles.projectItem__img}>
+    <div className={darkTheme? styles.darkProjectItem : styles.projectItem}>
+      <div className={darkTheme? styles.darkProjectItem__img : styles.projectItem__img}>
          <img src={projectImg} width={198} height={198} alt='Project img'/>
       </div>
       <div className={styles.projectInfo}>
@@ -26,8 +30,8 @@ function ProjectItem(props) {
             <p>Организаторы:</p>
             <div className={styles.organizersItems}>
                {
-                  projectOrganizers.map((item) => 
-                  <div className={styles.organizersItem}>
+                  projectOrganizers.map((item, index) => 
+                  <div className={styles.organizersItem} key={index}>
                      <div className={styles.organizersAvatar}>
                         <img src={item.organizerAvatar} width={48} height={48} alt='Avatar'/>
                      </div>
