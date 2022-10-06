@@ -21,6 +21,10 @@
       justify-content: space-between;
       align-items: center;
 
+      img{
+         user-select: none;
+      }
+
       .userInfo{
          display: flex;
          align-items: center;
@@ -39,6 +43,7 @@
                font-weight: 400;
                line-height: 24px;
                color: #8C8C8C;
+               user-select: none;
             }
          }
       }

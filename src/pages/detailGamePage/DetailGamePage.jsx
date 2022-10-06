@@ -9,7 +9,7 @@ import AchievementItem from '../../components/achievementItem/AchievementItem';
 import ActiveFriendItem from '../../components/activeFriendItem/ActiveFriendItem';
 import ProjectItem from '../../components/projectItem/ProjectItem';
 import StatisticsCard from '../../components/statisticsCard/StatisticsCard';
-import OverlayMenu from '../../components/overlayMenu/OverlayMenu';
+import OverlayMenu from '../../components/comparisonOverlayMenu/ComparisonOverlayMenu';
 import MainMenu from '../../components/mainMenu/MainMenu';
 
 import { AppContext } from '../../App';
@@ -335,6 +335,19 @@ function DetailGamePage() {
       setVisibleAttachmentsPopup(!visibleAttachmentsPopup);
    }
 
+   let popupAttachmentsRef = React.useRef();
+
+   React.useEffect(() => {
+     document.body.addEventListener('click', handleOutsideClick)
+  }, []);
+  
+   let handleOutsideClick = (e) => {
+     const path = e.path || (e.composedPath && e.composedPath()) || e.composedPath(e.target);
+     if (!path.includes(popupAttachmentsRef.current)) { 
+        setVisibleAttachmentsPopup(false);
+     }
+  }
+
    let [activeOverlay, setActiveOverlay] = React.useState(false);
 
    let onActiveOverlay = (bool) =>{
@@ -387,7 +400,7 @@ function DetailGamePage() {
       <div className={darkTheme? styles.darkDetailCard__top : styles.detailCard__top}>
          <Header/>
          <div className={styles.backBtn}>
-            <BackBtn text={'Илья Абрамов'} link={'/'}/>
+            <BackBtn text={'Назад'} link={'/'}/>
          </div>
          <div className={styles.titleBlock}>
             <div className={styles.titleBlock__img}>
@@ -462,7 +475,7 @@ function DetailGamePage() {
             <div className={styles.content__inputAndBtns}>
                <input type='text' value={inputText} onChange={handleInputChange} onKeyUp={handleKeyUp} placeholder='Хотите поделиться мыслями?'/>
                <div className={styles.content__btns}>
-                  <button className={styles.attachments} onClick={onVisibleAttachmentsPopup}>
+                  <button className={styles.attachments} onClick={onVisibleAttachmentsPopup} ref={popupAttachmentsRef}>
                      Вложение
                      {
                         visibleAttachmentsPopup?
@@ -483,10 +496,10 @@ function DetailGamePage() {
             </div>
             <div className={styles.publicationsBlock}>
                {
-                  publications.map((item) => <DetailPublication userAvatar={"./img/headerAccAvatar.png"} userName={"Илья Абрамов"} dateAndTime={"29 ноя в 16:48"} publicationText={item.inputText} likesCount={0} commentsCount={0} key={item.inputText}/>)
+                  publications.map((item, index) => <DetailPublication userAvatar={"./img/headerAccAvatar.png"} userName={"Илья Абрамов"} dateAndTime={"29 ноя в 16:48"} publicationText={item.inputText} likesCount={0} commentsCount={0} key={`${index}__${item.dateAndTime}`}/>)
                }
                {
-                  publicationsData.map((item) => <DetailPublication userAvatar={item.userAvatar} userName={item.userName} dateAndTime={item.dateAndTime} publicationText={item.publicationText} likesCount={item.likesCount} commentsCount={item.commentsCount} comments={item.comments} key={item.inputText}/>)
+                  publicationsData.map((item, index) => <DetailPublication userAvatar={item.userAvatar} userName={item.userName} dateAndTime={item.dateAndTime} publicationText={item.publicationText} likesCount={item.likesCount} commentsCount={item.commentsCount} comments={item.comments} key={`${index}__${item.dateAndTime}`}/>)
                }
             </div>
          </div>
@@ -527,7 +540,7 @@ function DetailGamePage() {
             </div>
             <div className={styles.achievementsItems}>
                {
-                  allAchievementItemsData.map((item) => <div className={styles.achievementsItem} key={item.title}><AchievementItem title={item.title} bgImage={item.bgImage} gold={item.gold} blocked={item.blocked}/></div>)
+                  allAchievementItemsData.map((item, index) => <div className={styles.achievementsItem} key={`${item.title}__${index}`}><AchievementItem title={item.title} bgImage={item.bgImage} gold={item.gold} blocked={item.blocked}/></div>)
                }
             </div>
           </div>
@@ -598,7 +611,7 @@ function DetailGamePage() {
                <div className={styles.statisticsSelectedItem}>
                   <h3>Игры</h3>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                     <path d="M18.3759 5.94801L18.3751 5.94916L11.9998 14.7368L5.62451 5.94916L5.62452 5.94916L5.62368 5.94801C5.48911 5.7641 5.2728 5.65 5.03887 5.65H3.28106C2.8429 5.65 2.58966 6.14648 2.84427 6.5016L2.84427 6.5016L2.8454 6.50316L11.1095 17.8961L11.1097 17.8965C11.5489 18.5003 12.4502 18.5023 12.8882 17.8957C12.8882 17.8956 12.8883 17.8955 12.8883 17.8954L21.1505 6.50509C21.1507 6.50477 21.1509 6.50444 21.1512 6.50411C21.4123 6.14768 21.156 5.65 20.7186 5.65H18.9607C18.7268 5.65 18.5105 5.7641 18.3759 5.94801Z" fill="#262626" stroke="#262626" stroke-width="0.7"/>
+                     <path d="M18.3759 5.94801L18.3751 5.94916L11.9998 14.7368L5.62451 5.94916L5.62452 5.94916L5.62368 5.94801C5.48911 5.7641 5.2728 5.65 5.03887 5.65H3.28106C2.8429 5.65 2.58966 6.14648 2.84427 6.5016L2.84427 6.5016L2.8454 6.50316L11.1095 17.8961L11.1097 17.8965C11.5489 18.5003 12.4502 18.5023 12.8882 17.8957C12.8882 17.8956 12.8883 17.8955 12.8883 17.8954L21.1505 6.50509C21.1507 6.50477 21.1509 6.50444 21.1512 6.50411C21.4123 6.14768 21.156 5.65 20.7186 5.65H18.9607C18.7268 5.65 18.5105 5.7641 18.3759 5.94801Z" fill="#262626" stroke="#262626" strokeWidth="0.7"/>
                   </svg>
                </div>
             </div>
@@ -649,7 +662,7 @@ function DetailGamePage() {
             <div className={styles.membersTop}>
                <h3>Все участники</h3>
                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M18.3759 5.94801L18.3751 5.94916L11.9998 14.7368L5.62451 5.94916L5.62452 5.94916L5.62368 5.94801C5.48911 5.7641 5.2728 5.65 5.03887 5.65H3.28106C2.8429 5.65 2.58966 6.14648 2.84427 6.5016L2.84427 6.5016L2.8454 6.50316L11.1095 17.8961L11.1097 17.8965C11.5489 18.5003 12.4502 18.5023 12.8882 17.8957C12.8882 17.8956 12.8883 17.8955 12.8883 17.8954L21.1505 6.50509C21.1507 6.50477 21.1509 6.50444 21.1512 6.50411C21.4123 6.14768 21.156 5.65 20.7186 5.65H18.9607C18.7268 5.65 18.5105 5.7641 18.3759 5.94801Z" fill="#262626" stroke="#262626" stroke-width="0.7"/>
+                  <path d="M18.3759 5.94801L18.3751 5.94916L11.9998 14.7368L5.62451 5.94916L5.62452 5.94916L5.62368 5.94801C5.48911 5.7641 5.2728 5.65 5.03887 5.65H3.28106C2.8429 5.65 2.58966 6.14648 2.84427 6.5016L2.84427 6.5016L2.8454 6.50316L11.1095 17.8961L11.1097 17.8965C11.5489 18.5003 12.4502 18.5023 12.8882 17.8957C12.8882 17.8956 12.8883 17.8955 12.8883 17.8954L21.1505 6.50509C21.1507 6.50477 21.1509 6.50444 21.1512 6.50411C21.4123 6.14768 21.156 5.65 20.7186 5.65H18.9607C18.7268 5.65 18.5105 5.7641 18.3759 5.94801Z" fill="#262626" stroke="#262626" strokeWidth="0.7"/>
                </svg>
             </div>
             <div className={styles.membersItems}>

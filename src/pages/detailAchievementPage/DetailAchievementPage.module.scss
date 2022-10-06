@@ -23,12 +23,24 @@
             }
 
             .unblockedBtns{
-               button{
-                  &:nth-child(2){
+               .messageBtn{
                      color: #262626;
                      background-color: #fff;
-                     border: 1px solid #D9D9D9;
-                  }
+                     border: 1px solid #D9D9D9;  
+               }
+
+               #sendedBtn{
+                  background-color: #F5F5F5;
+                  border: 1px solid #D9D9D9;
+                  color: #BFBFBF;
+                  cursor: default;
+               }
+
+               #completedSendAndEstimateBtn{
+                  background-color: #F5F5F5;
+                  border: 1px solid #D9D9D9;
+                  color: #BFBFBF;
+                  cursor: default;
                }
             }
          }
@@ -70,12 +82,6 @@
 
          .unblockedHistory{
             .steps{
-               // span{
-               //    background-color: #fff;
-               //    border: 1px solid #D9D9D9;
-               //    color: #8C8C8C;
-               // }
-
                &__step{
                   .blockedStep{
                      background-color: #fff;
@@ -93,6 +99,14 @@
                      background-color: #fff;
                      border: 1px solid #1890FF;
                   }
+
+                  .stepInfo{
+                     h3{
+                        .stepSeparator{
+                           background-color: #fff;
+                        }
+                     }
+                  }
                }
             }
 
@@ -101,6 +115,7 @@
                   background-color: #F5F5F5;
                   border: 1px solid #D9D9D9;
                   color: #BFBFBF;
+                  cursor: default;
                }
             }
 
@@ -161,13 +176,11 @@
             }
 
             .unblockedBtns{
-               button{
-                  &:nth-child(2){
+               .messageBtn{
                      color: #fff;
                      background-color: #191919;
                      border: 1px solid #fff;
                   }
-               }
             }
          }
       }
@@ -235,6 +248,14 @@
                      background-color: #191919;
                      border: 1px solid #1890FF;
                   }
+
+                  .stepInfo{
+                     h3{
+                        .stepSeparator{
+                           background-color: #191919;
+                        }
+                     }
+                  }
                }
             }
 
@@ -242,13 +263,14 @@
                .sendedBtn{
                   background-color: #191919;
                   color: #595959;
+                  cursor: default;
                }
             }
 
             .unblockedPublicationsBlock{
                &__inputAndBtns{
                   input{
-                     color: #262626;
+                     color: #fff;
                      background-color: #191919;
                   }
 
@@ -275,8 +297,6 @@
 }
 
 .detailAchievementPage, .darkDetailAchievementPage{
-   user-select: none;
-
 &__top{
    padding: 0 83px;
    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
@@ -296,6 +316,7 @@
       &__img{
          border-radius: 50%;
          width: 25%;
+         user-select: none;
 
          img{
             border-radius: 50%;
@@ -309,6 +330,7 @@
          .infoTop{
             display: flex;
             align-items: center;
+            user-select: none;
 
             p{
                font-size: 16px;
@@ -347,6 +369,9 @@
          }
 
          .unblockBlock, .unblockedBtns{
+
+            user-select: none;
+
             button{
                height: 40px;
                padding: 0 15px;
@@ -356,6 +381,7 @@
                font-weight: 400;
                line-height: 24px;
                cursor: pointer;
+               transition: transform 0.1s ease-in-out;
             }
 
             .unblockBtn{
@@ -376,12 +402,10 @@
             gap: 15px;
             margin: 25px 0;
 
-            button{
-               &:first-child{
+            .sendAndEstimateBtn{
                   color: #fff;
                   background-color: #1890FF;
                }
-            }
          }
 
          .infoText, .infoGlobalProgress, .infoDate, .unblockBlock{
@@ -396,9 +420,6 @@
    }
 }
 
-.kekBtns{
-   display: none;
-}
 
 .navMenuAndContentWrapper{
    padding: 0 83px;
@@ -411,6 +432,7 @@
 
    .navMenu{
       width: 25%;
+      user-select: none;
 
       ul{
          list-style: none;
@@ -536,6 +558,7 @@
          .steps{
             display: flex;
             gap: 10px;
+            user-select: none;
 
          &__step{
             display: flex;
@@ -577,7 +600,6 @@
                   .stepSeparator{
                      height: 1px;
                      flex: 1;
-                     background-color: #fff;
                      margin-left: 16px;
                   }
                }
@@ -599,6 +621,7 @@
 
          &__btn{
             margin-top: 25px;
+            user-select: none;
             
             button{
                height: 40px;
@@ -611,6 +634,7 @@
                cursor: pointer;
                color: #fff;
                background-color: #1890FF;
+               transition: transform 0.1s ease-in-out;
             }
          }
 
@@ -621,6 +645,7 @@
                display: flex;
                justify-content: space-between;
                margin-top: 40px;
+               user-select: none;
                
                input{
                   flex: 1;
@@ -705,6 +730,175 @@
 }
 }
 
+.detailAchievementPage, .darkDetailAchievementPage{
+   &__top{
+      button:active{
+         transform: scale(0.9);
+      }
+   }
+
+   .content button:active{
+      transform: scale(0.9);
+   }
+
+   .content .sendedBtn:active, #sendedBtn:active, #completedSendAndEstimateBtn:active{
+      transform: unset;
+   }
+}
+
+@media(hover: hover) and (pointer: fine){
+   .detailAchievementPage, .darkDetailAchievementPage{
+      &__top{
+         .titleBlock{
+            &__info{
+               .unblockBlock{
+                  button:hover{
+                     background-color: #00BFFF;
+                  }
+               }
+
+               .unblockedBtns{
+                  button{
+                     &:first-child:hover{
+                        background-color: #00BFFF;
+                     }
+                  }
+               }
+            }
+         }
+      }
+
+      .navMenuAndContentWrapper{
+         .navMenuAndContent{
+            .navMenu{
+               ul li:hover{
+                  color: #1890FF;
+      
+                  svg path{
+                     fill: #1890FF;
+                  }
+               }
+            }
+
+            .content{
+               .unblockedHistory{
+                  &__btn{
+                     button:hover{
+                        background-color: #00BFFF;
+                     }
+
+                     .sendedBtn:hover{
+                        background-color: #191919;
+                        color: #595959;
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   .detailAchievementPage{
+      &__top{
+         .titleBlock{
+            &__info{
+               .unblockedBtns{
+                  button{
+                     &:nth-child(2):hover{
+                        color: #fff;
+                        background-color: #262626;
+                     }
+                  }
+               }
+            }
+         }
+      }
+
+      .navMenuAndContentWrapper{
+         .navMenuAndContent{
+            .content{
+               .unblockedHistory{
+                  &__btn{
+                     .sendedBtn:hover{
+                        background-color: #F5F5F5;
+                        border: 1px solid #D9D9D9;
+                        color: #BFBFBF;
+                     }
+                  }
+
+                  .unblockedPublicationsBlock{
+                     &__inputAndBtns{
+                        .publication:hover{
+                           background-color: #00BFFF;
+                        }
+            
+                        .attachments:hover{
+                           background-color: #8C8C8C;
+                        }
+            
+                        .attachments{
+                           &__popup ul li:hover{
+                              color: #8C8C8C;
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   .darkDetailAchievementPage{
+      &__top{
+         .titleBlock{
+            &__info{
+               .unblockedBtns{
+                  button{
+                     &:nth-child(2):hover{
+                        color: #191919;
+                        background-color: #fff;
+                     }
+                  }
+               }
+            }
+         }
+      }
+
+      .navMenuAndContentWrapper{
+         .navMenuAndContent{
+            .content{
+               .unblockedHistory{
+                  &__btn{
+                     .sendedBtn:hover{
+                        background-color: #191919;
+                        color: #595959;
+                     }
+                  }
+
+                  .unblockedPublicationsBlock{
+                     &__inputAndBtns{
+                        .publication:hover{
+                           background-color: #00BFFF;
+                        }
+            
+                        .attachments:hover{
+                           background-color: #8C8C8C;
+                        }
+            
+                        .attachments{
+                           &__popup ul li:hover{
+                              color: #8C8C8C;
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}
 @media(max-width: 1350px){
    .detailAchievementPage, .darkDetailAchievementPage{
       &__top{

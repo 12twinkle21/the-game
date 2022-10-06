@@ -17,7 +17,7 @@ import { AppContext } from '../../App';
 
 function Main() {
 
-  const { darkTheme, visibleMainMenu, onVisibleMainMenu } = React.useContext(AppContext);
+  const { darkTheme, visibleMainMenu, onVisibleMainMenu, isOnline } = React.useContext(AppContext);
   
   const topSliderSettings = {
     dots: true,
@@ -151,14 +151,19 @@ function Main() {
       {
         breakpoint: 1300,
         settings:{
-          slidesToShow: 4.1,
-          slidesToScroll: 1,
-          swipe: true,
-          swipeToSlide: true
+          slidesToShow: 4,
+          slidesToScroll: 4,
         }
       },
       {
-        breakpoint: 1050,
+        breakpoint: 1100,
+        settings:{
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        }
+      },
+      {
+        breakpoint: 1023,
         settings:{
           slidesToShow: 3.1,
           slidesToScroll: 1,
@@ -197,6 +202,13 @@ function Main() {
     responsive: [
       {
         breakpoint: 1100,
+        settings:{
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        }
+      },
+      {
+        breakpoint: 1023,
         settings:{
           slidesToShow: 3.1,
           slidesToScroll: 1,
@@ -453,6 +465,16 @@ function Main() {
       text: "Описание статьи"
     }
   ];
+
+  const [scrollPosition, setScrollPosition] = React.useState(0);
+
+  const handleScroll = () =>{
+    setScrollPosition(window.scrollY);
+  }
+
+  React.useEffect(()=>{
+    window.addEventListener('scroll', handleScroll)
+  },[])
  
   const [visibleAccountPopup, setVisibleAccountPopup] = React.useState(false);
 
@@ -469,8 +491,9 @@ function Main() {
       :
       <>
     <div className={styles.sliderWrapper}>
-      <div className={styles.mainHeader}>
-        <div className={styles.mainHeader__left}>
+      <div className={scrollPosition >= 70? darkTheme? styles.darkScrollHeaderWrapper : styles.scrollHeaderWrapper : styles.headerWrapper}>
+      <div className={scrollPosition >= 70? darkTheme? styles.darkMainHeaderScroll : styles.mainHeaderScroll : styles.mainHeader}>
+        <div className={scrollPosition >= 70? darkTheme? styles.darkMainHeaderScroll__left : styles.mainHeaderScroll__left : styles.mainHeader__left}>
           <svg onClick={onVisibleMainMenu} width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="48" height="48" rx="4" fill="#329CFF"/>
             <path d="M13.333 15.083C13.333 15.5471 13.5174 15.9923 13.8456 16.3204C14.1738 16.6486 14.6189 16.833 15.083 16.833C15.5471 16.833 15.9923 16.6486 16.3204 16.3204C16.6486 15.9923 16.833 15.5471 16.833 15.083C16.833 14.6189 16.6486 14.1738 16.3204 13.8456C15.9923 13.5174 15.5471 13.333 15.083 13.333C14.6189 13.333 14.1738 13.5174 13.8456 13.8456C13.5174 14.1738 13.333 14.6189 13.333 15.083ZM13.333 23.833C13.333 24.2971 13.5174 24.7423 13.8456 25.0704C14.1738 25.3986 14.6189 25.583 15.083 25.583C15.5471 25.583 15.9923 25.3986 16.3204 25.0704C16.6486 24.7423 16.833 24.2971 16.833 23.833C16.833 23.3689 16.6486 22.9238 16.3204 22.5956C15.9923 22.2674 15.5471 22.083 15.083 22.083C14.6189 22.083 14.1738 22.2674 13.8456 22.5956C13.5174 22.9238 13.333 23.3689 13.333 23.833ZM13.333 32.583C13.333 33.0471 13.5174 33.4923 13.8456 33.8204C14.1738 34.1486 14.6189 34.333 15.083 34.333C15.5471 34.333 15.9923 34.1486 16.3204 33.8204C16.6486 33.4923 16.833 33.0471 16.833 32.583C16.833 32.1189 16.6486 31.6738 16.3204 31.3456C15.9923 31.0174 15.5471 30.833 15.083 30.833C14.6189 30.833 14.1738 31.0174 13.8456 31.3456C13.5174 31.6738 13.333 32.1189 13.333 32.583Z" fill="white"/>
@@ -478,10 +501,15 @@ function Main() {
             <path d="M32 15.083C32 15.5471 32.1844 15.9923 32.5126 16.3204C32.8408 16.6486 33.2859 16.833 33.75 16.833C34.2141 16.833 34.6592 16.6486 34.9874 16.3204C35.3156 15.9923 35.5 15.5471 35.5 15.083C35.5 14.6189 35.3156 14.1738 34.9874 13.8456C34.6592 13.5174 34.2141 13.333 33.75 13.333C33.2859 13.333 32.8408 13.5174 32.5126 13.8456C32.1844 14.1738 32 14.6189 32 15.083ZM32 23.833C32 24.2971 32.1844 24.7423 32.5126 25.0704C32.8408 25.3986 33.2859 25.583 33.75 25.583C34.2141 25.583 34.6592 25.3986 34.9874 25.0704C35.3156 24.7423 35.5 24.2971 35.5 23.833C35.5 23.3689 35.3156 22.9238 34.9874 22.5956C34.6592 22.2674 34.2141 22.083 33.75 22.083C33.2859 22.083 32.8408 22.2674 32.5126 22.5956C32.1844 22.9238 32 23.3689 32 23.833ZM32 32.583C32 33.0471 32.1844 33.4923 32.5126 33.8204C32.8408 34.1486 33.2859 34.333 33.75 34.333C34.2141 34.333 34.6592 34.1486 34.9874 33.8204C35.3156 33.4923 35.5 33.0471 35.5 32.583C35.5 32.1189 35.3156 31.6738 34.9874 31.3456C34.6592 31.0174 34.2141 30.833 33.75 30.833C33.2859 30.833 32.8408 31.0174 32.5126 31.3456C32.1844 31.6738 32 32.1189 32 32.583Z" fill="white"/>
           </svg>
           <Link to='/' className='clearLink'>
-            <img src='./img/mainHeaderLogo.png' width={256} height={30} alt='Logo'/>
+            {
+              scrollPosition >= 70 && darkTheme?
+              <img src='./img/mainHeaderLogo.svg' width={256} height={30} alt='Logo'/>
+              :
+              <img src='./img/headerLogo.svg' width={256} height={30} alt='Logo'/>
+            }
           </Link>
         </div>
-        <div className={styles.mainHeader__right}>
+        <div className={scrollPosition >= 70? darkTheme? styles.darkMainHeaderScroll__right : styles.mainHeaderScroll__right : styles.mainHeader__right}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M20.3438 3.75H18.1875V2.8125C18.1875 2.70937 18.1031 2.625 18 2.625H6C5.89687 2.625 5.8125 2.70937 5.8125 2.8125V3.75H3.65625C3.38275 3.75 3.12044 3.85865 2.92705 4.05205C2.73365 4.24544 2.625 4.50775 2.625 4.78125V8.25C2.625 10.1648 4.03125 11.7563 5.86406 12.0469C6.22734 14.7703 8.41406 16.9148 11.1562 17.2148V19.6805H6.5625C6.14766 19.6805 5.8125 20.0156 5.8125 20.4305V21.1875C5.8125 21.2906 5.89687 21.375 6 21.375H18C18.1031 21.375 18.1875 21.2906 18.1875 21.1875V20.4305C18.1875 20.0156 17.8523 19.6805 17.4375 19.6805H12.8438V17.2148C15.5859 16.9148 17.7727 14.7703 18.1359 12.0469C19.9688 11.7563 21.375 10.1648 21.375 8.25V4.78125C21.375 4.50775 21.2663 4.24544 21.073 4.05205C20.8796 3.85865 20.6173 3.75 20.3438 3.75ZM4.3125 8.25V5.4375H5.8125V10.3031C5.37714 10.1641 4.99723 9.89025 4.72762 9.52122C4.45801 9.15219 4.31264 8.70703 4.3125 8.25ZM16.5 11.25C16.5 12.4008 16.0523 13.4859 15.2367 14.2992C14.4211 15.1148 13.3383 15.5625 12.1875 15.5625H11.8125C10.6617 15.5625 9.57656 15.1148 8.76328 14.2992C7.94766 13.4836 7.5 12.4008 7.5 11.25V4.3125H16.5V11.25ZM19.6875 8.25C19.6875 9.21094 19.057 10.0266 18.1875 10.3031V5.4375H19.6875V8.25Z" fill="white"/>
           </svg>
@@ -497,6 +525,17 @@ function Main() {
             <path d="M19.125 18H18.5625V10.0312C18.5625 6.72422 16.118 3.99141 12.9375 3.53672V2.625C12.9375 2.10703 12.518 1.6875 12 1.6875C11.482 1.6875 11.0625 2.10703 11.0625 2.625V3.53672C7.88203 3.99141 5.4375 6.72422 5.4375 10.0312V18H4.875C4.46016 18 4.125 18.3352 4.125 18.75V19.5C4.125 19.6031 4.20937 19.6875 4.3125 19.6875H9.375C9.375 21.1359 10.5516 22.3125 12 22.3125C13.4484 22.3125 14.625 21.1359 14.625 19.6875H19.6875C19.7906 19.6875 19.875 19.6031 19.875 19.5V18.75C19.875 18.3352 19.5398 18 19.125 18ZM12 20.8125C11.3789 20.8125 10.875 20.3086 10.875 19.6875H13.125C13.125 20.3086 12.6211 20.8125 12 20.8125ZM7.125 18V10.0312C7.125 8.72813 7.63125 7.50469 8.55234 6.58359C9.47344 5.6625 10.6969 5.15625 12 5.15625C13.3031 5.15625 14.5266 5.6625 15.4477 6.58359C16.3687 7.50469 16.875 8.72813 16.875 10.0312V18H7.125Z" fill="white"/>
           </svg>
           <div className={styles.headerAccAvatar} onClick={onVisibleAccountPopop}>
+            <img src='./img/headerAccAvatar.png' width={48} height={48} alt='Avatar'/>
+            {
+            isOnline?
+               <div className={styles.headerAccAvatar__online}>
+                  <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <circle cx="4" cy="4" r="3.5" fill="#52C41A" stroke="#FAFAFA"/>
+                  </svg>
+               </div> 
+            :
+            ''
+         }
             {
               visibleAccountPopup? 
               <div className={styles.headerAccAvatar__popup}>
@@ -512,6 +551,7 @@ function Main() {
             }
           </div>
         </div>
+      </div>
       </div>
     <Slider {...topSliderSettings}>
     {

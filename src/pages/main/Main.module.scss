@@ -2,94 +2,123 @@
    margin: 0 auto;
    position: relative;
 
-   .mainHeader{
+  
+   .darkScrollHeaderWrapper{
+      background-color: #191919;
+   }
+
+   .scrollHeaderWrapper{
+      background-color: #fff;
+
+      .mainHeaderScroll{
+         &__right{
+            svg path{
+               fill: #096DD9;
+            }
+         }
+      }
+   }
+
+   .scrollHeaderWrapper, .darkScrollHeaderWrapper{
+      position: fixed;
+      padding: 10px 0;
+   }
+
+   .headerWrapper{
       position: absolute;
+      margin-top: 15px;
+   }
+
+   .headerWrapper, .scrollHeaderWrapper, .darkScrollHeaderWrapper{  
       top:0;
       left: 0;
       right: 0;
-      z-index: 1;
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 0 83px;
-      margin-top: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      z-index: 100;
 
-      &__left{
+      .mainHeader, .mainHeaderScroll, .darkMainHeaderScroll{
+         max-width: 1440px;
+         margin: 0 auto;
+         padding: 0 83px;
          display: flex;
          align-items: center;
-
-         img{
-            margin-left: 25px;
-            user-select: none;
-            margin-top: 5px;
-         }
-         
-         svg{
-            cursor: pointer;
-            transition: transform 0.1s ease-in-out;
-            min-width: 48px;
-         }
-      }
-
-      &__right{
-         display: flex;
-         align-items: center;
-         gap: 40px;
-
-         svg{
-            cursor: pointer;
-            transition: transform 0.1s ease-in-out;
-         }
-
-         .headerAccAvatar{
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background-image: url(../../../public/img/headerAccAvatar.png);
-            background-size: 48px 48px;
-            background-position: center;
-            cursor: pointer;
-            position: relative;
-
-            &__popup{
-               position: absolute;
-               right: 0;
-               top: 55px;
-               background-color: #fff;
-               padding: 10px 0;
-               border-radius: 16px;
+         justify-content: space-between;
+   
+         &__left{
+            display: flex;
+            align-items: center;
+   
+            img{
                user-select: none;
-               transition: max-height 0.5s ease-in-out;
-               animation-duration: 0.5s;
-               animation-name: header-acc-popup;
-               box-shadow: 0px 9px 28px 8px rgba(0, 0, 0, 0.05), 0px 6px 16px rgba(0, 0, 0, 0.08), 0px 3px 6px -4px rgba(0, 0, 0, 0.12);
-
-               p{
-                  white-space: nowrap;
-                  color: #262626;
-                  font-size: 14px;
-                  font-weight: 400;
-                  line-height: 22px;
-                  margin-bottom: 10px;
-                  cursor: pointer;
-                  padding: 0 20px;
-                  transition: transform 0.1s ease-in-out;
-
-                  &:last-child{
-                     margin-bottom: 0;
-                  }
+               margin-top: 5px;
+            }
+            
+            svg{
+               cursor: pointer;
+               transition: transform 0.1s ease-in-out;
+               min-width: 48px;
+            }
+         }
+   
+         &__right{
+            display: flex;
+            align-items: center;
+            gap: 40px;
+   
+            svg{
+               cursor: pointer;
+               transition: transform 0.1s ease-in-out;
+            }
+   
+            .headerAccAvatar{
+               cursor: pointer;
+               position: relative;
+               user-select: none;
+   
+               &__online{
+                  position: absolute;
+                  top: -8px;
+                  right: -5px;
                }
-
-               .popupExit{
-                  padding-top: 10px;
-                  border-top: 1px solid #C4C4C4;
+   
+               &__popup{
+                  position: absolute;
+                  right: 0;
+                  top: 55px;
+                  background-color: #fff;
+                  padding: 10px 0;
+                  border-radius: 16px;
+                  user-select: none;
+                  transition: max-height 0.5s ease-in-out;
+                  animation-duration: 0.5s;
+                  animation-name: header-acc-popup;
+                  box-shadow: 0px 9px 28px 8px rgba(0, 0, 0, 0.05), 0px 6px 16px rgba(0, 0, 0, 0.08), 0px 3px 6px -4px rgba(0, 0, 0, 0.12);
+   
+                  p{
+                     white-space: nowrap;
+                     color: #262626;
+                     font-size: 14px;
+                     font-weight: 400;
+                     line-height: 22px;
+                     margin-bottom: 10px;
+                     cursor: pointer;
+                     padding: 0 20px;
+                     transition: transform 0.1s ease-in-out;
+   
+                     &:last-child{
+                        margin-bottom: 0;
+                     }
+                  }
+   
+                  .popupExit{
+                     padding-top: 10px;
+                     border-top: 1px solid #C4C4C4;
+                  }
                }
             }
          }
       }
    }
+   
 }
 
 .continueBlock{
@@ -268,7 +297,29 @@
 
 :global(.slick-arrow){
    z-index: 10;
+   background-image: url(../../../public/img/sliderArrow.svg) !important;
+   background-size: cover !important;
+   height: 28px !important;
+   width: 28px !important;
+   transform: translateY(calc(-50% - 5px)) !important;
+
+   &::before{
+      content: '' !important;
+   }
 }
+
+:global(.slick-next){
+  right: -35px !important;
+}
+
+:global(.slick-prev){
+   left: -35px !important;
+   transform: translateY(calc(-50% - 5px)) rotate(180deg) !important;
+ }
+
+ :global(.slick-disabled){
+   opacity: 0.25 !important;
+ }
 
 :global(.slick-dots){
    bottom: 15px !important;
@@ -317,31 +368,84 @@
    }
  }
 
-.footerTop__right p:active, .footerBottom p:active, .mainHeader svg:active, .headerAccAvatar__popup p:active{
+.footerTop__right p:active, .footerBottom p:active{
    transform: scale(0.9);
 }
 
- @media(hover: hover) and (pointer: fine){
-   .mainHeader__left svg:hover rect{
-      fill: #00BFFF;
-   }
+.sliderWrapper{
+   .headerWrapper, .scrollHeaderWrapper, .darkScrollHeaderWrapper{
+      .mainHeader__right, .mainHeaderScroll__right, .darkMainHeaderScroll__right{
+        svg:active{
+            transform: scale(0.9);
+        }
 
-   .mainHeader__right svg:hover path{
-      fill: #00BFFF;
+        .headerAccAvatar{
+         &__popup{
+            p:active{
+               transform: scale(0.9);
+            }
+         }
+        }
+      }
+
+      .mainHeader__left, .mainHeaderScroll__left, .darkMainHeaderScroll__left{
+         svg:active{
+            transform: scale(0.9);
+         }
+      }
+   }
+}
+
+ @media(hover: hover) and (pointer: fine){
+   .sliderWrapper{
+      .headerWrapper, .scrollHeaderWrapper, .darkScrollHeaderWrapper{
+         .mainHeader__left, .mainHeaderScroll__left, .darkMainHeaderScroll__left{
+           svg:hover rect{
+               fill: #00BFFF;
+           }
+         }
+
+         .mainHeader__right, .mainHeaderScroll__right, .darkMainHeaderScroll__right{
+            svg:hover path{
+               fill: #00BFFF;
+            }
+
+            .headerAccAvatar{
+               &__popup{
+                  p:hover{
+                     color: #096DD9;
+                  }
+               }
+            }
+          }
+      }
    }
    
-   .footerTop__right p:hover, .footerBottom p:hover{
-      color: #000;
+   .footer{
+      .footerTop__right p:hover, .footerBottom p:hover{
+         color: #000;
    }
-   .mainHeader__right .headerAccAvatar__popup p:hover{
-      color: #00BFFF;
+   }
+
+   .darkFooter{
+      .footerTop__right p:hover, .footerBottom p:hover{
+         color: #fff;
+      }
    }
  }
 
 
  @media(max-width: 1350px){
-   .sliderWrapper .mainHeader, .usefulArticlesBlock__items, .continueBlock__items, .achievementBlock__items, .activeFriendsBlock__items, .popularAmongFriendsBlock__items{
+   .usefulArticlesBlock__items, .continueBlock__items, .achievementBlock__items, .activeFriendsBlock__items, .popularAmongFriendsBlock__items{
       padding: 0 50px;
+   }
+
+   .sliderWrapper{
+      .headerWrapper, .scrollHeaderWrapper, .darkScrollHeaderWrapper{
+         .mainHeader, .mainHeaderScroll, .darkMainHeaderScroll{
+            padding: 0 50px;
+         }
+      }
    }
 
    .footer, .darkFooter{
@@ -361,35 +465,22 @@
    .footerBottom span{
       margin: 0 27px;
    }
-
-   // .achievementBlock{
-   //    :global(.slick-track){
-   //       margin-left: 3% !important;
-   //    }
-   // }
  }
 
-//  @media(max-width: 1050px){
-//    .activeFriendsBlock__items{
-//       :global(.slick-track){
-//          margin-left: 5% !important;
-//       }
-//    }
-
-//    .usefulArticlesBlock{
-//       :global(.slick-track){
-//          margin-left: 5% !important;
-//       }
-//    }
-// }
-
  @media(max-width: 1023px){
-   .sliderWrapper .mainHeader, .usefulArticlesBlock__items, .continueBlock__items, .achievementBlock__items, .activeFriendsBlock__items, .popularAmongFriendsBlock__items{
+   .usefulArticlesBlock__items, .continueBlock__items, .achievementBlock__items, .activeFriendsBlock__items, .popularAmongFriendsBlock__items{
       padding: 0 25px;
    }
 
-   .footer, .darkFooter{
+   .sliderWrapper{
+      .headerWrapper, .scrollHeaderWrapper, .darkScrollHeaderWrapper{
+         .mainHeader, .mainHeaderScroll, .darkMainHeaderScroll{
+            padding: 0 25px;
+         }
+      }
+   }
 
+   .footer, .darkFooter{
       p{
          margin-bottom: 10px;
       }
@@ -433,31 +524,18 @@
       }
    }
 
-   // @media(max-width: 900px){
-   //    .achievementBlock{
-   //       :global(.slick-track){
-   //          margin-left: 5% !important;
-   //       }
-   //    }
-   // }
-
-   // @media(max-width: 850px){
-   //    .activeFriendsBlock__items{
-   //       :global(.slick-track){
-   //          margin-left: 7% !important;
-   //       }
-   //    }
-
-   //    .popularAmongFriendsBlock{
-   //       :global(.slick-track){
-   //          margin-left: 6% !important;
-   //       }
-   //    }
-   // }
    
    @media(max-width: 750px){
-      .sliderWrapper .mainHeader, .usefulArticlesBlock__items, .continueBlock__items, .achievementBlock__items, .activeFriendsBlock__items, .popularAmongFriendsBlock__items{
+      .usefulArticlesBlock__items, .continueBlock__items, .achievementBlock__items, .activeFriendsBlock__items, .popularAmongFriendsBlock__items{
          padding: 0 15px;
+      }
+
+      .sliderWrapper{
+         .headerWrapper, .scrollHeaderWrapper, .darkScrollHeaderWrapper{
+            .mainHeader, .mainHeaderScroll, .darkMainHeaderScroll{
+               padding: 0 15px;
+            }
+         }
       }
    
       .footer, .darkFooter{
@@ -468,78 +546,24 @@
          }
    }
 
-      .sliderWrapper .mainHeader__right{
-         display: none;
-   }
-}
-
-// @media(max-width: 700px){
-//    .usefulArticlesBlock{
-//       :global(.slick-track){
-//          margin-left: 10% !important;
-//       }
-//    }
-   
-//    .continueBlock{
-//       :global(.slick-track){
-//          margin-left: 7% !important;
-//       }
-//    }
-// }
-
-// @media(max-width: 600px){
-//    .activeFriendsBlock__items{
-//       :global(.slick-track){
-//          margin-left: 12% !important;
-//       }
-//    }
-
-//    .popularAmongFriendsBlock{
-//       :global(.slick-track){
-//          margin-left: 12% !important;
-//       }
-//    }
-
-//    .usefulArticlesBlock{
-//       :global(.slick-track){
-//          margin-left: 12% !important;
-//       }
-//    }
-// }
-
-// @media(max-width: 550px){
-//    .continueBlock{
-//       :global(.slick-track){
-//          margin-left: 10% !important;
-//       }
-//    }
-// }
-
-// @media(max-width: 450px){
-//    .achievementBlock{
-//       :global(.slick-track){
-//          margin-left: 30% !important;
-//       }
-//    }
-// }
-
-@media(max-width: 400px){
-   .sliderWrapper .mainHeader__left{
-      justify-content: space-between;
-      width: 100%;
-
-      img{
-         margin-left: 0;
+   .sliderWrapper{
+      .headerWrapper, .scrollHeaderWrapper, .darkScrollHeaderWrapper{
+         .mainHeader__right, .mainHeaderScroll__right, .darkMainHeaderScroll__riggt{
+            display: none;
+         }
       }
    }
 }
- 
-@media(max-width: 350px){
+
+@media(max-width: 400px){
    .sliderWrapper{
-      .mainHeader{
-         &__left{
+      .headerWrapper, .scrollHeaderWrapper, .darkScrollHeaderWrapper{
+         .mainHeader__left, .mainHeaderScroll__left, .darkMainHeaderScroll__left{
+            justify-content: space-between;
+            width: 100%;
+
             img{
-               transform: scale(0.9);
+               margin-left: 0;
             }
          }
       }

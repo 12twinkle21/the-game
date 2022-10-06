@@ -68,6 +68,8 @@
             margin-top: 15px;
             display: block;
             cursor: pointer;
+            width: fit-content;
+            transition: transform 0.1s ease-in-out;
          }
       }
    }
@@ -94,6 +96,22 @@
       font-weight: 400;
       line-height: 24px;
    }
+}
+
+.mainMenuTop__right span:active{
+   transform: scale(0.9);
+}
+
+@media(hover: hover) and (pointer: fine){
+.mainMenu, .darkMainMenu{
+   .mainMenuTop{
+      &__right{
+         span:hover{
+            color: #00BFFF;
+         }
+      }
+   }
+}
 }
 
 @media(max-width: 1350px){

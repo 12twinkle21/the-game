@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import styles from './OverlayMenu.module.scss';
+import styles from './ComparisonOverlayMenu.module.scss';
 
 import { AppContext } from '../../App';
 
-function OverlayMenu(props) {
+
+function ComparisonOverlayMenu(props) {
 
   const {onActiveOverlay} = props;
 
@@ -47,15 +48,15 @@ function OverlayMenu(props) {
         <button onClick={()=> onActiveOverlay(false)}>
           Отменить
         </button>
+        <Link to='/comparison' className='clearLink'>
         <button onClick={()=> onActiveOverlay(false)}>
-          <Link to='/comparison' className='clearLink'>
           Применить
-          </Link>
         </button>
+        </Link>
       </div>
     </div>
 
   )
 }
 
-export default OverlayMenu;
+export default ComparisonOverlayMenu;

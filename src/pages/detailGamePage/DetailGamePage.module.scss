@@ -246,12 +246,11 @@
 }
 
 .detailCard, .darkDetailCard{
-   user-select: none;
-
    &__top{
       padding: 0 83px;
       box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
       padding-bottom: 35px;
+      user-select: none;
 
       .backBtn{
          max-width: 1440px;
@@ -355,6 +354,7 @@
 
       .navMenu{
          width: 25%;
+         user-select: none;
 
          ul{
             list-style: none;
@@ -400,6 +400,7 @@
             display: flex;
             justify-content: space-between;
             margin-top: 40px;
+            user-select: none;
             
             input{
                flex: 1;
@@ -482,6 +483,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            user-select: none;
 
             &__right{
                display: flex;
@@ -539,6 +541,7 @@
             display: flex;
             align-items: center;
             cursor: pointer;
+            width: fit-content;
 
             svg{
                margin-left: 10px;
@@ -573,6 +576,7 @@
                height: 40px;
                padding: 0 15px;
                transition: transform 0.1s ease-in-out;
+               user-select: none;
 
                svg{
                   margin-right: 10px;
@@ -585,6 +589,7 @@
             align-items: center;
             justify-content: space-between;
             margin-top: 30px;
+            user-select: none;
 
             &__left{
                display: flex;
@@ -640,6 +645,9 @@
          .statisticsTitle{
             display: flex;
             align-items: center;
+            user-select: none;
+            cursor: pointer;
+            width: fit-content;
 
             .statisticsSelectedItem{
                display: flex;
@@ -659,6 +667,7 @@
             gap: 15px;
             margin-top: 40px;
             flex-wrap: wrap;
+            user-select: none;
 
             button{
                border: none;
@@ -705,7 +714,7 @@
 }
 
 @media(hover: hover) and (pointer: fine){
-   .detailCard{
+   .detailCard, .darkDetailCard{
       &__top{
          .infoBottom{
             button:hover{
@@ -713,76 +722,77 @@
             }
          }
       }
-   }
-   .navMenuAndContentWrapper{
-   .navMenuAndContent{
-      .content{
-         &__inputAndBtns{
-            .publication:hover{
-               background-color: #00BFFF;
-            }
 
-            .attachments:hover{
-               background-color: #8C8C8C;
-            }
-
-            .attachments{
-               &__popup ul li:hover{
-                  color: #8C8C8C;
-               }
-            }
-         }
-
-         .achievementsTop{
-            &__right{
-               .achievementsTop__rightFilters{
-                  button:hover{
+      .navMenuAndContentWrapper{
+         .navMenuAndContent{
+            .content{
+               &__inputAndBtns{
+                  .publication:hover{
                      background-color: #00BFFF;
-
-                     svg path{
-                        fill: #fff;
+                  }
+      
+                  .attachments:hover{
+                     background-color: #8C8C8C;
+                  }
+      
+                  .attachments{
+                     &__popup ul li:hover{
+                        color: #8C8C8C;
                      }
                   }
                }
-
-               .achievementsTop__rightCompare{
-                  button:hover{
-                     background-color: #00BFFF;
+      
+               .achievementsTop{
+                  &__right{
+                     .achievementsTop__rightFilters{
+                        button:hover{
+                           background-color: #00BFFF;
+      
+                           svg path{
+                              fill: #fff;
+                           }
+                        }
+                     }
+      
+                     .achievementsTop__rightCompare{
+                        button:hover{
+                           background-color: #00BFFF;
+                        }
+                     }
+                  }
+               }
+      
+               .projectsTop button:hover{
+                  background-color: #00BFFF;
+                  border-color: #00BFFF;
+                  color: #fff;
+      
+                  svg path{
+                     fill: #fff;
+                  }
+               }
+      
+               .projectsFilters button:hover, .statisticsFilters button:hover{
+                  color: #8C8C8C;
+      
+                  svg path{
+                     fill: #8C8C8C;
+                  }
+               }
+            }
+      
+            .navMenu{
+               ul li:hover{
+                  color: #1890FF;
+      
+                  svg path{
+                     fill: #1890FF;
                   }
                }
             }
          }
-
-         .projectsTop button:hover{
-            background-color: #00BFFF;
-            border-color: #00BFFF;
-            color: #fff;
-
-            svg path{
-               fill: #fff;
-            }
-         }
-
-         .projectsFilters button:hover, .statisticsFilters button:hover{
-            color: #8C8C8C;
-
-            svg path{
-               fill: #8C8C8C;
-            }
-         }
-      }
-
-      .navMenu{
-         ul li:hover{
-            color: #1890FF;
-
-            svg path{
-               fill: #1890FF;
-            }
-         }
       }
    }
-}
 }
 
  @media(max-width: 1350px){

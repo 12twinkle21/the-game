@@ -6,9 +6,6 @@
    box-sizing: border-box;
    font-family: 'Inter', sans-serif;
 }
-// body{
-//    overflow-x:hidden
-// }
 
 .clearLink{
    text-decoration: none;
@@ -147,20 +144,6 @@
    }
 }
 
-// .ant-avatar-group{
-//    display: flex;
-// }
-
-// .ant-avatar-image{
-//    width: 32px;
-//    height: 32px;
-//    border-radius: 50%;
-
-//    img{
-//       border-radius: 50%;
-//    }
-// }
-
 
 @keyframes card-popup {
    from {
@@ -179,7 +162,7 @@
       fill: #1890FF;
    }
    .gameCard__popup p:hover{
-      color: #00BFFF;
+      color: #096DD9;
    }
 }
 

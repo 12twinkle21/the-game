@@ -7,16 +7,27 @@ import { AppContext } from '../../App';
 
 function Header() {
 
+  const [scrollPosition, setScrollPosition] = React.useState(0);
+
+  const handleScroll = () =>{
+    setScrollPosition(window.scrollY);
+  }
+
+  React.useEffect(()=>{
+    window.addEventListener('scroll', handleScroll)
+  },[])
+
   const [visibleAccountPopup, setVisibleAccountPopup] = React.useState(false);
 
   const onVisibleAccountPopop = () =>{
     setVisibleAccountPopup(!visibleAccountPopup);
   }
 
-  const { darkTheme, onVisibleMainMenu } = React.useContext(AppContext);
+  const { darkTheme, onVisibleMainMenu, isOnline } = React.useContext(AppContext);
 
   return (
 
+   <div className={scrollPosition >= 70? darkTheme? styles.darkScrollHeader : styles.scrollHeader : styles.headerWrapper}>
    <div className={styles.header}>
    <div className={styles.header__left}>
      <svg onClick={onVisibleMainMenu} width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -28,9 +39,9 @@ function Header() {
      <Link to='/' className='clearLink'>
       {
         !darkTheme?
-        <img src='./img/headerLogo.png' width={256} height={30} alt='Logo'/>
+        <img src='./img/headerLogo.svg' width={256} height={30} alt='Logo'/>
         :
-        <img src='./img/mainHeaderLogo.png' width={256} height={30} alt='Logo'/>
+        <img src='./img/mainHeaderLogo.svg' width={256} height={30} alt='Logo'/>
       }
      </Link>
    </div>
@@ -50,6 +61,17 @@ function Header() {
        <path d="M19.125 18H18.5625V10.0312C18.5625 6.72422 16.118 3.99141 12.9375 3.53672V2.625C12.9375 2.10703 12.518 1.6875 12 1.6875C11.482 1.6875 11.0625 2.10703 11.0625 2.625V3.53672C7.88203 3.99141 5.4375 6.72422 5.4375 10.0312V18H4.875C4.46016 18 4.125 18.3352 4.125 18.75V19.5C4.125 19.6031 4.20937 19.6875 4.3125 19.6875H9.375C9.375 21.1359 10.5516 22.3125 12 22.3125C13.4484 22.3125 14.625 21.1359 14.625 19.6875H19.6875C19.7906 19.6875 19.875 19.6031 19.875 19.5V18.75C19.875 18.3352 19.5398 18 19.125 18ZM12 20.8125C11.3789 20.8125 10.875 20.3086 10.875 19.6875H13.125C13.125 20.3086 12.6211 20.8125 12 20.8125ZM7.125 18V10.0312C7.125 8.72813 7.63125 7.50469 8.55234 6.58359C9.47344 5.6625 10.6969 5.15625 12 5.15625C13.3031 5.15625 14.5266 5.6625 15.4477 6.58359C16.3687 7.50469 16.875 8.72813 16.875 10.0312V18H7.125Z" fill="#1890FF"/>
      </svg>
      <div className={styles.headerAccAvatar} onClick={onVisibleAccountPopop}>
+      <img src='./img/headerAccAvatar.png' width={48} height={48} alt='Avatar'/>
+      {
+            isOnline?
+               <div className={styles.headerAccAvatar__online}>
+                  <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <circle cx="4" cy="4" r="3.5" fill="#52C41A" stroke="#FAFAFA"/>
+                  </svg>
+               </div> 
+            :
+            ''
+         }
        {
          visibleAccountPopup? 
          <div className={styles.headerAccAvatar__popup}>
@@ -65,6 +87,7 @@ function Header() {
        }
      </div>
    </div>
+ </div>
  </div>
 
   )

@@ -47,6 +47,8 @@
             color: #fff;
             cursor: pointer;
             margin-top: 40px;
+            transition: transform 0.1s ease-in-out;
+            user-select: none;
          }
       }
 
@@ -103,6 +105,7 @@
                   top: 0;
                   right: -50px;
                   cursor: pointer;
+                  transition: transform 0.1s ease-in-out;
 
                   svg{
                      min-width: 40px;
@@ -135,6 +138,32 @@
       }
    }
 }
+}
+
+.comparisonTop__btns button:active, .cancelBtn:active{
+   transform: scale(0.9);
+}
+
+@media(hover: hover) and (pointer: fine){
+   .comparison, .darkComparison{
+      .comparisonTop{
+         &__btns{
+            button:hover{
+               background-color: #DC143C;
+            }
+         }
+
+         &__teams{
+            .comparisonTop__team{
+               .comparisonTop__teamsItem{
+                  .cancelBtn:hover svg path{
+                     fill: #DC143C;
+                  }
+               }
+            }
+         }
+      }
+   }
 }
 
 @media(max-width: 1350px){

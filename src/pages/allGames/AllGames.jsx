@@ -44,7 +44,7 @@ function AllGames() {
       <div className='maxContainer'>
       <div className={darkTheme? styles.darkAllGames : styles.allGames}>
         <Header/>
-        <BackBtn text={'Илья Абрамов'} link={'/'} allGames/>
+        <BackBtn text={'Назад'} link={'/'} allGames/>
         <div className={darkTheme? styles.darkAllGames__title : styles.allGames__title}>
           <h2>Все игры</h2>
           <div className={darkTheme? styles.darkAllGames__titleRight : styles.allGames__titleRight}>

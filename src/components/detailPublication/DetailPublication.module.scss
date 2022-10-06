@@ -55,6 +55,14 @@
          }
       }
    }
+
+   &__top{
+      .moreBtn{
+         svg path{
+            fill: #fff;
+         }
+      }
+   }
 }
 
 .detailPublication, .darkDetailPublication{
@@ -76,8 +84,12 @@
          display: flex;
          align-items: center;
 
+         img{
+            user-select: none;
+         }
+
          .userNameAndDateBlock{
-            margin-left: 25px;
+            margin-left: 25px;  
 
             p{
                font-size: 16px;
@@ -90,6 +102,7 @@
                font-weight: 400;
                line-height: 24px;
                color: #8C8C8C;
+               user-select: none;
             }
          }
       }
@@ -98,11 +111,12 @@
          cursor: pointer;
          position: relative;
          transition: transform 0.2s ease-in-out;
+         user-select: none;
 
          &__popup{
             position: absolute;
-            bottom: -125px;
-            left: -180px;
+            bottom: -120px;
+            left: -170px;
             background-color: #FAFAFA;
             box-shadow: 0px 9px 28px 8px rgba(0, 0, 0, 0.05), 0px 6px 16px rgba(0, 0, 0, 0.08), 0px 3px 6px -4px rgba(0, 0, 0, 0.12);
             border-radius: 12px;
@@ -150,6 +164,7 @@
       .likesAndCommentsBlock{
          display: flex;
          align-items: center;
+         user-select: none;
 
          .likes, .comments{
             display: flex;
@@ -185,6 +200,10 @@
          display: flex;
          margin-bottom: 40px;
 
+         img{
+            user-select: none;
+         }
+
          .commentBlock{
             margin-left: 25px;
             width: 100%;
@@ -208,6 +227,7 @@
                display: flex;
                align-items: center;
                justify-content: space-between;
+               user-select: none;
 
                .commentBottomLeft{
                   display: flex;
@@ -255,6 +275,7 @@
          justify-content: space-between;
          align-items: center;
          margin-top: 40px;
+         user-select: none;
 
          input{
             height: 40px;
@@ -332,76 +353,58 @@
    }
 }
 
-.commentInputBlock button:active, .moreBtn:active, .likes:active, .comments:active, .share:active, .commentBottomLeft button:active, .commentBottomLikes:active{
+.commentInputBlock button:active, .likes:active, .comments:active, .share:active, .commentBottomLeft button:active, .commentBottomLikes:active{
    transform: scale(0.9);
 }
 
 @media(hover: hover) and (pointer: fine){
-   .detailPublication{
-      .commentInputBlock{
-         .attachments:hover{
-            background-color: #8C8C8C;
-         }
-      }
-   }
-
-   .detailPublication{
-      .commentInputBlock{
-         .publication:hover{
-            background-color: #00BFFF;
-         }
-      }
-   }
-
-   .detailPublication{
+   .detailPublication, .darkDetailPublication{
       .commentInputBlock{
          .attachments{
+            &:hover{
+               background-color: #8C8C8C;
+            }
+
             &__popup ul li:hover{
                color: #8C8C8C;
             }
          }
-      }
-   }
 
-   .detailPublication{
+         .publication:hover{
+            background-color: #00BFFF;
+         }
+      }
+
       &__top{
          .moreBtn{
             &__popup ul li:hover{
-               color: #00BFFF;
+               color: #096DD9;
+            }
+
+            &:hover svg path{
+               fill: #096DD9;
             }
          }
       }
-   }
 
-   .detailPublication{
-      &__top{
-         .moreBtn:hover svg path{
-           fill: #00BFFF;
-         }
-      }
-   }
-
-   .detailPublication{
       &__bottom{
          .likesAndCommentsBlock{
             .likes:hover, .comments:hover{
                span{
-                  color: #000;
+                  color: #096DD9;
                }
 
                svg path{
-                  fill: #000;
+                  fill: #096DD9;
                }
             }
          }
 
          .share:hover svg path{
-            fill: #000;
+            fill: #096DD9;
          }
       }
-   }
 
-   .detailPublication{
       &__commentsBlock{
          .comment{
             .commentBlock{
@@ -409,24 +412,14 @@
                   .commentBottomLeft button:hover{
                      color: #00BFFF;
                   }
-               }
-            }
-         }
-      }
-   }
 
-   .detailPublication{
-      &__commentsBlock{
-         .comment{
-            .commentBlock{
-               &__bottom{
                   .commentBottomLikes:hover{
                      span{
-                        color: #000;
+                        color: #096DD9;
                      }
 
                      svg path{
-                        fill: #000;
+                        fill: #096DD9;
                      }
                   }
                }

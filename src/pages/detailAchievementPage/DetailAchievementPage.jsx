@@ -6,12 +6,17 @@ import Header from '../../components/header/Header';
 import BackBtn from '../../components/backBtn/BackBtn';
 import AchievementPublication from '../../components/achievementPublication/AchievementPublication';
 import MainMenu from '../../components/mainMenu/MainMenu';
+import EstimateOverlayMenu from '../../components/estimateOverlayMenu/EstimateOverlayMenu';
 
 import { AppContext } from '../../App';
 
-function DetailAchievementPage() {
+function DetailAchievementPage(props) {
 
-   const { darkTheme, visibleMainMenu } = React.useContext(AppContext);
+   const { darkTheme, visibleMainMenu, whoConnect, setWhoConnect } = React.useContext(AppContext);
+
+   let onWhoConnect = (who) =>{
+      setWhoConnect(who) 
+   }
 
    let [activeBlock, setActiveBlock] = React.useState('instruction')
 
@@ -40,11 +45,40 @@ function DetailAchievementPage() {
       handleStepProgress(setStepProgress2, styles.activeStep)
    }
 
+   let [mentorEstimateArtifact, setMentorEstimateArtifact] = React.useState(false);
+
+   let onMentorEstimateArtifact = () =>{
+      setMentorEstimateArtifact(true);
+      handleStepProgress(setStepProgress2, styles.completedStep)
+      handleStepProgress(setStepProgress3, styles.activeStep)
+   }
+
+   let [masterEstimateArtifact, setMasterEstimateArtifact] = React.useState(false);
+
+   let onMasterEstimateArtifact = () =>{
+      setMasterEstimateArtifact(true);
+      handleStepProgress(setStepProgress3, styles.completedStep)
+      handleStepProgress(setStepProgress4, styles.completedStep)
+   }
+
    let [visibleAttachmentsPopup, setVisibleAttachmentsPopup] = React.useState(false);
 
    let onVisibleAttachmentsPopup = () =>{
       setVisibleAttachmentsPopup(!visibleAttachmentsPopup);
    }
+
+   let popupAttachmentsRef = React.useRef();
+
+   React.useEffect(() => {
+     document.body.addEventListener('click', handleOutsideClick)
+  }, []);
+  
+   let handleOutsideClick = (e) => {
+     const path = e.path || (e.composedPath && e.composedPath()) || e.composedPath(e.target);
+     if (!path.includes(popupAttachmentsRef.current)) { 
+        setVisibleAttachmentsPopup(false);
+     }
+  }
 
    let [inputText, setInputText] = React.useState('');
 
@@ -74,15 +108,26 @@ function DetailAchievementPage() {
       }
     };
 
-   //  Добавить setStepProgress3 и setStepProgress4
     let [stepProgress, setStepProgress] = React.useState(styles.blockedStep);
     let [stepProgress2, setStepProgress2] = React.useState(styles.blockedStep);
-    let [stepProgress3] = React.useState(styles.blockedStep); 
-    let [stepProgress4] = React.useState(styles.blockedStep);
+    let [stepProgress3, setStepProgress3] = React.useState(styles.blockedStep); 
+    let [stepProgress4, setStepProgress4] = React.useState(styles.blockedStep);
 
     const handleStepProgress = (onStepProgress, stepClass) => {
       onStepProgress(stepClass)
     }
+
+    let [activeEstimateOverlay, setActiveEstimateOverlay] = React.useState(false);
+
+   let onActiveEstimateOverlay = (bool) =>{
+      setActiveEstimateOverlay(bool);
+
+      if(bool){
+         document.body.style.overflow = 'hidden';
+      } else{
+         document.body.style.overflow = 'auto';
+      }
+   }
 
   return (
    
@@ -91,11 +136,16 @@ function DetailAchievementPage() {
       visibleMainMenu?
       <MainMenu/>
       :
+         activeEstimateOverlay? 
+         <div className='overlay'>
+            <EstimateOverlayMenu onActiveEstimateOverlay={onActiveEstimateOverlay}/>
+         </div>
+         :
       <div className={darkTheme? styles.darkDetailAchievementPage : styles.detailAchievementPage}>
       <div className={darkTheme? styles.darkDetailAchievementPage__top : styles.detailAchievementPage__top}>
          <Header/>
          <div className={styles.backBtn}>
-            <BackBtn text={'Илья Абрамов'} link={'/'}/>
+            <BackBtn text={'Назад'} link={'/'}/>
          </div>
          <div className={styles.titleBlock}>
             <div className={styles.titleBlock__img}>
@@ -123,14 +173,65 @@ function DetailAchievementPage() {
                {unblockAchievement?
                   <div className={styles.infoDate}>
                      <div className={styles.unblockedBtns}>
-                           <button>Прикрепить артефакт</button>
-                           <button>Написать наставнику</button>
+                           {
+                              whoConnect === 'user'?
+                              <>
+                              {
+                                 !sendArtifact?
+                                 <button className={styles.sendAndEstimateBtn}>Прикрепить артефакт</button>
+                                 :
+                                 <button id={styles.sendedBtn}>Артефакт отправлен</button>
+                              }
+                              <button className={styles.messageBtn}>Написать наставнику</button>
+                              </>
+                              :
+                              ''
+                           }
+                           {
+                              whoConnect === 'mentor'?
+                              <>
+                              {
+                                 sendArtifact?
+                                 mentorEstimateArtifact?
+                                 <button id={styles.completedSendAndEstimateBtn}>Артефакт оценен</button>
+                                 :
+                                 <button className={styles.sendAndEstimateBtn}>Оценить артефакт</button>
+                                 :
+                                 ''
+                              }
+                              <button className={styles.messageBtn}>Написать команде</button>
+                              </>
+                              :
+                              ''
+                           }
+                            {
+                              whoConnect === 'master'?
+                              <>
+                              {
+                               mentorEstimateArtifact?
+                               !masterEstimateArtifact?
+                               <button className={styles.sendAndEstimateBtn}>Оценить артефакт</button>
+                               :
+                               <button id={styles.completedSendAndEstimateBtn}>Артефакт оценен</button>
+                               :
+                               ''
+                              } 
+                              <button className={styles.messageBtn}>Написать команде</button>
+                              </>
+                              :
+                              ''
+                           }
                         </div>
                      <p>Разблокировано 22.03.2021</p>
                   </div>
                   :
                   <div className={styles.unblockBlock}>
-                     <button className={styles.unblockBtn} onClick={onUnblockAchievement}>Разблокировать</button>
+                     {
+                        whoConnect === 'user'?
+                        <button className={styles.unblockBtn} onClick={onUnblockAchievement}>Разблокировать</button>
+                        :
+                        ''
+                     }
                      <p>Заблокировано</p>
                   </div>
             }
@@ -141,9 +242,9 @@ function DetailAchievementPage() {
          </div>
       </div>
       <div className={styles.kekBtns}>
-         <button>Пользователь</button>
-         <button>Наставник</button>
-         <button>Мастер</button>
+         <button onClick={()=> onWhoConnect('user')}>Пользователь</button>
+         <button onClick={()=> onWhoConnect('mentor')}>Наставник</button>
+         <button onClick={()=> onWhoConnect('master')}>Мастер</button>
       </div>
       <div className={styles.navMenuAndContentWrapper}>
       <div className={styles.navMenuAndContent}>
@@ -244,7 +345,16 @@ function DetailAchievementPage() {
                <div className={styles.unblockedHistory}>
                   <div className={styles.steps}>
                      <div className={styles.steps__step}>
-                        <span className={stepProgress}>1</span>
+                        <span className={stepProgress}>
+                           {
+                              sendArtifact?
+                              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                 <path d="M14.2493 2.96875H13.1571C13.004 2.96875 12.8587 3.03906 12.7649 3.15937L6.32271 11.3203L3.23365 7.40625C3.18692 7.34692 3.12736 7.29895 3.05943 7.26593C2.99151 7.23292 2.91699 7.21572 2.84146 7.21562H1.74928C1.64459 7.21562 1.58678 7.33594 1.65084 7.41719L5.93053 12.8391C6.13053 13.0922 6.5149 13.0922 6.71646 12.8391L14.3477 3.16875C14.4118 3.08906 14.354 2.96875 14.2493 2.96875Z" fill="#1890FF"/>
+                              </svg>
+                              :
+                              1
+                           }
+                        </span>
                         <div className={styles.stepInfo}>
                            <h3>
                               Шаг 1
@@ -254,34 +364,62 @@ function DetailAchievementPage() {
                         </div>
                      </div>
                      <div className={styles.steps__step}>
-                        <span  className={stepProgress2}>2</span>
+                        <span className={stepProgress2}>
+                           {
+                              mentorEstimateArtifact?
+                              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                 <path d="M14.2493 2.96875H13.1571C13.004 2.96875 12.8587 3.03906 12.7649 3.15937L6.32271 11.3203L3.23365 7.40625C3.18692 7.34692 3.12736 7.29895 3.05943 7.26593C2.99151 7.23292 2.91699 7.21572 2.84146 7.21562H1.74928C1.64459 7.21562 1.58678 7.33594 1.65084 7.41719L5.93053 12.8391C6.13053 13.0922 6.5149 13.0922 6.71646 12.8391L14.3477 3.16875C14.4118 3.08906 14.354 2.96875 14.2493 2.96875Z" fill="#1890FF"/>
+                              </svg>
+                              :
+                              2
+                           }
+                        </span>
                         <div className={styles.stepInfo}>
                            <h3>
                               Шаг 2
-                              <div className={styles.stepSeparator}></div>
+                              <div className={stepProgress2 === styles.completedStep? styles.activeStepSeparator : styles.stepSeparator}></div>
                            </h3>
-                           <p>Оценка<br/>наствника</p>
+                           <p>Оценка<br/>наставника</p>
                         </div>
                      </div>
                      <div className={styles.steps__step}>
-                        <span className={stepProgress3}>3</span>
+                        <span className={stepProgress3}>
+                           {
+                              masterEstimateArtifact?
+                              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                 <path d="M14.2493 2.96875H13.1571C13.004 2.96875 12.8587 3.03906 12.7649 3.15937L6.32271 11.3203L3.23365 7.40625C3.18692 7.34692 3.12736 7.29895 3.05943 7.26593C2.99151 7.23292 2.91699 7.21572 2.84146 7.21562H1.74928C1.64459 7.21562 1.58678 7.33594 1.65084 7.41719L5.93053 12.8391C6.13053 13.0922 6.5149 13.0922 6.71646 12.8391L14.3477 3.16875C14.4118 3.08906 14.354 2.96875 14.2493 2.96875Z" fill="#1890FF"/>
+                              </svg>
+                              :
+                              3
+                           }
+                        </span>
                         <div className={styles.stepInfo}>
                            <h3>
                               Шаг 3
-                              <div className={styles.stepSeparator}></div>
+                              <div className={stepProgress3 === styles.completedStep? styles.activeStepSeparator : styles.stepSeparator}></div>
                            </h3>
                            <p>Оценка<br/>мастера</p>
                         </div>
                      </div>
                      <div className={styles.steps__step}>
-                        <span className={stepProgress4}>4</span>
+                        <span className={stepProgress4}>
+                           {
+                              masterEstimateArtifact?
+                              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                 <path d="M14.2493 2.96875H13.1571C13.004 2.96875 12.8587 3.03906 12.7649 3.15937L6.32271 11.3203L3.23365 7.40625C3.18692 7.34692 3.12736 7.29895 3.05943 7.26593C2.99151 7.23292 2.91699 7.21572 2.84146 7.21562H1.74928C1.64459 7.21562 1.58678 7.33594 1.65084 7.41719L5.93053 12.8391C6.13053 13.0922 6.5149 13.0922 6.71646 12.8391L14.3477 3.16875C14.4118 3.08906 14.354 2.96875 14.2493 2.96875Z" fill="#1890FF"/>
+                              </svg>
+                              :
+                              3
+                           }
+                        </span>
                         <div className={styles.stepInfo}>
                            <p className={styles.lastStep}>Достижение<br/>получено</p>
                         </div>
                      </div>
                   </div>
                   <div className={styles.unblockedHistory__btn}>
-                     {
+                     {  
+                     whoConnect === 'user'?
                         unblockPublicationsBlock?
                         !sendArtifact?
                         <button onClick={onSendArtifact}>Прикрепить артефакт</button>
@@ -289,6 +427,32 @@ function DetailAchievementPage() {
                         <button className={styles.sendedBtn}>Артефакт отправлен</button>
                         :
                         <button onClick={onUnblockPublicationsBlock}>Разблокировать</button>
+                        :
+                        ''
+                     }
+                     {  
+                     whoConnect === 'mentor' && sendArtifact?
+                        unblockPublicationsBlock?
+                        !mentorEstimateArtifact?
+                        <button onClick={onMentorEstimateArtifact}>Оценить артефакт</button>
+                        :
+                        <button className={styles.sendedBtn}>Артефакт оценен</button>
+                        :
+                        ''
+                        :
+                        ''
+                     }
+                     {  
+                     whoConnect === 'master' && mentorEstimateArtifact?
+                        unblockPublicationsBlock?
+                        !masterEstimateArtifact?
+                        <button onClick={onMasterEstimateArtifact}>Оценить артефакт</button>
+                        :
+                        <button className={styles.sendedBtn}>Артефакт оценен</button>
+                        :
+                        ''
+                        :
+                        ''
                      }
                   </div>
                   {
@@ -299,7 +463,7 @@ function DetailAchievementPage() {
                         <div className={styles.unblockedPublicationsBlock__inputAndBtns}>
                            <input type='text' value={inputText} onChange={handleInputChange} onKeyUp={handleKeyUp} placeholder='Хотите поделиться мыслями?'/>
                            <div className={styles.btns}>
-                              <button className={styles.attachments} onClick={onVisibleAttachmentsPopup}>
+                              <button className={styles.attachments} onClick={onVisibleAttachmentsPopup} ref={popupAttachmentsRef}>
                                  Вложение
                                  {
                                  visibleAttachmentsPopup?
@@ -320,7 +484,7 @@ function DetailAchievementPage() {
                       </div>
                         <div className={styles.unblockedPublicationsBlock__publications}>
                            {
-                           publications?.map((item, index) => <AchievementPublication userAvatar={'./img/headerAccAvatar.png'} userName={'Евгений Говорун'} dateAndTime={'29 ноя в 16:48'} publicationText={item.inputText} key={item.index}/>)
+                           publications?.map((item, index) => <AchievementPublication userAvatar={'./img/headerAccAvatar.png'} userName={'Евгений Говорун'} dateAndTime={'29 ноя в 16:48'} publicationText={item.inputText} key={index}/>)
                            }
                            <AchievementPublication userAvatar={'./img/headerAccAvatar.png'} userName={'Евгений Говорун'} dateAndTime={'29 ноя в 16:48'} publicationText={'Этот алгоритм поможет тебе разблокировать достижение.1) Изучи полезную информацию во вкладке «Инструкция» и узнай больше о том, какое задание предстоит выполнить, чтобы создать артефакт, необходимый для достижения. 2) Загляни во вкладку «Артефакт» и уточни то, в каком формате тебе потребуется сохранить артефакт, чтобы он подошел к этому достижению.3) Отправься в реальный мир, чтобы выполнить задание и создать нужный артефакт.4) Когда все будет готово, возвращайся сюда, чтобы загрузить артефакт к достижению. Для этого нажми на кнопку «Прикрепить» во вкладке «История достижения».5) Дождись, пока наставник и мастер оценят результаты твоей работы. Если артефакт подойдет, то достижение разблокируется. Если нет, то наставник и мастер скажут, чего в нем не хватает и как его улучшить.Если что-то окажется не понятным, то обратись к наставнику прямо в этом чате. Для этого нажми кнопку «Спросить».'}/>
                            <AchievementPublication userAvatar={'./img/headerAccAvatar.png'} userName={'Евгений Говорун'} dateAndTime={'29 ноя в 16:48'} publicationText={'Привет! Меня зовут Евгений. В этот чат я буду присылать сообщения об изменении текущего статуса конкретно этого достижения.Обрати внимание, что такой чат есть у каждого достижения, чтобы тебе, наставнику и мастеру было удобно и никто не запутался в информации.Ты всегда можешь попасть в такой чат через вкладку «История достижения» на странице нужного достижения.Здесь ты можешь пообщаться с наставником или мастером, например, попросить совет о том, как лучше выполнять достижение, или задать уточняющий вопрос. Если у тебя появятся вопросы, на которые наставник или мастер не смогли ответить, то обратись в наш «Центр поддержки».Удачных достижений!'}/>
@@ -339,7 +503,7 @@ function DetailAchievementPage() {
          }
       </div>
       </div>
-    </div>
+    </div>     
     }
    </>
 

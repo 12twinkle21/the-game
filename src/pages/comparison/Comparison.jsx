@@ -82,7 +82,7 @@ function Comparison() {
       <div className={styles.comparisonTop}>
         <Header/>
         <div className={styles.comparisonTop__btns}>
-          <BackBtn text={'Илья Абрамов'} link={'/'}/>
+          <BackBtn text={'Назад'} link={'/'}/>
           <button>Перестать сравнивать</button>
         </div>
         <div className={styles.comparisonTop__title}>

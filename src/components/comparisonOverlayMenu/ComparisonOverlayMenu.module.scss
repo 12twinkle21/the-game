@@ -36,24 +36,31 @@
       top: 10px;
       left: -70px;
       cursor: pointer;
+      transition: transform 0.1s ease-in-out;
    }
 
    &__title{
       flex: 1;
       margin-top: 30px;
       padding: 0 23px;
+
+      h3{
+         font-size: 40px;
+         font-weight: 500;
+         line-height: 46px;
+      }
    }
 
    &__selectedBtns{
       margin-bottom: 40px;
       padding: 0 23px;
+      user-select: none;
 
       button{
          margin-bottom: 25px;
          display: block;
          height: 40px;
-         width: 100%;
-         max-width: 485px;
+         width: 90%;
          display: flex;
          justify-content: space-between;
          border: none;
@@ -64,6 +71,7 @@
          font-weight: 400;
          line-height: 24px;
          cursor: pointer;
+         transition: transform 0.1s ease-in-out;
 
          &:last-child{
             margin-bottom: 0;
@@ -74,10 +82,14 @@
    &__btns{
       display: flex;
       align-items: center;
+      user-select: none;
+
+      a{
+         width: 50%;
+      }
 
       button{
          height: 60px;
-         width: 50%;
          border: none;
          cursor: pointer;
          font-size: 16px;
@@ -86,15 +98,55 @@
          color: #fff;
 
          &:first-child{
-            background-color: #FF4D4F;;
+            background-color: #FF4D4F;
+            width: 50%;
          }
 
          &:last-child{
-            background-color: #1890FF;;
+            background-color: #1890FF;
+            width: 100%;
          }
+      }
+   }
+}
 
-         a{
-            color: #fff;
+.overlayMenu, .darkOverlayMenu{
+   &__selectedBtns{
+   button:active{
+      transform: scale(0.9);
+   }
+   }
+
+   &__closeBtn:active{
+      transform: scale(0.9);
+   }
+}
+
+@media(hover: hover) and (pointer: fine){
+   .overlayMenu, .darkOverlayMenu{
+      &__closeBtn:hover svg path{
+         fill: #fff;
+      }
+
+      &__selectedBtns{
+         button:hover{
+            color: #8c8c8c;
+
+            svg path{
+               fill: #8c8c8c;
+            }
+         }
+      }
+
+      &__btns{
+         button{
+            &:first-child:hover{
+               background-color: #DC143C;
+            }
+
+            &:last-child:hover{
+               background-color: #00BFFF;
+            }
          }
       }
    }
@@ -115,11 +167,37 @@
 @media(max-width: 650px){
    .overlayMenu, .darkOverlayMenu{
       width: 100%;
+      
+      &__title{
+         h3{
+            font-size: 35px;
+            line-height: 50px;
+         }
+      }
 
       &__closeBtn{
          left: unset;
          right: 10px;
-         top: 20px;
+         top: 17px;
+      }
+
+      &__selectedBtns{
+         button{
+            width: 100%;
+         }
+      }
+   }
+}
+
+@media(max-width: 400px){
+   .overlayMenu, .darkOverlayMenu{
+      width: 100%;
+      
+      &__title{
+         h3{
+            font-size: 25px;
+            line-height: 30px;
+         }
       }
    }
 }

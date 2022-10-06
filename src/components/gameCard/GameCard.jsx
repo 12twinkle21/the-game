@@ -24,16 +24,6 @@ function GameCard(props) {
        setVisibleCardPopup(false);
     }
  }
-
-  // console.log(popupBtnRef)
-
-// document.addEventListener("mousedown", (event) => {
-//   if (popupBtnRef.contains(event.target)) {
-//     console.log("Clicked Inside");
-//   } else {
-//     console.log("Clicked Outside / Elsewhere");
-//   }
-// });
   
   return (
    <div className={className} style={{backgroundImage: `url(${bgImage})`}}>

@@ -26,9 +26,12 @@ const onVisibleMainMenu = () =>{
   setVisibleMainMenu(!visibleMainMenu);
 }
 
+const [isOnline] = React.useState(true);
+const [whoConnect, setWhoConnect] = React.useState('user');
+
   return (
 
-    <AppContext.Provider value={{darkTheme, toggleDarkTheme, visibleMainMenu, onVisibleMainMenu}}>
+    <AppContext.Provider value={{darkTheme, toggleDarkTheme, visibleMainMenu, onVisibleMainMenu, isOnline, whoConnect, setWhoConnect}}>
     <Routes>
       <Route exact path='/' element={<Main/>}/>
       <Route exact path='/allGames' element={<AllGames/>}/>
