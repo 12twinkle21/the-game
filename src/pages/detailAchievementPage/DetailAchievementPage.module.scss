@@ -639,10 +639,11 @@
          }
 
          .unblockedPublicationsBlock{
-            margin-top: 40px;
+            margin-top: 25px;
 
             &__inputAndBtns{
                display: flex;
+               align-items: center;
                justify-content: space-between;
                margin-top: 40px;
                user-select: none;
@@ -666,7 +667,19 @@
                      color: #8C8C8C;
                   }
                }
+               
+               .btns{
+                  display: flex;
+                  gap: 10px;
+                  align-items: center;
    
+                  .attachmentsBlock{
+                     height: 65px;
+                     display: flex;
+                     flex-direction: column;
+                     justify-content: center;
+                  }
+               }
                button{
                   margin-right: 10px;
                   height: 40px;
@@ -738,6 +751,16 @@
    }
 
    .content button:active{
+      transform: scale(0.9);
+   }
+
+   .unblockedPublicationsBlock{
+      .attachments:active{
+         transform: scale(1);
+      }
+   }
+
+   .publication:active{
       transform: scale(0.9);
    }
 

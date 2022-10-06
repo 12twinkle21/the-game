@@ -491,9 +491,9 @@ function Main() {
       :
       <>
     <div className={styles.sliderWrapper}>
-      <div className={scrollPosition >= 70? darkTheme? styles.darkScrollHeaderWrapper : styles.scrollHeaderWrapper : styles.headerWrapper}>
-      <div className={scrollPosition >= 70? darkTheme? styles.darkMainHeaderScroll : styles.mainHeaderScroll : styles.mainHeader}>
-        <div className={scrollPosition >= 70? darkTheme? styles.darkMainHeaderScroll__left : styles.mainHeaderScroll__left : styles.mainHeader__left}>
+      <div className={scrollPosition >= 110? darkTheme? styles.darkScrollHeaderWrapper : styles.scrollHeaderWrapper : styles.headerWrapper}>
+      <div className={scrollPosition >= 110? darkTheme? styles.darkMainHeaderScroll : styles.mainHeaderScroll : styles.mainHeader}>
+        <div className={scrollPosition >= 110? darkTheme? styles.darkMainHeaderScroll__left : styles.mainHeaderScroll__left : styles.mainHeader__left}>
           <svg onClick={onVisibleMainMenu} width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="48" height="48" rx="4" fill="#329CFF"/>
             <path d="M13.333 15.083C13.333 15.5471 13.5174 15.9923 13.8456 16.3204C14.1738 16.6486 14.6189 16.833 15.083 16.833C15.5471 16.833 15.9923 16.6486 16.3204 16.3204C16.6486 15.9923 16.833 15.5471 16.833 15.083C16.833 14.6189 16.6486 14.1738 16.3204 13.8456C15.9923 13.5174 15.5471 13.333 15.083 13.333C14.6189 13.333 14.1738 13.5174 13.8456 13.8456C13.5174 14.1738 13.333 14.6189 13.333 15.083ZM13.333 23.833C13.333 24.2971 13.5174 24.7423 13.8456 25.0704C14.1738 25.3986 14.6189 25.583 15.083 25.583C15.5471 25.583 15.9923 25.3986 16.3204 25.0704C16.6486 24.7423 16.833 24.2971 16.833 23.833C16.833 23.3689 16.6486 22.9238 16.3204 22.5956C15.9923 22.2674 15.5471 22.083 15.083 22.083C14.6189 22.083 14.1738 22.2674 13.8456 22.5956C13.5174 22.9238 13.333 23.3689 13.333 23.833ZM13.333 32.583C13.333 33.0471 13.5174 33.4923 13.8456 33.8204C14.1738 34.1486 14.6189 34.333 15.083 34.333C15.5471 34.333 15.9923 34.1486 16.3204 33.8204C16.6486 33.4923 16.833 33.0471 16.833 32.583C16.833 32.1189 16.6486 31.6738 16.3204 31.3456C15.9923 31.0174 15.5471 30.833 15.083 30.833C14.6189 30.833 14.1738 31.0174 13.8456 31.3456C13.5174 31.6738 13.333 32.1189 13.333 32.583Z" fill="white"/>
@@ -502,14 +502,14 @@ function Main() {
           </svg>
           <Link to='/' className='clearLink'>
             {
-              scrollPosition >= 70 && darkTheme?
+              scrollPosition >= 110 && darkTheme?
               <img src='./img/mainHeaderLogo.svg' width={256} height={30} alt='Logo'/>
               :
               <img src='./img/headerLogo.svg' width={256} height={30} alt='Logo'/>
             }
           </Link>
         </div>
-        <div className={scrollPosition >= 70? darkTheme? styles.darkMainHeaderScroll__right : styles.mainHeaderScroll__right : styles.mainHeader__right}>
+        <div className={scrollPosition >= 110? darkTheme? styles.darkMainHeaderScroll__right : styles.mainHeaderScroll__right : styles.mainHeader__right}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M20.3438 3.75H18.1875V2.8125C18.1875 2.70937 18.1031 2.625 18 2.625H6C5.89687 2.625 5.8125 2.70937 5.8125 2.8125V3.75H3.65625C3.38275 3.75 3.12044 3.85865 2.92705 4.05205C2.73365 4.24544 2.625 4.50775 2.625 4.78125V8.25C2.625 10.1648 4.03125 11.7563 5.86406 12.0469C6.22734 14.7703 8.41406 16.9148 11.1562 17.2148V19.6805H6.5625C6.14766 19.6805 5.8125 20.0156 5.8125 20.4305V21.1875C5.8125 21.2906 5.89687 21.375 6 21.375H18C18.1031 21.375 18.1875 21.2906 18.1875 21.1875V20.4305C18.1875 20.0156 17.8523 19.6805 17.4375 19.6805H12.8438V17.2148C15.5859 16.9148 17.7727 14.7703 18.1359 12.0469C19.9688 11.7563 21.375 10.1648 21.375 8.25V4.78125C21.375 4.50775 21.2663 4.24544 21.073 4.05205C20.8796 3.85865 20.6173 3.75 20.3438 3.75ZM4.3125 8.25V5.4375H5.8125V10.3031C5.37714 10.1641 4.99723 9.89025 4.72762 9.52122C4.45801 9.15219 4.31264 8.70703 4.3125 8.25ZM16.5 11.25C16.5 12.4008 16.0523 13.4859 15.2367 14.2992C14.4211 15.1148 13.3383 15.5625 12.1875 15.5625H11.8125C10.6617 15.5625 9.57656 15.1148 8.76328 14.2992C7.94766 13.4836 7.5 12.4008 7.5 11.25V4.3125H16.5V11.25ZM19.6875 8.25C19.6875 9.21094 19.057 10.0266 18.1875 10.3031V5.4375H19.6875V8.25Z" fill="white"/>
           </svg>

@@ -63,8 +63,8 @@ function DetailAchievementPage(props) {
 
    let [visibleAttachmentsPopup, setVisibleAttachmentsPopup] = React.useState(false);
 
-   let onVisibleAttachmentsPopup = () =>{
-      setVisibleAttachmentsPopup(!visibleAttachmentsPopup);
+   let onVisibleAttachmentsPopup = (bool) =>{
+      setVisibleAttachmentsPopup(bool);
    }
 
    let popupAttachmentsRef = React.useRef();
@@ -463,22 +463,24 @@ function DetailAchievementPage(props) {
                         <div className={styles.unblockedPublicationsBlock__inputAndBtns}>
                            <input type='text' value={inputText} onChange={handleInputChange} onKeyUp={handleKeyUp} placeholder='Хотите поделиться мыслями?'/>
                            <div className={styles.btns}>
-                              <button className={styles.attachments} onClick={onVisibleAttachmentsPopup} ref={popupAttachmentsRef}>
+                              <div className={styles.attachmentsBlock} onMouseEnter={()=>onVisibleAttachmentsPopup(true)} onMouseLeave={()=>onVisibleAttachmentsPopup(false)}>
+                              <button className={styles.attachments} ref={popupAttachmentsRef}>
                                  Вложение
                                  {
                                  visibleAttachmentsPopup?
                                  <div className={styles.attachments__popup}>
                                     <ul>
-                                       <li>Фото</li>
-                                       <li>Видео</li>
-                                       <li>Опрос</li>
-                                       <li>Статья</li>
+                                       <li onClick={()=>onVisibleAttachmentsPopup(false)}>Фото</li>
+                                       <li onClick={()=>onVisibleAttachmentsPopup(false)}>Видео</li>
+                                       <li onClick={()=>onVisibleAttachmentsPopup(false)}>Опрос</li>
+                                       <li onClick={()=>onVisibleAttachmentsPopup(false)}>Статья</li>
                                     </ul>
                                  </div>
                                  :
                                  ''
                                  }
                               </button>
+                              </div>
                               <button className={styles.publication} onClick={onAddPublication}>Публикация</button>
                            </div>
                       </div>

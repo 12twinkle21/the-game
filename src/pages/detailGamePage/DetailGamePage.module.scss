@@ -398,8 +398,9 @@
 
          &__inputAndBtns{
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            margin-top: 40px;
+            margin-top: 25px;
             user-select: none;
             
             input{
@@ -421,9 +422,19 @@
                   color: #8C8C8C;
                }
             }
+            .content__btns{
+               display: flex;
+               gap: 10px;
+               align-items: center;
 
+               .attachmentsBlock{
+                  height: 65px;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+               }
+            }
             button{
-               margin-right: 10px;
                height: 40px;
                border: none;
                cursor: pointer;
@@ -433,10 +444,6 @@
                font-weight: 400;
                line-height: 24px;
                transition: transform 0.2s ease-in-out;
-
-               &:last-child{
-                  margin-right: 0;
-               }
             }
 
             .attachments{
@@ -709,7 +716,7 @@
 }
 }
 
-.infoBottom button:active, .content__inputAndBtns button:active, .navMenu ul li:active, .achievementsTop button:active, .projectsFilters button:active, .projectsTop button:active, .statisticsFilters button:active{
+.infoBottom button:active, .publication:active, .navMenu ul li:active, .achievementsTop button:active, .projectsFilters button:active, .projectsTop button:active, .statisticsFilters button:active{
    transform: scale(0.9);
 }
 

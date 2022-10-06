@@ -106,12 +106,22 @@
             }
          }
       }
-
-      .moreBtn{
+      .moreBtnBlock{
+         width: 60px;
+         height: 60px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
          cursor: pointer;
+      }
+      .moreBtn{
          position: relative;
          transition: transform 0.2s ease-in-out;
-         user-select: none;
+         user-select: none; 
+
+         svg{
+            min-width: 32px;
+         }
 
          &__popup{
             position: absolute;
@@ -298,6 +308,19 @@
             }
          }
 
+         &__btns{
+               display: flex;
+               gap: 10px;
+               align-items: center;
+
+               .attachmentsBlock{
+                  height: 65px;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+               }
+         }
+
          button{
             margin-right: 10px;
             height: 40px;
@@ -353,7 +376,7 @@
    }
 }
 
-.commentInputBlock button:active, .likes:active, .comments:active, .share:active, .commentBottomLeft button:active, .commentBottomLikes:active{
+.likes:active, .publication:active, .comments:active, .share:active, .commentBottomLeft button:active, .commentBottomLikes:active{
    transform: scale(0.9);
 }
 
