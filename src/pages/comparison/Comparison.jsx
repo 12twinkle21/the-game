@@ -7,6 +7,7 @@ import BackBtn from '../../components/backBtn/BackBtn';
 import ComparisonAchItem from '../../components/comparisonAchItem/ComparisonAchItem';
 import StatisticsCard from '../../components/statisticsCard/StatisticsCard';
 import MainMenu from '../../components/mainMenu/MainMenu';
+import ComparisonAchievements from '../../components/comparisonAchievements/ComparisonAchievements';
 
 import { AppContext } from '../../App';
 
@@ -15,7 +16,8 @@ function Comparison() {
   const { darkTheme, visibleMainMenu } = React.useContext(AppContext);
 
   let comparisonItemFirst = [
-    {
+    { 
+      bgImg : "http://dummyimage.com/148x148/99cccc&text=+",
       achievementTitle: "Сообщество проекта",
       goldCount: "710/1250",
       ratingCount: "32/57",
@@ -44,6 +46,7 @@ function Comparison() {
 
   let comparisonItemSecond = [
     {
+      bgImg : "http://dummyimage.com/148x148/99cccc&text=+",
       achievementTitle: "Сообщество проекта",
       goldCount: "250/1250",
       ratingCount: "12/57",
@@ -70,6 +73,27 @@ function Comparison() {
     }
   ];
 
+  let comparisonAllAchievementsData = [
+    {
+      title: "Первые нейроны",
+      gold : 50,
+      info : "Принять участие Командой в тренажере “Викиум” в течение одной недели",
+      progressDate1 : "24.09.2021",
+      progress1 : 60,
+      progressDate2 : "24.09.2021",
+      progress2 : 0
+    },
+    {
+      title: "Проба пера",
+      gold : 10,
+      info : "Опубликовать 10 публикаций (текст) в сообществе Бренда",
+      progressDate1 : "24.09.2021",
+      progress1 : 100,
+      progressDate2: "24.09.2021",
+      progress2: 20
+    }
+  ];
+
   
   return (
 
@@ -82,7 +106,7 @@ function Comparison() {
       <div className={styles.comparisonTop}>
         <Header/>
         <div className={styles.comparisonTop__btns}>
-          <BackBtn text={'Назад'} link={'/'}/>
+          <BackBtn text={'Назад'} link={'/detailGamePage'}/>
           <button>Перестать сравнивать</button>
         </div>
         <div className={styles.comparisonTop__title}>
@@ -117,21 +141,28 @@ function Comparison() {
       </div>
       <div className={styles.comparisonContentWrapper}>
       <div className={styles.comparisonContent}>
-        <div className={styles.comparisonContent__list}>
+        <div className={styles.comparisonLists}>
+          <div className={styles.comparisonLists__list}>
           <ComparisonAchItem comparisonItem={comparisonItemFirst}/>
           <div className={styles.comparisonStatistics}>
            {
             comparisonItemFirst[0].statistics.map((item) => <div className={styles.comparisonStatistics__item} key={item.title}><StatisticsCard title={item.title} progress={item.progress}/></div>)
            }
           </div>
-        </div>
-        <div className={styles.comparisonContent__list}>
+          </div>
+          <div className={styles.comparisonLists__list}>
           <ComparisonAchItem comparisonItem={comparisonItemSecond}/>
           <div className={styles.comparisonStatistics}>
           {
             comparisonItemSecond[0].statistics.map((item) => <div className={styles.comparisonStatistics__item} key={item.title}><StatisticsCard title={item.title} progress={item.progress}/></div>)
           }
           </div>
+          </div>
+        </div>
+        <div className={styles.comparisonAllAchievements}>
+          {
+            comparisonAllAchievementsData.map((item) => <div className={styles.comparisonAchievements__item}><ComparisonAchievements title={item.title} gold={item.gold} info={item.info} progressDate1={item.progressDate1} progressDate2={item.progressDate2} progress1={item.progress1} progress2={item.progress2}/></div>)
+          }
         </div>
       </div>
       </div>

@@ -26,18 +26,24 @@ const onVisibleMainMenu = () =>{
   setVisibleMainMenu(!visibleMainMenu);
 }
 
+const [backLink, setBackLink] = React.useState('/');
+
+const onSetBackLink = (link) =>{
+  setBackLink(link)
+}
+
 const [isOnline] = React.useState(true);
 const [whoConnect, setWhoConnect] = React.useState('user');
 
   return (
 
-    <AppContext.Provider value={{darkTheme, toggleDarkTheme, visibleMainMenu, onVisibleMainMenu, isOnline, whoConnect, setWhoConnect}}>
+    <AppContext.Provider value={{darkTheme, toggleDarkTheme, visibleMainMenu, onVisibleMainMenu, isOnline, whoConnect, setWhoConnect, backLink, onSetBackLink}}>
     <Routes>
       <Route exact path='/' element={<Main/>}/>
       <Route exact path='/allGames' element={<AllGames/>}/>
       <Route exact path='/detailGamePage' element={<DetailGamePage/>}/>
       <Route exact path='/detailAchievementPage' element={<DetailAchievementPage/>}/>
-      <Route exact path='/comparison' element={<Comparison/>}/>
+      <Route exact path='/comparison' element={<Comparison backBtnLink='/detailGamePage'/>}/>
       <Route exact path='/comparisonDirectLink' element={<ComparisonDirectLink/>}/>
     </Routes>
      </AppContext.Provider>

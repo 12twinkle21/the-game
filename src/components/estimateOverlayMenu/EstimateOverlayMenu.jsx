@@ -27,7 +27,7 @@ import { AppContext } from '../../App';
    return i < threshold ? "#1890FF" : "#D9D9D9";
  }
 
-  const {onActiveEstimateOverlay} = props;
+  const { onActiveEstimateOverlay, onEstimateArtifact} = props;
 
   const { darkTheme } = React.useContext(AppContext);
 
@@ -62,7 +62,7 @@ import { AppContext } from '../../App';
    <div className={darkTheme? styles.darkOverlayMenu__title : styles.overlayMenu__title}>
       <h3>Сравнение</h3>
    </div>
-   <div className={styles.overlayMenu__ratings}>
+   <div className={darkTheme? styles.darkOverlayMenu__ratings : styles.overlayMenu__ratings}>
       <div className={styles.ratingBlock}>
       <h3>Оцените полноту исполнения</h3>
       <div className={styles.ratingItems} onMouseEnter={() => setIsUserStarsHovering(true)} onMouseLeave={() => setIsUserStarsHovering(false)}>
@@ -106,10 +106,10 @@ import { AppContext } from '../../App';
    </div>
    <textarea placeholder='Обратите внимание на советы других людей о работе автора, и постарайтесь дать полезную рекомендацию автору.'/> 
    <div className={darkTheme? styles.darkOverlayMenu__btns : styles.overlayMenu__btns}>
-     <button onClick={()=> onActiveEstimateOverlay(false)}>
+     <button>
        Отклонить
      </button>
-     <button onClick={()=> onActiveEstimateOverlay(false)}>
+     <button onClick={onEstimateArtifact}>
        Утвердить
      </button>
    </div>

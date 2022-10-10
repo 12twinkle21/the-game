@@ -16,7 +16,7 @@ import { AppContext } from '../../App';
 
 function DetailGamePage() {
 
-   const { darkTheme, visibleMainMenu } = React.useContext(AppContext);
+   const { darkTheme, visibleMainMenu, onSetBackLink } = React.useContext(AppContext);
 
    let publicationsData = 
    [
@@ -542,7 +542,7 @@ function DetailGamePage() {
             </div>
             <div className={styles.achievementsItems}>
                {
-                  allAchievementItemsData.map((item, index) => <div className={styles.achievementsItem} key={`${item.title}__${index}`}><AchievementItem title={item.title} bgImage={item.bgImage} gold={item.gold} blocked={item.blocked}/></div>)
+                  allAchievementItemsData.map((item, index) => <div className={styles.achievementsItem} onClick={onSetBackLink('/detailGamePage')} key={`${item.title}__${index}`}><AchievementItem title={item.title} bgImage={item.bgImage} gold={item.gold} blocked={item.blocked}/></div>)
                }
             </div>
           </div>

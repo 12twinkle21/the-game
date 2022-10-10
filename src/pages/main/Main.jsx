@@ -17,7 +17,7 @@ import { AppContext } from '../../App';
 
 function Main() {
 
-  const { darkTheme, visibleMainMenu, onVisibleMainMenu, isOnline } = React.useContext(AppContext);
+  const { darkTheme, visibleMainMenu, onVisibleMainMenu, isOnline, onSetBackLink } = React.useContext(AppContext);
   
   const topSliderSettings = {
     dots: true,
@@ -574,7 +574,7 @@ function Main() {
         <div className={styles.achievementBlock__items}>
           <Slider {...availableAchievementSliderSettings}>
           {
-            achievementItemsData.map((item) => <AchievementItem title={item.title} gold={item.gold} bgImage={item.bgImage} key={item.title} blocked/>)
+            achievementItemsData.map((item) => <div onClick={onSetBackLink('/')}><AchievementItem title={item.title} gold={item.gold} bgImage={item.bgImage} key={item.title} blocked/></div>)
           }
           </Slider>
         </div>

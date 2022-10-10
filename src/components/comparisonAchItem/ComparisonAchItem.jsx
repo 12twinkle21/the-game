@@ -8,6 +8,8 @@ function ComparisonAchItem(props) {
 
    const {comparisonItem} = props;
 
+   console.log(comparisonItem)
+
    const { darkTheme } = React.useContext(AppContext);
 
   return (
@@ -17,7 +19,7 @@ function ComparisonAchItem(props) {
       comparisonItem.map((item, index) => 
       <div className={darkTheme? styles.darkComparisonAchItem : styles.comparisonAchItem} key={index}>
       <div className={darkTheme? styles.darkComparisonAchItem__img : styles.comparisonAchItem__img}>
-         <img src='http://dummyimage.com/148x148/99cccc&text=+' width={148} height={148} alt='Achievement'/>
+         <img src={item.bgImg} width={148} height={148} alt='Achievement'/>
       </div>
       <div className={darkTheme? styles.darkComparisonAchItem__info : styles.comparisonAchItem__info}>
          <h3>{item.achievementTitle}</h3>

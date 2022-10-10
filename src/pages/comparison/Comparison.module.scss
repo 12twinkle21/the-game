@@ -120,14 +120,18 @@
       padding: 0 83px;
       
    .comparisonContent{
-      display: flex;
+      
       max-width: 1440px;
       margin: 0 auto;
       margin-top: 30px;
       margin-bottom: 40px;
-      gap: 25px;
+      
+      
+      .comparisonLists{
+         display: flex;
+         gap: 25px;
 
-      &__list{
+         &__list{
          width: 50%;
 
          .comparisonStatistics{
@@ -135,6 +139,14 @@
                margin-top: 25px;
             }
          }
+         }
+      }
+
+      .comparisonAllAchievements{
+         margin-top: 25px;
+         display: flex;
+         flex-direction: column;
+         gap: 25px;
       }
    }
 }

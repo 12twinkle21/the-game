@@ -1,6 +1,12 @@
 .overlayMenu{
    background-color: #fff;
 
+   &__title{
+      h3{
+         color: #262626;
+      }
+   }
+
    &__selectedBtns{
       button{
          background-color: #F5F5F5;
@@ -11,6 +17,12 @@
 
 .darkOverlayMenu{
    background-color: #0D0D0D;
+
+   &__title{
+      h3{
+         color: #fff;
+      }
+   }
 
    &__selectedBtns{
       button{
@@ -49,6 +61,14 @@
          font-weight: 500;
          line-height: 46px;
       }
+
+      p{
+         margin-top: 15px;
+         font-size: 16px;
+         font-weight: 400;
+         line-height: 24px;
+         color: #8c8c8c;
+      }
    }
 
    &__selectedBtns{
@@ -83,11 +103,6 @@
       display: flex;
       align-items: center;
       user-select: none;
-
-      a{
-         width: 50%;
-      }
-
       button{
          height: 60px;
          border: none;
@@ -96,16 +111,8 @@
          font-weight: 400;
          line-height: 24px;
          color: #fff;
-
-         &:first-child{
-            background-color: #FF4D4F;
-            width: 50%;
-         }
-
-         &:last-child{
-            background-color: #1890FF;
-            width: 100%;
-         }
+         background-color: #1890FF;
+         width: 100%;
       }
    }
 }
@@ -164,6 +171,17 @@
    }
 }
 
+@media(max-width: 750px){
+   .overlayMenu, .darkOverlayMenu{
+      &__title{
+         h3{
+            font-size: 25px;
+            line-height: 30px;
+         }
+      }
+   }
+}
+
 @media(max-width: 650px){
    .overlayMenu, .darkOverlayMenu{
       width: 100%;
@@ -178,6 +196,14 @@
          button{
             width: 100%;
          }
+      }
+   }
+}
+
+@media(max-width: 500px){
+   .overlayMenu, .darkOverlayMenu{
+      &__title{
+         margin-right: 50px;
       }
    }
 }

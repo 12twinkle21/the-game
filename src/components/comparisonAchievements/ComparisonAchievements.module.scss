@@ -1,0 +1,96 @@
+.comparisonAchievements{
+   background-color: #FAFAFA;
+   border-radius: 12px;
+   padding: 32px;
+
+   &__top{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      h3{
+         font-size: 20px;
+         font-weight: 600;
+         line-height: 28px;
+         color: #262626;
+      }
+
+      .gold{
+         display: flex;
+         align-items: center;
+         gap: 5px;
+
+         svg{
+            min-width: 24px;
+         }
+
+         span{
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 24px;
+            color: #262626;
+         }
+      }
+   }
+
+   p{
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 24px;
+      color: #8C8C8C;
+      margin-top: 8px;
+   }
+
+   &__progresses{
+      display: flex;
+      justify-content: space-between;
+      gap: 90px;
+      margin-top: 25px;
+
+      .progressBlock{
+         width: 100%;
+
+         &__top{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            span{
+               font-size: 20px;
+               font-weight: 400;
+               line-height: 24px;
+               color: #8C8C8C;
+            }
+         }
+
+         &__progressLineBlock{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+      
+            .progressLine{
+            width: 100%;
+            height: 6px;
+            background-color: #F5F5F5;
+            border-radius: 8px;
+            position: relative;
+            
+            .activeProgressLine{
+               position: absolute;
+               top: 0;
+               left: 0;
+               height: 6px;
+               border-radius: 8px;
+               background-color: #1890FF;
+            }
+         }
+
+         svg{
+            min-width: 12px;
+         }
+         }
+      }
+   }
+}

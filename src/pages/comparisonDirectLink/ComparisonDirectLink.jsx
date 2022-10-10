@@ -44,6 +44,9 @@ function ComparisonDirectLink() {
           </div>
         </div>
          </div>
+         <div className={styles.comparisonItems}>
+          
+         </div>
       </div>
    }
    </>

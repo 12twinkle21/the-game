@@ -7,12 +7,13 @@ import BackBtn from '../../components/backBtn/BackBtn';
 import AchievementPublication from '../../components/achievementPublication/AchievementPublication';
 import MainMenu from '../../components/mainMenu/MainMenu';
 import EstimateOverlayMenu from '../../components/estimateOverlayMenu/EstimateOverlayMenu';
+import SendArtifactOverlayMenu from '../../components/sendArtifactOverlayMenu/SendArtifactOverlayMenu';
 
 import { AppContext } from '../../App';
 
-function DetailAchievementPage(props) {
+function DetailAchievementPage() {
 
-   const { darkTheme, visibleMainMenu, whoConnect, setWhoConnect } = React.useContext(AppContext);
+   const { darkTheme, visibleMainMenu, whoConnect, setWhoConnect, backLink } = React.useContext(AppContext);
 
    let onWhoConnect = (who) =>{
       setWhoConnect(who) 
@@ -43,6 +44,7 @@ function DetailAchievementPage(props) {
       setSendArtifact(true);
       handleStepProgress(setStepProgress, styles.completedStep)
       handleStepProgress(setStepProgress2, styles.activeStep)
+      onActiveSendMenuOverlay(false)
    }
 
    let [mentorEstimateArtifact, setMentorEstimateArtifact] = React.useState(false);
@@ -51,6 +53,7 @@ function DetailAchievementPage(props) {
       setMentorEstimateArtifact(true);
       handleStepProgress(setStepProgress2, styles.completedStep)
       handleStepProgress(setStepProgress3, styles.activeStep)
+      onActiveEstimateOverlay(false);
    }
 
    let [masterEstimateArtifact, setMasterEstimateArtifact] = React.useState(false);
@@ -59,6 +62,7 @@ function DetailAchievementPage(props) {
       setMasterEstimateArtifact(true);
       handleStepProgress(setStepProgress3, styles.completedStep)
       handleStepProgress(setStepProgress4, styles.completedStep)
+      onActiveEstimateOverlay(false);
    }
 
    let [visibleAttachmentsPopup, setVisibleAttachmentsPopup] = React.useState(false);
@@ -119,8 +123,20 @@ function DetailAchievementPage(props) {
 
     let [activeEstimateOverlay, setActiveEstimateOverlay] = React.useState(false);
 
-   let onActiveEstimateOverlay = (bool) =>{
-      setActiveEstimateOverlay(bool);
+      let onActiveEstimateOverlay = (bool) =>{
+         setActiveEstimateOverlay(bool);
+
+      if(bool){
+         document.body.style.overflow = 'hidden';
+      } else{
+         document.body.style.overflow = 'auto';
+      }
+   }
+
+   let [activeSendArtifactMenuOverlay, setActiveSendArtifactMenuOverlay] = React.useState(false);
+
+      let onActiveSendMenuOverlay = (bool) =>{
+         setActiveSendArtifactMenuOverlay(bool);
 
       if(bool){
          document.body.style.overflow = 'hidden';
@@ -135,17 +151,22 @@ function DetailAchievementPage(props) {
     {
       visibleMainMenu?
       <MainMenu/>
-      :
+      :  
          activeEstimateOverlay? 
          <div className='overlay'>
-            <EstimateOverlayMenu onActiveEstimateOverlay={onActiveEstimateOverlay}/>
+            <EstimateOverlayMenu onActiveEstimateOverlay={onActiveEstimateOverlay} onEstimateArtifact={whoConnect === 'mentor'? onMentorEstimateArtifact : onMasterEstimateArtifact}/>
+         </div>
+         :
+         activeSendArtifactMenuOverlay?
+         <div className='overlay'>
+            <SendArtifactOverlayMenu onActiveSendMenuOverlay={onActiveSendMenuOverlay} onSendArtifact={onSendArtifact}/>
          </div>
          :
       <div className={darkTheme? styles.darkDetailAchievementPage : styles.detailAchievementPage}>
       <div className={darkTheme? styles.darkDetailAchievementPage__top : styles.detailAchievementPage__top}>
          <Header/>
          <div className={styles.backBtn}>
-            <BackBtn text={'Назад'} link={'/'}/>
+            <BackBtn text={'Назад'} link={backLink}/>
          </div>
          <div className={styles.titleBlock}>
             <div className={styles.titleBlock__img}>
@@ -245,6 +266,7 @@ function DetailAchievementPage(props) {
          <button onClick={()=> onWhoConnect('user')}>Пользователь</button>
          <button onClick={()=> onWhoConnect('mentor')}>Наставник</button>
          <button onClick={()=> onWhoConnect('master')}>Мастер</button>
+         <button onClick={()=> onSelectContentBlock('historyOfAchievements')}>Перейти к истории(временно для теста на мобильной версии)</button>
       </div>
       <div className={styles.navMenuAndContentWrapper}>
       <div className={styles.navMenuAndContent}>
@@ -422,7 +444,7 @@ function DetailAchievementPage(props) {
                      whoConnect === 'user'?
                         unblockPublicationsBlock?
                         !sendArtifact?
-                        <button onClick={onSendArtifact}>Прикрепить артефакт</button>
+                        <button onClick={onActiveSendMenuOverlay}>Прикрепить артефакт</button>
                         :
                         <button className={styles.sendedBtn}>Артефакт отправлен</button>
                         :
@@ -434,7 +456,7 @@ function DetailAchievementPage(props) {
                      whoConnect === 'mentor' && sendArtifact?
                         unblockPublicationsBlock?
                         !mentorEstimateArtifact?
-                        <button onClick={onMentorEstimateArtifact}>Оценить артефакт</button>
+                        <button onClick={onActiveEstimateOverlay}>Оценить артефакт</button>
                         :
                         <button className={styles.sendedBtn}>Артефакт оценен</button>
                         :
@@ -446,7 +468,7 @@ function DetailAchievementPage(props) {
                      whoConnect === 'master' && mentorEstimateArtifact?
                         unblockPublicationsBlock?
                         !masterEstimateArtifact?
-                        <button onClick={onMasterEstimateArtifact}>Оценить артефакт</button>
+                        <button onClick={onActiveEstimateOverlay}>Оценить артефакт</button>
                         :
                         <button className={styles.sendedBtn}>Артефакт оценен</button>
                         :

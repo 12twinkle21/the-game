@@ -7,7 +7,7 @@ import { AppContext } from '../../App';
 
 function AvailableAchievementItem(props) {
 
-   const {title, gold, bgImage, blocked} = props;
+   const {title, gold, bgImage, blocked, } = props;
 
    const { darkTheme } = React.useContext(AppContext);
 

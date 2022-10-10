@@ -1,5 +1,5 @@
 .scrollHeader{
-   background-color: #fff;
+   background-color: #f5f5f5;
 }
 
 .darkScrollHeader{
@@ -13,6 +13,7 @@
    right: 0;
    padding: 10px 83px;
    z-index: 1000;
+   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
 }
 
 .headerWrapper{
