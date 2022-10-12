@@ -61,6 +61,10 @@
                .achievementsTop__rightFilters{
                   button{
                      background-color: #fff;
+
+                     .achievementsFilterPopup{
+                        background-color: #fafafa;
+                     }
                   }
                }
             }
@@ -85,6 +89,10 @@
                button{
                   color: #262626;
                   background-color: none;
+
+                  .rightFilterPopup{
+                     background-color: #fafafa;
+                  }
                }
             }
          }
@@ -175,6 +183,10 @@
                      svg path{
                         fill: #fff;
                      }
+
+                     .achievementsFilterPopup{
+                        background-color: #d9d9d9;
+                     }
                   }
                }
             }
@@ -211,6 +223,10 @@
 
                   svg path{
                      fill: #fff;
+                  }
+
+                  .rightFilterPopup{
+                     background-color: #d9d9d9;
                   }
                }
             }
@@ -456,6 +472,9 @@
                   width: 120px;
                   border-radius: 8px;
                   padding: 16px;
+                  transition: opacity 0.3s ease-in-out;
+                  animation-duration: 0.3s;
+                  animation-name: popup-animation;
 
                   ul{
                      list-style: none;
@@ -503,15 +522,50 @@
                   gap: 10px;
 
                   button{
-                     height: 40px;
-                     width: 40px;
                      border: none;
                      border-radius: 6px;
-                     cursor: pointer;
-                     display: flex;
-                     align-items: center;
-                     justify-content: center;
-                     transition: transform 0.1s ease-in-out;
+                     position: relative;
+
+                     .achievementsFilterIconBlock{
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        height: 40px;
+                        width: 40px;
+                        border-radius: 6px;
+                        cursor: pointer;
+                     }
+
+                     .achievementsFilterPopup{
+                        position: absolute;
+                        right: 0;
+                        bottom: 50px;
+                        padding: 20px;
+                        max-width: 180px;
+                        box-shadow: 0px 9px 28px 8px rgba(0, 0, 0, 0.05), 0px 6px 16px rgba(0, 0, 0, 0.08), 0px 3px 6px -4px rgba(0, 0, 0, 0.12);
+                        padding: 13px 16px;
+                        border-radius: 12px;
+                        transition: opacity 0.3s ease-in-out;
+                        animation-duration: 0.3s;
+                        animation-name: popup-animation;
+                        z-index: 10;
+
+                        ul{
+                           list-style: none;
+                           text-align: start;
+                           display: flex;
+                           flex-direction: column;
+                           gap: 20px;
+
+                           li{
+                              font-size: 14px;
+                              font-weight: 400;
+                              line-height: 22px;
+                              color: #262626;
+                              cursor: pointer;
+                           }
+                        }
+                     }
                   }
                }
 
@@ -615,7 +669,6 @@
                   font-weight: 400;
                   line-height: 22px;
                   cursor: pointer;
-                  transition: transform 0.1s ease-in-out;
 
                   svg{
                      margin-left: 8px;
@@ -626,20 +679,56 @@
             &__right{
                button{
                   border: none;
-                  display: flex;
-                  align-items: center;
-                  font-size: 14px;
-                  font-weight: 400;
-                  line-height: 22px;
                   cursor: pointer;
                   white-space: nowrap;
                   margin-left: 10px;
                   transition: transform 0.1s ease-in-out;
                   margin-top: 5px;
+                  position: relative;
 
-                  svg{
-                     margin-left: 8px;
+                  .btnText{
+                     display: flex;
+                     align-items: center;
+
+                     span{
+                        font-size: 14px;
+                        font-weight: 400;
+                        line-height: 22px;
+                     }
+
+                     svg{
+                        margin-left: 8px;
+                     }
                   }
+                  
+                  .rightFilterPopup{
+                     position: absolute;
+                     top: 30px;
+                     right: 0;
+                     box-shadow: 0px 9px 28px 8px rgba(0, 0, 0, 0.05), 0px 6px 16px rgba(0, 0, 0, 0.08), 0px 3px 6px -4px rgba(0, 0, 0, 0.12);
+                     padding: 13px 16px;
+                     border-radius: 12px;
+                     transition: opacity 0.3s ease-in-out;
+                     animation-duration: 0.3s;
+                     animation-name: popup-animation;
+                     z-index: 10;
+
+                     ul{
+                        list-style: none;
+                        text-align: start;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 20px;
+            
+                        li{
+                           font-size: 14px;
+                           font-weight: 400;
+                           line-height: 22px;
+                           color: #262626;
+                           cursor: pointer;
+                        }
+                  }
+               }
                }
             }
          }
@@ -675,24 +764,6 @@
             margin-top: 40px;
             flex-wrap: wrap;
             user-select: none;
-
-            button{
-               border: none;
-               border-radius: 6px;
-               height: 32px;
-               padding: 0 15px;
-               display: flex;
-               align-items: center;
-               font-size: 14px;
-               font-weight: 400;
-               line-height: 22px;
-               cursor: pointer;
-               transition: transform 0.1s ease-in-out;
-
-               svg{
-                  margin-left: 8px;
-               }
-            }
          }
 
          .statisticsItems{
@@ -716,9 +787,18 @@
 }
 }
 
-.infoBottom button:active, .publication:active, .navMenu ul li:active, .achievementsTop button:active, .projectsFilters button:active, .projectsTop button:active, .statisticsFilters button:active{
+.infoBottom button:active, .publication:active, .navMenu ul li:active, .projectsTop button:active{
    transform: scale(0.9);
 }
+
+@keyframes popup-animation{
+   from {
+    opacity: 0;
+   }
+   to {
+    opacity: 1;
+   }
+ }
 
 @media(hover: hover) and (pointer: fine){
    .detailCard, .darkDetailCard{
@@ -752,12 +832,19 @@
                .achievementsTop{
                   &__right{
                      .achievementsTop__rightFilters{
-                        button:hover{
-                           background-color: #00BFFF;
-      
-                           svg path{
-                              fill: #fff;
+                        button{
+                           .achievementsFilterIconBlock:hover{
+                              background-color: #1890FF;
+
+                              svg path{
+                                 fill: #fff;
+                              }
+
                            }
+
+                           .achievementsFilterPopup ul li:hover{
+                              color: #8c8c8c;
+                           }    
                         }
                      }
       
@@ -778,12 +865,22 @@
                      fill: #fff;
                   }
                }
-      
-               .projectsFilters button:hover, .statisticsFilters button:hover{
-                  color: #8C8C8C;
-      
-                  svg path{
-                     fill: #8C8C8C;
+
+               .projectsFilters{
+                  &__right{
+                     .btnText:hover{
+                        span{
+                           color: #8C8C8C;
+                        }
+
+                        svg path{
+                           fill: #8c8c8c;
+                        }
+                     }
+
+                     .rightFilterPopup ul li:hover{
+                        color: #8c8c8c;
+                     }
                   }
                }
             }

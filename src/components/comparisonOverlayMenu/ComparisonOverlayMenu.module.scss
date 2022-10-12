@@ -5,6 +5,10 @@
       button{
          background-color: #F5F5F5;
          color: #262626;
+
+         .selectedBtnPopup{
+            background-color: #fafafa;
+         }
       }
    }
 }
@@ -16,6 +20,10 @@
       button{
          background-color: #171717;;
          color: #D9D9D9;
+
+         .selectedBtnPopup{
+            background-color: #D9D9D9;
+         }
 
          svg path{
             fill: #D9D9D9;
@@ -61,18 +69,59 @@
          display: block;
          height: 40px;
          width: 90%;
-         display: flex;
-         justify-content: space-between;
          border: none;
-         align-items: center;
          padding: 0 12px;
          border-radius: 2px;
-         font-size: 16px;
-         font-weight: 400;
-         line-height: 24px;
          cursor: pointer;
          transition: transform 0.1s ease-in-out;
+         position: relative;
 
+         .btnText{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            span{
+               font-size: 16px;
+               font-weight: 400;
+               line-height: 24px;
+               color: #262626;
+            }
+
+            svg{
+               min-width: 18px;
+            }
+         }
+
+         .selectedBtnPopup{
+            position: absolute;
+            right: 0;
+            bottom: 50px;
+            padding: 20px;
+            box-shadow: 0px 9px 28px 8px rgba(0, 0, 0, 0.05), 0px 6px 16px rgba(0, 0, 0, 0.08), 0px 3px 6px -4px rgba(0, 0, 0, 0.12);
+            padding: 13px 16px;
+            border-radius: 12px;
+            transition: opacity 0.3s ease-in-out;
+            animation-duration: 0.3s;
+            animation-name: popup-animation;
+            z-index: 10;
+   
+            ul{
+               list-style: none;
+               text-align: start;
+               display: flex;
+               flex-direction: column;
+               gap: 20px;
+   
+               li{
+                  font-size: 14px;
+                  font-weight: 400;
+                  line-height: 22px;
+                  color: #262626;
+                  cursor: pointer;
+               }
+            }
+         }
          &:last-child{
             margin-bottom: 0;
          }
@@ -107,20 +156,29 @@
             width: 100%;
          }
       }
+
+      #disabledBtn{
+         opacity: 0.5;
+         filter: brightness(0.5);
+         cursor: default;
+      }
    }
 }
 
 .overlayMenu, .darkOverlayMenu{
-   &__selectedBtns{
-   button:active{
-      transform: scale(0.9);
-   }
-   }
-
    &__closeBtn:active{
       transform: scale(0.9);
    }
 }
+
+@keyframes popup-animation{
+   from {
+    opacity: 0;
+   }
+   to {
+    opacity: 1;
+   }
+ }
 
 @media(hover: hover) and (pointer: fine){
    .overlayMenu, .darkOverlayMenu{
@@ -129,8 +187,11 @@
       }
 
       &__selectedBtns{
-         button:hover{
+         button
+         .btnText:hover{
+            span{
             color: #8c8c8c;
+            }
 
             svg path{
                fill: #8c8c8c;
@@ -147,6 +208,10 @@
             &:last-child:hover{
                background-color: #00BFFF;
             }
+         }
+
+         #disabledBtn:hover{
+            background-color: #1890FF;
          }
       }
    }

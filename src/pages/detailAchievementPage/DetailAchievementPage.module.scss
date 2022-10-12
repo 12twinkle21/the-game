@@ -707,6 +707,9 @@
                      width: 120px;
                      border-radius: 8px;
                      padding: 16px;
+                     transition: opacity 0.3s ease-in-out;
+                     animation-duration: 0.3s;
+                     animation-name: popup-animation;
    
                      ul{
                         list-style: none;
@@ -768,6 +771,15 @@
       transform: unset;
    }
 }
+
+@keyframes popup-animation{
+   from {
+    opacity: 0;
+   }
+   to {
+    opacity: 1;
+   }
+ }
 
 @media(hover: hover) and (pointer: fine){
    .detailAchievementPage, .darkDetailAchievementPage{

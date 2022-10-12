@@ -89,9 +89,9 @@
                   padding: 10px 0;
                   border-radius: 16px;
                   user-select: none;
-                  transition: max-height 0.5s ease-in-out;
-                  animation-duration: 0.5s;
-                  animation-name: header-acc-popup;
+                  transition: opacity 0.3s ease-in-out;
+                  animation-duration: 0.3s;
+                  animation-name: header-acc-popup;  
                   box-shadow: 0px 9px 28px 8px rgba(0, 0, 0, 0.05), 0px 6px 16px rgba(0, 0, 0, 0.08), 0px 3px 6px -4px rgba(0, 0, 0, 0.12);
    
                   p{
@@ -129,10 +129,6 @@
    &__items{
       padding: 0 83px;
    }
-
-   // :global(.slick-track){
-   //    margin-left: 4% !important;
-   // }
 }
 
 .achievementBlock{
@@ -142,10 +138,6 @@
    &__items{
       padding: 0 83px;
    }
-
-   // :global(.slick-track){
-   //    margin-left: 2% !important;
-   // }
 }
 
 .activeFriendsBlock{
@@ -155,10 +147,6 @@
    &__items{
       padding: 0 83px;
    }
-
-   // :global(.slick-track){
-   //    margin-left: 3% !important;
-   // }
 }
 
 .popularAmongFriendsBlock{
@@ -168,10 +156,6 @@
    &__items{
       padding: 0 83px;
    }
-
-   // :global(.slick-track){
-   //    margin-left: 3.5% !important;
-   // }
 }
 
 .usefulArticlesBlock{
@@ -181,10 +165,6 @@
    &__items{
       padding: 0 83px;
    } 
-
-   // :global(.slick-track){
-   //    margin-left: 4% !important;
-   // }
 }
 
 .darkFooter{
@@ -362,10 +342,10 @@
 
  @keyframes header-acc-popup {
    from {
-    max-height: 0;
+    opacity: 0;
    }
    to {
-    max-height: 1000px;
+    opacity: 1;
    }
  }
 

@@ -12,6 +12,56 @@ function ComparisonOverlayMenu(props) {
 
   const { darkTheme } = React.useContext(AppContext);
 
+  const [showSeasonPopup, setShowSeasonPopup] = React.useState(false);
+  const [showTypeOfPlayerPopup, setShowTypeOfPlayerPopup] = React.useState(false);
+  const [showPlayerPopup, setShowPlayerPopup] = React.useState(false);
+
+  let onSetShowPopup = (thisPopup, setThisPopup) =>{
+    setThisPopup(!thisPopup);
+  }
+
+  let seasonBtnRef = React.useRef(); 
+  let typeOfPlayerBtnRef = React.useRef(); 
+  let playerBtnRef = React.useRef(); 
+
+  React.useEffect(() => {
+    document.body.addEventListener('click', handleOutsideClick)
+ }, []);
+ 
+  let handleOutsideClick = (e) => {
+    const path = e.path || (e.composedPath && e.composedPath()) || e.composedPath(e.target);
+    if (!path.includes(seasonBtnRef.current)) { 
+      setShowSeasonPopup(false);
+    }
+
+    if (!path.includes(typeOfPlayerBtnRef.current)) { 
+      setShowTypeOfPlayerPopup(false);
+    }
+
+    if (!path.includes(playerBtnRef.current)) { 
+      setShowPlayerPopup(false);
+    }
+ }
+ 
+ const [activeSeasonBtn, setActiveSeasonBtn] = React.useState(null);
+ const [activeTypeOfPlayerBtn, setActiveTypeOfPlayerBtn] = React.useState(null);
+ const [activePlayerBtn, setActivePlayerBtn] = React.useState(null);
+
+ let onSetActiveSeasonBtn = (evt) =>{
+  setActiveSeasonBtn(evt.target.innerText);
+ }
+
+ let onSetActiveTypeOfPlayerBtn = (evt) =>{
+  setActiveTypeOfPlayerBtn(evt.target.innerText);
+ }
+
+ let onSetActivePlayerBtn = (evt) =>{
+  setActivePlayerBtn(evt.target.innerText);
+ }
+
+ const unblockedEnterBtn = activeSeasonBtn !== null && activeTypeOfPlayerBtn !== null && activePlayerBtn !== null;
+
+
   return (
 
     <div className={darkTheme? styles.darkOverlayMenu : styles.overlayMenu}>
@@ -25,23 +75,74 @@ function ComparisonOverlayMenu(props) {
          <h3>Сравнение</h3>
       </div>
       <div className={darkTheme? styles.darkOverlayMenu__selectedBtns : styles.overlayMenu__selectedBtns}>
-        <button>
-          Выбрать сезон курса
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15.5393 4.5H14.2209C14.1313 4.5 14.0469 4.54395 13.9942 4.61602L9.00022 11.4996L4.00628 4.61602C3.95354 4.54395 3.86917 4.5 3.77952 4.5H2.46116C2.3469 4.5 2.28011 4.63008 2.3469 4.72324L8.54495 13.268C8.76995 13.5773 9.2305 13.5773 9.45374 13.268L15.6518 4.72324C15.7203 4.63008 15.6535 4.5 15.5393 4.5Z" fill="#262626"/>
-          </svg>
+        <button onClick={()=> onSetShowPopup(showSeasonPopup, setShowSeasonPopup)} ref={seasonBtnRef}>
+          <div className={styles.btnText}>
+            {
+              activeSeasonBtn?
+              <span>{activeSeasonBtn}</span>
+              :
+              <span>Выбрать сезон курса</span>
+            }
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15.5393 4.5H14.2209C14.1313 4.5 14.0469 4.54395 13.9942 4.61602L9.00022 11.4996L4.00628 4.61602C3.95354 4.54395 3.86917 4.5 3.77952 4.5H2.46116C2.3469 4.5 2.28011 4.63008 2.3469 4.72324L8.54495 13.268C8.76995 13.5773 9.2305 13.5773 9.45374 13.268L15.6518 4.72324C15.7203 4.63008 15.6535 4.5 15.5393 4.5Z" fill="#262626"/>
+            </svg>
+          </div>
+          {
+            showSeasonPopup?
+            <div className={styles.selectedBtnPopup}>
+              <ul>
+                <li onClick={onSetActiveSeasonBtn}>Сезон 1</li>
+              </ul>
+            </div>
+            :
+            ''
+          }
         </button>
-        <button>
-          Выбрать тип игрока
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15.5393 4.5H14.2209C14.1313 4.5 14.0469 4.54395 13.9942 4.61602L9.00022 11.4996L4.00628 4.61602C3.95354 4.54395 3.86917 4.5 3.77952 4.5H2.46116C2.3469 4.5 2.28011 4.63008 2.3469 4.72324L8.54495 13.268C8.76995 13.5773 9.2305 13.5773 9.45374 13.268L15.6518 4.72324C15.7203 4.63008 15.6535 4.5 15.5393 4.5Z" fill="#262626"/>
-          </svg>
+        <button onClick={()=> onSetShowPopup(showTypeOfPlayerPopup, setShowTypeOfPlayerPopup)} ref={typeOfPlayerBtnRef}>
+          <div className={styles.btnText}>
+            {
+              activeTypeOfPlayerBtn?
+              <span>{activeTypeOfPlayerBtn}</span>
+              :
+              <span>Выбрать тип игрока</span>
+            }
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15.5393 4.5H14.2209C14.1313 4.5 14.0469 4.54395 13.9942 4.61602L9.00022 11.4996L4.00628 4.61602C3.95354 4.54395 3.86917 4.5 3.77952 4.5H2.46116C2.3469 4.5 2.28011 4.63008 2.3469 4.72324L8.54495 13.268C8.76995 13.5773 9.2305 13.5773 9.45374 13.268L15.6518 4.72324C15.7203 4.63008 15.6535 4.5 15.5393 4.5Z" fill="#262626"/>
+            </svg>
+          </div>
+          {
+            showTypeOfPlayerPopup?
+            <div className={styles.selectedBtnPopup}>
+              <ul>
+                <li onClick={onSetActiveTypeOfPlayerBtn}>Команда</li>
+              </ul>
+            </div>
+            :
+            ''
+          }
         </button>
-        <button>
-          Выбрать игрока
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15.5393 4.5H14.2209C14.1313 4.5 14.0469 4.54395 13.9942 4.61602L9.00022 11.4996L4.00628 4.61602C3.95354 4.54395 3.86917 4.5 3.77952 4.5H2.46116C2.3469 4.5 2.28011 4.63008 2.3469 4.72324L8.54495 13.268C8.76995 13.5773 9.2305 13.5773 9.45374 13.268L15.6518 4.72324C15.7203 4.63008 15.6535 4.5 15.5393 4.5Z" fill="#262626"/>
-          </svg>
+        <button onClick={()=> onSetShowPopup(showPlayerPopup, setShowPlayerPopup)} ref={playerBtnRef}>
+          <div className={styles.btnText}>
+            {
+              activePlayerBtn?
+              <span>{activePlayerBtn}</span>
+              :
+              <span>Выбрать игрока</span>
+            }
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15.5393 4.5H14.2209C14.1313 4.5 14.0469 4.54395 13.9942 4.61602L9.00022 11.4996L4.00628 4.61602C3.95354 4.54395 3.86917 4.5 3.77952 4.5H2.46116C2.3469 4.5 2.28011 4.63008 2.3469 4.72324L8.54495 13.268C8.76995 13.5773 9.2305 13.5773 9.45374 13.268L15.6518 4.72324C15.7203 4.63008 15.6535 4.5 15.5393 4.5Z" fill="#262626"/>
+            </svg>
+          </div>
+          {
+            showPlayerPopup?
+            <div className={styles.selectedBtnPopup}>
+              <ul>
+                <li onClick={onSetActivePlayerBtn}>Ночные неожиданности</li>
+              </ul>
+            </div>
+            :
+            ''
+          }
         </button>
       </div>
       <div className={darkTheme? styles.darkOverlayMenu__btns : styles.overlayMenu__btns}>
@@ -49,7 +150,7 @@ function ComparisonOverlayMenu(props) {
           Отменить
         </button>
         <Link to='/comparison' className='clearLink'>
-        <button onClick={()=> onActiveOverlay(false)}>
+        <button id={unblockedEnterBtn? '' : styles.disabledBtn} onClick={()=> onActiveOverlay(false)} disabled={unblockedEnterBtn? false : true}>
           Применить
         </button>
         </Link>

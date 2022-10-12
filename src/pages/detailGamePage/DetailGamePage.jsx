@@ -11,6 +11,7 @@ import ProjectItem from '../../components/projectItem/ProjectItem';
 import StatisticsCard from '../../components/statisticsCard/StatisticsCard';
 import OverlayMenu from '../../components/comparisonOverlayMenu/ComparisonOverlayMenu';
 import MainMenu from '../../components/mainMenu/MainMenu';
+import FilterComponent from '../../components/filterComponent/FilterComponent';
 
 import { AppContext } from '../../App';
 
@@ -336,6 +337,9 @@ function DetailGamePage() {
    }
 
    let popupAttachmentsRef = React.useRef();
+   let achievementFirstFilterRef = React.useRef();
+   let achievementSecondFilterRef = React.useRef();
+   let projectRightFilterRef = React.useRef();
 
    React.useEffect(() => {
      document.body.addEventListener('click', handleOutsideClick)
@@ -346,6 +350,18 @@ function DetailGamePage() {
      if (!path.includes(popupAttachmentsRef.current)) { 
         setVisibleAttachmentsPopup(false);
      }
+
+     if (!path.includes(achievementFirstFilterRef.current)) { 
+      setShowFirstAchievementsFilterPopup(false);
+   }
+
+   if (!path.includes(achievementSecondFilterRef.current)) { 
+      setShowSecondAchievementsFilterPopup(false);
+   }
+
+   if (!path.includes(projectRightFilterRef.current)) { 
+      setShowRightFilterPopup(false);
+   }
   }
 
    let [activeOverlay, setActiveOverlay] = React.useState(false);
@@ -388,6 +404,113 @@ function DetailGamePage() {
       }
     };
 
+    let statisticsSeasonFiltersData = [
+      {
+         title: "Сезон 1"
+      },
+      {
+         title: "Сезон 2"
+      },
+      {
+         title: "Сезон 3"
+      }
+    ]
+
+    let statisticsRegionFiltersData = [
+      {
+         title: "Ростовская область"
+      },
+      {
+         title: "Московская область"
+      }
+    ]
+
+    let statisticsCityFiltersData = [
+      {
+         title: "Москва"
+      },
+      {
+         title: "Челябинск"
+      }
+    ]
+
+    let statisticsTermsFiltersData = [
+      {
+         title: "Все условия"
+      },
+      {
+         title: "Другие условия"
+      }
+    ]
+
+    let statisticsProgressFiltersData = [
+      {
+         title: "Прогресс <40%"
+      },
+      {
+         title: "Прогресс <80%"
+      }
+    ]
+
+    let projectCurrentFiltersData = [
+      {
+         title: "Действующие"
+      },
+      {
+         title: "Недействующие"
+      }
+    ]
+
+    let projectTeamFiltersData = [
+      {
+         title: "The GAME"
+      },
+      {
+         title: "Ночные неожиданности"
+      }
+    ]
+
+    let projectCityFiltersData = [
+      {
+         title: "Москва"
+      },
+      {
+         title: "Челябинск"
+      }
+    ]
+
+    let projectSocialFiltersData = [
+      {
+         title: "Социальный"
+      },
+      {
+         title: "Частный"
+      }
+    ]
+
+    const [activeProjectRightFilter, setActiveProjectRightFilter] = React.useState('По возрастанию даты');
+
+    let onSetActiveProjectRightFilter = (evt) =>{
+      setActiveProjectRightFilter(evt.target.innerText);
+    }
+
+    const [showRightFilterPopup, setShowRightFilterPopup] = React.useState(false);
+
+    let onSetShowRightFilterPopup = () =>{
+      setShowRightFilterPopup(!showRightFilterPopup);
+    }
+
+    const [showFirstAchievementsFilterPopup, setShowFirstAchievementsFilterPopup] = React.useState(false);
+
+    let onSetShowFirstAchievementsFilterPopup = () =>{
+      setShowFirstAchievementsFilterPopup(!showFirstAchievementsFilterPopup);
+    }
+
+    const [showSecondAchievementsFilterPopup, setShowSecondAchievementsFilterPopup] = React.useState(false);
+
+    let onSetShowSecondAchievementsFilterPopup = () =>{
+      setShowSecondAchievementsFilterPopup(!showSecondAchievementsFilterPopup);
+    }
 
   return (
 
@@ -524,15 +647,43 @@ function DetailGamePage() {
                </div>
                <div className={styles.achievementsTop__right}>
                   <div className={styles.achievementsTop__rightFilters}>
-                     <button>
-                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7.8915 13.7344H16.1087L18.0985 10.2656H5.90166L7.8915 13.7344ZM20.6274 3.60938H3.37275C2.79853 3.60938 2.43994 4.23516 2.72822 4.73438L5.03916 8.76562H18.961L21.2743 4.73438C21.5602 4.23516 21.2017 3.60938 20.6274 3.60938ZM8.17978 19.6406C8.17978 20.0555 8.51259 20.3906 8.92509 20.3906H15.0751C15.4876 20.3906 15.8204 20.0555 15.8204 19.6406V15.2344H8.17978V19.6406Z" fill="#262626"/>
-                     </svg>
+                     <button onClick={onSetShowFirstAchievementsFilterPopup} ref={achievementFirstFilterRef}>
+                        <div className={styles.achievementsFilterIconBlock}>
+                           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M7.8915 13.7344H16.1087L18.0985 10.2656H5.90166L7.8915 13.7344ZM20.6274 3.60938H3.37275C2.79853 3.60938 2.43994 4.23516 2.72822 4.73438L5.03916 8.76562H18.961L21.2743 4.73438C21.5602 4.23516 21.2017 3.60938 20.6274 3.60938ZM8.17978 19.6406C8.17978 20.0555 8.51259 20.3906 8.92509 20.3906H15.0751C15.4876 20.3906 15.8204 20.0555 15.8204 19.6406V15.2344H8.17978V19.6406Z" fill="#262626"/>
+                           </svg>
+                        </div>
+                        {
+                           showFirstAchievementsFilterPopup?
+                           <div className={styles.achievementsFilterPopup}>
+                           <ul>
+                              <li>Отобразить все</li>
+                              <li>Доступные сейчас</li>
+                              <li>Заблокированные</li>
+                              <li>Разблокированные</li>
+                           </ul>
+                        </div>
+                           :
+                           ''
+                        } 
                      </button>
-                     <button>
-                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5.5 15.9688C5.5 16.1986 5.54526 16.4261 5.63321 16.6384C5.72116 16.8508 5.85006 17.0437 6.01256 17.2062C6.17507 17.3687 6.36798 17.4976 6.5803 17.5855C6.79262 17.6735 7.02019 17.7188 7.25 17.7188C7.47981 17.7188 7.70738 17.6735 7.9197 17.5855C8.13202 17.4976 8.32493 17.3687 8.48744 17.2062C8.64994 17.0437 8.77884 16.8508 8.86679 16.6384C8.95473 16.4261 9 16.1986 9 15.9688C9 15.7389 8.95473 15.5114 8.86679 15.2991C8.77884 15.0867 8.64994 14.8938 8.48744 14.7313C8.32493 14.5688 8.13202 14.4399 7.9197 14.352C7.70738 14.264 7.47981 14.2188 7.25 14.2188C7.02019 14.2188 6.79262 14.264 6.5803 14.352C6.36798 14.4399 6.17507 14.5688 6.01256 14.7313C5.85006 14.8938 5.72116 15.0867 5.63321 15.2991C5.54526 15.5114 5.5 15.7389 5.5 15.9688ZM14.25 15.9688C14.25 16.4329 14.4344 16.878 14.7626 17.2062C15.0908 17.5344 15.5359 17.7188 16 17.7188C16.4641 17.7188 16.9092 17.5344 17.2374 17.2062C17.5656 16.878 17.75 16.4329 17.75 15.9688C17.75 15.5046 17.5656 15.0595 17.2374 14.7313C16.9092 14.4031 16.4641 14.2188 16 14.2188C15.5359 14.2188 15.0908 14.4031 14.7626 14.7313C14.4344 15.0595 14.25 15.5046 14.25 15.9688ZM23 15.9688C23 16.4329 23.1844 16.878 23.5126 17.2062C23.8408 17.5344 24.2859 17.7188 24.75 17.7188C25.2141 17.7188 25.6592 17.5344 25.9874 17.2062C26.3156 16.878 26.5 16.4329 26.5 15.9688C26.5 15.5046 26.3156 15.0595 25.9874 14.7313C25.6592 14.4031 25.2141 14.2188 24.75 14.2188C24.2859 14.2188 23.8408 14.4031 23.5126 14.7313C23.1844 15.0595 23 15.5046 23 15.9688Z" fill="#262626"/>
-                     </svg>
+                     <button onClick={onSetShowSecondAchievementsFilterPopup} ref={achievementSecondFilterRef}>
+                        <div className={styles.achievementsFilterIconBlock}>
+                           <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M5.5 15.9688C5.5 16.1986 5.54526 16.4261 5.63321 16.6384C5.72116 16.8508 5.85006 17.0437 6.01256 17.2062C6.17507 17.3687 6.36798 17.4976 6.5803 17.5855C6.79262 17.6735 7.02019 17.7188 7.25 17.7188C7.47981 17.7188 7.70738 17.6735 7.9197 17.5855C8.13202 17.4976 8.32493 17.3687 8.48744 17.2062C8.64994 17.0437 8.77884 16.8508 8.86679 16.6384C8.95473 16.4261 9 16.1986 9 15.9688C9 15.7389 8.95473 15.5114 8.86679 15.2991C8.77884 15.0867 8.64994 14.8938 8.48744 14.7313C8.32493 14.5688 8.13202 14.4399 7.9197 14.352C7.70738 14.264 7.47981 14.2188 7.25 14.2188C7.02019 14.2188 6.79262 14.264 6.5803 14.352C6.36798 14.4399 6.17507 14.5688 6.01256 14.7313C5.85006 14.8938 5.72116 15.0867 5.63321 15.2991C5.54526 15.5114 5.5 15.7389 5.5 15.9688ZM14.25 15.9688C14.25 16.4329 14.4344 16.878 14.7626 17.2062C15.0908 17.5344 15.5359 17.7188 16 17.7188C16.4641 17.7188 16.9092 17.5344 17.2374 17.2062C17.5656 16.878 17.75 16.4329 17.75 15.9688C17.75 15.5046 17.5656 15.0595 17.2374 14.7313C16.9092 14.4031 16.4641 14.2188 16 14.2188C15.5359 14.2188 15.0908 14.4031 14.7626 14.7313C14.4344 15.0595 14.25 15.5046 14.25 15.9688ZM23 15.9688C23 16.4329 23.1844 16.878 23.5126 17.2062C23.8408 17.5344 24.2859 17.7188 24.75 17.7188C25.2141 17.7188 25.6592 17.5344 25.9874 17.2062C26.3156 16.878 26.5 16.4329 26.5 15.9688C26.5 15.5046 26.3156 15.0595 25.9874 14.7313C25.6592 14.4031 25.2141 14.2188 24.75 14.2188C24.2859 14.2188 23.8408 14.4031 23.5126 14.7313C23.1844 15.0595 23 15.5046 23 15.9688Z" fill="#262626"/>
+                           </svg>
+                        </div>
+                        {
+                           showSecondAchievementsFilterPopup?
+                           <div className={styles.achievementsFilterPopup}>
+                           <ul>
+                              <li>Список</li>
+                              <li>Дерево</li>
+                           </ul>
+                        </div>
+                        :
+                        ''
+                        } 
                      </button>
                   </div>
                   <div className={styles.achievementsTop__rightCompare}>
@@ -562,37 +713,39 @@ function DetailGamePage() {
             </div>
             <div className={styles.projectsFilters}>
                <div className={styles.projectsFilters__left}>
-                  <button>
-                     Действующие
-                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10.3594 3H9.4805C9.42073 3 9.36448 3.0293 9.32932 3.07734L6.00003 7.66641L2.67073 3.07734C2.63557 3.0293 2.57932 3 2.51956 3H1.64065C1.56448 3 1.51995 3.08672 1.56448 3.14883L5.69651 8.84531C5.84651 9.05156 6.15354 9.05156 6.30237 8.84531L10.4344 3.14883C10.4801 3.08672 10.4356 3 10.3594 3Z" fill="#262626"/>
-                     </svg>
-                  </button>
-                  <button>
-                     The GAME
-                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10.3594 3H9.4805C9.42073 3 9.36448 3.0293 9.32932 3.07734L6.00003 7.66641L2.67073 3.07734C2.63557 3.0293 2.57932 3 2.51956 3H1.64065C1.56448 3 1.51995 3.08672 1.56448 3.14883L5.69651 8.84531C5.84651 9.05156 6.15354 9.05156 6.30237 8.84531L10.4344 3.14883C10.4801 3.08672 10.4356 3 10.3594 3Z" fill="#262626"/>
-                     </svg>
-                  </button>
-                  <button>
-                     г. Москва
-                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10.3594 3H9.4805C9.42073 3 9.36448 3.0293 9.32932 3.07734L6.00003 7.66641L2.67073 3.07734C2.63557 3.0293 2.57932 3 2.51956 3H1.64065C1.56448 3 1.51995 3.08672 1.56448 3.14883L5.69651 8.84531C5.84651 9.05156 6.15354 9.05156 6.30237 8.84531L10.4344 3.14883C10.4801 3.08672 10.4356 3 10.3594 3Z" fill="#262626"/>
-                     </svg>
-                  </button>
-                  <button>
-                     Социальный
-                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10.3594 3H9.4805C9.42073 3 9.36448 3.0293 9.32932 3.07734L6.00003 7.66641L2.67073 3.07734C2.63557 3.0293 2.57932 3 2.51956 3H1.64065C1.56448 3 1.51995 3.08672 1.56448 3.14883L5.69651 8.84531C5.84651 9.05156 6.15354 9.05156 6.30237 8.84531L10.4344 3.14883C10.4801 3.08672 10.4356 3 10.3594 3Z" fill="#262626"/>
-                     </svg>
-                  </button>
+               <FilterComponent statisticsFiltersData={projectCurrentFiltersData}/>
+               <FilterComponent statisticsFiltersData={projectTeamFiltersData}/>
+               <FilterComponent statisticsFiltersData={projectCityFiltersData}/>
+               <FilterComponent statisticsFiltersData={projectSocialFiltersData}/>  
                </div>
                <div className={styles.projectsFilters__right}>
-                  <button>
-                     По возрастанию даты
-                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10.3594 3H9.4805C9.42073 3 9.36448 3.0293 9.32932 3.07734L6.00003 7.66641L2.67073 3.07734C2.63557 3.0293 2.57932 3 2.51956 3H1.64065C1.56448 3 1.51995 3.08672 1.56448 3.14883L5.69651 8.84531C5.84651 9.05156 6.15354 9.05156 6.30237 8.84531L10.4344 3.14883C10.4801 3.08672 10.4356 3 10.3594 3Z" fill="#262626"/>
-                     </svg>
+                  <button onClick={onSetShowRightFilterPopup} ref={projectRightFilterRef}>
+                     <div className={styles.btnText}>
+                        <span>{activeProjectRightFilter}</span>
+                        {
+                           showRightFilterPopup?
+                           <svg width="20" height="20" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M17.512 19.1687L19.1693 17.5114C19.3166 17.3641 19.4639 17.3641 19.6112 17.5114L39.0566 36.9568C39.2039 37.1042 39.2039 37.2515 39.0566 37.3988L37.3994 39.0561C37.252 39.2034 37.1047 39.2034 36.9574 39.0561L17.512 19.6106C17.3647 19.4633 17.3647 19.316 17.512 19.1687Z" fill="#262626"/>
+                              <path d="M17.9539 36.5149L36.5155 17.9534C36.6628 17.806 36.8101 17.806 36.9574 17.9534L38.6147 19.6106C38.762 19.7579 38.762 19.9053 38.6147 20.0526L20.0531 38.6141C19.9058 38.7614 19.7585 38.7614 19.6112 38.6141L17.9539 36.9568C17.8066 36.8095 17.8066 36.6622 17.9539 36.5149Z" fill="#262626"/>
+                           </svg>
+                           :
+                           <svg width="20" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M10.3594 3H9.4805C9.42073 3 9.36448 3.0293 9.32932 3.07734L6.00003 7.66641L2.67073 3.07734C2.63557 3.0293 2.57932 3 2.51956 3H1.64065C1.56448 3 1.51995 3.08672 1.56448 3.14883L5.69651 8.84531C5.84651 9.05156 6.15354 9.05156 6.30237 8.84531L10.4344 3.14883C10.4801 3.08672 10.4356 3 10.3594 3Z" fill="#262626"/>
+                           </svg>
+                        }
+                        
+                     </div>
+                     {
+                        showRightFilterPopup?
+                        <div className={styles.rightFilterPopup}>
+                        <ul>
+                           <li onClick={onSetActiveProjectRightFilter}>По возрастанию даты</li>
+                           <li onClick={onSetActiveProjectRightFilter}>По названию</li>
+                        </ul>
+                     </div>
+                        :
+                        ''
+                     }  
                   </button>
                </div>
             </div>
@@ -618,36 +771,11 @@ function DetailGamePage() {
                </div>
             </div>
             <div className={styles.statisticsFilters}>
-               <button>
-                  Сезон 2
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                     <path d="M10.3594 3H9.4805C9.42073 3 9.36448 3.0293 9.32932 3.07734L6.00003 7.66641L2.67073 3.07734C2.63557 3.0293 2.57932 3 2.51956 3H1.64065C1.56448 3 1.51995 3.08672 1.56448 3.14883L5.69651 8.84531C5.84651 9.05156 6.15354 9.05156 6.30237 8.84531L10.4344 3.14883C10.4801 3.08672 10.4356 3 10.3594 3Z" fill="#262626"/>
-                  </svg>
-               </button>
-               <button>
-                  Челябинская область
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                     <path d="M10.3594 3H9.4805C9.42073 3 9.36448 3.0293 9.32932 3.07734L6.00003 7.66641L2.67073 3.07734C2.63557 3.0293 2.57932 3 2.51956 3H1.64065C1.56448 3 1.51995 3.08672 1.56448 3.14883L5.69651 8.84531C5.84651 9.05156 6.15354 9.05156 6.30237 8.84531L10.4344 3.14883C10.4801 3.08672 10.4356 3 10.3594 3Z" fill="#262626"/>
-                  </svg>
-               </button>
-               <button>
-                  Челябинск
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                     <path d="M10.3594 3H9.4805C9.42073 3 9.36448 3.0293 9.32932 3.07734L6.00003 7.66641L2.67073 3.07734C2.63557 3.0293 2.57932 3 2.51956 3H1.64065C1.56448 3 1.51995 3.08672 1.56448 3.14883L5.69651 8.84531C5.84651 9.05156 6.15354 9.05156 6.30237 8.84531L10.4344 3.14883C10.4801 3.08672 10.4356 3 10.3594 3Z" fill="#262626"/>
-                  </svg>
-               </button>
-               <button>
-                  Все условия
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                     <path d="M10.3594 3H9.4805C9.42073 3 9.36448 3.0293 9.32932 3.07734L6.00003 7.66641L2.67073 3.07734C2.63557 3.0293 2.57932 3 2.51956 3H1.64065C1.56448 3 1.51995 3.08672 1.56448 3.14883L5.69651 8.84531C5.84651 9.05156 6.15354 9.05156 6.30237 8.84531L10.4344 3.14883C10.4801 3.08672 10.4356 3 10.3594 3Z" fill="#262626"/>
-                  </svg>
-               </button>
-               <button>
-                  Прогресс &lt;40%
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                     <path d="M10.3594 3H9.4805C9.42073 3 9.36448 3.0293 9.32932 3.07734L6.00003 7.66641L2.67073 3.07734C2.63557 3.0293 2.57932 3 2.51956 3H1.64065C1.56448 3 1.51995 3.08672 1.56448 3.14883L5.69651 8.84531C5.84651 9.05156 6.15354 9.05156 6.30237 8.84531L10.4344 3.14883C10.4801 3.08672 10.4356 3 10.3594 3Z" fill="#262626"/>
-                  </svg>
-               </button>
+               <FilterComponent statisticsFiltersData={statisticsSeasonFiltersData}/>
+               <FilterComponent statisticsFiltersData={statisticsRegionFiltersData}/>
+               <FilterComponent statisticsFiltersData={statisticsCityFiltersData}/>
+               <FilterComponent statisticsFiltersData={statisticsTermsFiltersData}/>   
+               <FilterComponent statisticsFiltersData={statisticsProgressFiltersData}/>   
             </div>
             <div className={styles.statisticsItems}>
                {

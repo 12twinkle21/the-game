@@ -78,8 +78,8 @@
       flex-direction: column;
       justify-content: space-between;
       user-select: none;
-      transition: max-height 0.5s ease-in-out;
-      animation-duration: 0.5s;
+      transition: opacity 0.3s ease-in-out;
+      animation-duration: 0.3s;
       animation-name: card-popup;
    
       p{
@@ -132,8 +132,8 @@
       flex-direction: column;
       justify-content: space-between;
       user-select: none;
-      transition: max-height 0.5s ease-in-out;
-      animation-duration: 0.5s;
+      transition: opacity 0.3s ease-in-out;
+      animation-duration: 0.3s;
       animation-name: card-popup;
    
       p{
@@ -147,10 +147,10 @@
 
 @keyframes card-popup {
    from {
-    max-height: 0;
+    opacity: 0;
    }
    to {
-    max-height: 1000px;
+    opacity: 1;
    }
  }
 

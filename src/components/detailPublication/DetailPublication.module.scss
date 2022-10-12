@@ -132,6 +132,9 @@
             border-radius: 12px;
             padding: 13px 16px;
             width: 180px;
+            transition: opacity 0.3s ease-in-out;
+            animation-duration: 0.3s;
+            animation-name: popup-animation;
 
             ul{
                list-style: none;
@@ -348,6 +351,9 @@
                width: 120px;
                border-radius: 8px;
                padding: 16px;
+               transition: opacity 0.3s ease-in-out;
+               animation-duration: 0.3s;
+               animation-name: popup-animation;
 
                ul{
                   list-style: none;
@@ -379,6 +385,15 @@
 .likes:active, .publication:active, .comments:active, .share:active, .commentBottomLeft button:active, .commentBottomLikes:active{
    transform: scale(0.9);
 }
+
+@keyframes popup-animation{
+   from {
+    opacity: 0;
+   }
+   to {
+    opacity: 1;
+   }
+ }
 
 @media(hover: hover) and (pointer: fine){
    .detailPublication, .darkDetailPublication{
