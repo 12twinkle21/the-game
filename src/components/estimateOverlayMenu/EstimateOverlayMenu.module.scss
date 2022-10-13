@@ -136,6 +136,12 @@
             background-color: #1890FF;
          }
       }
+
+      #disabledBtn{
+         opacity: 0.5;
+         filter: brightness(0.5);
+         cursor: default;
+      }
    }
 }
 
@@ -160,6 +166,10 @@
             &:last-child:hover{
                background-color: #00BFFF;
             }
+         }
+
+         #disabledBtn:hover{
+            background-color: #1890FF;
          }
       }
    }

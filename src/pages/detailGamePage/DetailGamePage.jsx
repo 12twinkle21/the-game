@@ -27,7 +27,6 @@ function DetailGamePage() {
          dateAndTime: "29 ноя в 16:48",
          publicationText: "Братья решили покинуть монастырь и поставили в лесу, в десяти верстах от него келью. Вместе срубили церковь и освятили ее в честь Св. Троицы. Около 1335 г. Стефан не выдержал тягот и ушел в Московский Богоявленский монастырь, оставив Сергия одного. Для Сергия начался период тяжелых испытаний. Его уединение длилось около двух лет, а затем к нему стали стекаться иноки. Построили двенадцать келий, обнесли оградой. Так в 1337 г. зародился монастырь Троице-Сергиевский монастырь, а Сергий стал его игуменом.",
          likesCount: 23,
-         commentsCount: 0
       },
       {
          userAvatar: "./img/headerAccAvatar.png",
@@ -35,7 +34,6 @@ function DetailGamePage() {
          dateAndTime: "29 ноя в 16:48",
          publicationText: "Текст публикации",
          likesCount: 0,
-         commentsCount: 2,
          comments: 
          [
             {
@@ -488,7 +486,16 @@ function DetailGamePage() {
       }
     ]
 
-    const [activeProjectRightFilter, setActiveProjectRightFilter] = React.useState('По возрастанию даты');
+    let rightProjectFiltersData = [
+      {
+         title : "По возрастанию даты"
+      },
+      {
+         title : "По названию"
+      }
+    ]
+
+    const [activeProjectRightFilter, setActiveProjectRightFilter] = React.useState("По возрастанию даты");
 
     let onSetActiveProjectRightFilter = (evt) =>{
       setActiveProjectRightFilter(evt.target.innerText);
@@ -510,6 +517,38 @@ function DetailGamePage() {
 
     let onSetShowSecondAchievementsFilterPopup = () =>{
       setShowSecondAchievementsFilterPopup(!showSecondAchievementsFilterPopup);
+    }
+
+    let firstAchievementFiltersData = [
+      {
+         title: "Отобразить все"
+      },
+      {
+         title: "Доступные сейчас"
+      },
+      {
+         title: "Заблокированные"
+      },
+      {
+         title: "Разблокированные"
+      }
+    ]
+
+    let secondAchievementFiltersData = [
+      {
+         title: "Список"
+      },
+      {
+         title: "Дерево"
+      }
+    ]
+
+    const [activeFirstAchievementFilter, setActiveFirstAchievementFilter] = React.useState("Доступные сейчас");
+
+    const [activeSecondAchievementFilter, setActiveSecondAchievementFilter] = React.useState("Список");
+
+    let onSetActiveAchievementFilter = (value, setFilter) =>{
+      setFilter(value);
     }
 
   return (
@@ -621,10 +660,10 @@ function DetailGamePage() {
             </div>
             <div className={styles.publicationsBlock}>
                {
-                  publications.map((item, index) => <DetailPublication userAvatar={"./img/headerAccAvatar.png"} userName={"Илья Абрамов"} dateAndTime={"29 ноя в 16:48"} publicationText={item.inputText} likesCount={0} commentsCount={0} key={`${index}__${item.dateAndTime}`}/>)
+                  publications.map((item, index) => <DetailPublication userAvatar={"./img/headerAccAvatar.png"} userName={"Илья Абрамов"} dateAndTime={"29 ноя в 16:48"} publicationText={item.inputText} likesCount={0} key={`${index}__${item.dateAndTime}`}/>)
                }
                {
-                  publicationsData.map((item, index) => <DetailPublication userAvatar={item.userAvatar} userName={item.userName} dateAndTime={item.dateAndTime} publicationText={item.publicationText} likesCount={item.likesCount} commentsCount={item.commentsCount} comments={item.comments} key={`${index}__${item.dateAndTime}`}/>)
+                  publicationsData.map((item, index) => <DetailPublication userAvatar={item.userAvatar} userName={item.userName} dateAndTime={item.dateAndTime} publicationText={item.publicationText} likesCount={item.likesCount} comments={item.comments} key={`${index}__${item.dateAndTime}`}/>)
                }
             </div>
          </div>
@@ -657,10 +696,9 @@ function DetailGamePage() {
                            showFirstAchievementsFilterPopup?
                            <div className={styles.achievementsFilterPopup}>
                            <ul>
-                              <li>Отобразить все</li>
-                              <li>Доступные сейчас</li>
-                              <li>Заблокированные</li>
-                              <li>Разблокированные</li>
+                              {
+                              firstAchievementFiltersData.map((item) => <li onClick={()=> onSetActiveAchievementFilter(item.title, setActiveFirstAchievementFilter)} style={activeFirstAchievementFilter === item.title?{color: '#bfbfbf'} : null} key={item.title}>{item.title}</li>)
+                              }
                            </ul>
                         </div>
                            :
@@ -677,8 +715,9 @@ function DetailGamePage() {
                            showSecondAchievementsFilterPopup?
                            <div className={styles.achievementsFilterPopup}>
                            <ul>
-                              <li>Список</li>
-                              <li>Дерево</li>
+                              {
+                              secondAchievementFiltersData.map((item) => <li onClick={()=> onSetActiveAchievementFilter(item.title, setActiveSecondAchievementFilter)} style={activeSecondAchievementFilter === item.title?{color: '#bfbfbf'} : null}>{item.title}</li>)
+                              }
                            </ul>
                         </div>
                         :
@@ -739,8 +778,9 @@ function DetailGamePage() {
                         showRightFilterPopup?
                         <div className={styles.rightFilterPopup}>
                         <ul>
-                           <li onClick={onSetActiveProjectRightFilter}>По возрастанию даты</li>
-                           <li onClick={onSetActiveProjectRightFilter}>По названию</li>
+                           {
+                              rightProjectFiltersData.map((item) => <li onClick={onSetActiveProjectRightFilter} style={activeProjectRightFilter === item.title?{color: '#bfbfbf'} : null}>{item.title}</li>)
+                           }
                         </ul>
                      </div>
                         :

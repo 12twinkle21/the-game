@@ -61,6 +61,21 @@ function ComparisonOverlayMenu(props) {
 
  const unblockedEnterBtn = activeSeasonBtn !== null && activeTypeOfPlayerBtn !== null && activePlayerBtn !== null;
 
+ let seasonsData = [
+  {
+    title: "Сезон 1"
+  }
+ ];
+ let typesOfPlayerData = [
+  {
+    title: "Команда"
+  }
+ ];
+ let playersData = [
+  {
+    title: "Ночные неожиданности"
+  }
+ ];
 
   return (
 
@@ -91,7 +106,9 @@ function ComparisonOverlayMenu(props) {
             showSeasonPopup?
             <div className={styles.selectedBtnPopup}>
               <ul>
-                <li onClick={onSetActiveSeasonBtn}>Сезон 1</li>
+                {
+                  seasonsData.map((item) => <li onClick={onSetActiveSeasonBtn} style={activeSeasonBtn === item.title?{color: '#bfbfbf'} : null}>{item.title}</li>)
+                }
               </ul>
             </div>
             :
@@ -114,7 +131,9 @@ function ComparisonOverlayMenu(props) {
             showTypeOfPlayerPopup?
             <div className={styles.selectedBtnPopup}>
               <ul>
-                <li onClick={onSetActiveTypeOfPlayerBtn}>Команда</li>
+                {
+                  typesOfPlayerData.map((item) => <li onClick={onSetActiveTypeOfPlayerBtn} style={activeTypeOfPlayerBtn === item.title?{color: '#bfbfbf'} : null}>{item.title}</li>)
+                }
               </ul>
             </div>
             :
@@ -137,7 +156,9 @@ function ComparisonOverlayMenu(props) {
             showPlayerPopup?
             <div className={styles.selectedBtnPopup}>
               <ul>
-                <li onClick={onSetActivePlayerBtn}>Ночные неожиданности</li>
+                {
+                  playersData.map((item) => <li onClick={onSetActivePlayerBtn} style={activePlayerBtn === item.title?{color: '#bfbfbf'} : null}>{item.title}</li>)
+                }
               </ul>
             </div>
             :

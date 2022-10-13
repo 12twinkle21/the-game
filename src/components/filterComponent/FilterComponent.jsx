@@ -10,7 +10,7 @@ function FilterComponent(props) {
 
    const { darkTheme } = React.useContext(AppContext);
 
-   const [activeStatisticsSeasonFilter, setActiveStatisticsSeasonFilter] = React.useState(statisticsFiltersData[0].title);
+   const [activeStatisticsFilter, setActiveStatisticsFilter] = React.useState(statisticsFiltersData[0].title);
 
    let onActiveStatisticsFilter = (value, setValue) =>{
      setValue(value);
@@ -40,7 +40,7 @@ function FilterComponent(props) {
 
     <button className={darkTheme? styles.darkFilterComponent : styles.filterComponent} onClick={onShowFilterPopup} ref={popupRef}>
       <div className={styles.btnText}>
-         <span>{activeStatisticsSeasonFilter}</span>
+         <span>{activeStatisticsFilter}</span>
          {
             !showFilterPopup?
          <svg width="20" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -60,7 +60,7 @@ function FilterComponent(props) {
             <div className={styles.filterPopup}>
                <ul>
                   {
-                     statisticsFiltersData.map((item) => <li onClick={() => onActiveStatisticsFilter(item.title, setActiveStatisticsSeasonFilter)}>{item.title}</li>)
+                     statisticsFiltersData.map((item) => <li onClick={() => onActiveStatisticsFilter(item.title, setActiveStatisticsFilter)} style={activeStatisticsFilter === item.title?{color: '#bfbfbf'} : null}>{item.title}</li>)
                   }
                </ul>
                </div>

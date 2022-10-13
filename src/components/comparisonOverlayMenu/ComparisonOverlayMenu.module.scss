@@ -4,7 +4,12 @@
    &__selectedBtns{
       button{
          background-color: #F5F5F5;
-         color: #262626;
+         
+         .btnText{
+            span{
+               color: #262626;
+            }
+         }
 
          .selectedBtnPopup{
             background-color: #fafafa;
@@ -19,15 +24,21 @@
    &__selectedBtns{
       button{
          background-color: #171717;;
-         color: #D9D9D9;
+         
+
+         .btnText{
+            span{
+               color: #D9D9D9;
+            }
+
+            svg path{
+               fill: #D9D9D9;
+            }
+         }
 
          .selectedBtnPopup{
             background-color: #D9D9D9;
-         }
-
-         svg path{
-            fill: #D9D9D9;
-         }
+         }   
       }
    }
 }
@@ -71,7 +82,7 @@
          width: 90%;
          border: none;
          padding: 0 12px;
-         border-radius: 2px;
+         border-radius: 6px;
          cursor: pointer;
          transition: transform 0.1s ease-in-out;
          position: relative;
@@ -85,7 +96,6 @@
                font-size: 16px;
                font-weight: 400;
                line-height: 24px;
-               color: #262626;
             }
 
             svg{
@@ -122,6 +132,7 @@
                }
             }
          }
+         
          &:last-child{
             margin-bottom: 0;
          }
@@ -196,6 +207,10 @@
             svg path{
                fill: #8c8c8c;
             }
+         }
+
+         .selectedBtnPopup ul li:hover{
+            color: #8c8c8c;
          }
       }
 

@@ -8,6 +8,7 @@ import Fire from './fire/Fire';
 import { AppContext } from '../../App';
 
  function OverlayMenu(props, { numTotalStars = 10, numTotalFires = 10, initialStarsRating = 0, initialFiresRating = 0 }) {
+
   const [numSelectedStars, setNumSelectedStars] = React.useState(initialStarsRating);
   const [numHoveringStars, setNumHoveringStars] = React.useState(null);
 
@@ -49,6 +50,8 @@ import { AppContext } from '../../App';
   } else if(numSelectedFires>7){
    totalFiresRating = 'Отлично';
   }
+
+  const unblockedEnterBtn = numSelectedStars>0 && numSelectedFires>0;
 
   return (
 
@@ -109,7 +112,7 @@ import { AppContext } from '../../App';
      <button>
        Отклонить
      </button>
-     <button onClick={onEstimateArtifact}>
+     <button onClick={onEstimateArtifact} id={unblockedEnterBtn? '' : styles.disabledBtn} disabled={unblockedEnterBtn? false : true}>
        Утвердить
      </button>
    </div>

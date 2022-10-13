@@ -129,13 +129,13 @@
  }
 
  @media(max-width: 1350px){
-   .scrollHeader{
+   .scrollHeader, .darkScrollHeader{
       padding: 10px 50px;
    }
  }
 
  @media(max-width: 1023px){
-   .scrollHeader{
+   .scrollHeader, .darkScrollHeader{
       padding: 10px 25px;
    }
  }
@@ -147,7 +147,7 @@
       }
    }
 
-   .scrollHeader{
+   .scrollHeader, .darkScrollHeader{
       padding: 10px 15px;
    }
  }

@@ -11,6 +11,21 @@
       button{
          background-color: #F5F5F5;
          color: #262626;
+
+            .selectedBtnPopup{
+               background-color: #fafafa;
+            }
+      }
+
+      .selectedBtnInput{
+         input{
+            background-color: #F5F5F5;
+            color: #262626;
+
+            &::placeholder{
+               color: #262626;
+            }
+         }
       }
    }
 }
@@ -29,8 +44,23 @@
          background-color: #171717;;
          color: #D9D9D9;
 
+            .selectedBtnPopup{
+               background-color: #d9d9d9;
+            }
+
          svg path{
             fill: #D9D9D9;
+         }
+      }
+
+      .selectedBtnInput{
+         input{
+            background-color: #171717;;
+            color: #D9D9D9;
+
+            &::placeholder{
+               color: #d9d9d9;
+            }
          }
       }
    }
@@ -78,23 +108,102 @@
 
       button{
          margin-bottom: 25px;
-         display: block;
          height: 40px;
          width: 90%;
-         display: flex;
-         justify-content: space-between;
-         border: none;
-         align-items: center;
+         border: none; 
          padding: 0 12px;
-         border-radius: 2px;
-         font-size: 16px;
-         font-weight: 400;
-         line-height: 24px;
+         border-radius: 6px;
          cursor: pointer;
-         transition: transform 0.1s ease-in-out;
+         position: relative;
+
+         .btnText{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            p{
+               font-size: 16px;
+               font-weight: 400;
+               line-height: 24px;
+            }
+         }
+
+         .selectedBtnPopup{
+            position: absolute;
+            right: 0;
+            bottom: 50px;
+            padding: 20px;
+            box-shadow: 0px 9px 28px 8px rgba(0, 0, 0, 0.05), 0px 6px 16px rgba(0, 0, 0, 0.08), 0px 3px 6px -4px rgba(0, 0, 0, 0.12);
+            padding: 13px 16px;
+            border-radius: 12px;
+            transition: opacity 0.3s ease-in-out;
+            animation-duration: 0.3s;
+            animation-name: popup-animation;
+            z-index: 10;
+   
+            ul{
+               list-style: none;
+               text-align: start;
+               display: flex;
+               flex-direction: column;
+               gap: 20px;
+   
+               li{
+                  font-size: 14px;
+                  font-weight: 400;
+                  line-height: 22px;
+                  color: #262626;
+                  cursor: pointer;
+               }
+            }
+         }
 
          &:last-child{
             margin-bottom: 0;
+         }
+      }
+
+      .selectedBtnInput{
+         input{
+            height: 40px;
+            width: 90%;
+            border: none; 
+            padding: 0 12px;
+            border-radius: 6px;
+            outline: none;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+         }
+      }
+
+      .selectedBtnSendFileBlock{
+         background-color: #f5f5f5;
+         border-radius: 6px;
+         border: 1px dashed #d9d9d9;
+         margin-top: 25px;
+         width: 90%;
+         padding: 16px;
+         text-align: center;
+         cursor: pointer;
+
+         p{
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 24px;
+            margin-top: 15px;
+            margin-bottom: 5px;
+         }
+
+         span{
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 22px;
+            color: #8C8C8C;
+         }
+
+         svg{
+            min-width: 48px;
          }
       }
    }
@@ -103,6 +212,7 @@
       display: flex;
       align-items: center;
       user-select: none;
+
       button{
          height: 60px;
          border: none;
@@ -114,16 +224,16 @@
          background-color: #1890FF;
          width: 100%;
       }
+
+      #disabledBtn{
+         opacity: 0.5;
+         filter: brightness(0.5);
+         cursor: default;
+      }
    }
 }
 
 .overlayMenu, .darkOverlayMenu{
-   &__selectedBtns{
-   button:active{
-      transform: scale(0.9);
-   }
-   }
-
    &__closeBtn:active{
       transform: scale(0.9);
    }
@@ -136,12 +246,21 @@
       }
 
       &__selectedBtns{
-         button:hover{
+         button
+         .btnText:hover{
             color: #8c8c8c;
 
             svg path{
                fill: #8c8c8c;
             }
+         }
+
+         .selectedBtnSendFileBlock:hover svg path{
+            fill: #00BFFF;
+         }
+         
+         .selectedBtnPopup ul li:hover{
+            color: #8c8c8c;
          }
       }
 
@@ -154,6 +273,10 @@
             &:last-child:hover{
                background-color: #00BFFF;
             }
+         }
+
+         #disabledBtn:hover{
+            background-color: #1890FF;
          }
       }
    }
