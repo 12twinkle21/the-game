@@ -151,18 +151,22 @@ function DetailAchievementPage() {
     {
       visibleMainMenu?
       <MainMenu/>
-      :  
-         activeEstimateOverlay? 
-         <div className='overlay'>
-            <EstimateOverlayMenu onActiveEstimateOverlay={onActiveEstimateOverlay} onEstimateArtifact={whoConnect === 'mentor'? onMentorEstimateArtifact : onMasterEstimateArtifact}/>
-         </div>
-         :
-         activeSendArtifactMenuOverlay?
-         <div className='overlay'>
-            <SendArtifactOverlayMenu onActiveSendMenuOverlay={onActiveSendMenuOverlay} onSendArtifact={onSendArtifact}/>
-         </div>
-         :
+      :    
       <div className={darkTheme? styles.darkDetailAchievementPage : styles.detailAchievementPage}>
+         {
+            activeEstimateOverlay? 
+            <div className='overlay'>
+               <EstimateOverlayMenu onActiveEstimateOverlay={onActiveEstimateOverlay} onEstimateArtifact={whoConnect === 'mentor'? onMentorEstimateArtifact : onMasterEstimateArtifact}/>
+            </div>
+            :
+            
+            activeSendArtifactMenuOverlay?
+            <div className='overlay'>
+               <SendArtifactOverlayMenu onActiveSendMenuOverlay={onActiveSendMenuOverlay} onSendArtifact={onSendArtifact}/>
+            </div>
+            :
+            ''
+         }
       <div className={darkTheme? styles.darkDetailAchievementPage__top : styles.detailAchievementPage__top}>
          <Header/>
          <div className={styles.backBtn}>
