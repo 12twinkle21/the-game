@@ -5,7 +5,6 @@ import styles from './ComparisonDirectLink.module.scss';
 import Header from '../../components/header/Header';
 import BackBtn from '../../components/backBtn/BackBtn';
 import ComparisonAchItem from '../../components/comparisonAchItem/ComparisonAchItem';
-import StatisticsCard from '../../components/statisticsCard/StatisticsCard';
 import MainMenu from '../../components/mainMenu/MainMenu';
 
 import { AppContext } from '../../App';
