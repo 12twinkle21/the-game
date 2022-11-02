@@ -793,12 +793,10 @@
                }
 
                .unblockedBtns{
-                  button{
-                     &:first-child:hover{
+                  .sendAndEstimateBtn:hover{
                         background-color: #00BFFF;
                      }
                   }
-               }
             }
          }
       }
@@ -838,12 +836,10 @@
          .titleBlock{
             &__info{
                .unblockedBtns{
-                  button{
-                     &:nth-child(2):hover{
+                  .messageBtn:hover{
                         color: #fff;
                         background-color: #262626;
                      }
-                  }
                }
             }
          }
@@ -889,12 +885,10 @@
          .titleBlock{
             &__info{
                .unblockedBtns{
-                  button{
-                     &:nth-child(2):hover{
+                  .messageBtn:hover{
                         color: #191919;
                         background-color: #fff;
                      }
-                  }
                }
             }
          }

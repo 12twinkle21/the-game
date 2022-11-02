@@ -278,8 +278,6 @@
 
 :global(.slick-arrow){
    z-index: 10;
-   background-image: url(../../../public/img/sliderArrow.svg) !important;
-   background-size: cover !important;
    height: 28px !important;
    width: 28px !important;
    transform: translateY(calc(-50% - 5px)) !important;

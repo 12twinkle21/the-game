@@ -149,7 +149,7 @@ let moreBtnRef = React.useRef();
       visibleComments?
       <div className={darkTheme? styles.darkDetailPublication__commentsBlock : styles.detailPublication__commentsBlock}>
          {
-            allComments?.length &&
+            allComments?
             allComments.map((item, index) => <div className={styles.comment} key={index}>
                <div className={styles.comment__userAvatar}>
                   <img src={item.commentUserAvatar} width={48} height={48} alt='Avatar'/>
@@ -172,6 +172,8 @@ let moreBtnRef = React.useRef();
                   </div>
                </div>
             </div>)
+            :
+            ''
          }
          <div className={styles.commentInputBlock}>
             <img src='./img/headerAccAvatar.png' width={48} height={48} alt='Avatar'/>

@@ -338,6 +338,8 @@ function DetailGamePage() {
    let achievementFirstFilterRef = React.useRef();
    let achievementSecondFilterRef = React.useRef();
    let projectRightFilterRef = React.useRef();
+   let statisticsBlockPopupRef = React.useRef();
+   let membersBlockPopupRef = React.useRef();
 
    React.useEffect(() => {
      document.body.addEventListener('click', handleOutsideClick)
@@ -359,6 +361,14 @@ function DetailGamePage() {
 
    if (!path.includes(projectRightFilterRef.current)) { 
       setShowRightFilterPopup(false);
+   }
+
+   if (!path.includes(statisticsBlockPopupRef.current)) { 
+      setShowStatisticsBlock(false);
+   }
+
+   if (!path.includes(membersBlockPopupRef.current)) { 
+      setShowMembersBlock(false);
    }
   }
 
@@ -550,6 +560,51 @@ function DetailGamePage() {
     let onSetActiveAchievementFilter = (value, setFilter) =>{
       setFilter(value);
     }
+
+    const [activeStatisticsBlock, setActiveStatisticsBlock] = React.useState("Статистика: Игры");
+
+    let onSetActiveStatisticsBlock = (evt) =>{
+      setActiveStatisticsBlock(evt.target.innerText);
+    }
+
+    const [showStatisticsBlock, setShowStatisticsBlock] = React.useState(false);
+
+    let onSetShowStatisticsBlock = () =>{
+      setShowStatisticsBlock(!showStatisticsBlock);
+    }
+
+    let statisticsBlockData = [
+      {
+         title: "Статистика: Сезона"
+      },
+      {
+         title: "Статистика: Игры"
+      },
+      {
+         title: "Статистика: Команды"
+      }
+    ];
+
+    const [activeMembersBlock, setActiveMembersBlock] = React.useState("Все участники");
+
+    let onSetActiveMembersBlock = (evt) =>{
+      setActiveMembersBlock(evt.target.innerText);
+    }
+
+    const [showMembersBlock, setShowMembersBlock] = React.useState(false);
+
+    let onSetShowMembersBlock = () =>{
+      setShowMembersBlock(!showMembersBlock);
+    }
+
+    let membersBlockData = [
+      {
+         title: "Все участники"
+      },
+      {
+         title: "Что-то другое"
+      }
+    ];
 
   return (
 
@@ -801,14 +856,23 @@ function DetailGamePage() {
          {
          activeBlock === 'statistics'?
          <div className={styles.content}>
-            <div className={styles.statisticsTitle}>
-               <h3>Статистика:</h3>
-               <div className={styles.statisticsSelectedItem}>
-                  <h3>Игры</h3>
+            <div className={styles.statisticsTitle} onClick={onSetShowStatisticsBlock} ref={statisticsBlockPopupRef}>
+               <h3>{activeStatisticsBlock}</h3>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                      <path d="M18.3759 5.94801L18.3751 5.94916L11.9998 14.7368L5.62451 5.94916L5.62452 5.94916L5.62368 5.94801C5.48911 5.7641 5.2728 5.65 5.03887 5.65H3.28106C2.8429 5.65 2.58966 6.14648 2.84427 6.5016L2.84427 6.5016L2.8454 6.50316L11.1095 17.8961L11.1097 17.8965C11.5489 18.5003 12.4502 18.5023 12.8882 17.8957C12.8882 17.8956 12.8883 17.8955 12.8883 17.8954L21.1505 6.50509C21.1507 6.50477 21.1509 6.50444 21.1512 6.50411C21.4123 6.14768 21.156 5.65 20.7186 5.65H18.9607C18.7268 5.65 18.5105 5.7641 18.3759 5.94801Z" fill="#262626" stroke="#262626" strokeWidth="0.7"/>
                   </svg>
-               </div>
+                  {
+                     showStatisticsBlock?
+                     <div className={styles.statisticsBlockPopup}>
+                     <ul>
+                        {
+                        statisticsBlockData.map((item) => <li onClick={onSetActiveStatisticsBlock} style={activeStatisticsBlock === item.title?{color: '#bfbfbf'} : null} key={item.title}>{item.title}</li>)
+                        }
+                     </ul>
+                     </div>
+                     :
+                     ''
+                  } 
             </div>
             <div className={styles.statisticsFilters}>
                <FilterComponent statisticsFiltersData={statisticsSeasonFiltersData}/>
@@ -829,11 +893,23 @@ function DetailGamePage() {
          {
          activeBlock === 'members'?
          <div className={styles.content}>
-            <div className={styles.membersTop}>
-               <h3>Все участники</h3>
+            <div className={styles.membersTop} onClick={onSetShowMembersBlock} ref={membersBlockPopupRef}>
+               <h3>{activeMembersBlock}</h3>
                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M18.3759 5.94801L18.3751 5.94916L11.9998 14.7368L5.62451 5.94916L5.62452 5.94916L5.62368 5.94801C5.48911 5.7641 5.2728 5.65 5.03887 5.65H3.28106C2.8429 5.65 2.58966 6.14648 2.84427 6.5016L2.84427 6.5016L2.8454 6.50316L11.1095 17.8961L11.1097 17.8965C11.5489 18.5003 12.4502 18.5023 12.8882 17.8957C12.8882 17.8956 12.8883 17.8955 12.8883 17.8954L21.1505 6.50509C21.1507 6.50477 21.1509 6.50444 21.1512 6.50411C21.4123 6.14768 21.156 5.65 20.7186 5.65H18.9607C18.7268 5.65 18.5105 5.7641 18.3759 5.94801Z" fill="#262626" stroke="#262626" strokeWidth="0.7"/>
                </svg>
+               {
+                     showMembersBlock?
+                     <div className={styles.membersBlockPopup}>
+                     <ul>
+                        {
+                        membersBlockData.map((item) => <li onClick={onSetActiveMembersBlock} style={activeMembersBlock === item.title?{color: '#bfbfbf'} : null} key={item.title}>{item.title}</li>)
+                        }
+                     </ul>
+                     </div>
+                     :
+                     ''
+                  } 
             </div>
             <div className={styles.membersItems}>
                {

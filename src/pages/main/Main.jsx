@@ -18,6 +18,29 @@ import { AppContext } from '../../App';
 function Main() {
 
   const { darkTheme, visibleMainMenu, onVisibleMainMenu, isOnline, onSetBackLink } = React.useContext(AppContext);
+
+  function SampleNextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "block", background: darkTheme? "url(./img/darkSliderArrow.svg)" : "url(./img/sliderArrow.svg)", backgroundSize: "cover"}}
+        onClick={onClick}
+      />
+    );
+  }
+  
+  function SamplePrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "block", background: darkTheme? "url(./img/darkSliderArrow.svg)" : "url(./img/sliderArrow.svg)", backgroundSize: "cover"}}
+        onClick={onClick}
+      />
+    );
+  }
+
   
   const topSliderSettings = {
     dots: true,
@@ -26,7 +49,7 @@ function Main() {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 4500
+    autoplaySpeed: 4500,
   };
 
   const bottomSliderSettings = {
@@ -36,6 +59,8 @@ function Main() {
     slidesToShow: 3,
     slidesToScroll: 3,
     swipe: false,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
     responsive: [
       {
         breakpoint: 1023,
@@ -65,6 +90,8 @@ function Main() {
     slidesToShow: 4,
     slidesToScroll: 4,
     swipe: false,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
     responsive: [
       {
         breakpoint: 1023,
@@ -103,6 +130,8 @@ function Main() {
     slidesToShow: 6,
     slidesToScroll: 6,
     swipe: false,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
     responsive: [
       {
         breakpoint: 1023,
@@ -147,6 +176,8 @@ function Main() {
     slidesToShow: 5,
     slidesToScroll: 5,
     swipe: false,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
     responsive: [
       {
         breakpoint: 1300,
@@ -199,6 +230,8 @@ function Main() {
     slidesToShow: 4,
     slidesToScroll: 4,
     swipe: false,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
     responsive: [
       {
         breakpoint: 1100,

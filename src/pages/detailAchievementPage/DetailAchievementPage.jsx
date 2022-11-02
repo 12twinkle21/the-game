@@ -45,7 +45,18 @@ function DetailAchievementPage() {
       handleStepProgress(setStepProgress, styles.completedStep)
       handleStepProgress(setStepProgress2, styles.activeStep)
       onActiveSendMenuOverlay(false)
+      setPublications((prevNotifications) => [
+         {
+            userAvatar: "./img/headerAccAvatar.png",
+            userName: "Евгений Говорун",
+            dateAndTime: "29 ноя в 16:48",
+            type: "notification",
+            result: "sendedArtifact"
+         },
+           ...prevNotifications,
+         ]);   
    }
+
 
    let [mentorEstimateArtifact, setMentorEstimateArtifact] = React.useState(false);
 
@@ -54,6 +65,18 @@ function DetailAchievementPage() {
       handleStepProgress(setStepProgress2, styles.completedStep)
       handleStepProgress(setStepProgress3, styles.activeStep)
       onActiveEstimateOverlay(false);
+      setPublications((prevNotifications) => [
+         {
+            userAvatar: "./img/headerAccAvatar.png",
+            userName: "Евгений Говорун",
+            dateAndTime: "29 ноя в 16:48",
+            type: "notification",
+            result: "acceptedMentorArtifact",
+            estimateTextAreaText: estimateTextAreaText
+         },
+           ...prevNotifications,
+         ]);   
+      setEstimateTextAreaText('');
    }
 
    let [masterEstimateArtifact, setMasterEstimateArtifact] = React.useState(false);
@@ -63,6 +86,64 @@ function DetailAchievementPage() {
       handleStepProgress(setStepProgress3, styles.completedStep)
       handleStepProgress(setStepProgress4, styles.completedStep)
       onActiveEstimateOverlay(false);
+      setPublications((prevNotifications) => [
+         {
+            userAvatar: "./img/headerAccAvatar.png",
+            userName: "Евгений Говорун",
+            dateAndTime: "29 ноя в 16:48",
+            type: "notification",
+            result: "acceptedMasterArtifact",
+            estimateTextAreaText: estimateTextAreaText
+         },
+           ...prevNotifications,
+         ]);
+      setEstimateTextAreaText('');   
+   }
+
+   let onMentorCancelledArtifact = () =>{
+      handleStepProgress(setStepProgress, styles.activeStep)
+      handleStepProgress(setStepProgress2, styles.blockedStep)
+      handleStepProgress(setStepProgress3, styles.blockedStep)
+      handleStepProgress(setStepProgress4, styles.blockedStep)
+      setSendArtifact(false);
+      setMasterEstimateArtifact(false);
+      setMentorEstimateArtifact(false);
+      onActiveEstimateOverlay(false);
+      setPublications((prevNotifications) => [
+         {
+            userAvatar: "./img/headerAccAvatar.png",
+            userName: "Евгений Говорун",
+            dateAndTime: "29 ноя в 16:48",
+            type: "notification",
+            result: "cancelledMentorArtifact",
+            estimateTextAreaText: estimateTextAreaText
+         },
+           ...prevNotifications,
+         ]);
+      setEstimateTextAreaText('');   
+   }
+
+   let onMasterCancelledArtifact = () =>{
+      handleStepProgress(setStepProgress, styles.activeStep)
+      handleStepProgress(setStepProgress2, styles.blockedStep)
+      handleStepProgress(setStepProgress3, styles.blockedStep)
+      handleStepProgress(setStepProgress4, styles.blockedStep)
+      setSendArtifact(false);
+      setMasterEstimateArtifact(false);
+      setMentorEstimateArtifact(false);
+      onActiveEstimateOverlay(false);
+      setPublications((prevNotifications) => [
+         {
+            userAvatar: "./img/headerAccAvatar.png",
+            userName: "Евгений Говорун",
+            dateAndTime: "29 ноя в 16:48",
+            type: "notification",
+            result: "cancelledMasterArtifact",
+            estimateTextAreaText: estimateTextAreaText
+         },
+           ...prevNotifications,
+         ]);   
+      setEstimateTextAreaText('');
    }
 
    let [visibleAttachmentsPopup, setVisibleAttachmentsPopup] = React.useState(false);
@@ -98,10 +179,10 @@ function DetailAchievementPage() {
          setPublications((prevPublications) => [
             {
               inputText,
+              type: 'message'
             },
             ...prevPublications,
           ]);
-         publications.reverse()
          setInputText('');
       }
     };
@@ -145,6 +226,23 @@ function DetailAchievementPage() {
       }
    }
 
+   const publicationsBlockRef = React.useRef();
+
+   const onClickAnchorBtn = () => {
+      if(activeBlock!=='historyOfAchievements'){
+         setActiveBlock('historyOfAchievements');
+
+         let scrollToBlock = () =>{
+            window.scrollTo({ behavior: 'smooth', top: publicationsBlockRef.current.offsetTop })
+         }
+         setTimeout(scrollToBlock, 100);
+      } else{
+         window.scrollTo({ behavior: 'smooth', top: publicationsBlockRef.current.offsetTop })
+      }
+   }
+
+   let [estimateTextAreaText, setEstimateTextAreaText] = React.useState('');
+
   return (
    
    <>
@@ -156,7 +254,7 @@ function DetailAchievementPage() {
          {
             activeEstimateOverlay? 
             <div className='overlay'>
-               <EstimateOverlayMenu onActiveEstimateOverlay={onActiveEstimateOverlay} onEstimateArtifact={whoConnect === 'mentor'? onMentorEstimateArtifact : onMasterEstimateArtifact}/>
+               <EstimateOverlayMenu onActiveEstimateOverlay={onActiveEstimateOverlay} onEstimateArtifact={whoConnect === 'mentor'? onMentorEstimateArtifact : onMasterEstimateArtifact} onCancelledArtifact={whoConnect === 'mentor'? onMentorCancelledArtifact : onMasterCancelledArtifact} estimateTextAreaText={estimateTextAreaText} setEstimateTextAreaText={setEstimateTextAreaText} />
             </div>
             :
             
@@ -203,11 +301,11 @@ function DetailAchievementPage() {
                               <>
                               {
                                  !sendArtifact?
-                                 <button className={styles.sendAndEstimateBtn}>Прикрепить артефакт</button>
+                                 <button className={styles.sendAndEstimateBtn} onClick={onClickAnchorBtn}>Прикрепить артефакт</button>
                                  :
                                  <button id={styles.sendedBtn}>Артефакт отправлен</button>
                               }
-                              <button className={styles.messageBtn}>Написать наставнику</button>
+                              <button className={styles.messageBtn} onClick={onClickAnchorBtn}>Написать наставнику</button>
                               </>
                               :
                               ''
@@ -220,11 +318,11 @@ function DetailAchievementPage() {
                                  mentorEstimateArtifact?
                                  <button id={styles.completedSendAndEstimateBtn}>Артефакт оценен</button>
                                  :
-                                 <button className={styles.sendAndEstimateBtn}>Оценить артефакт</button>
+                                 <button className={styles.sendAndEstimateBtn} onClick={onClickAnchorBtn}>Оценить артефакт</button>
                                  :
                                  ''
                               }
-                              <button className={styles.messageBtn}>Написать команде</button>
+                              <button className={styles.messageBtn} onClick={onClickAnchorBtn}>Написать команде</button>
                               </>
                               :
                               ''
@@ -235,13 +333,13 @@ function DetailAchievementPage() {
                               {
                                mentorEstimateArtifact?
                                !masterEstimateArtifact?
-                               <button className={styles.sendAndEstimateBtn}>Оценить артефакт</button>
+                               <button className={styles.sendAndEstimateBtn} onClick={onClickAnchorBtn}>Оценить артефакт</button>
                                :
                                <button id={styles.completedSendAndEstimateBtn}>Артефакт оценен</button>
                                :
                                ''
                               } 
-                              <button className={styles.messageBtn}>Написать команде</button>
+                              <button className={styles.messageBtn} onClick={onClickAnchorBtn}>Написать команде</button>
                               </>
                               :
                               ''
@@ -364,11 +462,11 @@ function DetailAchievementPage() {
          }
          {
          activeBlock === 'historyOfAchievements'?
-         <div className={styles.content}>
+         <div className={styles.content} ref={publicationsBlockRef}>
             <h3>История достижений</h3>
             {
                unblockAchievement?
-               <div className={styles.unblockedHistory}>
+               <div className={styles.unblockedHistory} >
                   <div className={styles.steps}>
                      <div className={styles.steps__step}>
                         <span className={stepProgress}>
@@ -512,10 +610,10 @@ function DetailAchievementPage() {
                       </div>
                         <div className={styles.unblockedPublicationsBlock__publications}>
                            {
-                           publications?.map((item, index) => <AchievementPublication userAvatar={'./img/headerAccAvatar.png'} userName={'Евгений Говорун'} dateAndTime={'29 ноя в 16:48'} publicationText={item.inputText} key={index}/>)
+                           publications?.map((item, index) => <AchievementPublication userAvatar={'./img/headerAccAvatar.png'} userName={'Евгений Говорун'} dateAndTime={'29 ноя в 16:48'} publicationText={item.inputText} type={item.type} result={item.result} key={index} estimateTextAreaText={item.estimateTextAreaText}/>)
                            }
-                           <AchievementPublication userAvatar={'./img/headerAccAvatar.png'} userName={'Евгений Говорун'} dateAndTime={'29 ноя в 16:48'} publicationText={'Этот алгоритм поможет тебе разблокировать достижение.1) Изучи полезную информацию во вкладке «Инструкция» и узнай больше о том, какое задание предстоит выполнить, чтобы создать артефакт, необходимый для достижения. 2) Загляни во вкладку «Артефакт» и уточни то, в каком формате тебе потребуется сохранить артефакт, чтобы он подошел к этому достижению.3) Отправься в реальный мир, чтобы выполнить задание и создать нужный артефакт.4) Когда все будет готово, возвращайся сюда, чтобы загрузить артефакт к достижению. Для этого нажми на кнопку «Прикрепить» во вкладке «История достижения».5) Дождись, пока наставник и мастер оценят результаты твоей работы. Если артефакт подойдет, то достижение разблокируется. Если нет, то наставник и мастер скажут, чего в нем не хватает и как его улучшить.Если что-то окажется не понятным, то обратись к наставнику прямо в этом чате. Для этого нажми кнопку «Спросить».'}/>
-                           <AchievementPublication userAvatar={'./img/headerAccAvatar.png'} userName={'Евгений Говорун'} dateAndTime={'29 ноя в 16:48'} publicationText={'Привет! Меня зовут Евгений. В этот чат я буду присылать сообщения об изменении текущего статуса конкретно этого достижения.Обрати внимание, что такой чат есть у каждого достижения, чтобы тебе, наставнику и мастеру было удобно и никто не запутался в информации.Ты всегда можешь попасть в такой чат через вкладку «История достижения» на странице нужного достижения.Здесь ты можешь пообщаться с наставником или мастером, например, попросить совет о том, как лучше выполнять достижение, или задать уточняющий вопрос. Если у тебя появятся вопросы, на которые наставник или мастер не смогли ответить, то обратись в наш «Центр поддержки».Удачных достижений!'}/>
+                           <AchievementPublication userAvatar={'./img/headerAccAvatar.png'} userName={'Евгений Говорун'} dateAndTime={'29 ноя в 16:48'} publicationText={'Этот алгоритм поможет тебе разблокировать достижение.1) Изучи полезную информацию во вкладке «Инструкция» и узнай больше о том, какое задание предстоит выполнить, чтобы создать артефакт, необходимый для достижения. 2) Загляни во вкладку «Артефакт» и уточни то, в каком формате тебе потребуется сохранить артефакт, чтобы он подошел к этому достижению.3) Отправься в реальный мир, чтобы выполнить задание и создать нужный артефакт.4) Когда все будет готово, возвращайся сюда, чтобы загрузить артефакт к достижению. Для этого нажми на кнопку «Прикрепить» во вкладке «История достижения».5) Дождись, пока наставник и мастер оценят результаты твоей работы. Если артефакт подойдет, то достижение разблокируется. Если нет, то наставник и мастер скажут, чего в нем не хватает и как его улучшить.Если что-то окажется не понятным, то обратись к наставнику прямо в этом чате. Для этого нажми кнопку «Спросить».'}  type={'message'}/>
+                           <AchievementPublication userAvatar={'./img/headerAccAvatar.png'} userName={'Евгений Говорун'} dateAndTime={'29 ноя в 16:48'} publicationText={'Привет! Меня зовут Евгений. В этот чат я буду присылать сообщения об изменении текущего статуса конкретно этого достижения.Обрати внимание, что такой чат есть у каждого достижения, чтобы тебе, наставнику и мастеру было удобно и никто не запутался в информации.Ты всегда можешь попасть в такой чат через вкладку «История достижения» на странице нужного достижения.Здесь ты можешь пообщаться с наставником или мастером, например, попросить совет о том, как лучше выполнять достижение, или задать уточняющий вопрос. Если у тебя появятся вопросы, на которые наставник или мастер не смогли ответить, то обратись в наш «Центр поддержки».Удачных достижений!'}  type={'message'}/>
                         </div>
                      </div>
                   }

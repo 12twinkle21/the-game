@@ -28,7 +28,7 @@ import { AppContext } from '../../App';
    return i < threshold ? "#1890FF" : "#D9D9D9";
  }
 
-  const { onActiveEstimateOverlay, onEstimateArtifact} = props;
+  const { onActiveEstimateOverlay, onEstimateArtifact, onCancelledArtifact, estimateTextAreaText, setEstimateTextAreaText} = props;
 
   const { darkTheme } = React.useContext(AppContext);
 
@@ -52,6 +52,11 @@ import { AppContext } from '../../App';
   }
 
   const unblockedEnterBtn = numSelectedStars>0 && numSelectedFires>0;
+
+   const handleTextAreaChange = (event) => {
+      const value = event.currentTarget.value;
+      setEstimateTextAreaText(value);
+    };
 
   return (
 
@@ -107,9 +112,9 @@ import { AppContext } from '../../App';
          </div>
       </div>
    </div>
-   <textarea placeholder='Обратите внимание на советы других людей о работе автора, и постарайтесь дать полезную рекомендацию автору.'/> 
+   <textarea value={estimateTextAreaText} onChange={handleTextAreaChange} placeholder='Обратите внимание на советы других людей о работе автора, и постарайтесь дать полезную рекомендацию автору.'/> 
    <div className={darkTheme? styles.darkOverlayMenu__btns : styles.overlayMenu__btns}>
-     <button>
+     <button onClick={onCancelledArtifact}>
        Отклонить
      </button>
      <button onClick={onEstimateArtifact} id={unblockedEnterBtn? '' : styles.disabledBtn} disabled={unblockedEnterBtn? false : true}>

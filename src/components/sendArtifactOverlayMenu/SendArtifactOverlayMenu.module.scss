@@ -145,6 +145,14 @@
                font-weight: 400;
                line-height: 24px;
             }
+
+            svg{
+               min-width: 18px;
+            }
+
+            .activeSvg{
+               transform: scale(1.5)
+            }
          }
 
          .selectedBtnPopup{

@@ -104,6 +104,10 @@
             svg{
                min-width: 18px;
             }
+
+            .activeSvg{
+               transform: scale(1.5)
+            }
          }
 
          .selectedBtnPopup{
