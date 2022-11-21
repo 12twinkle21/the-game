@@ -1131,6 +1131,27 @@
    }
 }
 
+@media(max-width: 1150px){
+  .detailAchievementPage, .darkDetailAchievementPage{
+   &__top{
+      .titleBlock{
+         .infoProgressBlock{
+            &__right{
+               .progressPrompt{
+                  left: -165px;
+
+                  &::after{
+                     left: unset;
+                     right: -5px;
+                  }
+               }
+            }
+         }
+      }
+   }
+  }
+}
+
 @media(max-width: 1023px){
    .detailAchievementPage, .darkDetailAchievementPage{
       &__top{
