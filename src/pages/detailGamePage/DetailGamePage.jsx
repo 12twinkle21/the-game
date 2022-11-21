@@ -17,7 +17,7 @@ import { AppContext } from '../../App';
 
 function DetailGamePage() {
 
-   const { darkTheme, visibleMainMenu, onSetBackLink } = React.useContext(AppContext);
+   const { darkTheme, visibleMainMenu, onSetBackLink, onSelectContentBlock, activeBlock} = React.useContext(AppContext);
 
    let publicationsData = 
    [
@@ -58,12 +58,16 @@ function DetailGamePage() {
       {
         title: "Стратегия найдена",
         gold: 710,
-        bgImage: "http://dummyimage.com/132x132&text=+"
+        bgImage: "http://dummyimage.com/132x132&text=+",
+        blueProgress : 60,
+        yellowProgress: 30
       },
       {
         title: "Проверка на вшивость",
         gold: 710,
-        bgImage: "http://dummyimage.com/132x132/a6a6ff&text=+"
+        bgImage: "http://dummyimage.com/132x132/a6a6ff&text=+",
+        blueProgress : 45,
+        yellowProgress: 35
       },
       {
         title: "Залайкали!",
@@ -74,7 +78,9 @@ function DetailGamePage() {
       {
         title: "Стратегия найдена",
         gold: 710,
-        bgImage: "http://dummyimage.com/132x132&text=+"
+        bgImage: "http://dummyimage.com/132x132&text=+",
+        blueProgress : 20,
+        yellowProgress: 5
       },
       {
         title: "Проверка на вшивость",
@@ -86,17 +92,23 @@ function DetailGamePage() {
       {
         title: "Залайкали!",
         gold: 710,
-        bgImage: "http://dummyimage.com/132x132/99cccc&text=+"
+        bgImage: "http://dummyimage.com/132x132/99cccc&text=+",
+        blueProgress : 80,
+        yellowProgress: 70
       },
       {
         title: "Стратегия найдена",
         gold: 710,
-        bgImage: "http://dummyimage.com/132x132&text=+"
+        bgImage: "http://dummyimage.com/132x132&text=+",
+        blueProgress : 75,
+        yellowProgress: 20
       },
       {
         title: "Проверка на вшивость",
         gold: 710,
-        bgImage: "http://dummyimage.com/132x132/a6a6ff&text=+"
+        bgImage: "http://dummyimage.com/132x132/a6a6ff&text=+",
+        blueProgress : 0,
+        yellowProgress: 0
       },
       {
         title: "Залайкали!",
@@ -108,17 +120,23 @@ function DetailGamePage() {
       {
          title: "Стратегия найдена",
          gold: 710,
-         bgImage: "http://dummyimage.com/132x132&text=+"
+         bgImage: "http://dummyimage.com/132x132&text=+",
+         blueProgress : 40,
+         yellowProgress: 20
        },
        {
          title: "Проверка на вшивость",
          gold: 710,
-         bgImage: "http://dummyimage.com/132x132/a6a6ff&text=+"
+         bgImage: "http://dummyimage.com/132x132/a6a6ff&text=+",
+         blueProgress : 30,
+         yellowProgress: 40
        },
        {
          title: "Залайкали!",
          gold: 710,
-         bgImage: "http://dummyimage.com/132x132/99cccc&text=+"
+         bgImage: "http://dummyimage.com/132x132/99cccc&text=+",
+         blueProgress : 100,
+         yellowProgress: 100
        }
     ];
 
@@ -321,13 +339,7 @@ function DetailGamePage() {
          progress: "67 / 11%",
       }
    ];
-
-   let [activeBlock, setActiveBlock] = React.useState('actionFeed')
-
-   let onSelectContentBlock = (block) =>{
-      setActiveBlock(block);
-   }
-
+   
    let [visibleAttachmentsPopup, setVisibleAttachmentsPopup] = React.useState(false);
 
    let onVisibleAttachmentsPopup = (bool) =>{
@@ -627,6 +639,15 @@ function DetailGamePage() {
                <span className={styles.infoTop}>The Game</span>
                <h2>Сообщество проекта</h2>
                <p>Узнайте больше о том, как древо достижений помогает организовать учебный процесс. Узнайте больше о том, как древо достижений помогает организовать учебный процесс. Узнайте больше о том, как древо достижений помогает организовать учебный процесс...</p>
+               <div className={styles.dateAndLinks}>
+                  <span>16.05.22 — 26.06.22</span>
+                  <div className={styles.dateAndLinks__links}>
+                     <a href='https://vk.com' target='_blanc'>Новости</a>
+                     <a href='https://vk.com' target='_blanc'>Единый чат</a>
+                     <a href='https://vk.com' target='_blanc'>Задать вопрос</a>
+                     <a href='https://vk.com' target='_blanc'>Чат</a>
+                  </div>
+               </div>
                <div className={styles.infoBottom}>
                   <div className={styles.infoBottom__goldAndRating}>
                   <div className={styles.infoBottom__gold}>
@@ -642,7 +663,8 @@ function DetailGamePage() {
                      <span>32/57</span>
                   </div>
                   </div>
-                  <button>Подробнее об игре</button>
+                  <button className={styles.aboutGameBtn}>Подробнее об игре</button>
+                  <button className={styles.ratingOfMembersBtn}>Рейтинг участников</button>
                </div>
             </div>
          </div>
@@ -771,7 +793,7 @@ function DetailGamePage() {
                            <div className={styles.achievementsFilterPopup}>
                            <ul>
                               {
-                              secondAchievementFiltersData.map((item) => <li onClick={()=> onSetActiveAchievementFilter(item.title, setActiveSecondAchievementFilter)} style={activeSecondAchievementFilter === item.title?{color: '#bfbfbf'} : null}>{item.title}</li>)
+                              secondAchievementFiltersData.map((item) => <li onClick={()=> onSetActiveAchievementFilter(item.title, setActiveSecondAchievementFilter)} style={activeSecondAchievementFilter === item.title?{color: '#bfbfbf'} : null} key={item.title}>{item.title}</li>)
                               }
                            </ul>
                         </div>
@@ -787,7 +809,7 @@ function DetailGamePage() {
             </div>
             <div className={styles.achievementsItems}>
                {
-                  allAchievementItemsData.map((item, index) => <div className={styles.achievementsItem} onClick={onSetBackLink('/detailGamePage')} key={`${item.title}__${index}`}><AchievementItem title={item.title} bgImage={item.bgImage} gold={item.gold} blocked={item.blocked}/></div>)
+                  allAchievementItemsData.map((item, index) => <div className={styles.achievementsItem} onClick={onSetBackLink('/detailGamePage')} key={`${item.title}__${index}`}><AchievementItem title={item.title} bgImage={item.bgImage} gold={item.gold} blocked={item.blocked} blueProgress={item.blueProgress} yellowProgress={item.yellowProgress}/></div>)
                }
             </div>
           </div>
@@ -834,7 +856,7 @@ function DetailGamePage() {
                         <div className={styles.rightFilterPopup}>
                         <ul>
                            {
-                              rightProjectFiltersData.map((item) => <li onClick={onSetActiveProjectRightFilter} style={activeProjectRightFilter === item.title?{color: '#bfbfbf'} : null}>{item.title}</li>)
+                              rightProjectFiltersData.map((item) => <li key={item.title} onClick={onSetActiveProjectRightFilter} style={activeProjectRightFilter === item.title?{color: '#bfbfbf'} : null}>{item.title}</li>)
                            }
                         </ul>
                      </div>

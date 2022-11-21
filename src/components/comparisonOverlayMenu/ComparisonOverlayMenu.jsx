@@ -115,7 +115,7 @@ function ComparisonOverlayMenu(props) {
             <div className={styles.selectedBtnPopup}>
               <ul>
                 {
-                  seasonsData.map((item) => <li onClick={onSetActiveSeasonBtn} style={activeSeasonBtn === item.title?{color: '#bfbfbf'} : null}>{item.title}</li>)
+                  seasonsData.map((item) => <li onClick={onSetActiveSeasonBtn} key={item.title} style={activeSeasonBtn === item.title?{color: '#bfbfbf'} : null}>{item.title}</li>)
                 }
               </ul>
             </div>
@@ -148,7 +148,7 @@ function ComparisonOverlayMenu(props) {
             <div className={styles.selectedBtnPopup}>
               <ul>
                 {
-                  typesOfPlayerData.map((item) => <li onClick={onSetActiveTypeOfPlayerBtn} style={activeTypeOfPlayerBtn === item.title?{color: '#bfbfbf'} : null}>{item.title}</li>)
+                  typesOfPlayerData.map((item) => <li onClick={onSetActiveTypeOfPlayerBtn} key={item.title} style={activeTypeOfPlayerBtn === item.title?{color: '#bfbfbf'} : null}>{item.title}</li>)
                 }
               </ul>
             </div>
@@ -181,7 +181,7 @@ function ComparisonOverlayMenu(props) {
             <div className={styles.selectedBtnPopup}>
               <ul>
                 {
-                  playersData.map((item) => <li onClick={onSetActivePlayerBtn} style={activePlayerBtn === item.title?{color: '#bfbfbf'} : null}>{item.title}</li>)
+                  playersData.map((item) => <li onClick={onSetActivePlayerBtn} key={item.title} style={activePlayerBtn === item.title?{color: '#bfbfbf'} : null}>{item.title}</li>)
                 }
               </ul>
             </div>

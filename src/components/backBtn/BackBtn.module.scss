@@ -45,24 +45,24 @@
    }
 }
 
-.backBtn:active .backBtn__btn, .backBtn:active p{
+.backBtn a:active .backBtn__btn, .backBtn a:active p{
    transform: scale(0.9);
 }
 
-.darkBackBtn:active .darkBackBtn__btn, .darkBackBtn:active p{
+.darkBackBtn a:active .darkBackBtn__btn, .darkBackBtn a:active p{
    transform: scale(0.9);
 }
 
  @media(hover: hover) and (pointer: fine){
-   .backBtn:hover svg, .darkBackBtn:hover svg{
+   .backBtn a:hover svg, .darkBackBtn a:hover svg{
       transform: translateX(-3px);
    }
 
-   .backBtn:hover p{
+   .backBtn a:hover p{
       color: #000;
    }
 
-   .darkBackBtn:hover p{
+   .darkBackBtn a:hover p{
       color: #fff;
    }
 }

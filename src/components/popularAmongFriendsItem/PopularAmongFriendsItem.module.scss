@@ -1,16 +1,20 @@
 .popularAmongFriendsItem{
    background-color: #fff;
 
-   p{
-      color: #262626;
+   &__info{
+      p{
+         color: #262626;
+      }
    }
 }
 
 .darkPopularAmongFriendsItem{
    background-color: #191919;
 
-   p{
-      color: #fff;
+   &__info{
+      p{
+         color: #fff;
+      }
    }
 }
 
@@ -25,21 +29,37 @@
 
    &__info{
       padding: 12px 22px 24px 22px;
+
+      p{
+         font-size: 16px;
+         font-weight: 600;
+         line-height: 24px;
+      }
+   
+      span{
+         color: #8C8C8C;
+         font-size: 16px;
+         font-weight: 400;
+         line-height: 24px;
+         display: block;
+      }
+   
+      .friendsIcons{
+         display: flex;
+         align-items: center;
+         margin-top: 10px;
+         
+         &__icon{
+            border-radius: 50%;
+   
+            img{
+               border-radius: 50%;
+            }
+         }
+      }
    }
 
-   p{
-      font-size: 16px;
-      font-weight: 600;
-      line-height: 24px;
-   }
-
-   span{
-      color: #8C8C8C;
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 24px;
-      display: block;
-   }
+  
 }
 
 @media(hover: hover) and (pointer: fine){

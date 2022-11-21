@@ -14,6 +14,18 @@
                      color: #262626;
                   }
                }
+
+               .ratingOfMembersBtn{
+                  background-color: #fff;
+                  color: #1890FF;
+                  border: 1px solid #1890FF;
+               }
+            }
+
+            .dateAndLinks{
+               span{
+                  color: #262626;
+               }
             }
          }
       }
@@ -140,6 +152,18 @@
                      fill : #fff;
                   }
                }
+
+               .ratingOfMembersBtn{
+                  background-color: #191919;
+                  color: #fff;
+                  border: 1px solid #fff;
+               }
+            }
+
+            .dateAndLinks{
+               span{
+                  color: #fff;
+               }
             }
          }
       }
@@ -171,8 +195,8 @@
             }
 
             .attachments{
-               background-color: #D9D9D9;
-               color: #191919;
+               background-color: #191919;
+               color: #fff;
 
                &__popup{
                   background-color: #D9D9D9;
@@ -332,6 +356,40 @@
                color: #8C8C8C;
             }
 
+            .dateAndLinks{
+               display: flex;
+               align-items: center;
+               margin-top: 15px;
+
+               span{
+                  margin-right: 16px;
+                  font-size: 16px;
+                  font-weight: 500;
+                  line-height: 24px;
+               }
+
+               &__links{
+                  display: flex;
+                  align-items: center;
+
+                  a{
+                     font-size: 16px;
+                     font-weight: 500;
+                     color: #096DD9;
+                     text-decoration: none;
+                     border-right: 1px solid #096DD9;
+                     margin-right: 10px;
+                     padding-right: 10px;
+   
+                     &:last-child{
+                        border: none;
+                        margin: 0;
+                        padding: 0;
+                     }
+                  }
+               }
+            }
+
             .infoBottom{
                display: flex;
                align-items: center;
@@ -360,17 +418,24 @@
                }
 
                button{
-                  background-color: #1890FF;
                   border-radius: 6px;
                   height: 40px;
                   padding: 0 15px;
                   font-size: 16px;
                   font-weight: 400;
                   line-height: 24px;
-                  color: #fff;
                   border: none;
                   cursor: pointer;
                   transition: transform 0.2s ease-in-out;
+               }
+
+               .aboutGameBtn{
+                  background-color: #1890FF;
+                  color: #fff;
+               }
+
+               .ratingOfMembersBtn{
+                  margin-left: 15px;
                }
             }
          }
@@ -880,8 +945,16 @@
    .detailCard, .darkDetailCard{
       &__top{
          .infoBottom{
-            button:hover{
+            .aboutGameBtn:hover{
                background-color: #00BFFF;
+            }
+         }
+
+         .titleBlock{
+            &__info{
+               .dateAndLinks a:hover{
+                  color: #00BFFF;
+               }
             }
          }
       }
@@ -894,10 +967,6 @@
                      background-color: #00BFFF;
                   }
       
-                  .attachments:hover{
-                     background-color: #8C8C8C;
-                  }
-      
                   .attachments{
                      &__popup ul li:hover{
                         color: #8C8C8C;
@@ -907,38 +976,11 @@
       
                .achievementsTop{
                   &__right{
-                     .achievementsTop__rightFilters{
-                        button{
-                           .achievementsFilterIconBlock:hover{
-                              background-color: #1890FF;
-
-                              svg path{
-                                 fill: #fff;
-                              }
-
-                           }
-
-                           .achievementsFilterPopup ul li:hover{
-                              color: #8c8c8c;
-                           }    
-                        }
-                     }
-      
                      .achievementsTop__rightCompare{
                         button:hover{
                            background-color: #00BFFF;
                         }
                      }
-                  }
-               }
-      
-               .projectsTop button:hover{
-                  background-color: #00BFFF;
-                  border-color: #00BFFF;
-                  color: #fff;
-      
-                  svg path{
-                     fill: #fff;
                   }
                }
 
@@ -1002,6 +1044,105 @@
                   svg path{
                      fill: #1890FF;
                   }
+               }
+            }
+         }
+      }
+   }
+
+   .detailCard{
+      &__top{
+         .infoBottom{
+            .ratingOfMembersBtn:hover{
+               background-color: #00BFFF;
+               border: none;
+               color: #fff;
+            }
+         }
+      }
+
+      .navMenuAndContent{
+         .content{
+            &__inputAndBtns{
+               .attachments:hover{
+                  background-color: #8C8C8C;
+               }
+            }
+
+            .achievementsTop{
+               &__right{
+                  .achievementsTop__rightFilters{
+                     button{
+                        .achievementsFilterIconBlock:hover{
+                           background-color: #1890FF;
+
+                           svg path{
+                              fill: #fff;
+                           }
+
+                        }
+                     }
+                  }
+               }
+            }
+
+            .projectsTop button:hover{
+               background-color: #00BFFF;
+               border-color: #00BFFF;
+               color: #fff;
+   
+               svg path{
+                  fill: #fff;
+               }
+            }
+         }
+      }
+   }
+
+   .darkDetailCard{
+      &__top{
+         .infoBottom{
+            .ratingOfMembersBtn:hover{
+               background-color: #fff;
+               border: none;
+               color: #191919;
+            }
+         }
+      }
+
+      .navMenuAndContent{
+         .content{
+            &__inputAndBtns{
+               .attachments:hover{
+                  background-color: #fff;
+                  color: #191919;
+               }
+            }
+
+            .achievementsTop{
+               &__right{
+                  .achievementsTop__rightFilters{
+                     button{
+                        .achievementsFilterIconBlock:hover{
+                           background-color: #d9d9d9;
+
+                           svg path{
+                              fill: #191919;
+                           }
+
+                        }
+                     }
+                  }
+               }
+            }
+
+            .projectsTop button:hover{
+               background-color: #fff;
+               border-color: #fff;
+               color: #191919;
+   
+               svg path{
+                  fill: #191919;
                }
             }
          }
@@ -1128,6 +1269,32 @@
    }
 }
 
+@media(max-width: 950px){
+   .detailCard, .darkDetailCard{
+      &__top{
+         .titleBlock{
+            &__info{
+               .dateAndLinks{
+                  display: block;
+
+                  &__links{
+                     margin-top: 10px;
+                  }
+               }
+   
+               .infoBottom{
+                  display: block;
+
+                  &__goldAndRating{
+                     margin-bottom: 10px;
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+
 @media(max-width: 900px){
    .detailCard, .darkDetailCard{
       &__top{
@@ -1227,6 +1394,20 @@
             .infoBottom{
                justify-content: center;
             }
+
+            &__info{
+               .dateAndLinks{
+                  &__links{
+                     justify-content: center;
+                  }
+               }
+   
+               .infoBottom{
+                 &__goldAndRating{
+                  justify-content: center;
+                 }
+               }
+            }
          }
       }
       .navMenuAndContentWrapper{
@@ -1317,8 +1498,17 @@
          .titleBlock{
             &__info{
                .infoBottom{
+                  display: flex;
+                  flex-direction: column;
 
-                  display: block;
+                  .ratingOfMembersBtn{
+                     margin-left: 0;
+                     margin-top: 10px;
+                  }
+
+                  button{
+                     width: 190px;
+                  }
                  
                   &__goldAndRating{
                      justify-content: center;

@@ -32,12 +32,18 @@ const onSetBackLink = (link) =>{
   setBackLink(link)
 }
 
+let [activeBlock, setActiveBlock] = React.useState('actionFeed')
+
+let onSelectContentBlock = (block) =>{
+  setActiveBlock(block);
+}
+
 const [isOnline] = React.useState(true);
 const [whoConnect, setWhoConnect] = React.useState('user');
 
   return (
 
-    <AppContext.Provider value={{darkTheme, toggleDarkTheme, visibleMainMenu, onVisibleMainMenu, isOnline, whoConnect, setWhoConnect, backLink, onSetBackLink}}>
+    <AppContext.Provider value={{darkTheme, toggleDarkTheme, visibleMainMenu, onVisibleMainMenu, isOnline, whoConnect, setWhoConnect, backLink, onSetBackLink, onSelectContentBlock, activeBlock}}>
     <Routes>
       <Route exact path='/' element={<Main/>}/>
       <Route exact path='/allGames' element={<AllGames/>}/>

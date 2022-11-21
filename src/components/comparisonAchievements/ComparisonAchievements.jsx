@@ -2,16 +2,18 @@ import React from 'react';
 
 import styles from './ComparisonAchievements.module.scss';
 
+import { AppContext } from '../../App';
+
 function ComparisonAchievements(props) {
 
    const {title, gold, info, progressDate1, progress1, progressDate2, progress2} = props;
 
-
+   const { darkTheme } = React.useContext(AppContext);
 
   return (
 
-    <div className={styles.comparisonAchievements}>
-      <div className={styles.comparisonAchievements__top}>
+    <div className={darkTheme? styles.darkComparisonAchievements : styles.comparisonAchievements}>
+      <div className={darkTheme? styles.darkComparisonAchievements__top : styles.comparisonAchievements__top}>
          <h3>{title}</h3>
          <div className={styles.gold}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -21,7 +23,7 @@ function ComparisonAchievements(props) {
          </div>
       </div>
       <p>{info}</p>
-      <div className={styles.comparisonAchievements__progresses}>
+      <div className={darkTheme? styles.darkComparisonAchievements__progresses : styles.comparisonAchievements__progresses}>
          <div className={styles.progressBlock}>
             <div className={styles.progressBlock__top}>
                <span>{progress1 === 0? 'Заблокировано' : progressDate1}</span>

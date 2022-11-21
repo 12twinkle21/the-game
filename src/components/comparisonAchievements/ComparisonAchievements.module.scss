@@ -1,5 +1,42 @@
 .comparisonAchievements{
    background-color: #FAFAFA;
+
+   &__top{
+      h3{
+         color: #262626;
+      }
+
+      .gold{
+         span{
+            color: #262626;
+         }
+      }
+   }
+}
+
+.darkComparisonAchievements{
+   background-color: #191919;
+
+   &__top{
+      h3{
+         color: #fff;
+      }
+
+      .gold{
+
+         svg path{
+            fill: #fff;
+         }
+         
+         span{
+            color: #fff;
+         }
+      }
+   }
+}
+
+.comparisonAchievements, .darkComparisonAchievements{
+   
    border-radius: 12px;
    padding: 32px;
 
@@ -12,7 +49,6 @@
          font-size: 20px;
          font-weight: 600;
          line-height: 28px;
-         color: #262626;
       }
 
       .gold{
@@ -28,7 +64,6 @@
             font-size: 16px;
             font-weight: 500;
             line-height: 24px;
-            color: #262626;
          }
       }
    }

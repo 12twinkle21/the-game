@@ -243,6 +243,19 @@ function DetailAchievementPage() {
 
    let [estimateTextAreaText, setEstimateTextAreaText] = React.useState('');
 
+   let blueProgress = 50;
+   let yellowProgress = 50;
+
+   let [activePrompt1, setActivePrompt1] = React.useState(false);
+   let [activePrompt2, setActivePrompt2] = React.useState(false);
+   let [activePrompt3, setActivePrompt3] = React.useState(false);
+   let [activePrompt4, setActivePrompt4] = React.useState(false);
+   let [activeProgressPrompt, setActiveProgressPrompt] = React.useState(false);
+
+   let onSetActivePrompt = (setActivePrompt, bool) =>{
+      setActivePrompt(bool);
+   }
+
   return (
    
    <>
@@ -359,16 +372,45 @@ function DetailAchievementPage() {
                   </div>
             }
                <div className={styles.infoProgressBlock}>
-                  
+                  <div className={styles.infoProgressBlock__left}>
+                     <div className={styles.blueProgress}>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path d="M13.0328 7.33143C12.7295 6.6487 12.2885 6.03592 11.7375 5.53143L11.2828 5.11424C11.2674 5.10046 11.2488 5.09069 11.2287 5.08577C11.2086 5.08085 11.1876 5.08094 11.1675 5.08603C11.1475 5.09112 11.129 5.10106 11.1137 5.11497C11.0984 5.12887 11.0867 5.14633 11.0797 5.1658L10.8766 5.74861C10.75 6.11424 10.5172 6.48768 10.1875 6.85486C10.1656 6.8783 10.1406 6.88455 10.1234 6.88611C10.1063 6.88768 10.0797 6.88455 10.0562 6.86268C10.0344 6.84393 10.0234 6.8158 10.025 6.78768C10.0828 5.84705 9.80156 4.78611 9.18594 3.63143C8.67656 2.67205 7.96875 1.92361 7.08437 1.40174L6.43906 1.02205C6.35469 0.972052 6.24688 1.03768 6.25156 1.13611L6.28594 1.88611C6.30937 2.39861 6.25 2.85174 6.10938 3.2283C5.9375 3.68924 5.69062 4.11736 5.375 4.50174C5.15535 4.76887 4.90639 5.01049 4.63281 5.22205C3.97391 5.72856 3.43815 6.37757 3.06562 7.12049C2.69402 7.86988 2.50045 8.69496 2.5 9.53143C2.5 10.2689 2.64531 10.983 2.93281 11.6564C3.21042 12.3048 3.61103 12.8933 4.1125 13.3892C4.61875 13.8892 5.20625 14.283 5.86094 14.5564C6.53906 14.8408 7.25781 14.9846 8 14.9846C8.74219 14.9846 9.46094 14.8408 10.1391 14.558C10.7921 14.2862 11.386 13.8897 11.8875 13.3908C12.3938 12.8908 12.7906 12.3064 13.0672 11.658C13.3543 10.9864 13.5015 10.2634 13.5 9.53299C13.5 8.77049 13.3438 8.02986 13.0328 7.33143Z" fill="#1890FF"/>
+                        </svg>
+                        <span>{blueProgress} %</span>
+                        <div className={styles.fullProgressbar}>
+                           <div style={{width: `${blueProgress}%`}}className={styles.activeProgressbar}></div>
+                        </div>
+                     </div>
+                     <div className={styles.yellowProgress}>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path d="M14.1887 5.51641L10.2215 4.93985L8.4481 1.34454C8.39966 1.2461 8.31998 1.16641 8.22154 1.11797C7.97466 0.9961 7.67466 1.09766 7.55123 1.34454L5.77779 4.93985L1.8106 5.51641C1.70123 5.53204 1.60123 5.5836 1.52466 5.66172C1.4321 5.75686 1.3811 5.88485 1.38286 6.01757C1.38461 6.15029 1.43899 6.27689 1.53404 6.36954L4.40435 9.16797L3.72623 13.1195C3.71032 13.2115 3.7205 13.306 3.75559 13.3924C3.79068 13.4789 3.84929 13.5537 3.92477 13.6086C4.00025 13.6634 4.08958 13.696 4.18263 13.7026C4.27568 13.7092 4.36873 13.6897 4.45123 13.6461L7.99966 11.7805L11.5481 13.6461C11.645 13.6977 11.7575 13.7148 11.8653 13.6961C12.1372 13.6492 12.32 13.3914 12.2731 13.1195L11.595 9.16797L14.4653 6.36954C14.5434 6.29297 14.595 6.19297 14.6106 6.0836C14.6528 5.81016 14.4622 5.55704 14.1887 5.51641Z" fill="#FADB14"/>
+                        </svg>
+                        <span>{yellowProgress} %</span>
+                        <div className={styles.fullProgressbar}>
+                           <div style={{width: `${yellowProgress}%`}}className={styles.activeProgressbar}></div>
+                        </div>
+                     </div>
+                  </div>
+                  <div className={styles.infoProgressBlock__right} onMouseEnter={()=>onSetActivePrompt(setActiveProgressPrompt, true)} onMouseLeave={()=>onSetActivePrompt(setActiveProgressPrompt, false)}>
+                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.9375 4.38906C11.7188 3.91094 11.4078 3.48125 11.0109 3.11406C10.2047 2.36563 9.13438 1.95312 8 1.95312C6.86562 1.95312 5.79531 2.36562 4.98906 3.1125C4.59219 3.48125 4.28125 3.90937 4.0625 4.38906C3.83437 4.88906 3.71875 5.41875 3.71875 5.96562V6.3875C3.71875 6.48438 3.79687 6.5625 3.89375 6.5625H4.7375C4.83438 6.5625 4.9125 6.48438 4.9125 6.3875V5.96562C4.9125 4.41094 6.29688 3.14687 8 3.14687C9.70312 3.14687 11.0875 4.41094 11.0875 5.96562C11.0875 6.60312 10.8609 7.20312 10.4312 7.70312C10.0062 8.19844 9.40625 8.55312 8.74219 8.70312C8.3625 8.78906 8.02031 9.00312 7.77812 9.30937C7.53678 9.61458 7.40524 9.99216 7.40469 10.3813V10.8719C7.40469 10.9688 7.48281 11.0469 7.57969 11.0469H8.42344C8.52031 11.0469 8.59844 10.9688 8.59844 10.8719V10.3813C8.59844 10.1359 8.76875 9.92031 9.00469 9.86719C9.91719 9.66094 10.7453 9.16875 11.3375 8.48125C11.6359 8.13281 11.8688 7.74531 12.0297 7.325C12.1969 6.88906 12.2812 6.43125 12.2812 5.96562C12.2812 5.41875 12.1656 4.8875 11.9375 4.38906ZM8 12.2969C7.51719 12.2969 7.125 12.6891 7.125 13.1719C7.125 13.6547 7.51719 14.0469 8 14.0469C8.48281 14.0469 8.875 13.6547 8.875 13.1719C8.875 12.6891 8.48281 12.2969 8 12.2969Z" fill="white"/>
+                     </svg>
+                     {activeProgressPrompt?
+                        <div className={styles.progressPrompt}>
+                           <p>Подсказка при наведении</p>
+                        </div>
+                        :
+                        null}
+                  </div>
                </div>
             </div>
          </div>
       </div>
-      <div className={styles.kekBtns}>
+      <div className={styles.kekBtns} style={{maxWidth: '1440px', margin: '0 auto'}}>
          <button onClick={()=> onWhoConnect('user')}>Пользователь</button>
          <button onClick={()=> onWhoConnect('mentor')}>Наставник</button>
          <button onClick={()=> onWhoConnect('master')}>Мастер</button>
-         <button onClick={()=> onSelectContentBlock('historyOfAchievements')}>Перейти к истории(временно для теста на мобильной версии)</button>
       </div>
       <div className={styles.navMenuAndContentWrapper}>
       <div className={styles.navMenuAndContent}>
@@ -468,7 +510,7 @@ function DetailAchievementPage() {
                unblockAchievement?
                <div className={styles.unblockedHistory} >
                   <div className={styles.steps}>
-                     <div className={styles.steps__step}>
+                     <div className={styles.steps__step} onMouseEnter={()=>onSetActivePrompt(setActivePrompt1, true)} onMouseLeave={()=>onSetActivePrompt(setActivePrompt1, false)}>
                         <span className={stepProgress}>
                            {
                               sendArtifact?
@@ -486,8 +528,14 @@ function DetailAchievementPage() {
                            </h3>
                            <p>Добавление<br/>артефакта</p>
                         </div>
+                        {activePrompt1?
+                        <div className={styles.stepPrompt}>
+                           <p>Подсказка при наведении</p>
+                        </div>
+                        :
+                        null}
                      </div>
-                     <div className={styles.steps__step}>
+                     <div className={styles.steps__step} onMouseEnter={()=>onSetActivePrompt(setActivePrompt2, true)} onMouseLeave={()=>onSetActivePrompt(setActivePrompt2, false)}>
                         <span className={stepProgress2}>
                            {
                               mentorEstimateArtifact?
@@ -505,8 +553,14 @@ function DetailAchievementPage() {
                            </h3>
                            <p>Оценка<br/>наставника</p>
                         </div>
+                        {activePrompt2?
+                        <div className={styles.stepPrompt}>
+                           <p>Подсказка при наведении</p>
+                        </div>
+                        :
+                        null}
                      </div>
-                     <div className={styles.steps__step}>
+                     <div className={styles.steps__step} onMouseEnter={()=>onSetActivePrompt(setActivePrompt3, true)} onMouseLeave={()=>onSetActivePrompt(setActivePrompt3, false)}>
                         <span className={stepProgress3}>
                            {
                               masterEstimateArtifact?
@@ -524,8 +578,14 @@ function DetailAchievementPage() {
                            </h3>
                            <p>Оценка<br/>мастера</p>
                         </div>
+                        {activePrompt3?
+                        <div className={styles.stepPrompt}>
+                           <p>Подсказка при наведении</p>
+                        </div>
+                        :
+                        null}
                      </div>
-                     <div className={styles.steps__step}>
+                     <div className={styles.steps__step} onMouseEnter={()=>onSetActivePrompt(setActivePrompt4, true)} onMouseLeave={()=>onSetActivePrompt(setActivePrompt4, false)}>
                         <span className={stepProgress4}>
                            {
                               masterEstimateArtifact?
@@ -539,6 +599,12 @@ function DetailAchievementPage() {
                         <div className={styles.stepInfo}>
                            <p className={styles.lastStep}>Достижение<br/>получено</p>
                         </div>
+                        {activePrompt4?
+                        <div className={styles.stepPrompt}>
+                           <p>Подсказка при наведении</p>
+                        </div>
+                        :
+                        null}
                      </div>
                   </div>
                   <div className={styles.unblockedHistory__btn}>

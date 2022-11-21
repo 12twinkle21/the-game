@@ -111,7 +111,7 @@ function SendArtifactOverlayMenu(props) {
             <div className={styles.selectedBtnPopup}>
               <ul>
                 {
-                  typesOfArtifactData.map((item) => <li onClick={onSetActiveTypesOfArtifactBtn} style={activeTypesOfArtifactBtn === item.title?{color: '#bfbfbf'} : null}>{item.title}</li>)
+                  typesOfArtifactData.map((item) => <li key={item.title} onClick={onSetActiveTypesOfArtifactBtn} style={activeTypesOfArtifactBtn === item.title?{color: '#bfbfbf'} : null}>{item.title}</li>)
                 }
               </ul>
             </div>
@@ -144,7 +144,7 @@ function SendArtifactOverlayMenu(props) {
             <div className={styles.selectedBtnPopup}>
               <ul>
                 {
-                  authorsData.map((item) => <li onClick={onSetActiveAuthorsBtn} style={activeAuthorsBtn === item.title?{color: '#bfbfbf'} : null}>{item.title}</li>)
+                  authorsData.map((item) => <li key={item.title} onClick={onSetActiveAuthorsBtn} style={activeAuthorsBtn === item.title?{color: '#bfbfbf'} : null}>{item.title}</li>)
                 }
               </ul>
             </div>

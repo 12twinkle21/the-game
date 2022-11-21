@@ -163,7 +163,10 @@ function Main() {
       {
         breakpoint: 450,
         settings:{
-          slidesToShow: 1.6
+          slidesToShow: 1.6,
+          slidesToScroll: 1,
+          swipe: true,
+          swipeToSlide: true
         }
       }
     ]
@@ -427,42 +430,226 @@ function Main() {
     {
       bgImage: "http://dummyimage.com/282x282/a6a6ff&text=+",
       title: "Геймдизайн в лагере",
-      countOfPlayers: 6
+      countOfPlayers: 6,
+      friends: [
+          {
+            avatar: "http://dummyimage.com/48x48&text=+",
+            isOnline : true,
+            name : "Илья Абрамов",
+            gold: 13255
+          },
+          {
+            avatar: "http://dummyimage.com/48x48/a6a6ff&text=+",
+            isOnline : false,
+            name : "Иван Иванов",
+            gold: 12
+          },
+          {
+            avatar: "http://dummyimage.com/48x48/99cccc&text=+",
+            isOnline : true,
+            name : "Мария Душина",
+            gold: 120
+          },
+          {
+            avatar: "http://dummyimage.com/48x48/99cccc&text=+",
+            isOnline : true,
+            name : "Мария Душина",
+            gold: 120
+          },
+          {
+            avatar: "http://dummyimage.com/48x48&text=+",
+            isOnline : true,
+            name : "Илья Абрамов",
+            gold: 13255
+          }
+         ]
     },
     {
       bgImage: "http://dummyimage.com/282x282/99cccc&text=+",
       title: "Команда проекта",
-      countOfPlayers: 2
+      countOfPlayers: 2,
+      friends: [
+        {
+          avatar: "http://dummyimage.com/48x48&text=+",
+          isOnline : true,
+          name : "Илья Абрамов",
+          gold: 13255
+        },
+        {
+          avatar: "http://dummyimage.com/48x48/a6a6ff&text=+",
+          isOnline : false,
+          name : "Иван Иванов",
+          gold: 12
+        }
+       ]
     },
     {
       bgImage: "http://dummyimage.com/282x282/F08080&text=+",
       title: "Фандрайзинг",
-      countOfPlayers: 4
+      countOfPlayers: 4,
+      friends: [
+        {
+          avatar: "http://dummyimage.com/48x48&text=+",
+          isOnline : true,
+          name : "Илья Абрамов",
+          gold: 13255
+        },
+        {
+          avatar: "http://dummyimage.com/48x48/a6a6ff&text=+",
+          isOnline : false,
+          name : "Иван Иванов",
+          gold: 12
+        },
+        {
+          avatar: "http://dummyimage.com/48x48/99cccc&text=+",
+          isOnline : true,
+          name : "Мария Душина",
+          gold: 120
+        },
+        {
+          avatar: "http://dummyimage.com/48x48/99cccc&text=+",
+          isOnline : true,
+          name : "Мария Душина",
+          gold: 120
+        }
+       ]
     },
     {
       bgImage: "http://dummyimage.com/282x282/FFE4B5&text=+",
       title: "Лаборатория проектов",
-      countOfPlayers: 3
+      countOfPlayers: 3,
+      friends: [
+        {
+          avatar: "http://dummyimage.com/48x48&text=+",
+          isOnline : true,
+          name : "Илья Абрамов",
+          gold: 13255
+        },
+        {
+          avatar: "http://dummyimage.com/48x48/a6a6ff&text=+",
+          isOnline : false,
+          name : "Иван Иванов",
+          gold: 12
+        },
+        {
+          avatar: "http://dummyimage.com/48x48/99cccc&text=+",
+          isOnline : true,
+          name : "Мария Душина",
+          gold: 120
+        }
+       ]
     },
     {
       bgImage: "http://dummyimage.com/282x282/a6a6ff&text=+",
       title: "Геймдизайн в лагере",
-      countOfPlayers: 6
+      countOfPlayers: 6,
+      friends: [
+        {
+          avatar: "http://dummyimage.com/48x48&text=+",
+          isOnline : true,
+          name : "Илья Абрамов",
+          gold: 13255
+        },
+        {
+          avatar: "http://dummyimage.com/48x48/a6a6ff&text=+",
+          isOnline : false,
+          name : "Иван Иванов",
+          gold: 12
+        },
+        {
+          avatar: "http://dummyimage.com/48x48/99cccc&text=+",
+          isOnline : true,
+          name : "Мария Душина",
+          gold: 120
+        },
+        {
+          avatar: "http://dummyimage.com/48x48/99cccc&text=+",
+          isOnline : true,
+          name : "Мария Душина",
+          gold: 120
+        },
+        {
+          avatar: "http://dummyimage.com/48x48&text=+",
+          isOnline : true,
+          name : "Илья Абрамов",
+          gold: 13255
+        }
+       ]
     },
     {
       bgImage: "http://dummyimage.com/282x282/99cccc&text=+",
       title: "Команда проекта",
-      countOfPlayers: 2
+      countOfPlayers: 2,
+      friends: [
+        {
+          avatar: "http://dummyimage.com/48x48&text=+",
+          isOnline : true,
+          name : "Илья Абрамов",
+          gold: 13255
+        },
+        {
+          avatar: "http://dummyimage.com/48x48/a6a6ff&text=+",
+          isOnline : false,
+          name : "Иван Иванов",
+          gold: 12
+        }
+       ]
     },
     {
       bgImage: "http://dummyimage.com/282x282/F08080&text=+",
       title: "Фандрайзинг",
-      countOfPlayers: 4
+      countOfPlayers: 4,
+      friends: [
+        {
+          avatar: "http://dummyimage.com/48x48&text=+",
+          isOnline : true,
+          name : "Илья Абрамов",
+          gold: 13255
+        },
+        {
+          avatar: "http://dummyimage.com/48x48/a6a6ff&text=+",
+          isOnline : false,
+          name : "Иван Иванов",
+          gold: 12
+        },
+        {
+          avatar: "http://dummyimage.com/48x48/99cccc&text=+",
+          isOnline : true,
+          name : "Мария Душина",
+          gold: 120
+        },
+        {
+          avatar: "http://dummyimage.com/48x48/99cccc&text=+",
+          isOnline : true,
+          name : "Мария Душина",
+          gold: 120
+        }
+       ]
     },
     {
       bgImage: "http://dummyimage.com/282x282/FFE4B5&text=+",
       title: "Лаборатория проектов",
-      countOfPlayers: 3
+      countOfPlayers: 3,
+      friends: [
+        {
+          avatar: "http://dummyimage.com/48x48&text=+",
+          isOnline : true,
+          name : "Илья Абрамов",
+          gold: 13255
+        },
+        {
+          avatar: "http://dummyimage.com/48x48/a6a6ff&text=+",
+          isOnline : false,
+          name : "Иван Иванов",
+          gold: 12
+        },
+        {
+          avatar: "http://dummyimage.com/48x48/99cccc&text=+",
+          isOnline : true,
+          name : "Мария Душина",
+          gold: 120
+        }
+       ]
     }
   ];
 
@@ -620,7 +807,7 @@ function Main() {
         <div className={styles.achievementBlock__items}>
           <Slider {...availableAchievementSliderSettings}>
           {
-            achievementItemsData.map((item) => <div onClick={onSetBackLink('/')}><AchievementItem title={item.title} gold={item.gold} bgImage={item.bgImage} key={item.title} blocked/></div>)
+            achievementItemsData.map((item) => <div onClick={onSetBackLink('/')}><AchievementItem title={item.title} gold={item.gold} bgImage={item.bgImage} key={item.title} blocked mainPageAchievement/></div>)
           }
           </Slider>
         </div>
@@ -640,7 +827,7 @@ function Main() {
         <div className={styles.popularAmongFriendsBlock__items}>
           <Slider {...popularAmongFriendsSliderSettings}>
           {
-            popularAmongFriendsData.map((item) => <PopularAmongFriendsItem bgImage={item.bgImage} title={item.title} countOfPlayers={item.countOfPlayers} key={item.title}/>)
+            popularAmongFriendsData.map((item) => <PopularAmongFriendsItem bgImage={item.bgImage} title={item.title} countOfPlayers={item.countOfPlayers} friends={item.friends} key={item.title}/>)
           }
           </Slider>
         </div>

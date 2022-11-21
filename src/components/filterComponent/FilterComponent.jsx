@@ -60,7 +60,7 @@ function FilterComponent(props) {
             <div className={styles.filterPopup}>
                <ul>
                   {
-                     statisticsFiltersData.map((item) => <li onClick={() => onActiveStatisticsFilter(item.title, setActiveStatisticsFilter)} style={activeStatisticsFilter === item.title?{color: '#bfbfbf'} : null}>{item.title}</li>)
+                     statisticsFiltersData.map((item) => <li key={item.title} onClick={() => onActiveStatisticsFilter(item.title, setActiveStatisticsFilter)} style={activeStatisticsFilter === item.title?{color: '#bfbfbf'} : null}>{item.title}</li>)
                   }
                </ul>
                </div>

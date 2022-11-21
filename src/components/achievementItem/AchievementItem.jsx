@@ -1,13 +1,16 @@
 import React from 'react';
 import styles from './AchievementItem.module.scss';
 
+import {CircularProgressbarWithChildren, buildStyles} from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
+
 import { Link } from 'react-router-dom';
 
 import { AppContext } from '../../App';
 
 function AvailableAchievementItem(props) {
 
-   const {title, gold, bgImage, blocked, } = props;
+   const {title, gold, bgImage, blocked, mainPageAchievement, blueProgress, yellowProgress} = props;
 
    const { darkTheme } = React.useContext(AppContext);
 
@@ -18,13 +21,41 @@ function AvailableAchievementItem(props) {
       {
          blocked?
          <div className={styles.availableAchievementItem__img}>
-            <img src={bgImage} width={132} height={132} alt='Achievement'/>
+            <img style={!mainPageAchievement?{width: '100%', height: '100%', padding: '15px'} : null} src={bgImage} width={132} height={132} alt='Achievement'/>
          </div>
          :
          <div className={styles.unlockedAchievementItem__img}>
-            <img src={bgImage} width={132} height={132} alt='Achievement'/>
+            <CircularProgressbarWithChildren
+               value={yellowProgress}
+               strokeWidth={3}
+               styles={buildStyles({
+               pathColor: "#FADB14",
+               trailColor: "transparent",
+               })}
+            >
+            {/*
+               Width here needs to be (100 - 2 * strokeWidth)% 
+               in order to fit exactly inside the outer progressbar.
+            */}
+            <div style={{ width: "90%" }}>
+               <CircularProgressbarWithChildren
+                  value={blueProgress}
+                  strokeWidth={3}
+                  styles={buildStyles({
+                  pathColor: "#1890FF",
+                  trailColor: "transparent",
+                  })}   
+               >
+                  <img style={{width: '100%', height: '100%', borderRadius: '50%', padding: '10px'}}
+                     src={bgImage}
+                     alt="Logo"
+                   />
+               </CircularProgressbarWithChildren>
+            </div>
+            </CircularProgressbarWithChildren>
          </div>
       }
+    
       <div className={darkTheme? styles.darkAchievementItem__title : styles.achievementItem__title}>
          <p>{title}</p>
       </div>      

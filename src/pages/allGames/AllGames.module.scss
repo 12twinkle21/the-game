@@ -28,7 +28,7 @@
          line-height: 46px;
       }
 
-      .allGames__titleRight{
+      .allGames__titleRight, .darkAllGames__titleRight{
          display: flex;
          align-items: center;
 
@@ -63,7 +63,7 @@
 }
 
 @media(hover: hover) and (pointer: fine){
-   .allGames__titleRight p:hover{
+   .allGames__titleRight p:hover, .darkAllGames__titleRight p:hover{
       color: #00BFFF;
    }
 }
