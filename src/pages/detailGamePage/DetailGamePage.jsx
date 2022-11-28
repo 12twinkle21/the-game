@@ -87,7 +87,6 @@ function DetailGamePage() {
         gold: 710,
         bgImage: "http://dummyimage.com/132x132/a6a6ff&text=+",
         blocked: true
-
       },
       {
         title: "Залайкали!",
@@ -338,6 +337,212 @@ function DetailGamePage() {
          title: "Не завершили обучение",
          progress: "67 / 11%",
       }
+   ];
+
+   let achievementTreeData = [
+            {
+               title: "Стратегия найдена",
+               gold: 710,
+               bgImage: "http://dummyimage.com/132x132&text=+",
+               blueProgress : 100,
+               yellowProgress: 100
+            },
+            {
+               title: "Проверка на вшивость",
+               gold: 710,
+               bgImage: "http://dummyimage.com/132x132/a6a6ff&text=+",
+               blueProgress : 100,
+               yellowProgress: 100,
+               tripleBottomTreeElement: true
+            },
+            {
+               title: "Залайкали!",
+               gold: 710,
+               bgImage: "http://dummyimage.com/132x132/99cccc&text=+",
+               blueProgress : 100,
+               yellowProgress: 100
+            },
+            {
+               title: "Стратегия найдена",
+               gold: 710,
+               bgImage: "http://dummyimage.com/132x132&text=+",
+               blueProgress : 100,
+               yellowProgress: 100
+            },
+            {
+               title: "Проверка на вшивость",
+               gold: 710,
+               bgImage: "http://dummyimage.com/132x132/a6a6ff&text=+",
+               blueProgress : 100,
+               yellowProgress: 100,
+               soloBottomTreeElement: true
+            },
+            {
+               emptyElement: true
+            },
+            {
+               emptyElement: true
+            },
+            {
+               title: "Залайкали!",
+               gold: 710,
+               bgImage: "http://dummyimage.com/132x132/99cccc&text=+",
+               blueProgress : 100,
+               yellowProgress: 100,
+               soloBottomTreeElement: true
+            },
+            {
+               emptyElement: true
+            },
+            {
+               title: "Проверка на вшивость",
+               gold: 710,
+               bgImage: "http://dummyimage.com/132x132/a6a6ff&text=+",
+               blueProgress : 100,
+               yellowProgress: 100
+            },
+            {
+               emptyElement: true
+            },
+            {
+               title: "Проверка на вшивость",
+               gold: 710,
+               bgImage: "http://dummyimage.com/132x132/a6a6ff&text=+",
+               blueProgress : 100,
+               yellowProgress: 100,
+               soloRightTreeElement: true
+             },
+             {
+               title: "Залайкали!",
+               gold: 710,
+               bgImage: "http://dummyimage.com/132x132/99cccc&text=+",
+               blueProgress : 100,
+               yellowProgress: 100
+             },
+             {
+                title: "Стратегия найдена",
+                gold: 710,
+                bgImage: "http://dummyimage.com/132x132&text=+",
+                blueProgress : 100,
+                yellowProgress: 100,
+                soloLeftTreeElement: true,
+              },
+              {
+               emptyElement: true
+              },
+              {
+               emptyElement: true
+              },
+              {
+               title: "Залайкали!",
+               gold: 710,
+               bgImage: "http://dummyimage.com/132x132/99cccc&text=+",
+               blueProgress : 100,
+               yellowProgress: 100,
+               soloBottomTreeElement: true,
+               tripleTopTreeElement: true,
+             },
+             {
+                title: "Стратегия найдена",
+                gold: 710,
+                bgImage: "http://dummyimage.com/132x132&text=+",
+                blueProgress : 100,
+                yellowProgress: 100,
+                infiniteTreeElement: 2
+              },
+              {
+                title: "Проверка на вшивость",
+                gold: 710,
+                bgImage: "http://dummyimage.com/132x132/a6a6ff&text=+",
+                blueProgress : 100,
+                yellowProgress: 100,
+                soloBottomTreeElement: true
+              },
+              {
+               emptyElement: true
+              },
+              {
+               emptyElement: true
+              },
+              {
+               title: "Стратегия найдена",
+               gold: 710,
+               bgImage: "http://dummyimage.com/132x132&text=+",
+               blueProgress : 100,
+               yellowProgress: 100,
+               infiniteTreeElement: 1
+             },
+              {
+               emptyElement: true
+              },
+              {
+               title: "Проверка на вшивость",
+               gold: 710,
+               bgImage: "http://dummyimage.com/132x132/a6a6ff&text=+",
+               blueProgress : 100,
+               yellowProgress: 100,
+               soloBottomTreeElement: true
+             },
+              {
+               emptyElement: true
+              },
+              {
+               emptyElement: true
+              },
+              {
+               emptyElement: true
+              },
+              {
+               emptyElement: true
+              },
+              {
+               title: "Залайкали!",
+               gold: 710,
+               bgImage: "http://dummyimage.com/132x132/99cccc&text=+",
+               blueProgress : 100,
+               yellowProgress: 100,
+               soloLeftTreeElement: true
+               },
+               {
+               emptyElement: true
+              },
+              {
+               title: "Стратегия найдена",
+               gold: 710,
+               bgImage: "http://dummyimage.com/132x132&text=+",
+               blueProgress : 100,
+               yellowProgress: 100,
+               quintupleTopTreeElement: true
+             },
+             {
+               title: "Проверка на вшивость",
+               gold: 710,
+               bgImage: "http://dummyimage.com/132x132/a6a6ff&text=+",
+               blueProgress : 100,
+               yellowProgress: 100
+             },
+             {
+               title: "Залайкали!",
+               gold: 710,
+               bgImage: "http://dummyimage.com/132x132/99cccc&text=+",
+               blueProgress : 100,
+               yellowProgress: 100 
+             },
+             {
+                title: "Стратегия найдена",
+                gold: 710,
+                bgImage: "http://dummyimage.com/132x132&text=+",
+                blueProgress : 100,
+                yellowProgress: 100
+              },
+              {
+                title: "Проверка на вшивость",
+                gold: 710,
+                bgImage: "http://dummyimage.com/132x132/a6a6ff&text=+",
+                blueProgress : 100,
+                yellowProgress: 100
+              }
+
    ];
    
    let [visibleAttachmentsPopup, setVisibleAttachmentsPopup] = React.useState(false);
@@ -807,16 +1012,25 @@ function DetailGamePage() {
                   </div>
                </div>
             </div>
+            {activeSecondAchievementFilter==='Список'?
             <div className={styles.achievementsItems}>
                {
                   allAchievementItemsData.map((item, index) => <div className={styles.achievementsItem} onClick={onSetBackLink('/detailGamePage')} key={`${item.title}__${index}`}><AchievementItem title={item.title} bgImage={item.bgImage} gold={item.gold} blocked={item.blocked} blueProgress={item.blueProgress} yellowProgress={item.yellowProgress}/></div>)
                }
             </div>
-          </div>
-          : ''
+               :
+            <div className={styles.achievementsTreeItems}>
+                  {
+                  achievementTreeData.map((item, index) => <div className={styles.achievementsItem}  onClick={onSetBackLink('/detailGamePage')} key={`${item.gold}__${index}`}><AchievementItem title={item.title} bgImage={item.bgImage} gold={item.gold} blocked={item.blocked} blueProgress={item.blueProgress} yellowProgress={item.yellowProgress} emptyElement={item.emptyElement} tripleTopTreeElement={item.tripleTopTreeElement} tripleBottomTreeElement={item.tripleBottomTreeElement} soloBottomTreeElement={item.soloBottomTreeElement} soloRightTreeElement={item.soloRightTreeElement} soloLeftTreeElement={item.soloLeftTreeElement} infiniteTreeElement={item.infiniteTreeElement} quintupleBottomTreeElement={item.quintupleBottomTreeElement} quintupleTopTreeElement={item.quintupleTopTreeElement} forTree/></div>)
+                  }
+            </div>
+            }
+            </div>
+            :
+            ''
          }
          {
-         activeBlock === 'projects'?
+            activeBlock === 'projects'?
          <div className={styles.content}>
             <div className={styles.projectsTop}>
                <h3>Проекты</h3>

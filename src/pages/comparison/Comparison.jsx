@@ -37,7 +37,7 @@ function Comparison() {
         },
         {
           title: "Прогресс",
-          progress: "72",
+          progress: "72%",
           activeProgress: true
         }
       ]
@@ -66,7 +66,7 @@ function Comparison() {
         },
         {
           title: "Прогресс",
-          progress: "50",
+          progress: "50%",
           activeProgress: true
         }
       ]
@@ -146,7 +146,7 @@ function Comparison() {
           <ComparisonAchItem comparisonItem={comparisonItemFirst}/>
           <div className={styles.comparisonStatistics}>
            {
-            comparisonItemFirst[0].statistics.map((item) => <div className={styles.comparisonStatistics__item} key={item.title}><StatisticsCard title={item.title} progress={item.progress}/></div>)
+            comparisonItemFirst[0].statistics.map((item) => <div className={styles.comparisonStatistics__item} key={item.title}><StatisticsCard title={item.title} progress={item.progress} activeProgress={item.activeProgress}/></div>)
            }
           </div>
           </div>
@@ -154,7 +154,7 @@ function Comparison() {
           <ComparisonAchItem comparisonItem={comparisonItemSecond}/>
           <div className={styles.comparisonStatistics}>
           {
-            comparisonItemSecond[0].statistics.map((item) => <div className={styles.comparisonStatistics__item} key={item.title}><StatisticsCard title={item.title} progress={item.progress}/></div>)
+            comparisonItemSecond[0].statistics.map((item) => <div className={styles.comparisonStatistics__item} key={item.title}><StatisticsCard title={item.title} progress={item.progress} activeProgress={item.activeProgress}/></div>)
           }
           </div>
           </div>

@@ -35,8 +35,7 @@
    }
 }
 
-.comparisonAchievements, .darkComparisonAchievements{
-   
+.comparisonAchievements, .darkComparisonAchievements{   
    border-radius: 12px;
    padding: 32px;
 
@@ -74,6 +73,7 @@
       line-height: 24px;
       color: #8C8C8C;
       margin-top: 8px;
+      width: 90%;
    }
 
    &__progresses{
@@ -127,5 +127,86 @@
          }
          }
       }
+   }
+}
+
+@media(max-width: 650px){
+   .comparisonAchievements, .darkComparisonAchievements{
+      &__progresses{
+         .progressBlock{
+            &__progressLineBlock{
+               svg{
+                  display: none;
+               }
+            }
+         }
+      }
+   }
+}
+
+@media(max-width: 600px){
+   .comparisonAchievements, .darkComparisonAchievements{
+      &__progresses{
+         gap: 20px;
+      }
+   }
+}
+
+@media(max-width: 550px){
+   .comparisonAchievements, .darkComparisonAchievements{
+      &__progresses{
+         .progressBlock{
+            &__top{
+               flex-direction: column;
+               align-items: start;
+
+               span{
+                  &:first-child{
+                     margin-bottom: 5px;
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+
+@media(max-width: 500px){
+   .comparisonAchievements, .darkComparisonAchievements{
+      &__top{
+         h3{
+            font-size: 16px;
+            line-height: 28px;
+         }
+
+         .gold{
+            span{
+               font-size: 16px;
+               line-height: 24px;
+            }
+         }
+      }
+
+      p{
+         font-size: 14px;
+         line-height: 17px;
+      }
+
+      &__progresses{
+         .progressBlock{
+            &__top{
+               span{
+                  font-size: 14px;
+                  line-height: 17px;
+               }
+            }
+         }
+      }
+   }
+}
+
+@media(max-width: 450px){
+   .comparisonAchievements, .darkComparisonAchievements{
+      padding: 15px;
    }
 }

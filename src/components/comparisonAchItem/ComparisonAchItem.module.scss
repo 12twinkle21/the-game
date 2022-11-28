@@ -133,3 +133,36 @@
       }
    }
 }
+
+@media(max-width: 650px){
+   .comparisonAchItem, .darkComparisonAchItem{
+      &__info{
+         p{
+            text-align: center;
+            font-size: 24px;
+         }
+
+         h3{
+            font-size: 16px;
+         }
+      }
+   }
+}
+
+@media(max-width: 550px){
+   .comparisonAchItem, .darkComparisonAchItem{
+      padding: 15px;
+
+      &__img{
+         img{
+            width: 100%;
+            height: auto;
+         }
+      }
+
+      .comparisonAchItem__infoCounts{
+         flex-direction: column;
+         gap: 5px;
+      }
+   }
+}

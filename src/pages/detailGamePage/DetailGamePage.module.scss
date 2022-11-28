@@ -670,14 +670,26 @@
             }
          }
 
-         .achievementsItems{
+         .achievementsItems, .achievementsTreeItems{
             display: flex;
             flex-wrap: wrap;
-            gap: 25px;
             margin: 40px 0;
+         }
+
+         .achievementsItems{
+            gap: 25px;
 
             .achievementsItem{
                width: calc(20% - 25px* 4/5);
+            }
+         }
+
+         .achievementsTreeItems{
+            justify-content: center;
+            column-gap: 30px;
+
+            .achievementsItem{
+               width: 160px;
             }
          }
 

@@ -10,14 +10,43 @@ import { AppContext } from '../../App';
 
 function AvailableAchievementItem(props) {
 
-   const {title, gold, bgImage, blocked, mainPageAchievement, blueProgress, yellowProgress} = props;
+   const {title, gold, bgImage, blocked, mainPageAchievement, blueProgress, yellowProgress, emptyElement, soloBottomTreeElement, soloRightTreeElement, soloLeftTreeElement, tripleTopTreeElement, tripleBottomTreeElement, quintupleTopTreeElement, quintupleBottomTreeElement, infiniteTreeElement, forTree} = props;
 
    const { darkTheme } = React.useContext(AppContext);
 
+   let treeElementStyles;
+
+   let getTreeElementStyles = () =>{
+      if(forTree && soloRightTreeElement){
+         treeElementStyles = {marginBottom: '110px', transform: 'translateX(-50px)'}
+      } else if(forTree && soloLeftTreeElement){
+         treeElementStyles = {marginBottom: '110px', transform: 'translateX(50px)'}
+      } else if(forTree){
+         treeElementStyles = {marginBottom: '110px', transform: 'translateX(0)'}
+      }
+   }
+
+   getTreeElementStyles();
+
+   let treeInfiniteElementStyles;
+
+   let getTreeInfiniteElementStyles = () =>{
+      if(infiniteTreeElement === 1){
+         treeInfiniteElementStyles = {height: '350px'}
+      } else if(infiniteTreeElement === 2){
+         treeInfiniteElementStyles = {height: '700px'}
+      }
+   }
+
+   getTreeInfiniteElementStyles()
+
   return (
-   
-   <Link to='/detailAchievementPage' className='clearLink'>
-    <div className={darkTheme? styles.darkAchievementItem : styles.achievementItem}>
+
+   emptyElement !==true?
+   <>
+    <Link to='/detailAchievementPage' className='clearLink'>
+      <div className={styles.achievementBlock}>
+    <div style={treeElementStyles}className={darkTheme? styles.darkAchievementItem : styles.achievementItem}>
       {
          blocked?
          <div className={styles.availableAchievementItem__img}>
@@ -57,7 +86,7 @@ function AvailableAchievementItem(props) {
       }
     
       <div className={darkTheme? styles.darkAchievementItem__title : styles.achievementItem__title}>
-         <p>{title}</p>
+         <p style={mainPageAchievement?{marginTop:'7px'} : null}>{title}</p>
       </div>      
       <div className={darkTheme? styles.darkAchievementItem__gold : styles.achievementItem__gold}>
          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -66,8 +95,93 @@ function AvailableAchievementItem(props) {
          <span>{gold}</span>
       </div>
     </div>
+       {soloBottomTreeElement?
+       <div className={styles.soloBottomTreeElement} style={{height: '96px'}}> 
+         <svg width="3" height="93" viewBox="0 0 3 93" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.5 93C0.671573 93 0 92.3284 0 91.5L0 46.5H3L3 91.5C3 92.3284 2.32843 93 1.5 93V93Z" fill="#BFBFBF"/>
+            <path d="M0 46.5L0 1.5C0 0.671574 0.671573 0 1.5 0V0C2.32843 0 3 0.671573 3 1.5L3 46.5H0Z" fill="#BFBFBF"/>
+         </svg>
+       </div>
+       :
+       null}
+       {soloLeftTreeElement? 
+       <div className={styles.soloLeftTreeElement} style={{height: '3px'}}>
+          <svg width="48" height="3" viewBox="0 0 48 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+             <rect width="48" height="3" rx="1.5" fill="#BFBFBF"/>
+          </svg>
+       </div>
+       :
+       null}
+       {soloRightTreeElement? 
+       <div className={styles.soloRightTreeElement} style={{height: '3px'}}>
+          <svg width="48" height="3" viewBox="0 0 48 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+             <rect width="48" height="3" rx="1.5" fill="#BFBFBF"/>
+          </svg>
+       </div>
+       :
+       null}
+       {tripleBottomTreeElement?
+       <div className={styles.tripleBottomTreeElement} style={{height: '94px'}}>
+          <svg width="371" height="94" viewBox="0 0 371 94" fill="none" xmlns="http://www.w3.org/2000/svg">
+             <rect y="45" width="371" height="3" rx="1.5" fill="#BFBFBF"/>
+             <rect y="48" width="48" height="3" rx="1.5" transform="rotate(-90 0 48)" fill="#BFBFBF"/>
+             <rect x="184" y="48" width="48" height="3" rx="1.5" transform="rotate(-90 184 48)" fill="#BFBFBF"/>
+             <rect x="184" y="94" width="48" height="3" rx="1.5" transform="rotate(-90 184 94)" fill="#BFBFBF"/>
+             <rect x="368" y="48" width="48" height="3" rx="1.5" transform="rotate(-90 368 48)" fill="#BFBFBF"/>
+          </svg>
+       </div>
+       :
+       null}
+       {quintupleBottomTreeElement?
+       <div className={styles.quintupleBottomTreeElement} style={{height: '93px'}}>
+          <svg width="740" height="93" viewBox="0 0 740 93" fill="none" xmlns="http://www.w3.org/2000/svg">
+             <rect x="740" width="48" height="4" rx="2" transform="rotate(90 740 0)" fill="#BFBFBF"/>
+             <rect x="554" width="48" height="3" rx="1.5" transform="rotate(90 554 0)" fill="#BFBFBF"/>
+             <rect x="374" width="48" height="3" rx="1.5" transform="rotate(90 374 0)" fill="#BFBFBF"/>
+             <rect x="186" width="48" height="3" rx="1.5" transform="rotate(90 186 0)" fill="#BFBFBF"/>
+             <rect x="3" width="48" height="3" rx="1.5" transform="rotate(90 3 0)" fill="#BFBFBF"/>
+             <rect x="740" y="48" width="740" height="3" rx="1.5" transform="rotate(-180 740 48)" fill="#BFBFBF"/>
+             <rect x="371" y="93" width="48" height="3" rx="1.5" transform="rotate(-90 371 93)" fill="#BFBFBF"/>
+          </svg>
+       </div>
+       :
+       null}
+       {tripleTopTreeElement?
+       <div className={styles.tripleTopTreeElement} style={{height: '94px'}}>
+          <svg width="371" height="94" viewBox="0 0 371 94" fill="none" xmlns="http://www.w3.org/2000/svg">
+             <rect x="371" y="49" width="371" height="3" rx="1.5" transform="rotate(-180 371 49)" fill="#BFBFBF"/>
+             <rect x="371" y="46" width="48" height="3" rx="1.5" transform="rotate(90 371 46)" fill="#BFBFBF"/>
+             <rect x="187" y="46" width="48" height="3" rx="1.5" transform="rotate(90 187 46)" fill="#BFBFBF"/>
+             <rect x="187" width="48" height="3" rx="1.5" transform="rotate(90 187 0)" fill="#BFBFBF"/>
+             <rect x="3" y="46" width="48" height="3" rx="1.5" transform="rotate(90 3 46)" fill="#BFBFBF"/>
+          </svg>
+       </div>
+       :
+       null}
+       {quintupleTopTreeElement?
+       <div className={styles.quintupleTopTreeElement} style={{height: '93px'}}>
+          <svg width="740" height="93" viewBox="0 0 740 93" fill="none" xmlns="http://www.w3.org/2000/svg">
+             <rect y="93" width="48" height="4" rx="2" transform="rotate(-90 0 93)" fill="#BFBFBF"/>
+             <rect x="186" y="93" width="48" height="3" rx="1.5" transform="rotate(-90 186 93)" fill="#BFBFBF"/>
+             <rect x="366" y="93" width="48" height="3" rx="1.5" transform="rotate(-90 366 93)" fill="#BFBFBF"/>
+             <rect x="554" y="93" width="48" height="3" rx="1.5" transform="rotate(-90 554 93)" fill="#BFBFBF"/>
+             <rect x="737" y="93" width="48" height="3" rx="1.5" transform="rotate(-90 737 93)" fill="#BFBFBF"/>
+             <rect y="45" width="740" height="3" rx="1.5" fill="#BFBFBF"/>
+             <rect x="369" width="48" height="3" rx="1.5" transform="rotate(90 369 0)" fill="#BFBFBF"/>
+          </svg>
+       </div>
+       :
+       null}
+       {infiniteTreeElement?
+       <div className={styles.infiniteTreeElement} style={treeInfiniteElementStyles}></div>
+      :
+      null}
+      </div>
     </Link>
-
+    </>
+   :
+   <div className={darkTheme? styles.darkAchievementItem : styles.achievementItem}></div>
+      
   )
 }
 

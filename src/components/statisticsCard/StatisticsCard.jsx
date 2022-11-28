@@ -6,7 +6,7 @@ import { AppContext } from '../../App';
 
 function StatisticsCard(props) {
 
-   const {title, progress, big} = props;
+   const {title, progress, big, activeProgress} = props;
 
    const { darkTheme } = React.useContext(AppContext);
 
@@ -17,8 +17,20 @@ function StatisticsCard(props) {
          <p>{title}</p>
       </div>
       <div className={styles.statisticsCardProgress}>
-         <span>{progress}</span>
+         <span>
+          {progress}
+          </span>
       </div>
+      {activeProgress?
+          <div className={styles.activeProgressFill} style={progress==='100%'?{borderRadius: '12px', height: progress} : {height: progress}}>
+             {activeProgress?
+          <span className={styles.activeProgressText}>{progress}</span>
+          :
+          null}
+          </div>
+          :
+          null
+          }
     </div>
 
   )
