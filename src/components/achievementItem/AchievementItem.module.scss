@@ -102,52 +102,144 @@
 
 .achievementBlock{
    position: relative;
+   cursor: default;
 
-   .soloBottomTreeElement{
+   .bottomTreeElement{
       position: absolute;
+      top: 280px;
       left: 50%;
-      bottom: -115px;
-   }
-
-   .soloLeftTreeElement{
-      position: absolute;
-      left: -15px;
-      bottom: 50%;
-   }
-
-   .soloRightTreeElement{
-      position: absolute;
-      right: -15px;
-      bottom: 50%;
-   }
-
-   .tripleBottomTreeElement{
-      position: absolute;
-      left: 52%;
-      bottom: -120px;
-   }
-
-   .tripleTopTreeElement{
-      position: absolute;
-      left: 52%;
-      top: -100px;
-   }
-
-   .quintupleTopTreeElement{
-      position: absolute;
-      left: 59%;
-      top: -100px;
-   }
-
-   .infiniteTreeElement{
-      position: absolute;
-      left: 50%;
-      top: 300px;
       width: 3px;
       border-radius: 4px;
       background-color: #bfbfbf;
    }
+
+   .bottomMiniTreeElement{
+      position: absolute;
+      top: 280px;
+      left: 50%;
+      width: 3px;
+      border-radius: 4px;
+      background-color: #bfbfbf;
+      height: 48px;
+   }
+
+   .topMiniTreeElement{
+      position: absolute;
+      top: -55px;
+      left: 50%;
+      width: 3px;
+      border-radius: 4px;
+      background-color: #bfbfbf;
+      height: 48px;
+   }
+
+   .longBottomRightTreeElement{
+      position: absolute;
+      top: 325px;
+      left: 50%;
+      width: 192px;
+      border-radius: 4px;
+      background-color: #bfbfbf;
+      height: 3px;
+   }
+
+   .longBottomLeftTreeElement{
+      position: absolute;
+      top: 325px;
+      right: 50%;
+      width: 192px;
+      border-radius: 4px;
+      background-color: #bfbfbf;
+      height: 3px;
+   }
+
+   .longTopRightTreeElement{
+      position: absolute;
+      top: -55px;
+      left: 50%;
+      width: 192px;
+      border-radius: 4px;
+      background-color: #bfbfbf;
+      height: 3px;
+   }
+
+   .longTopLeftTreeElement{
+      position: absolute;
+      top: -55px;
+      right: 50%;
+      width: 192px;
+      border-radius: 4px;
+      background-color: #bfbfbf;
+      height: 3px;
+   }
+
+   .rightTreeElement{
+      position: absolute;
+      top: 50%;
+      left: 165px;
+      border-radius: 4px;
+      background-color: #bfbfbf;
+      height: 3px;
+   }
+
+   .leftTreeElement{
+      position: absolute;
+      top: 50%;
+      right: 165px;
+      border-radius: 4px;
+      background-color: #bfbfbf;
+      height: 3px;
+   }
 }
+
+// .achievementBlock{
+//    position: relative;
+
+//    .soloBottomTreeElement{
+//       position: absolute;
+//       left: 50%;
+//       bottom: -115px;
+//    }
+
+//    .soloLeftTreeElement{
+//       position: absolute;
+//       left: -15px;
+//       bottom: 50%;
+//    }
+
+//    .soloRightTreeElement{
+//       position: absolute;
+//       right: -15px;
+//       bottom: 50%;
+//    }
+
+//    .tripleBottomTreeElement{
+//       position: absolute;
+//       left: 52%;
+//       bottom: -120px;
+//    }
+
+//    .tripleTopTreeElement{
+//       position: absolute;
+//       left: 52%;
+//       top: -100px;
+//    }
+
+//    .quintupleTopTreeElement{
+//       position: absolute;
+//       left: 59%;
+//       top: -100px;
+//    }
+
+//    .infiniteTreeElement{
+//       position: absolute;
+//       left: 50%;
+//       top: 300px;
+//       width: 3px;
+//       border-radius: 4px;
+//       background-color: #bfbfbf;
+//    }
+// }
 
 
 @media(hover: hover) and (pointer: fine){
