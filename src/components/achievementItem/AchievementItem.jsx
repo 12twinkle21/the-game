@@ -26,6 +26,12 @@ function AvailableAchievementItem(props) {
       widthOfHorizontalTreeElement+= 190
    }
 
+   let widthOfHorizontalLongTreeElement = 90;
+
+   for(let i =1; i<bottomRightTreeElement || i<bottomLeftTreeElement; i++){
+      widthOfHorizontalLongTreeElement+= 190
+   }
+
   return (
 
    emptyElement !==true?
@@ -82,12 +88,30 @@ function AvailableAchievementItem(props) {
       </div>
     </div> 
       {
-         bottomTreeElement?
+        bottomTreeElement && bottomRightTreeElement?
+        <>
+        <div style={{height: heightOfBottomTreeElement+80}} className={styles.bottomTreeElement}></div>
+        <div style={{top: heightOfBottomTreeElement+358}} className={styles.bottomMiniTreeElement}></div>
+        <div style={{top: heightOfBottomTreeElement+403, width: widthOfHorizontalLongTreeElement}} className={styles.longBottomRightTreeElement}></div>
+        </>
+        : null  
+      }
+      {
+        bottomTreeElement && bottomLeftTreeElement?
+        <>
+        <div style={{height: heightOfBottomTreeElement+80}} className={styles.bottomTreeElement}></div>
+        <div style={{top: heightOfBottomTreeElement+358}} className={styles.bottomMiniTreeElement}></div>
+        <div style={{top: heightOfBottomTreeElement+403, width: widthOfHorizontalLongTreeElement}} className={styles.longBottomLeftTreeElement}></div>
+        </>
+        : null  
+      }
+      {
+         (bottomTreeElement && !bottomRightTreeElement) || (bottomTreeElement && !bottomLeftTreeElement)?
          <div style={{height: heightOfBottomTreeElement}} className={styles.bottomTreeElement}></div>
          : null
       }
       {
-         bottomRightTreeElement?
+         bottomRightTreeElement && !bottomTreeElement?
          <>
          <div className={styles.bottomMiniTreeElement}></div>
          <div className={styles.longBottomRightTreeElement}></div>
@@ -95,7 +119,7 @@ function AvailableAchievementItem(props) {
          : null
       }
       {
-         bottomLeftTreeElement?
+         bottomLeftTreeElement  && !bottomTreeElement?
          <>
          <div className={styles.bottomMiniTreeElement}></div>
          <div className={styles.longBottomLeftTreeElement}></div>

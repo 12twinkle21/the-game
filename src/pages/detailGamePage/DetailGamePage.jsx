@@ -369,7 +369,7 @@ function DetailGamePage() {
                bgImage: "http://dummyimage.com/132x132&text=+",
                blueProgress : 100,
                yellowProgress: 100,
-               bottomLeftTreeElement: true,
+               bottomLeftTreeElement: true
             },
             {
                title: "Проверка на вшивость",
@@ -377,7 +377,7 @@ function DetailGamePage() {
                bgImage: "http://dummyimage.com/132x132/a6a6ff&text=+",
                blueProgress : 100,
                yellowProgress: 100,
-               bottomTreeElement: 1,
+               bottomTreeElement: 1
             },
             {
                emptyElement: true

@@ -11,7 +11,7 @@ function MainMenu() {
 
    const { darkTheme, toggleDarkTheme, visibleMainMenu, onVisibleMainMenu } = React.useContext(AppContext);
 
-   let mainMenuItemsArr = [
+   let mainMenuItemsData = [
       {
          icon: "./img/mainMenuIcons/1.svg",
          title: "Профиль"
@@ -106,7 +106,7 @@ function MainMenu() {
       </div>
       <div className={styles.mainMenuItems}>
          {
-            mainMenuItemsArr.map((item) => <div className={styles.mainMenuItems__item} key={item.title}><MainMenuCard icon={item.icon} title={item.title} blocked={item.blocked}/></div>)
+            mainMenuItemsData.map((item) => <div className={styles.mainMenuItems__item} key={item.title}><MainMenuCard icon={item.icon} title={item.title} blocked={item.blocked}/></div>)
          }
       </div>
       <button className={styles.darkThemeBtn} onClick={toggleDarkTheme}>Темная тема</button>

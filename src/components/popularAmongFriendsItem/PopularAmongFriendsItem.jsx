@@ -8,8 +8,8 @@ import { AppContext } from '../../App';
 
 function PopularAmongFriendsItem(props) {
 
-  const {bgImage, title, countOfPlayers, friends} = props;
-
+  const {bgImage, title, friends} = props;
+  
   const { darkTheme, onSelectContentBlock} = React.useContext(AppContext);
 
   let friendsIcons = [];
@@ -33,7 +33,7 @@ function PopularAmongFriendsItem(props) {
       <GameCard bgImage={bgImage} className={'popularGameCard'}/>
       <div className={darkTheme? styles.darkPopularAmongFriendsItem__info : styles.popularAmongFriendsItem__info}>
          <p>{title}</p>
-         <span>Играет {countOfPlayers} друзей</span>
+         <span>Играет {friends.length} друзей</span>
          <Link to='/detailGamePage' className='clearLink'>
          <div className={styles.friendsIcons} onClick={()=> onSelectContentBlock('members' )}>
             {friendsIcons}
